@@ -1,5 +1,5 @@
 <!DOCTYPE php>
-<php lang="en">
+<php lang="fr">
 <head>
   <!-- Demarrage session -->
 <?php session_start() ?>
