@@ -119,7 +119,7 @@
     fade: true
   });
 
-  // Client Slider 
+  // Client Slider
   $('.category-slider').slick({
     dots: false,
     slidesToShow: 5,
@@ -158,7 +158,7 @@
     ]
   });
 
-  // trending-ads-slide 
+  // trending-ads-slide
 
   $('.trending-ads-slide').slick({
     dots: false,

@@ -52,6 +52,7 @@
                     </form>
                     <!-- <a class="mt-3 d-block  text-primary" href="#">Mot de passe oublié?</a>-->
                     <a class="mt-3 d-inline-block text-primary" href="register.php">S'inscrire</a>
+                  </BR>  <a class="mt-3 d-block  text-primary" href="demandemdp.php">Mot de passe oublié?</a>
                   </fieldset>
 
                 </div>

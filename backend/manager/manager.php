@@ -74,6 +74,84 @@ class manager{
 
   }
 
+  public function demandemdp($a){
+    session_start();
+    $this->dbh = new bdd();
+
+
+    if($a->getMail() ==''){                                   //VERIFIER SI LES CASES SONT VIDES
+      throw new Exception("mail",1);
+
+    }
+
+
+
+    $req = $this->dbh->getBase()->prepare("SELECT * from utilisateur where mail =:mail");
+    $req->execute(array(
+      'mail'=> $a->getMail(),
+
+    ));                                          //VOIR SI UN UTILISATEUR EXISTE ET LE CONNECTER
+
+    $res = $req->fetch();
+
+
+    if ($res) {
+
+  $c = $this->mail($a);
+
+  $_SESSION['connect'] ="3";
+    }
+
+    else {
+
+      throw new Exception("vide",1);
+
+
+
+
+
+    }
+
+
+
+  }
+
+  public function mailmdp($a){  //PHP MAILER
+    //Instantiation and passing `true` enables exceptions
+    $mail = new PHPMailer(true);
+
+    try {
+      //Server settings
+      $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      // Enable verbose debug output
+      $mail->isSMTP();                                            // Send using SMTP
+      $mail->Host       = 'smtp.gmail.com';                    // Set the SMTP server to send through
+      $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
+      $mail->Username   = 'phpmailerdugny@gmail.com';                     // SMTP username
+      $mail->Password   = 'Mailer1234';                               // SMTP password
+      $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;         // Enable TLS encryption; PHPMailer::ENCRYPTION_SMTPS encouraged
+      $mail->Port       = 465;                                    // TCP port to connect to, use 465 for PHPMailer::ENCRYPTION_SMTPS above
+
+      //Recipients
+      $mail->setFrom('phpmailerdugny@gmail.com', 'NE PAS REPONDRE');
+      $mail->addAddress( $a->getMail() , $a->getNom());     // Add a recipient
+      $mail->addReplyTo('phpmailerdugny@gmail.com', 'NE PAS REPONDRE');
+      // Attachments
+      //  $mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
+      //$mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
+
+      // Content
+      //$mail->isHTML(true);                                  // Set email format to HTML
+      $mail->Subject = 'demandemdp ';
+      $mail->Body    = 'demandemdp <b>Dugny!</b>';
+      $mail->AltBody = 'demandemdp!';
+
+      $mail->send();
+      echo 'Message has been sent';
+    } catch (Exception $e) {
+      echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+    }
+  }
+
   public function paiement($a) //Ajouter la reservation a la base de donnée
   {
     session_start();
