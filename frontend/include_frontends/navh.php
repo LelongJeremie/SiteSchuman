@@ -43,9 +43,7 @@
 						</li>
 						<?php } ?>
 						<li class="nav-item dropdown dropdown-slide">
-							<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="">
-								à l'affiche <span><i class="fa fa-angle-down"></i></span>
-							</a>
+						
 
 							<!-- Dropdown list -->
 
@@ -78,7 +76,7 @@
 														<a class="dropdown-item" href="admin.php">Admin  </a>
 															<a class="dropdown-item" href="adminajout.php">Admin ajout  </a>
 
-														
+
 													</div>
 												</li>
 

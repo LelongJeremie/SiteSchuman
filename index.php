@@ -55,15 +55,7 @@
 ============================================-->
 
 <section class="popular-deals section bg-gray">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12">
-				<div class="section-title">
-					<h2>Nouveautés</h2>
-					<p>Voici les dernières nouveautés.</p>
-				</div>
-			</div>
-		</div>
+	
     <?php if ( isset($_SESSION["connect"]) and $_SESSION["connect"] == "1") {
      ?>
 <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
@@ -230,43 +222,6 @@ $( document ).ready(function() {
 
 						<!-- product card -->
 
-<?php foreach ( $res as $value) {
-
-
-
-
-
-?>
-
-
-					<div class="col-sm-12 col-lg-4">
-						<!-- product card -->
-<div class="product-item bg-light">
-	<div class="card">
-		<div class="thumb-content">
-		<div class="price"><?php echo  $value["salleid"] ;?></div>
-			<a href="frontend/view/<?php echo $value['lienfilm']; ?>">
-				<img class="card-img-top img-fluid" src="<?php echo $value['image']; ?>" alt="Card image cap">
-			</a>
-		</div>
-		<div class="card-body">
-		    <h4 class="card-title"><a href="frontend/view/<?php echo $value['lienfilm']; ?>"><?php echo $value["SALLENomfilm"] ;?></a></h4>
-		    <ul class="list-inline product-meta">
-		    	<li class="list-inline-item">
-		    		<i class="fa fa-folder-open-o"></i><?php echo $value["theme"] ;?>
-		    	</li>
-		    	<li class="list-inline-item">
-		    		<a><i class="fa fa-calendar"></i></a>
-		    	</li>
-		    </ul>
-      </i><?php echo $value["description"] ;?>
-
-
-		</div>
-	</div>
-</div> </div>
-<?php }?>
-
 
 					</div>
 
@@ -285,85 +240,7 @@ $( document ).ready(function() {
 =            All Category Section            =
 ===========================================-->
 
-<section class=" section">
-	<!-- Container Start -->
-	<div class="container">
-		<div class="row">
-			<div class="col-12">
-				<!-- Section title -->
-				<div class="section-title">
-					<h2>Statistiques des catégories</h2>
-					<p>La liste de toutes les catégories avec le nombre de livres dans chaque catégories.</p>
-				</div>
-				<div class="row">
-					<!-- Category list -->
-					<div class="col-lg-3 offset-lg-0 col-md-5 offset-md-1 col-sm-6 col-6">
-						<div class="category-block">
-							<div class="header">
-								<i class="fa fa-wheelchair-alt icon-bg-1"></i>
-								<h4>Action</h4>
-							</div>
-							<ul class="category-list" >
-						<!--	<li><a href="style/view/category.php">Laptops <span>93</span></a></li>
-								<li><a href="style/view/category.php">Iphone <span>233</span></a></li>
-								<li><a href="style/view/category.php">Microsoft  <span>183</span></a></li>
-								<li><a href="style/view/category.php">Monitors <span>343</span></a></li>-->
-							</ul>
-						</div>
-					</div> <!-- /Category List -->
-					<!-- Category list -->
-					<div class="col-lg-3 offset-lg-0 col-md-5 offset-md-1 col-sm-6 col-6">
-						<div class="category-block">
-							<div class="header">
-								<i class="fa fa-compass icon-bg-2"></i>
-								<h4>Aventure</h4>
-							</div>
-							<ul class="category-list" >
-						<!--	<li><a href="style/view/category.php">Cafe <span>393</span></a></li>
-								<li><a href="style/view/category.php">Fast food <span>23</span></a></li>
-								<li><a href="style/view/category.php">Restaurants  <span>13</span></a></li>
-								<li><a href="style/view/category.php">Food Track<span>43</span></a></li>-->
-							</ul>
-						</div>
-					</div> <!-- /Category List -->
-					<!-- Category list -->
-					<div class="col-lg-3 offset-lg-0 col-md-5 offset-md-1 col-sm-6 col-6">
-						<div class="category-block">
-							<div class="header">
-								<i class="fa fa-map-pin icon-bg-3"></i>
-								<h4>Mystère</h4>
-							</div>
-							<ul class="category-list" >
-							<!--	<li><a href="style/view/category.php">Farms <span>93</span></a></li>
-								<li><a href="style/view/category.php">Gym <span>23</span></a></li>
-								<li><a href="style/view/category.php">Hospitals  <span>83</span></a></li>
-								<li><a href="style/view/category.php">Parolurs <span>33</span></a></li>-->
-							</ul>
-						</div>
-					</div> <!-- /Category List -->
-					<!-- Category list -->
-					<div class="col-lg-3 offset-lg-0 col-md-5 offset-md-1 col-sm-6 col-6">
-						<div class="category-block">
-							<div class="header">
-								<i class="fa fa-frown-o icon-bg-4"></i>
-								<h4>Drama</h4>
-							</div>
-							<ul class="category-list" >
-								<!--<li><a href="style/view/category.php">Mens Wears <span>53</span></a></li>
-								<li><a href="style/view/category.php">Accessories <span>212</span></a></li>
-								<li><a href="style/view/category.php">Kids Wears <span>133</span></a></li>
-								<li><a href="style/view/category.php">It & Software <span>143</span></a></li>-->
-							</ul>
-						</div>
-					</div> <!-- /Category List -->
 
-
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- Container End -->
-</section>
 <!--============================
 =            Footer            =
 =============================-->
