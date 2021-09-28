@@ -48,13 +48,7 @@
 							</a>
 
 							<!-- Dropdown list -->
-							<div class="dropdown-menu">
 
-								<a class="dropdown-item" href="categoriefilm.php">Film</a>
-								<?php if (isset($_SESSION["id"])){   ?>
-							<a class="dropdown-item" href="reservationfilm.php">reservation Film</a>   <?php }?>
-
-							</div>
 						</li>
 						<li class="nav-item dropdown dropdown-slide">
 							<a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -84,7 +78,7 @@
 														<a class="dropdown-item" href="admin.php">Admin  </a>
 															<a class="dropdown-item" href="adminajout.php">Admin ajout  </a>
 
-															<a class="dropdown-item" href="adminajoutfilm.php">Admin ajout film </a>
+														
 
 													</div>
 												</li>

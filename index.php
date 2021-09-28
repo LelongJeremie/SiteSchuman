@@ -16,9 +16,10 @@
 
   else {
      $_SESSION['stop']=4;?>
+     <!--
      <script type="text/javascript">
-       window.location.href =   "backend/process/affichertoutfilmindex.php";
-     </script>
+       window.location.href =   "backend/process/affichertoutFILMindex.php";
+     </script> -->
   <?php  } ?>
 
 
@@ -33,25 +34,8 @@
 			<div class="col-md-12">
 				<!-- Header Contetnt -->
 				<div class="content-block">
-					<h1>Cinéma de Dugny </h1>
-					<p>Retrouvez des centaines de film comprenant <br> un grand nombre de film du monde entier</p>
-					<div class="short-popular-category-list text-center">
-						<h2>Catégories Populaires</h2>
-						<ul class="list-inline">
-							<li class="list-inline-item">
-								<a href="frontend/view/categoriefilm.PHP"><i class="fa fa-wheelchair-alt"></i> Action</a></li>
-							<li class="list-inline-item">
-								<a href="frontend/view/categoriefilm.PHP"><i class="fa fa-compass"></i> Aventure</a>
-							</li>
-							<li class="list-inline-item">
-								<a href="frontend/view/categoriefilm.PHP"><i class="fa fa-map-pin"></i> Mystère</a>
-							</li>
-							<li class="list-inline-item">
-								<a href="frontend/view/categoriefilm.PHP"><i class="fa fa-frown-o"></i> Drama</a>
-							</li>
-						</ul>
-					</div>
-
+					<h1>Robert Schuman </h1>
+					<p>text1 <br> Text 2 </p>
 				</div>
 
 
