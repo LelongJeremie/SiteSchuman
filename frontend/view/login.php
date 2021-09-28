@@ -51,7 +51,7 @@
                       <button type="submit" class="d-block py-3 px-4 bg-primary text-white border-0 rounded font-weight-bold">Se connecter</button>
                     </form>
                     <!-- <a class="mt-3 d-block  text-primary" href="#">Mot de passe oublié?</a>-->
-                    <a class="mt-3 d-inline-block text-primary" href="register.PHP">S'inscrire</a>
+                    <a class="mt-3 d-inline-block text-primary" href="register.php">S'inscrire</a>
                   </fieldset>
 
                 </div>
