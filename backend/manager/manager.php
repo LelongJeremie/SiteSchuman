@@ -85,19 +85,18 @@ class manager{
     }
 
 
-
-    $req = $this->dbh->getBase()->prepare("SELECT * from utilisateur where mail =:mail");
-    $req->execute(array(
+    $res = $this->dbh->getBase()->prepare("SELECT * from utilisateur where mail =:mail");
+    $res->execute(array(
       'mail'=> $a->getMail(),
 
     ));                                          //VOIR SI UN UTILISATEUR EXISTE ET LE CONNECTER
 
-    $res = $req->fetch();
+     $res->fetch();
 
 
     if ($res) {
 
-  $c = $this->mail($a);
+
 
   $_SESSION['connect'] ="3";
     }
@@ -105,14 +104,7 @@ class manager{
     else {
 
       throw new Exception("vide",1);
-
-
-
-
-
     }
-
-
 
   }
 
@@ -1230,13 +1222,6 @@ class manager{
             }
 
           }
-
-
-
-
-
-
-
 
 
           public function adminajoutfilm($a) //AJOUTER UN FILM EN TANT QU'ADMIN
