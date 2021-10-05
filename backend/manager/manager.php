@@ -374,7 +374,7 @@ class manager{
       // Content
       //$mail->isHTML(true);                                  // Set email format to HTML
       $mail->Subject = 'Bienvenue ! ';
-      $mail->Body    = 'Bienvenue sur le site du Cinema de <b>Dugny!</b>';
+      $mail->Body    = 'Bienvenue sur le site du Cinema de <b>Dugny!</b> : https://www.google.fr';
       $mail->AltBody = 'Bienvenue sur le site du Cinema de Dugny!';
 
       $mail->send();
