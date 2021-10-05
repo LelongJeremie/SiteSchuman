@@ -15,7 +15,7 @@ try {
 
   $man = new manager();
 
-  $man->demandemdp($user);
+
   $man->mailmdp($user);        //utilise la method connexion
 
 
@@ -23,16 +23,16 @@ try {
 
 $_SESSION["erreurcase"] = $e->getMessage();
 
-
+header("Location: ../../frontend/view/demandemdp.php");
 }
 
-if (isset($_SESSION["erreurcase"]) and $_SESSION["erreurcase"] !='') {
+if (isset($_SESSION["erreurcase"]) and $_SESSION["erreurcase"] !='' ) {
     header("Location: ../../frontend/view/demandemdp.php");
 }
 
 else {
 
-
+        $SESSION["connect"] = "3";
 header("Location: ../../index.php");
 }
 

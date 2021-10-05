@@ -104,44 +104,81 @@ class manager{
     else {
 
       throw new Exception("vide",1);
+      $_SESSION["erreurmail"] = "1";
     }
 
   }
 
   public function mailmdp($a){  //PHP MAILER
     //Instantiation and passing `true` enables exceptions
-    $mail = new PHPMailer(true);
 
-    try {
-      //Server settings
-      $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      // Enable verbose debug output
-      $mail->isSMTP();                                            // Send using SMTP
-      $mail->Host       = 'smtp.gmail.com';                    // Set the SMTP server to send through
-      $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
-      $mail->Username   = 'phpmailerdugny@gmail.com';                     // SMTP username
-      $mail->Password   = 'Mailer1234';                               // SMTP password
-      $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;         // Enable TLS encryption; PHPMailer::ENCRYPTION_SMTPS encouraged
-      $mail->Port       = 465;                                    // TCP port to connect to, use 465 for PHPMailer::ENCRYPTION_SMTPS above
+    $this->dbh = new bdd();
 
-      //Recipients
-      $mail->setFrom('phpmailerdugny@gmail.com', 'NE PAS REPONDRE');
-      $mail->addAddress( $a->getMail() , $a->getNom());     // Add a recipient
-      $mail->addReplyTo('phpmailerdugny@gmail.com', 'NE PAS REPONDRE');
-      // Attachments
-      //  $mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
-      //$mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
 
-      // Content
-      //$mail->isHTML(true);                                  // Set email format to HTML
-      $mail->Subject = 'demandemdp ';
-      $mail->Body    = 'demandemdp <b>Dugny!</b> http://localhost/TABTI/SiteSchuman/frontend/view/motdepasseoublie.php';
-      $mail->AltBody = 'demandemdp!';
+    if($a->getMail() ==''){                                   //VERIFIER SI LES CASES SONT VIDES
+      throw new Exception("casemailvide",1);
 
-      $mail->send();
-      echo 'Message has been sent';
-    } catch (Exception $e) {
-      echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
     }
+
+
+    $res = $this->dbh->getBase()->prepare("SELECT * from utilisateur where mail =:mail");
+    $res->execute(array(
+      'mail'=> $a->getMail(),
+
+    ));                                          //VOIR SI UN UTILISATEUR EXISTE ET LE CONNECTER
+
+     $res->fetch();
+
+
+    if ($res) {
+        $SESSION["connect"] = "3";
+
+
+
+          $mail = new PHPMailer(true);
+
+          try {
+            //Server settings
+            $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      // Enable verbose debug output
+            $mail->isSMTP();                                            // Send using SMTP
+            $mail->Host       = 'smtp.gmail.com';                    // Set the SMTP server to send through
+            $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
+            $mail->Username   = 'phpmailerdugny@gmail.com';                     // SMTP username
+            $mail->Password   = 'Mailer1234';                               // SMTP password
+            $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;         // Enable TLS encryption; PHPMailer::ENCRYPTION_SMTPS encouraged
+            $mail->Port       = 465;                                    // TCP port to connect to, use 465 for PHPMailer::ENCRYPTION_SMTPS above
+
+            //Recipients
+            $mail->setFrom('phpmailerdugny@gmail.com', 'NE PAS REPONDRE');
+            $mail->addAddress( $a->getMail() , $a->getNom());     // Add a recipient
+            $mail->addReplyTo('phpmailerdugny@gmail.com', 'NE PAS REPONDRE');
+            // Attachments
+            //  $mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
+            //$mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
+
+            // Content
+            //$mail->isHTML(true);                                  // Set email format to HTML
+            $mail->Subject = 'demandemdp ';
+            $mail->Body    = 'demandemdp <b>Dugny!</b> http://localhost/TABTI/SiteSchuman/frontend/view/motdepasseoublie.php';
+            $mail->AltBody = 'demandemdp!';
+
+            $mail->send();
+            echo 'Message has been sent';
+          } catch (Exception $e) {
+            echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+          }
+
+
+    }
+
+    else {
+
+      throw new Exception("vide",1);
+      $_SESSION["erreurmail"] = "1";
+    }
+
+
+
   }
 
   public function paiement($a) //Ajouter la reservation a la base de donnée
@@ -1052,6 +1089,53 @@ class manager{
           }
 
 
+          public function modificationpasswordoublie($a)           //modifier le mot de passe
+          {
+            session_start();
+
+
+            if ($a->getPassword()=="rlFROk.yJKhMM" and $a->getPassword()=="rlFROk.yJKhMM"  and $a->getPasswordmodifconf()=="rlFROk.yJKhMM"  ) {
+              throw new Exception("toutecasepasswordvide");
+            }
+
+            if ($a->getPassword()=="rlFROk.yJKhMM" ) {
+              throw new Exception("passwordvide");
+            }
+
+
+
+            else {
+
+              $this->dbh = new bdd();
+              $req = $this->dbh->getBase()->prepare("SELECT * from utilisateur where password=:password ");
+              $req->execute(array(
+                'password'=> $a->getPassword(),
+              ));
+
+              $res = $req->fetch();
+              if ($res) {
+
+
+                $this->dbh = new bdd();
+                $req = $this->dbh->getBase()->prepare("UPDATE utilisateur set password = :password where id = :id ");
+                $req->execute(array(
+                  'id'=> $res['id'],
+                  'password' => $a->getPassword(),
+
+
+                ));
+
+
+
+              }
+
+              else {
+                throw new Exception("mauvaispassword");
+
+              }
+            }
+
+          }
 
 
 

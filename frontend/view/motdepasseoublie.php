@@ -26,7 +26,7 @@
 
                 <fieldset class="p-4">
 
-                  <form action= "../../backend/process/motdepasseoublié.php" method= "post">
+                  <form action= "../../backend/process/modificationpasswordoublie.php" method= "post">
 
                     <input type="text" name="password" placeholder="*********" class="border p-3 w-100 my-2" />
 
