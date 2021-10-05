@@ -134,7 +134,7 @@ class manager{
       // Content
       //$mail->isHTML(true);                                  // Set email format to HTML
       $mail->Subject = 'demandemdp ';
-      $mail->Body    = 'demandemdp <b>Dugny!</b>';
+      $mail->Body    = 'demandemdp <b>Dugny!</b> http://localhost/TABTI/SiteSchuman/frontend/view/motdepasseoublie.php';
       $mail->AltBody = 'demandemdp!';
 
       $mail->send();
