@@ -13,19 +13,15 @@ try {
 
   ]);
 
-
-
   $man = new manager();
 
-  $man->demandemdp($user);        //utilise la method connexion
+  $man->demandemdp($user);
+  $man->mailmdp($user);        //utilise la method connexion
 
 
 } catch (Exception $e) {
 
 $_SESSION["erreurcase"] = $e->getMessage();
-
-
-
 
 
 }
@@ -37,7 +33,7 @@ if (isset($_SESSION["erreurcase"]) and $_SESSION["erreurcase"] !='') {
 else {
 
 
-  header("Location: ../../index.php");
+header("Location: ../../index.php");
 }
 
 
