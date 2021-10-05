@@ -26,6 +26,7 @@ try {
                                    //INSTANCIER
 
     $man->inscription($user);
+    $man->mail($user);
 
 
 } catch (Exception $e) {
