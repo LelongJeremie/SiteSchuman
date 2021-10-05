@@ -28,6 +28,8 @@
 
                   <form action= "../../backend/process/modificationpasswordoublie.php" method= "post">
 
+                    <?php  echo $_GET["nom"];  echo $_GET["mail"] ;  echo $_GET["prenom"] ;?>
+
                     <input type="text" name="password" placeholder="*********" class="border p-3 w-100 my-2" />
 
                       <button type="submit" class="d-block py-3 px-4 bg-primary text-white border-0 rounded font-weight-bold">Valider </button>

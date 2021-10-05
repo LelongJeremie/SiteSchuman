@@ -3,7 +3,7 @@
 require_once 'contact.php';
 class utilisateur extends contact{
 
-  public $id,$nom,$salleidmodif,$prenom,$password, $passwordmodifconf,$passwordmodif,$passwordconf,$role,$username,$typemodif,$mail,$mailmodif,$idmodif,$idadminmodif,$nomadminmodif,$prenomadminmodif,$passwordadminmodif,$mailadminmodif,$roleadminmodif,$salleplace,$description,$sallenomfilm,$theme,$troisd,$salleid,$image,$tarif,$cb,$place,$prix;
+  public $id,$verifmail,$nom,$salleidmodif,$prenom,$password, $passwordmodifconf,$passwordmodif,$passwordconf,$role,$username,$typemodif,$mail,$mailmodif,$idmodif,$idadminmodif,$nomadminmodif,$prenomadminmodif,$passwordadminmodif,$mailadminmodif,$roleadminmodif,$salleplace,$description,$sallenomfilm,$theme,$troisd,$salleid,$image,$tarif,$cb,$place,$prix;
 
   // constructeur
 
@@ -11,7 +11,7 @@ class utilisateur extends contact{
   {
 
     $this->hydrate($donnees);
-    
+
   }
 
 
@@ -129,6 +129,11 @@ class utilisateur extends contact{
     return $this-> mail;
   }
 
+  public function getVerifmail()
+  {
+    return $this-> verifmail;
+  }
+
   public function getMailadminmodif()
   {
     return $this-> mailadminmodif;
@@ -164,7 +169,6 @@ class utilisateur extends contact{
   {
     return $this-> troisd;
   }
-
 
 
 
@@ -284,6 +288,14 @@ class utilisateur extends contact{
     {
       $this-> prenom = $prenom;
     }}
+
+    public function setVerifmail($verifmail)
+    {
+      // On vérifie qu'il s'agit bien d'une chaîne de caractères.
+      if (is_string($verifmail))
+      {
+        $this-> verifmail = $verifmail;
+      }}
 
 
     public function setPassword($password)

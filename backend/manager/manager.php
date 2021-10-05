@@ -161,7 +161,7 @@ var_dump($req);
             // Content
             //$mail->isHTML(true);                                  // Set email format to HTML
             $mail->Subject = 'demandemdp ';
-            $mail->Body    = 'demandemdp <b>Dugny!</b> http://localhost/TABTI/SiteSchuman/frontend/view/motdepasseoublie.php?mail='.$mail_hache;
+            $mail->Body    = 'demandemdp <b>Dugny!</b> http://localhost/TABTI/SiteSchuman/frontend/view/motdepasseoublie.php?mail='.$mail_hache."&nom=".$req["nom"]."&prenom=".$req["prenom"];
             $mail->AltBody = 'demandemdp!';
 
             $mail->send();
@@ -1024,11 +1024,43 @@ var_dump($req);
 
           }
 
+public function verifmail($a)
+{
+  session_start();
 
+  $this->dbh = new bdd();
+  $req = $this->dbh->getBase()->prepare("SELECT mail from utilisateur where nom = :nom and prenom = :prenom");
+  $req->execute(array(
+    'nom'=> $a->getNom(),
+    'prenom'=> $a->getPrenom(),
+  ));
+
+
+  $res = $req->fetch();
+
+  $mail_hache = crypt($req["mail"], 'rl');
+
+  if ($mail_hache == $a->getVerifmail() )
+   {
+setcookie('nom',$a->getNom() , time() + 200)
+setcookie('prenom',$a->getPrenom() , time() + 200)
+
+
+  }
+
+else { header("Location: ../../index.php");
+
+}
+}
 
           public function modificationpassword($a)           //modifier le mot de passe
           {
             session_start();
+
+
+
+
+
 
 
             if ($a->getPassword()=="rlFROk.yJKhMM" and $a->getPassword()=="rlFROk.yJKhMM"  and $a->getPasswordmodifconf()=="rlFROk.yJKhMM"  ) {
@@ -1109,7 +1141,7 @@ var_dump($req);
             else {
 
               $this->dbh = new bdd();
-              $req = $this->dbh->getBase()->prepare("SELECT * from utilisateur where password=:password ");
+              $req = $this->dbh->getBase()->prepare("SELECT * from utilisateur where prenom=:prenom and nom=:nom");
               $req->execute(array(
                 'password'=> $a->getPassword(),
               ));
