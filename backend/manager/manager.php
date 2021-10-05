@@ -109,7 +109,9 @@ class manager{
 
   }
 
-  public function mailmdp($a){  //PHP MAILER
+  public function mailmdp($a){
+session_start();
+    //PHP MAILER
     //Instantiation and passing `true` enables exceptions
 
     $this->dbh = new bdd();
@@ -127,13 +129,13 @@ class manager{
 
     ));                                          //VOIR SI UN UTILISATEUR EXISTE ET LE CONNECTER
 
-     $res->fetch();
+  $req= $res->fetch();
+var_dump($req);
 
+    if ($req) {
+        $_SESSION["connect"] = "3";
 
-    if ($res) {
-        $SESSION["connect"] = "3";
-
-
+          $mail_hache = crypt($_GET["mail"], 'rl');
 
           $mail = new PHPMailer(true);
 
@@ -159,7 +161,7 @@ class manager{
             // Content
             //$mail->isHTML(true);                                  // Set email format to HTML
             $mail->Subject = 'demandemdp ';
-            $mail->Body    = 'demandemdp <b>Dugny!</b> http://localhost/TABTI/SiteSchuman/frontend/view/motdepasseoublie.php';
+            $mail->Body    = 'demandemdp <b>Dugny!</b> http://localhost/TABTI/SiteSchuman/frontend/view/motdepasseoublie.php?mail='.$mail_hache;
             $mail->AltBody = 'demandemdp!';
 
             $mail->send();
@@ -174,7 +176,7 @@ class manager{
     else {
 
       throw new Exception("vide",1);
-      $_SESSION["erreurmail"] = "1";
+      $_SESSION["connect"] = "5";
     }
 
 
