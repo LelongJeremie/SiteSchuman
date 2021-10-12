@@ -30,16 +30,18 @@
       <table id="myTable" class="display" style="width:100%">
     	        <thead>
     	            <tr>
-                    <?php foreach ($res as $value) { ?>
 
-    	                <th>Name</th>
-    	                <th>Position</th>
-    	                <th>Office</th>
-    	                <th>Age</th>
-    	                <th>Start date</th>
-    	                <th>Salary</th>
-                      <?php  }?>
+
+    	                <th>Nom</th>
+    	                <th>Prenom</th>
+    	                <th>date naissance</th>
+    	                <th>Role</th>
+    	                <th>Classe</th>
+    	                <th>Mail</th>
+
     	            </tr>
+
+                </br>
     	        </thead>
     	        <tbody>
     	            <tr>
@@ -50,18 +52,19 @@
     	                <td><?php echo $value['role'];?></td>
     	                <td><?php echo $value['classe'];?></td>
     	                <td><?php echo $value['mail'];?></td>
-                      <?php  }?>
-    	            </tr>
 
+    	            </tr>
+    <?php  }?>
     	        </tbody>
+
     	        <tfoot>
     	            <tr>
-    	                <th>Name</th>
-    	                <th>Position</th>
-    	                <th>Office</th>
-    	                <th>Age</th>
-    	                <th>Start date</th>
-    	                <th>Salary</th>
+                    <th>Nom</th>
+                   <th>Prenom</th>
+                   <th>date naissance</th>
+                   <th>Role</th>
+                   <th>Classe</th>
+                   <th>Mail</th>
     	            </tr>
     	        </tfoot>
     	    </table>
