@@ -1042,8 +1042,7 @@ public function verifmail($a)
 
   if ($mail_hache == $a->getVerifmail() )
    {
-setcookie('nom',$a->getNom() , time() + 200)
-setcookie('prenom',$a->getPrenom() , time() + 200)
+
 
 
   }
@@ -1143,11 +1142,13 @@ else { header("Location: ../../index.php");
               $this->dbh = new bdd();
               $req = $this->dbh->getBase()->prepare("SELECT * from utilisateur where prenom=:prenom and nom=:nom");
               $req->execute(array(
-                'password'=> $a->getPassword(),
+                'prenom'=> $a->getPrenom(),
+                'nom'=> $a->getNom(),
               ));
 
               $res = $req->fetch();
-              if ($res) {
+              $mail_hache = crypt($res["mail"], 'rl');
+              if (isset($res) and $mail_hache ==  $a->getMail() ) {
 
 
                 $this->dbh = new bdd();
@@ -1159,7 +1160,7 @@ else { header("Location: ../../index.php");
 
                 ));
 
-
+                $_SESSION["connect"]="6";
 
               }
 
