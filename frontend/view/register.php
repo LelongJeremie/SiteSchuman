@@ -96,6 +96,23 @@
 
                         ?>/>
 
+                        </br> </br>
+                        <div class="form-group">
+                          <label for="current-password">ROLE : </br></br>
+                          Professeur :
+                          </br>
+                          <input  type="radio" name="role" class="form-controlred p-1 w-50 my-1" value="1"
+                          checked> </BR>
+
+                          Parent :
+                          <input type="radio" name="role" class="form-controlred p-1 w-50 my-1" value="2"
+                          ></BR>
+                          Parent :
+                          <input type="radio" name="role" class="form-controlred p-1 w-50 my-1" value="3"
+                          ></BR>
+
+
+                        </div>
 
 
 
