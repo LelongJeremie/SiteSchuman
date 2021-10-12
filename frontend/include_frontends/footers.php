@@ -9,8 +9,13 @@
           <!-- footer logo -->
           <img src="../../style/images/logo.png" alt="">
           <!-- description -->
-          <p class="alt-color"> La Bibliothèque de Dugny propose un grand nombre de livres de plusieurs catégories différentes
-            accessible simplement et rapidement en quelques cliques.</p>
+          <p class="alt-color"> Enseignement catholique sous contrat d'association avec l'Etat <br>
+Etablissement habilité à percevoir la taxe d'apprentissage <br>
+5 avenue du Général de Gaulle - 93440 Dugny <br>
+<span class="iconlist-char" data-av_iconfont="entypo-fontello" data-av_icon="" aria-hidden="true"></span>
+ 01 48 37 74 26 01 48 35 48 14
+ <span class="iconlist-char" data-av_iconfont="entypo-fontello" data-av_icon="" aria-hidden="true"></span>
+ administration@lyceerobertschuman.com.</p>
         </div>
       </div>
       <!-- Link list -->
@@ -19,7 +24,7 @@
           <h4>Pages du site</h4>
           <ul>
 
-          
+
             <li><a href="about-us.php">A propos</a></li>
             <li><a href="contact-us.php">Contact</a></li>
           </ul>

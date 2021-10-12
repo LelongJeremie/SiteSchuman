@@ -31,7 +31,7 @@
 							</li>
               <?php } ?>
               <li class="nav-item dropdown dropdown-slide">
-							
+
 								<!-- Dropdown list -->
 
 							</li>
@@ -85,7 +85,7 @@
   <?php }  else {  ?>
 
   <li class="nav-item">
-    <a class="nav-link login-button" href="frontend/view/login.php">Connection</a>
+    <a class="nav-link login-button" href="frontend/view/login.php">Connexion</a>
   </li>
   <li class="nav-item">
     <a class="nav-link login-button" href="frontend/view/register.php">Inscription</a>
