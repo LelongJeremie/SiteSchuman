@@ -35,7 +35,7 @@
 				<!-- Header Contetnt -->
 				<div class="content-block">
 					<h1>Robert Schuman </h1>
-					<p>text1 <br> Text 2 </p>
+					<p>Site en construction </p>
 				</div>
 
 
