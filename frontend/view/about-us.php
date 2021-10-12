@@ -31,11 +31,35 @@
         </div>
         <div class="col-lg-6 pt-5 pt-lg-0">
           <div class="about-content">
-            <h3 class="font-weight-bold">Introduction</h3>
-            <p>Retrouvez des milliard de livres comprenant <br> un grand nombre de thèmes littéraire différents</p>
-            <h3 class="font-weight-bold">Que proposons nous</h3>
-            <p>La Bibliothèque de Dugny propose un grand nombre de livres de plusieurs catégories différentes
-              accessible simplement et rapidement en quelques cliques.</p>
+            <h3 class="font-weight-bold">Nos aspirations : « L’ignorance est au centre de la pauvreté. Un jeune ignorant n’est pas maître de son histoire » Saint Vincent de Paul – 1640</h3>
+
+            -Redonner confiance aux jeunes afin qu’ils croient en eux ;<br>
+            -Donner du sens aux apprentissages ;<br>
+            -Amener les jeunes à un épanouissement personnel ;<br>
+            -Faire prendre conscience à chaque personne qu’il fait partie de l’histoire de l’établissement ;<br>
+            -Revaloriser les formations professionnelles et techniques ;<br>
+            -Développer l’autonomie et l’esprit d’équipe ;<br>
+            -Ouvrir les jeunes au monde culturel.<br>
+
+    <h3 class="font-weight-bold">Nos valeurs : « Prendre en compte les différentes intelligences » Saint Ignace de Loyola – 1560</h3>
+
+            -Prendre en compte les intelligences multiples ;<br>
+            -Avoir une équipe animée d’un même esprit de cohésion ;<br>
+            -Transmettre des valeurs de solidarité, de respect de la personne, d’entraide et de partage ;<br>
+            -Amener à la citoyenneté à travers les valeurs de l’évangile et de la république ;<br>
+            -Avoir un regard bienveillant ;<br>
+            -Utiliser l’évaluation positive pour valoriser l’individu ;<br>
+            -Prendre le temps d’accompagner chaque jeune dans son parcours.<br>
+
+  <h3 class="font-weight-bold">Nos engagements : « Ensemble et par association » Saint Jean- Baptiste de la Salle – 1685</h3>
+
+
+            -Valoriser les talents de chaque personne et donner le temps à la construction des apprentissages afin de veiller à la réussite de chacun.
+            -Etablir un climat de confiance et de dialogue avec les élèves, être à l’écoute de chaque famille ;
+            -Adapter nos enseignements afin de donner du sens à l’enseignement général à travers l’enseignement professionnel ;
+            -Appréhender les réalités du monde professionnel et faire évoluer nos formations en fonctions des besoins ;
+            -Favoriser la poursuite d’études et assurer l’insertion professionnelle de chacun en mettant à la disposition des élèves des outils pédagogiques et techniques performants ;
+            -Développer et faciliter l’accès des jeunes au savoir, à la culture et aux sports
             </div>
           </div>
         </div>

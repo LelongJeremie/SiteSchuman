@@ -1,6 +1,6 @@
 
   <!-- FAVICON -->
-  <link href="style/images/favicon.png" rel="shortcut icon">
+  <link href="style/images/logo.png" rel="shortcut icon">
   <!-- PLUGINS CSS STYLE -->
   <!-- <link href="plugins/jquery-ui/jquery-ui.min.css" rel="stylesheet"> -->
   <!-- Bootstrap -->
