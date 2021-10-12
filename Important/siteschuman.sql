@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  mar. 12 oct. 2021 à 06:34
+-- Généré le :  mar. 12 oct. 2021 à 07:07
 -- Version du serveur :  5.7.26
 -- Version de PHP :  7.2.18
 
@@ -102,12 +102,15 @@ CREATE TABLE IF NOT EXISTS `rdv` (
 DROP TABLE IF EXISTS `utilisateur`;
 CREATE TABLE IF NOT EXISTS `utilisateur` (
   `id` smallint(6) NOT NULL AUTO_INCREMENT,
-  `nom` varchar(30) NOT NULL,
-  `prenom` varchar(30) NOT NULL,
-  `datenaissance` date NOT NULL,
-  `statue` int(11) NOT NULL,
+  `nom` varchar(15) NOT NULL,
+  `prenom` varchar(15) NOT NULL,
+  `date_naissance` date NOT NULL,
+  `role` varchar(1) NOT NULL,
   `classe` varchar(10) DEFAULT NULL,
   `id_famille` smallint(6) DEFAULT NULL,
+  `mail` varchar(50) NOT NULL,
+  `username` varchar(15) NOT NULL,
+  `password` varchar(15) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
