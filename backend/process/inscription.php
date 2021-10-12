@@ -19,6 +19,7 @@ try {
     "passwordconf" => $passconf_hache,
     "mail" => $_POST["mail"],
     "date_naissance" => $_POST["date_naissance"],
+    "role"=>$_POST["role"]
     ]);
 
 
@@ -32,22 +33,22 @@ try {
 
 
 } catch (Exception $e) {
-  $_SESSION["erreurcase"] = $e->getMessage();
 
+$_SESSION["connect"] ="7";
 
 }
 
-if (isset($_SESSION["erreurcase"]) and $_SESSION["erreurcase"] !='') {
+if (isset($_SESSION["connect"]) and $_SESSION["connect"] =="7") {
 
  header("Location: ../../frontend/view/register.php");
-  }
+}
 
 
 
 
 else {
 
-/ header("Location: ../../index.php");
+header("Location: ../../index.php");
 }
 
 

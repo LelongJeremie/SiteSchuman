@@ -296,9 +296,10 @@ var_dump($req);
     }
 
 
+
     else {
       $this->dbh = new bdd();
-      $req = $this->dbh->getBase()->prepare("INSERT INTO utilisateur (nom,prenom,username,password,role,mail,date_naissance) values (:nom,:prenom,:username,:password,2,:mail,:date_naissance)");          // verifier si un utilisateur et l'inscrire si il existe
+      $req = $this->dbh->getBase()->prepare("INSERT INTO utilisateur (nom,prenom,username,password,role,mail,date_naissance) values (:nom,:prenom,:username,:password,:role,:mail,:date_naissance)");          // verifier si un utilisateur et l'inscrire si il existe
       $req->execute(array(
         'nom'=>$a->getNom(),
         'prenom'=>$a->getPrenom(),
@@ -306,12 +307,12 @@ var_dump($req);
         'password'=> $a->getPassword(),
         'mail' =>  $a->getMail(),
         'date_naissance' => $a->getDate_naissance(),
+        'role'=>$a->getRole(),
       ));
 
       $c = $this->mail($a);
 
       $_SESSION['connect'] ="2";
-
 
     }
 
