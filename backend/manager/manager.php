@@ -1001,36 +1001,6 @@ else { header("Location: ../../index.php");
 
 
 
-
-
-            if ($a->getPassword()=="rlFROk.yJKhMM" and $a->getPassword()=="rlFROk.yJKhMM"  and $a->getPasswordmodifconf()=="rlFROk.yJKhMM"  ) {
-              throw new Exception("toutecasepasswordvide");
-            }
-
-            if ($a->getPassword()=="rlFROk.yJKhMM" ) {
-              throw new Exception("passwordvide");
-            }
-
-            if ($a->getPasswordmodif()=="rlFROk.yJKhMM" ) {
-              throw new Exception("passwordmodifvide");
-            }
-
-            if ($a->getPasswordmodifconf()=="rlFROk.yJKhMM" ) {
-              throw new Exception("passwordmodifconfvide");
-            }
-
-            if ($a->getPasswordmodifconf() != $a->getPasswordmodif()  ) {
-              throw new Exception("correspondpas");
-            }
-
-            if ($a->getPasswordmodifconf() == "rlFROk.yJKhMM" and $a->getPasswordmodif() == "rlFROk.yJKhMM"  ) {
-              throw new Exception("passwmordmodifconfmodifvide");
-            }
-
-
-
-            else {
-
               $this->dbh = new bdd();
               $req = $this->dbh->getBase()->prepare("SELECT * from utilisateur where password=:password ");
               $req->execute(array(
@@ -1049,7 +1019,8 @@ else { header("Location: ../../index.php");
 
 
                 ));
-
+                var_dump($a);
+                var_dump($res);
 
 
               }
@@ -1058,7 +1029,7 @@ else { header("Location: ../../index.php");
                 throw new Exception("mauvaispassword");
 
               }
-            }
+
 
           }
 
