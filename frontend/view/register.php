@@ -33,10 +33,10 @@
                   <label for="current-password">ROLE : </br>
                   </br>
                   Parent :
-                  <input type="radio" name="role" class="form-controlred p-1 w-50 my-1" value="1"
+                  <input type="radio" name="role" class="form-controlred p-1 w-50 my-1" value="2"
                   checked></BR>
                   Eleve :
-                  <input type="radio" name="role" class="form-controlred p-1 w-50 my-1" value="2">
+                  <input type="radio" name="role" class="form-controlred p-1 w-50 my-1" value="3">
                         </div>
                         <div class="loggedin-forgot d-inline-flex my-3">
                           <label for="registering" class="px-2">En vous inscrivant vous acceptez nos <a class="text-primary font-weight-bold">termes et conditions et politique de confidentialité</a></label>

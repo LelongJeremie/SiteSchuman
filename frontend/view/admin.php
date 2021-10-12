@@ -1,7 +1,9 @@
 <!DOCTYPE PHP>
 <PHP lang="fr">
   <head>
-    <?php session_start();   ?>
+
+    <?php session_start();
+     ?>
     <!-- Demarrage session avec un test pour savoir si on est connecté et si on est admin -->
     <?php
 
@@ -19,7 +21,50 @@
       }
       ?>
 
-      <?php include '../include_frontends/navh.php'; ?>
+      <?php include '../include_frontends/navh.php';
+
+       ?>
+
+
+
+      <table id="myTable" class="display" style="width:100%">
+    	        <thead>
+    	            <tr>
+                    <?php foreach ($res as $value) { ?>
+
+    	                <th>Name</th>
+    	                <th>Position</th>
+    	                <th>Office</th>
+    	                <th>Age</th>
+    	                <th>Start date</th>
+    	                <th>Salary</th>
+                      <?php  }?>
+    	            </tr>
+    	        </thead>
+    	        <tbody>
+    	            <tr>
+                    <?php foreach ($res as $value) { ?>
+    	                <td><?php echo $value['nom'];?></td>
+    	                <td><?php echo $value['prenom'];?></td>
+    	                <td><?php echo $value['date_naissance'];?></td>
+    	                <td><?php echo $value['role'];?></td>
+    	                <td><?php echo $value['classe'];?></td>
+    	                <td><?php echo $value['mail'];?></td>
+                      <?php  }?>
+    	            </tr>
+
+    	        </tbody>
+    	        <tfoot>
+    	            <tr>
+    	                <th>Name</th>
+    	                <th>Position</th>
+    	                <th>Office</th>
+    	                <th>Age</th>
+    	                <th>Start date</th>
+    	                <th>Salary</th>
+    	            </tr>
+    	        </tfoot>
+    	    </table>
       <section class="login py-5 border-top-1">
         <div class="container">
           <div class="row justify-content-center">
@@ -224,7 +269,7 @@
                 </button>
               </div>
               <div class="modal-body text-center">
-                <img src="images/account/Account1.png" class="img-fluid mb-2" alt="">
+                <img src="../../style/images/account/Account1.png" class="img-fluid mb-2" alt="">
                 <h6 class="py-2">Voulez vous vraiment supprimer ce compte?</h6>
                 <p>Ce procédé est irreversible.</p>
 
@@ -277,5 +322,10 @@
 <?php $_SESSION['stop'] =0 ;         } else  {
   header("Location: 404.php ");
 }?>
+<script type="text/javascript">
+$(document).ready( function () {
+    $('#myTable').DataTable();
+} );
+</script>
 
 </PHP>

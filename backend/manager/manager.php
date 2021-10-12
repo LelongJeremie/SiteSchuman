@@ -1424,5 +1424,14 @@ else { header("Location: ../../index.php");
 
           }
 
+          public function datatablesss(){
+            $this->dbh = new bdd();
+            $req = $this->dbh->getBase()->prepare("SELECT * FROM utilisateur");
+            $req->execute();
+            $res = $req->fetchall();
+            return $res;
+
+          }
+
 
         }

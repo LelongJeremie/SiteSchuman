@@ -6,10 +6,10 @@
 <?php  ?>
 <!-- include de php redondant -->
 <?php include '../include_frontends/styles.php';  ?>
+
+
 </head>
-
 <body class="body-wrapper">
-
 
 <section>
 <div class="container">
@@ -43,7 +43,7 @@
 						</li>
 						<?php } ?>
 						<li class="nav-item dropdown dropdown-slide">
-						
+
 
 							<!-- Dropdown list -->
 
@@ -106,6 +106,7 @@
 							<a class="nav-link login-button" href="user-profile.php"><i class="fa fa-plus-circle"></i> Mon compte</a>
 						</li>-->
 				 <?php } ?>
+
 					</ul>
 				</div>
 			</nav>

@@ -19,7 +19,7 @@
           <h4>Pages du site</h4>
           <ul>
 
-          
+
             <li><a href="about-us.php">A propos</a></li>
             <li><a href="contact-us.php">Contact</a></li>
           </ul>
