@@ -26,7 +26,7 @@
       <div class="row">
         <div class="col-lg-6">
           <div class="about-img">
-            <img src="../../style/images/user/596-5961334_kono-dio-da-meme-template-hd-png-download.png" class="img-fluid w-100 rounded" alt="">
+            <img src="../../style/images/logo.png" class="img-fluid w-100 rounded" alt="">
           </div>
         </div>
         <div class="col-lg-6 pt-5 pt-lg-0">
@@ -82,7 +82,27 @@
             <img class="card-img-top" src="../../style/images/user/596-5961334_kono-dio-da-meme-template-hd-png-download.png" class="img-fluid w-100" alt="Card image cap">
             <div class="card-body bg-gray text-center">
               <h5 class="card-title">Yacine TABTI</h5>
-              <p class="card-text">FONDATEUR/PDG</p>
+              <p class="card-text">chef de projet</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-6 col-sm-9">
+          <div class="card my-3 my-lg-0">
+            <img class="card-img-top" src="../../style/images/user/596-5961334_kono-dio-da-meme-template-hd-png-download.png" class="img-fluid w-100" alt="Card image cap">
+            <div class="card-body bg-gray text-center">
+              <h5 class="card-title">Jeremy Lelong</h5>
+              <p class="card-text">développeur</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-6 col-sm-9">
+          <div class="card my-3 my-lg-0">
+            <img class="card-img-top" src="../../style/images/user/596-5961334_kono-dio-da-meme-template-hd-png-download.png" class="img-fluid w-100" alt="Card image cap">
+            <div class="card-body bg-gray text-center">
+              <h5 class="card-title">Domingues Alexandre</h5>
+              <p class="card-text">developpeur</p>
             </div>
           </div>
         </div>
@@ -98,24 +118,18 @@
 
           <div class="counter-content text-center bg-light py-4 rounded">
             <i class="fa fa-user-o d-block"></i>
-            <span class="counter my-2 d-block" data-count="1013">0</span>
-            <h5>Membres actifs</h5>
+            <span class="counter my-2 d-block" data-count="400">0</span>
+            <h5>ELEVE</h5>
           </div>
         </div>
         <div class="col-lg-4 col-sm-7 my-lg-1 my-4">
           <div class="counter-content text-center bg-light py-4 rounded">
             <i class="fa fa-bar-chart d-block"></i>
-            <span class="counter my-2 d-block" data-count="2413">0</span>
-            <h5>Nombre d'article</h5>
+            <span class="counter my-2 d-block" data-count="40">0</span>
+            <h5>SALLE DE CLASSE</h5>
           </div>
         </div>
-        <div class="col-lg-4 col-sm-7 my-lg-1 my-4">
-          <div class="counter-content text-center bg-light py-4 rounded">
-            <i class="fa fa-eur d-block"></i>
-            <span class="counter my-2 d-block">Pas un rond</span>
-            <h5>Revenue</h5>
-          </div>
-        </div>
+        
       </div>
     </div>
   </section>
