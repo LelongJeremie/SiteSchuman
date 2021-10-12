@@ -279,68 +279,6 @@ var_dump($req);
     session_start();
 
 
-    if($a->getUsername()=='' and $a->getPassword()=="rlFROk.yJKhMM" and $a->getNom()=='' and $a->getPrenom()=='' and $a->getMail()=='' and $a->getPasswordconf()=="rlFROk.yJKhMM" ){
-      throw new Exception("toutecasevide");
-
-    }
-
-    if($a->getPassword()=="rlFROk.yJKhMM" and $a->getNom()=='' and $a->getPrenom()=='' and $a->getMail()==''){
-      throw new Exception("toutecasevidesaufusername");
-
-    }
-
-    if($a->getUsername()=='' and  $a->getPassword()=="rlFROk.yJKhMM" and $a->getPrenom()=='' and $a->getMail()==''){            // VERIFIER SI LES CASES SONT VIDES
-      throw new Exception("toutecasevidesaufnom");
-
-    }
-
-    if($a->getUsername()=='' and $a->getNom()=='' and $a->getPrenom()=='' and $a->getMail()==''){
-      throw new Exception("toutecasevidesaufpassword");
-
-    }
-
-    if($a->getUsername()=='' and $a->getPassword()=="rlFROk.yJKhMM" and $a->getNom()=='' and $a->getMail()==''){
-      throw new Exception("toutecasevidesaufprenom");
-
-    }
-
-    if($a->getUsername()=='' and $a->getPassword()=="rlFROk.yJKhMM" and $a->getNom()=='' and $a->getPrenom()==''){
-      throw new Exception("toutecasevidesaufmail");
-
-    }
-
-    if($a->getPassword() =="rlFROk.yJKhMM" and $a->getMail() == ''){
-      throw new Exception("passwordmailvide");
-    }
-
-    if($a->getNom() ==''){
-      throw new Exception("nomvide");
-    }
-
-    if($a->getPrenom() ==''){
-      throw new Exception("prenomvide");
-    }
-    if($a->getMail() ==''){
-      throw new Exception("mailvide");
-    }
-
-
-    if($a->getUsername() ==''){
-      throw new Exception("uservide");
-
-    }
-
-    if($a->getPassword() =="rlFROk.yJKhMM"){
-      throw new Exception("passwordvide");
-    }
-
-
-
-    if ($a->getPassword()!=$a->getPasswordconf()){
-      throw new Exception("correspondpas");
-    }
-
-
 
     $this->dbh = new bdd();
     $req = $this->dbh->getBase()->prepare("SELECT * from utilisateur where username=:username or mail = :mail ");
@@ -351,6 +289,7 @@ var_dump($req);
 
     $res = $req->fetch();
 
+
     if ($res) {
       throw new Exception("util");
 
@@ -359,13 +298,14 @@ var_dump($req);
 
     else {
       $this->dbh = new bdd();
-      $req = $this->dbh->getBase()->prepare("INSERT INTO utilisateur (nom,prenom,username,password,role,mail) values (:nom,:prenom,:username,:password,2,:mail)");          // verifier si un utilisateur et l'inscrire si il existe
+      $req = $this->dbh->getBase()->prepare("INSERT INTO utilisateur (nom,prenom,username,password,role,mail,date_naissance) values (:nom,:prenom,:username,:password,2,:mail,:date_naissance)");          // verifier si un utilisateur et l'inscrire si il existe
       $req->execute(array(
         'nom'=>$a->getNom(),
         'prenom'=>$a->getPrenom(),
         'username'=> $a->getUsername(),
         'password'=> $a->getPassword(),
         'mail' =>  $a->getMail(),
+        'date_naissance' => $a->getDate_naissance(),
       ));
 
       $c = $this->mail($a);
