@@ -54,11 +54,11 @@
   <h3 class="font-weight-bold">Nos engagements : « Ensemble et par association » Saint Jean- Baptiste de la Salle – 1685</h3>
 
 
-            -Valoriser les talents de chaque personne et donner le temps à la construction des apprentissages afin de veiller à la réussite de chacun.
-            -Etablir un climat de confiance et de dialogue avec les élèves, être à l’écoute de chaque famille ;
-            -Adapter nos enseignements afin de donner du sens à l’enseignement général à travers l’enseignement professionnel ;
-            -Appréhender les réalités du monde professionnel et faire évoluer nos formations en fonctions des besoins ;
-            -Favoriser la poursuite d’études et assurer l’insertion professionnelle de chacun en mettant à la disposition des élèves des outils pédagogiques et techniques performants ;
+            -Valoriser les talents de chaque personne et donner le temps à la construction des apprentissages afin de veiller à la réussite de chacun.<br>
+            -Etablir un climat de confiance et de dialogue avec les élèves, être à l’écoute de chaque famille ;<br>
+            -Adapter nos enseignements afin de donner du sens à l’enseignement général à travers l’enseignement professionnel ; <br>
+            -Appréhender les réalités du monde professionnel et faire évoluer nos formations en fonctions des besoins ;<br>
+            -Favoriser la poursuite d’études et assurer l’insertion professionnelle de chacun en mettant à la disposition des élèves des outils pédagogiques et techniques performants ;<br>
             -Développer et faciliter l’accès des jeunes au savoir, à la culture et aux sports
             </div>
           </div>

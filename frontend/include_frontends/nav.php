@@ -95,7 +95,7 @@
 						 <?php }  else {  ?>
 
 						<li class="nav-item">
-							<a class="nav-link login-button" href="login.php">Connection</a>
+							<a class="nav-link login-button" href="login.php">Connexion</a>
 
 
 						</li>
