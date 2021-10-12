@@ -996,31 +996,25 @@ else { header("Location: ../../index.php");
           public function modificationpassword($a)           //modifier le mot de passe
           {
             session_start();
-
-
-
-
-
               $this->dbh = new bdd();
-              $req = $this->dbh->getBase()->prepare("SELECT * from utilisateur where password=:password ");
+              $req = $this->dbh->getBase()->prepare("SELECT * from utilisateur where password=:password");
               $req->execute(array(
                 'password'=> $a->getPassword(),
               ));
 
               $res = $req->fetch();
+              var_dump($res);
               if ($res) {
 
 
                 $this->dbh = new bdd();
-                $req = $this->dbh->getBase()->prepare("UPDATE utilisateur set password = :password where id = :id ");
+                $req = $this->dbh->getBase()->prepare("UPDATE utilisateur set password=:password where id=:id");
                 $req->execute(array(
                   'id'=> $res['id'],
-                  'password' => $a->getPassword(),
+                  'password' => $a->getPasswordmodif(),
 
 
                 ));
-                var_dump($a);
-                var_dump($res);
 
 
               }

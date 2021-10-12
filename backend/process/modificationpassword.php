@@ -1,6 +1,6 @@
 <?php
 
-require_once '../model/UTILISATEUR.php';
+require_once '../model/utilisateur.php';
 require_once '../model/bdd.php';
 require_once '../manager/manager.php';
 
@@ -9,7 +9,6 @@ try {
       $pass_hache = crypt($_POST["password"], 'rl');
       $passmodif_hache = crypt($_POST["passwordmodif"], 'rl');
       $passconf_hache = crypt($_POST["passwordmodifconf"], 'rl');
-
 
 //modification du mot de passe par l'utilisateur
 
@@ -20,9 +19,6 @@ try {
     "password" => $pass_hache,
     "passwordmodif" => $passmodif_hache,
     "passwordmodifconf" =>   $passconf_hache,
-
-
-
     ]);
 
   //instantiation
@@ -31,22 +27,14 @@ try {
     $man->modificationpassword($user);
 
 
-
 } catch (Exception $e) {
   $_SESSION["erreurcase"] = $e->getMessage();
 
 
- //header("Location: ../../frontend/view/user-profile.php");
+ header("Location: ../../frontend/view/user-profile.php");
 
 }
-//header("Location: ../../frontend/view/user-profile.php");
-
-
-
-
-
-
-
+header("Location: ../../frontend/view/user-profile.php");
 
 
 
