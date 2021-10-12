@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  mar. 12 oct. 2021 à 07:07
+-- Généré le :  mar. 12 oct. 2021 à 08:24
 -- Version du serveur :  5.7.26
 -- Version de PHP :  7.2.18
 
@@ -104,7 +104,7 @@ CREATE TABLE IF NOT EXISTS `utilisateur` (
   `id` smallint(6) NOT NULL AUTO_INCREMENT,
   `nom` varchar(15) NOT NULL,
   `prenom` varchar(15) NOT NULL,
-  `date_naissance` date NOT NULL,
+  `date_naissance` varchar(15) NOT NULL,
   `role` varchar(1) NOT NULL,
   `classe` varchar(10) DEFAULT NULL,
   `id_famille` smallint(6) DEFAULT NULL,
@@ -112,7 +112,15 @@ CREATE TABLE IF NOT EXISTS `utilisateur` (
   `username` varchar(15) NOT NULL,
   `password` varchar(15) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `utilisateur`
+--
+
+INSERT INTO `utilisateur` (`id`, `nom`, `prenom`, `date_naissance`, `role`, `classe`, `id_famille`, `mail`, `username`, `password`) VALUES
+(4, 'yacine', 'tabti', '2021-10-20', '1', NULL, NULL, 'aaaezzaa@GMAIL.COME', 'trtezfzfe', 'rlftlodei0tcQ'),
+(7, 'AZ', 'AZ', '2021-10-24', '1', NULL, NULL, 'y.tabti@lprs.fr', 'AZ', 'rlNafhEmBQY.I');
 
 --
 -- Contraintes pour les tables déchargées

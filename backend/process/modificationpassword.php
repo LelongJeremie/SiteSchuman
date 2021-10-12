@@ -36,10 +36,10 @@ try {
   $_SESSION["erreurcase"] = $e->getMessage();
 
 
- header("Location: ../../frontend/view/user-profile.php");
+ //header("Location: ../../frontend/view/user-profile.php");
 
 }
-header("Location: ../../frontend/view/user-profile.php");
+//header("Location: ../../frontend/view/user-profile.php");
 
 
 

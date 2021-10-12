@@ -9,8 +9,13 @@
           <!-- footer logo -->
           <img src="../../style/images/logo.png" alt="">
           <!-- description -->
-          <p class="alt-color"> La Bibliothèque de Dugny propose un grand nombre de livres de plusieurs catégories différentes
-            accessible simplement et rapidement en quelques cliques.</p>
+          <p class="alt-color"> Enseignement catholique sous contrat d'association avec l'Etat <br>
+Etablissement habilité à percevoir la taxe d'apprentissage <br>
+5 avenue du Général de Gaulle - 93440 Dugny <br>
+<span class="iconlist-char" data-av_iconfont="entypo-fontello" data-av_icon="" aria-hidden="true"></span>
+ 01 48 37 74 26 01 48 35 48 14
+ <span class="iconlist-char" data-av_iconfont="entypo-fontello" data-av_icon="" aria-hidden="true"></span>
+ administration@lyceerobertschuman.com.</p>
         </div>
       </div>
       <!-- Link list -->
@@ -45,30 +50,6 @@
   </div>
   <!-- Container End -->
 </footer>
-<!-- Footer Bottom -->
-<footer class="footer-bottom">
-  <!-- Container Start -->
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-6 col-12">
-        <!-- Copyright -->
-        <div class="copyright">
-          <p>Copyright © <script>
-              var CurrentYear = new Date().getFullYear()
-              document.write(CurrentYear)
-            </script>. All Rights Reserved, theme by <a class="text-primary" href="https://themefisher.com" target="_blank">themefisher.com</a></p>
-        </div>
-      </div>
 
-
-      <div class="col-sm-6 col-12">
-        <!-- Social Icons -->
-        <ul class="social-media-icons text-right">
-          <li><a class="fa fa-facebook" href="https://www.facebook.com/themefisher" target="_blank"></a></li>
-          <li><a class="fa fa-twitter" href="https://www.twitter.com/themefisher" target="_blank"></a></li>
-          <li><a class="fa fa-pinterest-p" href="https://www.pinterest.com/themefisher" target="_blank"></a></li>
-          <li><a class="fa fa-vimeo" href=""></a></li>
-        </ul>
-      </div>
     </div>
   </div>
