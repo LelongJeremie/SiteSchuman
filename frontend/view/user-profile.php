@@ -77,44 +77,7 @@
               </div>
               <!-- Edit Personal Info -->
               <div class="row">
-                <div class="col-lg-6 col-md-6">
-                  <div class="widget personal-info">
-                    <h3 class="widget-header user">Modifier les informations personnels</h3>
-                    <form method="post" action="../../backend/process/modificationnomprenom.php">
-                      <!-- First Name -->
-                      <div class="form-group">
-                        <label for="first-name">Prénom actuel : <?php  echo  $method = ucfirst($_SESSION["prenom"]);  ?></label>
-                        <input type="text" name = "prenom"
-                        <?php
-                        //gestion d'erreur des cases
-                        if (isset($_SESSION["erreurcase"]) and $_SESSION["erreurcase"] == "caseprenomvide"){ echo'placeholder="Veuillez rentrer un prenom valide*"';  echo 'class="form-controlred  p-3 w-100 my-2"' ;}
-                        else { echo 'placeholder="" class="form-control  p-3 w-100 my-2 " ';} ?> />
-
-
-                      </div>
-                      <!-- Last Name -->
-                      <div class="form-group">
-                        <label for="last-name">Nom actuel : <?php echo $method = ucfirst($_SESSION["nom"]); ?></label>
-                        <input type="text" name = "nom"
-                        <?php
-                        //gestion d'erreur des cases
-                        if (isset($_SESSION["erreurcase"]) and $_SESSION["erreurcase"] == "caseprenomvide"){ echo'placeholder="Veuillez rentrer un nom valide*"';  echo 'class="form-controlred  p-3 w-100 my-2"' ;}
-                        else { echo 'placeholder="" class="form-control  p-3 w-100 my-2 " ';} ?> />
-
-
-
-                      </div>
-
-                      <!-- Zip Code -->
-                      <!--	<div class="form-group">
-                      <label for="zip-code">Zip Code</label>
-                      <input type="text" class="form-control" id="zip-code">
-                    </div>-->
-                    <!-- Submit button -->
-                    <button name="typemodif" value="changernomprenom" type="submit" class="btn btn-transparent">Sauvegarder les modifications</button>
-                  </form>
-                </div>
-              </div>
+                
               <div class="col-lg-6 col-md-6">
                 <!-- Change Password -->
                 <div class="widget change-password">

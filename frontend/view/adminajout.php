@@ -85,15 +85,17 @@
 
 
                                 <div class="form-group">
-                                  <label for="current-password">ROLE :
-                                    CHOISIR ADMINISTRATEUR :
-                                                 </br>     </br>     </br>
-                                                 <input  type="radio" name="role" class="form-controlred p-1 w-50 my-1" value="1"
-                                         checked></BR></BR></BR>
+                                  <label for="current-password">ROLE : </br>
+                                      Parent: </br>
+                                <input  type="radio" name="role" class="form-controlred p-1 w-50 my-1" value="1"
+                                         checked></BR>
                                                </>
-CHOISIR NON-ADMINISTRATEUR :</>
-                                               <input type="radio" name="role" class="form-controlred p-1 w-50 my-1" value="2"
-                                               ></BR></BR></BR>
+                                      Eleve :</>
+                                <input type="radio" name="role" class="form-controlred p-1 w-50 my-1" value="2"
+                                               ></BR>
+                                      Professeur :</>
+                                <input type="radio" name="role" class="form-controlred p-1 w-50 my-1" value="3"
+                                                ></BR>
 
 
                                 </div>

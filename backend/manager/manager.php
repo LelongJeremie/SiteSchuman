@@ -996,60 +996,25 @@ else { header("Location: ../../index.php");
           public function modificationpassword($a)           //modifier le mot de passe
           {
             session_start();
-
-
-
-
-
-
-
-            if ($a->getPassword()=="rlFROk.yJKhMM" and $a->getPassword()=="rlFROk.yJKhMM"  and $a->getPasswordmodifconf()=="rlFROk.yJKhMM"  ) {
-              throw new Exception("toutecasepasswordvide");
-            }
-
-            if ($a->getPassword()=="rlFROk.yJKhMM" ) {
-              throw new Exception("passwordvide");
-            }
-
-            if ($a->getPasswordmodif()=="rlFROk.yJKhMM" ) {
-              throw new Exception("passwordmodifvide");
-            }
-
-            if ($a->getPasswordmodifconf()=="rlFROk.yJKhMM" ) {
-              throw new Exception("passwordmodifconfvide");
-            }
-
-            if ($a->getPasswordmodifconf() != $a->getPasswordmodif()  ) {
-              throw new Exception("correspondpas");
-            }
-
-            if ($a->getPasswordmodifconf() == "rlFROk.yJKhMM" and $a->getPasswordmodif() == "rlFROk.yJKhMM"  ) {
-              throw new Exception("passwmordmodifconfmodifvide");
-            }
-
-
-
-            else {
-
               $this->dbh = new bdd();
-              $req = $this->dbh->getBase()->prepare("SELECT * from utilisateur where password=:password ");
+              $req = $this->dbh->getBase()->prepare("SELECT * from utilisateur where password=:password");
               $req->execute(array(
                 'password'=> $a->getPassword(),
               ));
 
               $res = $req->fetch();
+              var_dump($res);
               if ($res) {
 
 
                 $this->dbh = new bdd();
-                $req = $this->dbh->getBase()->prepare("UPDATE utilisateur set password = :password where id = :id ");
+                $req = $this->dbh->getBase()->prepare("UPDATE utilisateur set password=:password where id=:id");
                 $req->execute(array(
                   'id'=> $res['id'],
-                  'password' => $a->getPassword(),
+                  'password' => $a->getPasswordmodif(),
 
 
                 ));
-
 
 
               }
@@ -1058,7 +1023,7 @@ else { header("Location: ../../index.php");
                 throw new Exception("mauvaispassword");
 
               }
-            }
+
 
           }
 
@@ -1362,6 +1327,15 @@ else { header("Location: ../../index.php");
 
             }
 
+
+          }
+
+          public function datatablesss(){
+            $this->dbh = new bdd();
+            $req = $this->dbh->getBase()->prepare("SELECT * FROM utilisateur");
+            $req->execute();
+            $res = $req->fetchall();
+            return $res;
 
           }
 
