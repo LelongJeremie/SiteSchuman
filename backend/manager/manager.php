@@ -320,6 +320,7 @@ var_dump($req);
   }
 
 
+
   public function mail($a){  //PHP MAILER
     //Instantiation and passing `true` enables exceptions
     $mail = new PHPMailer(true);
@@ -675,134 +676,6 @@ var_dump($req);
 
       }}
 
-      public function selectfilm($a){ //POUR AFFICHER LES UTILISATEURS POUR LES MODIFIER EN TANT QU'ADMIN
-        session_start();
-        $_SESSION['ok'] = 1;
-        $this->dbh = new bdd();
-
-
-        $req = $this->dbh->getBase()->prepare("SELECT * from salle where salleid = :salleid");
-        $req->execute(array(
-          'salleid' => $a->getSalleidmodif(),
-
-        ));
-
-        $res = $req->fetch();
-
-
-        if ($res) {
-
-          $_SESSION['reserv'] = $res["salleid"];
-          $_SESSION['salleid'] = $res["salleid"];
-          $_SESSION['SALLENomfilm'] = $res["SALLENomfilm"];
-          $_SESSION['3D'] = $res["3D"];
-          $_SESSION["description"] = $res["description"];
-          $_SESSION["image"] = $res["image"];
-          $_SESSION["lienfilm"] = $res["lienfilm"];
-          $_SESSION['salleplace'] = $res["salleplace"];
-
-
-
-
-
-        }
-
-        else {
-
-          throw new Exception("Erreur dans select film",1);
-
-
-          var_dump( $a->getSalleidmodif());
-
-
-
-        }}
-
-
-
-
-
-        public function affichertoutfilm($a){ //POUR AFFICHER tout les films
-          session_start();
-          $_SESSION['ok'] = 6;
-          $this->dbh = new bdd();
-
-
-          $req = $this->dbh->getBase()->prepare("SELECT * FROM salle");
-          $req->execute(array(
-
-
-          ));
-
-          $res = $req->fetchall();
-
-
-          if ($res) {
-
-            $_SESSION['film'] = $res;
-
-
-
-
-          }
-
-          else {
-
-            throw new Exception("Erreur dans select film",1);
-
-
-
-
-
-          }
-
-
-        }
-
-
-
-        public function afficherfilm($a){ //POUR AFFICHER LES films choisis
-          session_start();
-          $_SESSION['ok'] = 6;
-          $this->dbh = new bdd();
-
-          $c= $a->getFilmnom()."%";
-
-          $_SESSION['$a->getCdnom()'] = $c;
-          if ($c !="%") {
-            // code...
-
-            $req = $this->dbh->getBase()->prepare("SELECT * FROM film WHERE ucase(filmnom) LIKE ucase(:filmnom)");
-            $req->execute(array(
-              'filmnom' => $c,
-
-            ));
-
-            $res = $req->fetchall();
-
-
-            if ($res) {
-
-              $_SESSION['recherchefilm'] = $res;
-
-
-
-
-            }
-
-            else {
-
-              throw new Exception("Erreur dans selectfilm",1);
-
-
-
-
-
-            }}
-
-
-          }
-
 
 
 
@@ -1081,249 +954,45 @@ else { header("Location: ../../index.php");
 
 
 
-          public function adminajout($a) //AJOUTER EN TANT QU'ADMIN
+          public function adminajout($a)
           {
             session_start();
 
 
-            if($a->getUsername()=='' and $a->getPassword()=="rlFROk.yJKhMM"  and $a->getNom()=='' and $a->getPrenom()=='' and $a->getMail()==''){
-              throw new Exception("toutecasevide");
-
-            }
-
-            if($a->getPassword()=="rlFROk.yJKhMM" and $a->getNom()=='' and $a->getPrenom()=='' and $a->getMail()==''){
-              throw new Exception("toutecasevidesaufusername");
-
-            }
-
-            if($a->getUsername()=='' and  $a->getPassword()=="rlFROk.yJKhMM" and $a->getPrenom()=='' and $a->getMail()==''){
-              throw new Exception("toutecasevidesaufnom");
-
-            }
-
-            if($a->getUsername()=='' and $a->getNom()=='' and $a->getPrenom()=='' and $a->getMail()==''){
-              throw new Exception("toutecasevidesaufpassword");
-
-            }
-
-            if($a->getUsername()=='' and $a->getPassword()=="rlFROk.yJKhMM" and $a->getNom()=='' and $a->getMail()==''){
-              throw new Exception("toutecasevidesaufprenom");
-
-            }
-
-            if($a->getUsername()=='' and $a->getPassword()=="rlFROk.yJKhMM" and $a->getNom()=='' and $a->getPrenom()==''){
-              throw new Exception("toutecasevidesaufmail");
-
-            }
-
-            if($a->getNom() ==''){
-              throw new Exception("nomvide");
-            }
-
-            if($a->getPrenom() ==''){
-              throw new Exception("prenomvide");
-            }
-
-
-            if($a->getUsername() ==''){
-              throw new Exception("uservide");
-
-            }
-
-            if($a->getPassword() ==''){
-              throw new Exception("passwordvide");
-            }
-
-
-
 
             $this->dbh = new bdd();
-            $req = $this->dbh->getBase()->prepare("SELECT * from utilisateur where username=:username ");
+            $req = $this->dbh->getBase()->prepare("SELECT * from utilisateur where username=:username or mail = :mail ");
             $req->execute(array(
               'username'=> $a->getUsername(),
+              'mail'=>$a->getMail(),
             ));
-            var_dump($a);
+
             $res = $req->fetch();
 
+
             if ($res) {
-              throw new Exception("Error utilisateur deja existant");
+              throw new Exception("util");
 
             }
+
 
 
             else {
               $this->dbh = new bdd();
-              $req = $this->dbh->getBase()->prepare("INSERT INTO utilisateur (nom,prenom,username,password,role,mail) values (:nom,:prenom,:username,:password,:role,:mail)");
+              $req = $this->dbh->getBase()->prepare("INSERT INTO utilisateur (nom,prenom,username,password,role,mail,date_naissance) values (:nom,:prenom,:username,:password,:role,:mail,:date_naissance)");          // verifier si un utilisateur et l'inscrire si il existe
               $req->execute(array(
                 'nom'=>$a->getNom(),
                 'prenom'=>$a->getPrenom(),
                 'username'=> $a->getUsername(),
                 'password'=> $a->getPassword(),
                 'mail' =>  $a->getMail(),
-                'role' => $a->getRole(),
+                'date_naissance' => $a->getDate_naissance(),
+                'role'=>$a->getRole(),
               ));
 
 
 
-
-            }
-
-
-          }
-
-
-
-
-
-
-
-          public function supprimer($a){  //Supprimer UN UTILISATEUR
-
-            $this->dbh = new bdd();
-
-
-            $req = $this->dbh->getBase()->prepare("DELETE from utilisateur where id=:id");
-            $req->execute(array(
-              'id'=> $a->getId(),
-
-            ));
-            var_dump($a);
-            $res = $req->fetch();
-
-
-            if ($res) {
-
-
-
-              header("Location: ../../backend/process/deconnexion.php");
-            }
-
-            else {
-
-              throw new Exception("Erreur",1);
-
-
-
-
-
-            }
-
-          }
-
-
-
-
-
-
-          public function supprimeradmin($a){ //supprimer UN UTILISATEUR EN ETANT ADMIN
-
-            $this->dbh = new bdd();
-
-
-            $req = $this->dbh->getBase()->prepare("DELETE from utilisateur where id=:id");
-            $req->execute(array(
-              'id'=> $_SESSION["idadminmodif"],
-
-            ));
-            var_dump($a);
-            $res = $req->fetch();
-
-
-            if ($res) {
-
-
-
-              header("Location: ../../backend/process/admin.php");
-            }
-
-            else {
-
-              throw new Exception("Erreur",1);
-
-
-
-
-
-            }
-
-          }
-
-
-          public function adminajoutfilm($a) //AJOUTER UN FILM EN TANT QU'ADMIN
-          {
-            session_start();
-
-
-            $this->dbh = new bdd();
-            $req = $this->dbh->getBase()->prepare("SELECT * from salle where sallenomfilm=:sallenomfilm ");
-            $req->execute(array(
-              'sallenomfilm'=> $a->getSallenomfilm(),
-            ));
-
-            $res = $req->fetch();
-
-            if ($res) {
-              throw new Exception("Error film deja existant");
-
-            }
-
-
-            else {
-              $this->dbh = new bdd();
-              $req = $this->dbh->getBase()->prepare("INSERT INTO salle (sallenomfilm,salleplace,3D,description,image,theme) values (:sallenomfilm,:salleplace,:troisd,:description,:image,:theme)");
-              $req->execute(array(
-                'sallenomfilm' => $a->getSallenomfilm(),
-                'salleplace' => $a->getSalleplace(),
-                'troisd' => $a->getTroisd(),
-                'description' => $a->getDescription(),
-                'image' => $a->getImage(),
-                'theme' => $a->getTheme(),
-              ));
-
-              $_SESSION["connect"] ="3";
-
-
-            }
-
-
-          }
-
-
-
-          public function affichertoutreservation($a){ //POUR AFFICHER toutes les reservations
-            session_start();
-            $_SESSION['stop'] = 6;
-            $this->dbh = new bdd();
-
-
-            $req = $this->dbh->getBase()->prepare("SELECT * FROM reservation INNER JOIN salle ON salle.salleid = reservation.idsalle where utilisateurid = :id");
-            $req->execute(array(
-
-              "id"=>$a->getId(),
-
-
-            ));
-
-            $res = $req->fetchall();
-
-
-
-            if ($res) {
-
-              $_SESSION['reservation'] = $res;
-
-
-
-
-            }
-
-            else {
-
-              throw new Exception("Erreur dans select res",1);
-
-
-
-
+              $_SESSION['connect'] ="10";
 
             }
 
