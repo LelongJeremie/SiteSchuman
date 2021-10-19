@@ -661,6 +661,7 @@ var_dump($req);
         $_SESSION['passwordadminmodif'] = $res["password"];
         $_SESSION['mailadminmodif'] = $res["mail"];
 
+        $_SESSION["connect"] = "adminmodal";
 
 
 
@@ -670,11 +671,13 @@ var_dump($req);
 
         throw new Exception("Erreur dans select admin",1);
 
+var_dump($_SESSION);
 
 
 
+      }
 
-      }}
+    }
 
 
 

@@ -16,7 +16,7 @@ $user = new utilisateur([
 
   "idmodif" => $_POST["idmodif"],
   ]);
-var_dump($_POST["idmodif"]);
+
 
   $man = new manager();
 
