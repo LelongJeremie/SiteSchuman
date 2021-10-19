@@ -299,7 +299,7 @@ var_dump($req);
 
     else {
       $this->dbh = new bdd();
-      $req = $this->dbh->getBase()->prepare("INSERT INTO utilisateur (nom,prenom,username,password,role,mail,date_naissance) values (:nom,:prenom,:username,:password,:role,:mail,:date_naissance)");          // verifier si un utilisateur et l'inscrire si il existe
+      $req = $this->dbh->getBase()->prepare("INSERT INTO utilisateur (nom,prenom,username,password,role,mail,date_naissance,validation) values (:nom,:prenom,:username,:password,:role,:mail,:date_naissance,0)");          // verifier si un utilisateur et l'inscrire si il existe
       $req->execute(array(
         'nom'=>$a->getNom(),
         'prenom'=>$a->getPrenom(),
@@ -327,6 +327,7 @@ var_dump($req);
 
     try {
       //Server settings
+      $mail->CharSet = 'UTF-8';
       $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      // Enable verbose debug output
       $mail->isSMTP();                                            // Send using SMTP
       $mail->Host       = 'smtp.gmail.com';                    // Set the SMTP server to send through
@@ -347,8 +348,8 @@ var_dump($req);
       // Content
       //$mail->isHTML(true);                                  // Set email format to HTML
       $mail->Subject = 'Bienvenue ! ';
-      $mail->Body    = 'Bienvenue sur le site du Cinema de <b>Dugny!</b> : https://www.google.fr';
-      $mail->AltBody = 'Bienvenue sur le site du Cinema de Dugny!';
+      $mail->Body    = 'Bienvenue sur le site du Lycée de <b>Dugny!</b> : https://www.google.fr';
+      $mail->AltBody = 'Bienvenue sur le site du Lycée de Dugny!';
 
       $mail->send();
       echo 'Message has been sent';
@@ -979,7 +980,7 @@ else { header("Location: ../../index.php");
 
             else {
               $this->dbh = new bdd();
-              $req = $this->dbh->getBase()->prepare("INSERT INTO utilisateur (nom,prenom,username,password,role,mail,date_naissance) values (:nom,:prenom,:username,:password,:role,:mail,:date_naissance)");          // verifier si un utilisateur et l'inscrire si il existe
+              $req = $this->dbh->getBase()->prepare("INSERT INTO utilisateur (nom,prenom,username,password,role,mail,date_naissance,validation) values (:nom,:prenom,:username,:password,:role,:mail,:date_naissance,1)");          // verifier si un utilisateur et l'inscrire si il existe
               $req->execute(array(
                 'nom'=>$a->getNom(),
                 'prenom'=>$a->getPrenom(),
