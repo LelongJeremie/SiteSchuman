@@ -32,12 +32,13 @@
     	            <tr>
 
 
-    	                <th>Nom</th>
-    	                <th>Prenom</th>
-    	                <th>date naissance</th>
-    	                <th>Role</th>
-    	                <th>Classe</th>
-    	                <th>Mail</th>
+                    <th>Nom</th>
+                   <th>Prenom</th>
+                   <th>Pseudo</th>
+                   <th>date naissance</th>
+                   <th>Role</th>
+                   <th>Classe</th>
+                   <th>Mail</th>
 
     	            </tr>
 
@@ -48,6 +49,7 @@
                     <?php foreach ($res as $value) { ?>
     	                <td><?php echo $value['nom'];?></td>
     	                <td><?php echo $value['prenom'];?></td>
+                      <td><?php echo $value['username']; ?></td>
     	                <td><?php echo $value['date_naissance'];?></td>
     	                <td><?php echo $value['role'];?></td>
     	                <td><?php echo $value['classe'];?></td>
@@ -61,6 +63,7 @@
     	            <tr>
                     <th>Nom</th>
                    <th>Prenom</th>
+                   <th>Pseudo</th>
                    <th>date naissance</th>
                    <th>Role</th>
                    <th>Classe</th>

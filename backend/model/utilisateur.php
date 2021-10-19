@@ -3,7 +3,7 @@
 require_once 'contact.php';
 class utilisateur extends contact{
 
-  public $id,$date_naissance,$verifmail,$nom,$salleidmodif,$prenom,$password, $passwordmodifconf,$passwordmodif,$passwordconf,$role,$username,$typemodif,$mail,$mailmodif,$idmodif,$idadminmodif,$nomadminmodif,$prenomadminmodif,$passwordadminmodif,$mailadminmodif,$roleadminmodif,;
+  public $id,$date_naissance,$verifmail,$nom,$salleidmodif,$prenom,$password, $passwordmodifconf,$passwordmodif,$passwordconf,$role,$username,$typemodif,$mail,$mailmodif,$idmodif,$idadminmodif,$nomadminmodif,$prenomadminmodif,$passwordadminmodif,$mailadminmodif,$roleadminmodif;
 
   // constructeur
 
