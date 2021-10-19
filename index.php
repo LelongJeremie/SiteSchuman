@@ -45,24 +45,29 @@
 	<!-- Container End -->
 </section>
 
-<div class="container">
-  <div class="row">
-    <div class="col-md-12">
-      <!-- Header Contetnt -->
-      <div class="content-block">
-        <h1> Liste des evenements  </h1>
+<section class="projects-section bg-light" id="projects">
+          <div class="container px-4 px-lg-5">
+              <!-- Featured Project Row-->
 
-      </div>
+              <div class="featured-text text-center text-lg-left">
+                  <h4>EVENEMENTS</h4>
+                  <p class="text-black-50 mb-0">Liste des evenements.</p>
+              </div>
 
 
-    </div>
-  </div>
-</div>
-<table id="myTable" class="display" style="width:100%">
+      <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+              <?php
+                                    require_once 'manager/manager.php';
+                                    $listeEvenement = new Manager();
+                                    $res = $listeEvenement->listeEvenement();
+                                    ?>
+
+
+<table id="example" class="display" style="width:100%">
         <thead>
             <tr>
-
-
                 <th>Evenement</th>
                 <th>date</th>
                 <th>lieu</th>
@@ -90,7 +95,7 @@
 
         <tfoot>
             <tr>
-              <th>Evenement</th>
+              <th>Evenement</t>
               <th>date</th>
               <th>lieu</th>
               <th>Createur</th>

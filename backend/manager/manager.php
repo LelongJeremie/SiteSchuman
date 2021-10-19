@@ -1008,5 +1008,15 @@ else { header("Location: ../../index.php");
 
           }
 
+            public function listeEvenement(){
+            #Instancie la classe BDD
+            $this->dbh = new bdd();
+            $req = $this->dbh -> co_bdd()->prepare('SELECT * FROM evenement');
+            $req -> execute([]);
+            $listeUtilisateur= $req->fetchall();
+            return $listeEvenement;
+          }
+
+
 
         }
