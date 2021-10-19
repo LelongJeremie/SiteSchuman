@@ -46,16 +46,9 @@
 </section>
 
 <section class="projects-section bg-light" id="projects">
-          <div class="container px-4 px-lg-5">
-              <!-- Featured Project Row-->
 
               <div class="featured-text text-center text-lg-left">
-                  <h4>EVENEMENTS</h4>
-                  <p class="text-black-50 mb-0">Liste des evenements.</p>
-              </div>
 
-<?php var_dump($_SESSION); ?>
-    
 <!--===================================
 =            Client Slider            =
 ====================================-->

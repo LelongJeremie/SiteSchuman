@@ -29,27 +29,22 @@ try {
     $man->adminajout($user);
 
 
-var_dump($user);
+
 } catch (Exception $e) {
 
-//$_SESSION["connect"] ="7";
+$_SESSION["connect"] ="7";
 
 }
 
-//if (isset($_SESSION["connect"]) and $_SESSION["connect"] =="7") {
+if (isset($_SESSION["connect"]) and $_SESSION["connect"] =="7") {
 
- //header("Location: ../../frontend/view/adminajout.php");
-//}
+ header("Location: ../../frontend/view/adminajout.php");
+}
 
+else {
 
-
-//else {
-
-//header("Location: ../../index.php");
-//}
-
-
-
+header("Location: ../../index.php");
+}
  ?>
 
 
