@@ -45,9 +45,7 @@
 	<!-- Container End -->
 </section>
 
-<section class="projects-section bg-light" id="projects">
 
-              <div class="featured-text text-center text-lg-left">
 
 <!--===================================
 =            Client Slider            =

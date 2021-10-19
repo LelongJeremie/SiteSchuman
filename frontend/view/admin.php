@@ -371,8 +371,6 @@ $(document).ready(function() {
 } );
 </script>
 
-<?php if (isset($_SESSION["connect"]) and $_SESSION["connect"] == "7") {
-  // code...
-$_SESSION["connect"] = "stop"; ?>
+<?php //$_SESSION["connect"] = "stop"; ?>
 
 </PHP>
