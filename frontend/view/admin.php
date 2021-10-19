@@ -25,7 +25,7 @@
 
        ?>
 
-
+              <form action= "../../backend/process/proadmin.php" method= "post">
 
       <table id="myTable" class="display" style="width:100%">
     	        <thead>
@@ -39,11 +39,12 @@
                    <th>Role</th>
                    <th>Classe</th>
                    <th>Mail</th>
-
+                    <th></>
     	            </tr>
 
                 </br>
     	        </thead>
+
     	        <tbody>
     	            <tr>
                     <?php foreach ($res as $value) { ?>
@@ -55,10 +56,20 @@
     	                <td><?php echo $value['classe'];?></td>
     	                <td><?php echo $value['mail'];?></td>
 
-    	            </tr>
-    <?php  }?>
-    	        </tbody>
+                      <input type="hidden" name="nom" value="<?php $value['nom']; ?>" </>
+                      <input type="hidden" name="prenom" value="<?php $value['prenom']; ?>" </>
+                      <input type="hidden" name="username" value="<?php $value['username']; ?>" </>
+                      <input type="hidden" name="date_naissance" value="<?php $value['date_naissance']; ?>" </>
+                      <input type="hidden" name="role" value="<?php $value['role']; ?>" </>
+                      <input type="hidden" name="classe" value="<?php $value['classe']; ?>" </>
+                      <input type="hidden" name="mail" value="<?php $value['mail']; ?>" </>
 
+                    <td>  <button name="idmodif" type="submit" value= <?php echo $value['id']; ?> class="d-block py-4 px-22 bg-primary text-white border-0 rounded font-weight-bold">Modifier l'utilisateur</button></td>
+
+    	            </tr>
+
+    	        </tbody>
+  <?php  }?>
     	        <tfoot>
     	            <tr>
                     <th>Nom</th>
@@ -68,54 +79,20 @@
                    <th>Role</th>
                    <th>Classe</th>
                    <th>Mail</th>
+                   <th></>
     	            </tr>
     	        </tfoot>
     	    </table>
       <section class="login py-5 border-top-1">
         <div class="container">
           <div class="row justify-content-center">
-            <div class="col-lg-8 col-md-11 align-item-center">
-              <div class="border">
-
-                <h3 class="bg-gray p-4 ">Admin</h3>
-
-                <fieldset class="p-4">
-                  <form action= "../../backend/process/proadmin.php" method= "post">
-
-                    <select class= "border p-1 w-100 my-1" name ="modif">
-                      <?php
 
 
-                      echo "<option value 0>utilisateur</option>";
-                      foreach ($res as $value) {
 
-                        if ( $value["role"] ==1 ){$role = "oui";} else {
-                          $role = "non";
-                        }
-                        echo "<option value=".$value['id'].">" ." ID => ".$value["id"] ." //  nom => ".  $value["nom"] ." // prenom => ". $value["prenom"] ." //  email => ".
-                        $value["mail"] ." // pseudo =>  ".$value["username"]."// admin : ".$role."  </option>";
-                      }
-
-                      ?>
-
-                    </select>
-
-                    <section class="login py-5 border-top-1"/>
+              </form>
 
 
-                    <div class="loggedin-forgot">
-                      <!--<input type="checkbox" id="keep-me-logged-in">-->
-
-                    </div>
-
-                    <br>
-                    <button type="submit" class="d-block py-4 px-22 bg-primary text-white border-0 rounded font-weight-bold">Modifier un utilisateur</button>
-                  </form>
-
-                </fieldset>
-
-              </div>
-            </div>
+            
           </div>
         </div>
       </section>
