@@ -27,11 +27,9 @@ try {
                                    //INSTANCIER
 
     $man->adminajout($user);
-    $man->mail($user);
 
 
 var_dump($user);
-var_dump($adminajout);
 } catch (Exception $e) {
 
 //$_SESSION["connect"] ="7";
@@ -45,16 +43,10 @@ var_dump($adminajout);
 
 
 
-
 //else {
 
 //header("Location: ../../index.php");
 //}
-
-
-
-
-
 
 
 

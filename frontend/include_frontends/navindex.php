@@ -90,7 +90,7 @@
       <a class="nav-link login-button" href="backend/process/deconnexion.php">Deconnexion</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link text-white add-button" href="frontend/view/chat.php"> Tchat maintenant! </a>
+      <a class="nav-link text-white add-button" href="frontend/view/chat.php"> Tchat maintenant  </a>
     </li>
   <?php }  else {  ?>
 
