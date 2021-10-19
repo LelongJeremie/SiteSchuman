@@ -316,9 +316,7 @@
 <?php include('../include_frontends/footers.php'); ?>
 <!-- Container End -->
 <!-- To Top -->
-<div class="top-to">
-  <a id="top" class="" href="#"><i class="fa fa-angle-up"></i></a>
-</div>
+
 </footer>
 <?php include('../include_frontends/plugins.php'); ?>
 </body>
