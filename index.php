@@ -45,65 +45,7 @@
 	<!-- Container End -->
 </section>
 
-<section class="projects-section bg-light" id="projects">
-          <div class="container px-4 px-lg-5">
-              <!-- Featured Project Row-->
 
-              <div class="featured-text text-center text-lg-left">
-                  <h4>EVENEMENTS</h4>
-                  <p class="text-black-50 mb-0">Liste des evenements.</p>
-              </div>
-
-
-      <div class="card-body">
-          <div class="table-responsive">
-            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-              <?php
-                                    require_once 'backend/manager/manager.php';
-                                    $listeEvenement = new Manager();
-                                    $res = $listeEvenement->listeEvenement();
-                                    ?>
-
-
-<table id="example" class="display" style="width:100%">
-        <thead>
-            <tr>
-                <th>Evenement</th>
-                <th>date</th>
-                <th>lieu</th>
-                <th>Createur</th>
-                <th>Resume</th>
-                <th>Nombre de participant</th>
-
-            </tr>
-
-          </br>
-        </thead>
-        <tbody>
-            <tr>
-              <?php foreach ($res as $value) { ?>
-                <td><?php echo $value['titre'];?></td>
-                <td><?php echo $value['date'];?></td>
-                <td><?php echo $value['lieu'];?></td>
-                <td><?php echo $value['createur'];?></td>
-                <td><?php echo $value['resume'];?></td>
-                <td><?php echo $value['nb_participant'];?></td>
-
-            </tr>
-<?php  }?>
-        </tbody>
-
-        <tfoot>
-            <tr>
-              <th>Evenement</t>
-              <th>date</th>
-              <th>lieu</th>
-              <th>Createur</th>
-              <th>Resume</th>
-              <th>Nombre de participant</th>
-            </tr>
-        </tfoot>
-    </table>
 
 <!--===================================
 =            Client Slider            =
