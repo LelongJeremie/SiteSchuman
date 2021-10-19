@@ -20,88 +20,32 @@
                     <?php }?>
                         <form action="../../backend/process/adminajout.php" method= "post">
                             <fieldset class="p-4">
-
-                              <input type="text" name="nom"
-                              <?php
-                    //permet de gerer les erreurs
-                              if (isset($_SESSION["erreurcase"]) and $_SESSION["erreurcase"] == "toutecasevide"){ echo'placeholder="Veuillez rentrer un nom valide*"';  echo 'class="form-controlred p-3 w-100 my-2"' ;}
-                                if (isset($_SESSION["erreurcase"]) and $_SESSION["erreurcase"] == "toutecasevidesaufpassword"){ echo'placeholder="Veuillez rentrer un nom valide*"';  echo 'class="form-controlred p-3 w-100 my-2"' ;}
-                                if (isset($_SESSION["erreurcase"]) and $_SESSION["erreurcase"] == "toutecasevidesaufprenom"){ echo'placeholder="Veuillez rentrer un nom valide*"';  echo 'class="form-controlred p-3 w-100 my-2"' ;}
-                                  if (isset($_SESSION["erreurcase"]) and $_SESSION["erreurcase"] == "toutecasevidesaufusername"){ echo'placeholder="Veuillez rentrer un nom valide*"';  echo 'class="form-controlred p-3 w-100 my-2"' ;}
-                                    if (isset($_SESSION["erreurcase"]) and $_SESSION["erreurcase"] == "toutecasevidesaufmail"){ echo'placeholder="Veuillez rentrer un nom valide*"';  echo 'class="form-controlred p-3 w-100 my-2"' ;}
-                              if (isset($_SESSION["erreurcase"]) and $_SESSION["erreurcase"] == "nomvide") { echo'placeholder="Veuillez rentrer un nom valide*"';  echo 'class="form-controlred p-3 w-100 my-2"' ;}
-                              else { echo 'placeholder="Nom*" class="border p-3 w-100 my-2" ';} ?> />
-
-                              <input type="text" name="prenom"
-                              <?php
-
-                              if (isset($_SESSION["erreurcase"]) and $_SESSION["erreurcase"] == "toutecasevide"){ echo'placeholder="Veuillez rentrer un prenom valide*"';  echo 'class="form-controlred p-3 w-100 my-2"' ;}
-                                if (isset($_SESSION["erreurcase"]) and $_SESSION["erreurcase"] == "toutecasevidesaufnom"){ echo'placeholder="Veuillez rentrer un prenom valide*"';  echo 'class="form-controlred p-3 w-100 my-2"' ;}
-                                if (isset($_SESSION["erreurcase"]) and $_SESSION["erreurcase"] == "toutecasevidesaufpassword"){ echo'placeholder="Veuillez rentrer un prenom valide*"';  echo 'class="form-controlred p-3 w-100 my-2"' ;}
-                                if (isset($_SESSION["erreurcase"]) and $_SESSION["erreurcase"] == "toutecasevidesaufmail"){ echo'placeholder="Veuillez rentrer un prenom valide*"';  echo 'class="form-controlred p-3 w-100 my-2"' ;}
-                                if (isset($_SESSION["erreurcase"]) and $_SESSION["erreurcase"] == "toutecasevidesaufusername"){ echo'placeholder="Veuillez rentrer un prenom valide*"';  echo 'class="form-controlred p-3 w-100 my-2"' ;}
-
-                              if (isset($_SESSION["erreurcase"]) and $_SESSION["erreurcase"] == "prenomvide") { echo'placeholder="Veuillez rentrer un prenom valide*"';  echo 'class="form-controlred p-3 w-100 my-2"' ;}
-                              else { echo 'placeholder="Prenom*" class="border p-3 w-100 my-2" ';} ?>/>
-
-                              <input type="text" name="username"
-                              <?php
-
-                              if (isset($_SESSION["erreurcase"]) and $_SESSION["erreurcase"] == "toutecasevide"){ echo'placeholder="Veuillez rentrer un nom d\'utilisateur valide*"';  echo 'class="form-controlred p-3 w-100 my-2"' ;}
-                                if (isset($_SESSION["erreurcase"]) and $_SESSION["erreurcase"] == "toutecasevidesaufpassword"){ echo'placeholder="Veuillez rentrer un nom d\'utilisateur valide*"';  echo 'class="form-controlred p-3 w-100 my-2"' ;}
-                                if (isset($_SESSION["erreurcase"]) and $_SESSION["erreurcase"] == "toutecasevidesaufmail"){ echo'placeholder="Veuillez rentrer un nom d\'utilisateur valide*"';  echo 'class="form-controlred p-3 w-100 my-2"' ;}
-                                if (isset($_SESSION["erreurcase"]) and $_SESSION["erreurcase"] == "toutecasevidesaufnom"){ echo'placeholder="Veuillez rentrer un nom d\'utilisateur valide*"';  echo 'class="form-controlred p-3 w-100 my-2"' ;}
-                                if (isset($_SESSION["erreurcase"]) and $_SESSION["erreurcase"] == "toutecasevidesaufprenom"){ echo'placeholder="Veuillez rentrer un nom d\'utilisateur valide*"';  echo 'class="form-controlred p-3 w-100 my-2"' ;}
-                              if (isset($_SESSION["erreurcase"]) and $_SESSION["erreurcase"] == "uservide") { echo'placeholder="Veuillez rentrer un nom d\'utilisateur valide*"';  echo 'class="form-controlred p-3 w-100 my-2"' ;}
-
-                              else { echo 'placeholder="Utilisateur*" class="border p-3 w-100 my-2" ';} ?>/>
-
-                              <input type="email" name="mail"
-                              <?php
-                              if (isset($_SESSION["erreurcase"]) and $_SESSION["erreurcase"] == "toutecasevide"){ echo'placeholder="Veuillez rentrer un mail valide*"'  ; echo 'class="form-controlred p-3 w-100 my-2/>"';}
-                                if (isset($_SESSION["erreurcase"]) and $_SESSION["erreurcase"] == "toutecasevidesaufnom"){ echo'placeholder="Veuillez rentrer un mail valide*"'  ; echo 'class="form-controlred p-3 w-100 my-2/>"';}
-                                if (isset($_SESSION["erreurcase"]) and $_SESSION["erreurcase"] == "toutecasevidesaufprenom"){ echo'placeholder="Veuillez rentrer un mail valide*"'  ; echo 'class="form-controlred p-3 w-100 my-2/>"';}
-                                if (isset($_SESSION["erreurcase"]) and $_SESSION["erreurcase"] == "toutecasevidesaufpassword"){ echo'placeholder="Veuillez rentrer un mail valide*"'  ; echo 'class="form-controlred p-3 w-100 my-2/>"';}
-                                if (isset($_SESSION["erreurcase"]) and $_SESSION["erreurcase"] == "toutecasevidesaufusername"){ echo'placeholder="Veuillez rentrer un mail valide*"'  ; echo 'class="form-controlred p-3 w-100 my-2/>"';}
-                              if (isset($_SESSION["erreurcase"]) and $_SESSION["erreurcase"] == "mailvide") { echo'placeholder="Veuillez rentrer un mail valide*"'; echo 'class="form-controlred p-3 w-100 my-2" />';}
-
-
-                              else {
-                                echo 'placeholder="Mail*" class="border p-3 w-100 my-2" ';}
-                                ?>/>
-                              <input type="password" name="password"
-                              <?php
-                              if (isset($_SESSION["erreurcase"]) and $_SESSION["erreurcase"] == "toutecasevide"){ echo'placeholder="Veuillez rentrer un mot de passe valide*"'  ; echo 'class="form-controlred p-3 w-100 my-2/>"';}
-                                if (isset($_SESSION["erreurcase"]) and $_SESSION["erreurcase"] == "toutecasevidesaufmail"){ echo'placeholder="Veuillez rentrer un mot de passe valide*"'  ; echo 'class="form-controlred p-3 w-100 my-2/>"';}
-                                if (isset($_SESSION["erreurcase"]) and $_SESSION["erreurcase"] == "toutecasevidesaufprenom"){ echo'placeholder="Veuillez rentrer un mot de passe valide*"'  ; echo 'class="form-controlred p-3 w-100 my-2/>"';}
-                                if (isset($_SESSION["erreurcase"]) and $_SESSION["erreurcase"] == "toutecasevidesaufnom"){ echo'placeholder="Veuillez rentrer un mot de passe valide*"'  ; echo 'class="form-controlred p-3 w-100 my-2/>"';}
-                                if (isset($_SESSION["erreurcase"]) and $_SESSION["erreurcase"] == "toutecasevidesaufusername"){ echo'placeholder="Veuillez rentrer un mot de passe valide*"'  ; echo 'class="form-controlred p-3 w-100 my-2/>"';}
-                              if (isset($_SESSION["erreurcase"]) and $_SESSION["erreurcase"] == "toutecasepasswordvide") { echo'placeholder="Veuillez rentrer un mot de passe valide*"'; echo 'class="form-controlred p-3 w-100 my-2" />';}
-
-
-                              else {
-                                echo 'placeholder="Mot de passe*" class="border p-3 w-100 my-2" ';}
-                                ?>/>
-
-
+                              Nom:
+                              <input type="text" name="nom" placeholder="" class="border p-3 w-100 my-2" />
+                              Prénom:
+                              <input type="text" name="prenom" placeholder="" class="border p-3 w-100 my-2"/>
+                              Date de naissance:
+                              <input type="date" name="date_naissance" class="border p-3 w-100 my-2"/>
+                              Nom d'utilisateur:
+                              <input type="text" name="username" placeholder="" class="border p-3 w-100 my-2"/>
+                              Mail:
+                              <input type="email" name="mail" placeholder="" class="border p-3 w-100 my-2"/>
+                              Mot de passe:
+                              <input type="password" name="password" placeholder="" class="border p-3 w-100 my-2"/>
+                            </br> </br>
                                 <div class="form-group">
                                   <label for="current-password">ROLE : </br>
-                                      Parent: </br>
-                                <input  type="radio" name="role" class="form-controlred p-1 w-50 my-1" value="1"
-                                         checked></BR>
-                                               </>
-                                      Eleve :</>
-                                <input type="radio" name="role" class="form-controlred p-1 w-50 my-1" value="2"
-                                               ></BR>
-                                      Professeur :</>
-                                <input type="radio" name="role" class="form-controlred p-1 w-50 my-1" value="3"
-                                                ></BR>
+                                     </br>Admin: </br>
+                              <input  type="radio" name="role" class="form-controlred p-1 w-50 my-1" value="1" checked/></BR>
+                                    Parent: </br>
+                                <input  type="radio" name="role" class="form-controlred p-1 w-50 my-1" value="2"/></BR>
+                                      Eleve : </br>
+                                <input type="radio" name="role" class="form-controlred p-1 w-50 my-1" value="3"></BR>
+                                      Professeur : </br>
+                                <input type="radio" name="role" class="form-controlred p-1 w-50 my-1" value="4"></BR>
 
 
                                 </div>
-
-
-
 
 
                                 <div class="loggedin-forgot d-inline-flex my-3">
@@ -121,9 +65,7 @@
 <?php include('../include_frontends/footers.php'); ?>
       <!-- Container End -->
       <!-- To Top -->
-      <div class="top-to">
-        <a id="top" class="" href="#"><i class="fa fa-angle-up"></i></a>
-      </div>
+    
     </footer>
 
 <?php include('../include_frontends/plugins.php'); ?>
