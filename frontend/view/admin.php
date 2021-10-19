@@ -27,7 +27,7 @@
 
               <form action= "../../backend/process/proadmin.php" method= "post">
 
-      <table id="myTable" class="display" style="width:100%">
+      <table id="myTable" class="ui celled table" style="width:100%">
     	        <thead>
     	            <tr>
 
@@ -35,7 +35,7 @@
                     <th>Nom</th>
                    <th>Prenom</th>
                    <th>Pseudo</th>
-                   <th>date naissance</th>
+                   <th>Date de Naissance</th>
                    <th>Role</th>
                    <th>Classe</th>
                    <th>Mail</th>
@@ -70,18 +70,18 @@
 
     	        </tbody>
   <?php  }?>
-    	        <tfoot>
+    	        <thead>
     	            <tr>
                     <th>Nom</th>
                    <th>Prenom</th>
                    <th>Pseudo</th>
-                   <th>date naissance</th>
+                   <th>Date de Naissance</th>
                    <th>Role</th>
                    <th>Classe</th>
                    <th>Mail</th>
                    <th></>
     	            </tr>
-    	        </tfoot>
+    	        </thead>
     	    </table>
       <section class="login py-5 border-top-1">
         <div class="container">
@@ -92,7 +92,7 @@
               </form>
 
 
-            
+
           </div>
         </div>
       </section>
@@ -304,8 +304,22 @@
   header("Location: 404.php ");
 }?>
 <script type="text/javascript">
-$(document).ready( function () {
-    $('#myTable').DataTable();
+$(document).ready(function() {
+    var table = $('#example').DataTable();
+
+    $('#example tbody').on( 'click', 'tr', function () {
+        if ( $(this).hasClass('selected') ) {
+            $(this).removeClass('selected');
+        }
+        else {
+            table.$('tr.selected').removeClass('selected');
+            $(this).addClass('selected');
+        }
+    } );
+
+    $('#button').click( function () {
+        table.row('.selected').remove().draw( false );
+    } );
 } );
 </script>
 
