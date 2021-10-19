@@ -45,6 +45,61 @@
 	<!-- Container End -->
 </section>
 
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <!-- Header Contetnt -->
+      <div class="content-block">
+        <h1> Liste des evenements  </h1>
+
+      </div>
+
+
+    </div>
+  </div>
+</div>
+<table id="myTable" class="display" style="width:100%">
+        <thead>
+            <tr>
+
+
+                <th>Evenement</th>
+                <th>date</th>
+                <th>lieu</th>
+                <th>Createur</th>
+                <th>Resume</th>
+                <th>Nombre de participant</th>
+
+            </tr>
+
+          </br>
+        </thead>
+        <tbody>
+            <tr>
+              <?php foreach ($res as $value) { ?>
+                <td><?php echo $value['titre'];?></td>
+                <td><?php echo $value['date'];?></td>
+                <td><?php echo $value['lieu'];?></td>
+                <td><?php echo $value['createur'];?></td>
+                <td><?php echo $value['resume'];?></td>
+                <td><?php echo $value['nb_participant'];?></td>
+
+            </tr>
+<?php  }?>
+        </tbody>
+
+        <tfoot>
+            <tr>
+              <th>Evenement</th>
+              <th>date</th>
+              <th>lieu</th>
+              <th>Createur</th>
+              <th>Resume</th>
+              <th>Nombre de participant</th>
+            </tr>
+        </tfoot>
+    </table>
+
 <!--===================================
 =            Client Slider            =
 ====================================-->
