@@ -8,7 +8,7 @@ try {
 
 
     $pass_hache = crypt($_POST["password"], 'rl');
-    
+
 
 
   $user = new utilisateur([
@@ -30,25 +30,26 @@ try {
     $man->mail($user);
 
 
-
+var_dump($user);
+var_dump($adminajout);
 } catch (Exception $e) {
 
-$_SESSION["connect"] ="7";
+//$_SESSION["connect"] ="7";
 
 }
 
-if (isset($_SESSION["connect"]) and $_SESSION["connect"] =="7") {
+//if (isset($_SESSION["connect"]) and $_SESSION["connect"] =="7") {
 
- header("Location: ../../frontend/view/adminajout.php");
-}
-
-
+ //header("Location: ../../frontend/view/adminajout.php");
+//}
 
 
-else {
 
-header("Location: ../../index.php");
-}
+
+//else {
+
+//header("Location: ../../index.php");
+//}
 
 
 
