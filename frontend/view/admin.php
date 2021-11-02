@@ -21,8 +21,8 @@
       }
       ?>
 
-      <?php include '../include_frontends/navh.php';
-      var_dump($_SESSION["connect"]);
+      <?php include '../include_frontends/navadmin.php';
+
        ?>
 
 
@@ -299,7 +299,7 @@
                       <input type="hidden" name="classe" value="<?php $value['classe']; ?>" </>
                       <input type="hidden" name="mail" value="<?php $value['mail']; ?>" </>
 
-                    <td>  <button name="idmodif" type="submit" value= <?php echo $value['id']; ?> class="d-block py-4 px-22 bg-primary text-white border-0 rounded font-weight-bold">Modifier l'utilisateur (double clic)</button></td>
+                    <td>  <button name="idmodif" type="submit" value= <?php echo $value['id']; ?> class="d-block py-4 px-22 bg-primary text-white border-0 rounded font-weight-bold">Modifier l'utilisateur</button></td>
 
     	            </tr>
 
@@ -356,7 +356,7 @@
 <!--============================
 =            Footer            =
 =============================-->
-<?php include('../include_frontends/footers.php'); ?>
+<?php include('../include_frontends/footersadmin.php'); ?>
 <!-- Container End -->
 <!-- To Top -->
 
