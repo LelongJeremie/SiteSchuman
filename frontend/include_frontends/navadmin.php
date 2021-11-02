@@ -48,8 +48,8 @@
 
 							<!-- Dropdown list -->
 							<div class="dropdown-menu">
-								<a class="dropdown-item" href="user-profile.php">Events</a>
-								<a class="dropdown-item" href="event.php">Faire un event</a>
+								<a class="dropdown-item" href="event.php">Events</a>
+								<a class="dropdown-item" href="mkevent.php">Faire un event</a>
 							</div>
 						</li>
 

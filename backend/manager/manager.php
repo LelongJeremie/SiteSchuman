@@ -1022,6 +1022,31 @@ $_SESSION['connect'] ="modifpassword";
             return $listeEvenement;
           }
 
+          public function afficherevent(){
+
+            session_start();
+            $this->dbh = new bdd();
 
 
-        }
+            $req = $this->dbh->getBase()->prepare("SELECT * from evenement");
+            $req->execute(array());
+            var_dump($a);
+            $res = $req->fetchall();
+
+
+            if ($res) {
+
+              $_SESSION["res"] = $res;
+
+
+            }
+
+            else {
+
+              throw new Exception("Erreur",1);
+
+
+            }
+
+          }
+}

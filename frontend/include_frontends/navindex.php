@@ -37,8 +37,8 @@
 
 								<!-- Dropdown list -->
 								<div class="dropdown-menu">
-									<a class="dropdown-item" href="frontend/view/user-profile.php">Events</a>
-									<a class="dropdown-item" href="frontend/view/event.php">Faire un event</a>
+									<a class="dropdown-item" href="frontend/view/event.php">Events</a>
+									<a class="dropdown-item" href="frontend/view/mkevent.php">Faire un event</a>
 								</div>
 							</li>
 
