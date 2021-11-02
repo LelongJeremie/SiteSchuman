@@ -33,7 +33,7 @@
      <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
        <script type="text/javascript">
      $( document ).ready(function() {
-       $('#myModal').modal('toggle')
+       $('#aqw').modal('toggle')
 
 
 
@@ -42,12 +42,12 @@
      </script>
 
 
-             <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel"
+             <div class="modal fade" id="aqw" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel"
                aria-hidden="true">
                <div class="modal-dialog modal-dialog modal-lg" role="document">
                  <div class="modal-content">
 
-                     <button type="button" onclick="myFunction()" class="close" data-dismiss="modal" aria-label="Close">
+                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                        <span aria-hidden="true">&times;</span>
                      </button>
 
@@ -250,7 +250,7 @@
 
               <form action= "../../backend/process/proadmin.php" method= "post">
 
-      <table id="myTable" class="ui celled table" style="width:100%">
+      <table id="aze" class="ui celled table" style="width:100%">
     	        <thead>
     	            <tr>
 
@@ -318,19 +318,7 @@
     	            </tr>
     	        </thead>
     	    </table>
-      <section class="login py-5 border-top-1">
-        <div class="container">
-          <div class="row justify-content-center">
 
-
-
-              </form>
-
-
-
-          </div>
-        </div>
-      </section>
 
 
       <?php if (isset($_SESSION["idadminmodif"]) and $_SESSION["idadminmodif"] > 0 ){ ?>
@@ -368,22 +356,7 @@
 }?>
 <script type="text/javascript">
 $(document).ready(function() {
-    var table = $('#example').DataTable();
-
-    $('#example tbody').on( 'click', 'tr', function () {
-        if ( $(this).hasClass('selected') ) {
-            $(this).removeClass('selected');
-        }
-        else {
-            table.$('tr.selected').removeClass('selected');
-            $(this).addClass('selected');
-        }
-    } );
-
-    $('#button').click( function () {
-        table.row('.selected').remove().draw( false );
-    } );
-
+    $('#aze').DataTable();
 } );
 
 </script>
