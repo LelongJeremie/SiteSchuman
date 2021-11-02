@@ -41,7 +41,7 @@
 
              <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel"
                aria-hidden="true">
-               <div class="modal-dialog modal-dialog modal-xl" role="document">
+               <div class="modal-dialog modal-dialog modal-lg" role="document">
                  <div class="modal-content">
 
                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -52,7 +52,7 @@
                      <img src="images/account/Account1.png" class="img-fluid mb-2" alt="">
 
 
-                     <div class="col-md-10 offset-md-1 col-lg-9 offset-lg-2">
+                     <div class=" o">
                        <!-- Edit Profile Welcome Text -->
                        <div class="widget welcome-message">
                          <h2>Modifier le profile de l'utilisateur choisis</h2>
