@@ -15,7 +15,7 @@
 
 
       ?>
-      <?php include '../include_frontends/navh.php';  ?>
+      <?php include '../include_frontends/navadmin.php';  ?>
       <section class="login py-5 border-top-1">
         <div class="container">
           <div class="row justify-content-center">
@@ -28,7 +28,7 @@
 
                   <form action= "../../backend/process/modificationpasswordoublie.php" method= "post">
 
-                    
+
 
                     <input type="text" name="passwordoublie" placeholder="*********" class="border p-3 w-100 my-2" />
                     <input type="hidden" name="mailoublie" value="<?php echo $_GET["mail"] ; ?>" />

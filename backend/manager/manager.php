@@ -154,18 +154,19 @@ var_dump($req);
             $mail->setFrom('phpmailerdugny@gmail.com', 'NE PAS REPONDRE');
             $mail->addAddress( $a->getMail() , $a->getNom());     // Add a recipient
             $mail->addReplyTo('phpmailerdugny@gmail.com', 'NE PAS REPONDRE');
+
             // Attachments
             //  $mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
             //$mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
 
             // Content
-            //$mail->isHTML(true);                                  // Set email format to HTML
+            //$mail->isHTML(true);           ""<a href=\"http://localhost/LELONG_PHP/SiteSchuman/SiteSchuman/index.php\" class='button'>Lien du site</a>";                       // Set email format to HTML
             $mail->Subject = 'demandemdp ';
-            $mail->Body    = 'demandemdp <b>Dugny!</b> http://localhost/TABTI/SiteSchuman/frontend/view/motdepasseoublie.php?mail='.$mail_hache."&nom=".$req["nom"]."&prenom=".$req["prenom"];
+            $mail->Body    = "<a href=\"http://localhost/LELONG_PHP/SiteSchuman/SiteSchuman/frontend/view/motdepasseoublie.php?mail=".$mail_hache."&nom=".$req["nom"]."&prenom=".$req["prenom"]."\" class='button'>Lien du site</a>";
             $mail->AltBody = 'demandemdp!';
 
             $mail->send();
-            echo 'Message has been sent';
+            echo "Message has been sent";
           } catch (Exception $e) {
             echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
           }
@@ -310,7 +311,7 @@ var_dump($req);
         'role'=>$a->getRole(),
       ));
 
-    
+
 
       $_SESSION['connect'] ="2";
 
@@ -348,7 +349,7 @@ var_dump($req);
       // Content
       //$mail->isHTML(true);                                  // Set email format to HTML
       $mail->Subject = 'Bienvenue ! ';
-      $mail->Body    = 'Bienvenue sur le site du Lycée de <b>Dugny!</b> : https://www.google.fr';
+      $mail->Body    = "<a href=\"http://localhost/LELONG_PHP/SiteSchuman/SiteSchuman/index.php\" class='button'>Lien du site</a>";
       $mail->AltBody = 'Bienvenue sur le site du Lycée de Dugny!';
 
       $mail->send();
