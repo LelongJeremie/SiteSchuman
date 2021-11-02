@@ -386,9 +386,6 @@ $(document).ready(function() {
 
 } );
 
-function myFunction() {
-  <?php $_SESSION["connect"]="myFunction";  ?>
-}
 </script>
 
 
