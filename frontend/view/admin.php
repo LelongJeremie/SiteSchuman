@@ -272,7 +272,19 @@
     	                <td><?php echo $value['prenom'];?></td>
                       <td><?php echo $value['username']; ?></td>
     	                <td><?php echo $value['date_naissance'];?></td>
-    	                <td><?php echo $value['role'];?></td>
+    	                <td><?php if ($value['role'] =="1") {
+                        echo "Admin";
+                      }
+                      if ($value['role'] =="2") {
+                        echo "Professeur";
+                      }
+                      if ($value['role'] =="3") {
+                        echo "parent";
+                      }
+
+                      if ($value['role'] =="4") {
+                        echo "Eleve";
+                      } ?> </td> 
     	                <td><?php echo $value['classe'];?></td>
     	                <td><?php echo $value['mail'];?></td>
 
