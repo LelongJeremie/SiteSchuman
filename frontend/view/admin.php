@@ -35,6 +35,9 @@
      $( document ).ready(function() {
        $('#myModal').modal('toggle')
 
+
+
+
      });
      </script>
 
@@ -44,7 +47,7 @@
                <div class="modal-dialog modal-dialog modal-lg" role="document">
                  <div class="modal-content">
 
-                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                     <button type="button" onclick="myFunction()" class="close" data-dismiss="modal" aria-label="Close">
                        <span aria-hidden="true">&times;</span>
                      </button>
 
@@ -381,6 +384,9 @@ $(document).ready(function() {
         table.row('.selected').remove().draw( false );
     } );
 } );
+function myFunction() {
+  <?php $_SESSION["connect"]="myFunction";  ?>
+}
 </script>
 
 <?php //$_SESSION["connect"] = "stop"; ?>
