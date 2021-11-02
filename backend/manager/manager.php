@@ -162,7 +162,7 @@ var_dump($req);
             // Content
             //$mail->isHTML(true);           ""<a href=\"http://localhost/LELONG_PHP/SiteSchuman/SiteSchuman/index.php\" class='button'>Lien du site</a>";                       // Set email format to HTML
             $mail->Subject = 'demandemdp ';
-            $mail->Body   = "<a href=\"http://localhost/LELONG_PHP/SiteSchuman/SiteSchuman/frontend/view/motdepasseoublie.php?mail=".$mail_hache."&nom=".$req["nom"]."&prenom=".$req["prenom"]."\" class='button'>Lien du site</a>";
+            $mail->Body   = "<a href=\"http://localhost/TABTI/SiteSchuman/frontend/view/motdepasseoublie.php?mail=".$mail_hache."&nom=".$req["nom"]."&prenom=".$req["prenom"]."\" class='button'>Lien du site</a>";
             $mail->AltBody = 'demandemdp!';
 
             $mail->send();
@@ -349,7 +349,7 @@ var_dump($req);
       // Content
       //$mail->isHTML(true);                                  // Set email format to HTML
       $mail->Subject = 'Bienvenue ! ';
-      $mail->Body   = "<a href=\"http://localhost/LELONG_PHP/SiteSchuman/SiteSchuman/index.php\" class='button'>Lien du site</a>";
+      $mail->Body   = "<a href=\"http://localhost/TABTI/SiteSchuman/index.php\" class='button'>Lien du site</a>";
       $mail->AltBody = 'Bienvenue sur le site du Lycée de Dugny!';
 
       $mail->send();
