@@ -636,7 +636,6 @@ var_dump($req);
 
 
 
-
     public function selectadmin($a){ //POUR AFFICHER LES UTILISATEURS POUR LES MODIFIER EN TANT QU'ADMIN
       session_start();
       $_SESSION['ok'] = 1;

@@ -22,7 +22,7 @@
       ?>
 
       <?php include '../include_frontends/navh.php';
-
+      var_dump($_SESSION["connect"]);
        ?>
 
 
@@ -40,7 +40,6 @@
 
      });
      </script>
-
 
 
              <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel"
