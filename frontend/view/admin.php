@@ -47,7 +47,7 @@
                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                        <span aria-hidden="true">&times;</span>
                      </button>
-                   </div>
+
                    <div class="modal-body text-center">
                      <img src="images/account/Account1.png" class="img-fluid mb-2" alt="">
 
@@ -284,7 +284,7 @@
 
                       if ($value['role'] =="4") {
                         echo "Eleve";
-                      } ?> </td> 
+                      } ?></td>
     	                <td><?php echo $value['classe'];?></td>
     	                <td><?php echo $value['mail'];?></td>
 
