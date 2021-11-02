@@ -3,7 +3,7 @@
 require_once 'contact.php';
 class utilisateur extends contact{
 
-  public $id,$verifmail,$nom,$salleidmodif,$prenom,$password, $passwordmodifconf,$passwordmodif,$passwordconf,$role,$username,$typemodif,$mail,$mailmodif,$idmodif,$idadminmodif,$nomadminmodif,$prenomadminmodif,$passwordadminmodif,$mailadminmodif,$roleadminmodif,$salleplace,$description,$sallenomfilm,$theme,$troisd,$salleid,$image,$tarif,$cb,$place,$prix;
+  public $id,$date_naissance,$verifmail,$nom,$salleidmodif,$prenom,$password, $passwordmodifconf,$passwordmodif,$passwordconf,$role,$username,$typemodif,$mail,$mailmodif,$idmodif,$idadminmodif,$nomadminmodif,$prenomadminmodif,$passwordadminmodif,$mailadminmodif,$roleadminmodif;
 
   // constructeur
 
@@ -41,6 +41,10 @@ class utilisateur extends contact{
   public function getIdmodif()
   {
     return $this-> idmodif;
+  }
+  public function getDate_naissance()
+  {
+    return $this-> date_naissance;
   }
   public function getSalleidmodif()
   {
@@ -386,6 +390,14 @@ class utilisateur extends contact{
         {
           $this-> usernameadminmodif = $usernameadminmodif;
         }}
+
+        public function setDate_naissance($date_naissance)
+        {
+          // On vérifie qu'il s'agit bien d'une chaîne de caractères.
+          if (is_string($date_naissance))
+          {
+            $this-> date_naissance = $date_naissance;
+          }}
 
         public function setRoleadminmodif($roleadminmodif)
         {

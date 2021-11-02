@@ -2,14 +2,14 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>cinema de Dugny</title>
+<title>Robert Schuman</title>
 <?php  ?>
 <!-- include de php redondant -->
 <?php include '../include_frontends/styles.php';  ?>
+
+
 </head>
-
 <body class="body-wrapper">
-
 
 <section>
 <div class="container">
@@ -38,12 +38,24 @@
 							<!-- Dropdown list -->
 							<div class="dropdown-menu">
 								<a class="dropdown-item" href="user-profile.php">Ton profile</a>
-								<a class="dropdown-item" href="reservation.php">Tes reservations</a>
+								<a class="dropdown-item" href="rdv.php">Tes rendez-vous</a>
 							</div>
 						</li>
-						<?php } ?>
 						<li class="nav-item dropdown dropdown-slide">
-						
+							<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="">
+								Events<span><i class="fa fa-angle-down"></i></span>
+							</a>
+
+							<!-- Dropdown list -->
+							<div class="dropdown-menu">
+								<a class="dropdown-item" href="event.php">Events</a>
+								<a class="dropdown-item" href="mkevent.php">Faire un event</a>
+							</div>
+						</li>
+
+						<?php } ?>
+
+
 
 							<!-- Dropdown list -->
 
@@ -89,12 +101,12 @@
 								 <a class="nav-link login-button" href="../../backend/process/deconnexion.php">Deconnexion</a>
 							 </li>
 							 <li class="nav-item">
-								<a class="nav-link text-white add-button" href="reservation.php">Mes reservations </a>
-							</li>
+								 <a class="nav-link text-white add-button" href="chat.php"> Tchat maintenant  </a>
+							 </li>
 						 <?php }  else {  ?>
 
 						<li class="nav-item">
-							<a class="nav-link login-button" href="login.php">Connection</a>
+							<a class="nav-link login-button" href="login.php">Connexion</a>
 
 
 						</li>
@@ -106,6 +118,7 @@
 							<a class="nav-link login-button" href="user-profile.php"><i class="fa fa-plus-circle"></i> Mon compte</a>
 						</li>-->
 				 <?php } ?>
+
 					</ul>
 				</div>
 			</nav>

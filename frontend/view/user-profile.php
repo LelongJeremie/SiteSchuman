@@ -12,6 +12,88 @@
       =            User Profile            =
       ===================================-->
 
+      <?php if ( isset($_SESSION["connect"]) and $_SESSION["connect"] == "modif") {
+                 ?>
+            <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+                <script type="text/javascript">
+            $( document ).ready(function() {
+                $('#myModal').modal('toggle')
+            });
+            </script>
+
+
+
+
+                      <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+                        aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header border-bottom-0">
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <div class="modal-body text-center">
+                              <img src="images/account/Account1.png" class="img-fluid mb-2" alt="">
+                              <h6 class="py-2">Mail modifié ! </h6>
+
+
+                            </div>
+                            <div class="modal-footer border-top-0 mb-2 mx-4 justify-content-center">
+
+                              <button type="button" class="btn btn-primary" data-dismiss="modal">Fermer le pop-up</button>
+
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+
+
+                    <?php $_SESSION["connect"] = "00000"; } ?>
+
+
+                    <?php if ( isset($_SESSION["connect"]) and $_SESSION["connect"] == "modifpassword") {
+                               ?>
+                          <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+                              <script type="text/javascript">
+                          $( document ).ready(function() {
+                              $('#myModal').modal('toggle')
+                          });
+                          </script>
+
+
+
+
+                                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+                                      aria-hidden="true">
+                                      <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                          <div class="modal-header border-bottom-0">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                              <span aria-hidden="true">&times;</span>
+                                            </button>
+                                          </div>
+                                          <div class="modal-body text-center">
+                                            <img src="images/account/Account1.png" class="img-fluid mb-2" alt="">
+                                            <h6 class="py-2">Mot de passe modifié </h6>
+
+
+                                          </div>
+                                          <div class="modal-footer border-top-0 mb-2 mx-4 justify-content-center">
+
+                                            <button type="button" class="btn btn-primary" data-dismiss="modal">Fermer le pop-up</button>
+
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+
+
+
+                                  <?php $_SESSION["connect"] = "00000"; } ?>
+
+
       <section class="user-profile section">
         <div class="container">
           <div class="row">
@@ -77,44 +159,7 @@
               </div>
               <!-- Edit Personal Info -->
               <div class="row">
-                <div class="col-lg-6 col-md-6">
-                  <div class="widget personal-info">
-                    <h3 class="widget-header user">Modifier les informations personnels</h3>
-                    <form method="post" action="../../backend/process/modificationnomprenom.php">
-                      <!-- First Name -->
-                      <div class="form-group">
-                        <label for="first-name">Prénom actuel : <?php  echo  $method = ucfirst($_SESSION["prenom"]);  ?></label>
-                        <input type="text" name = "prenom"
-                        <?php
-                        //gestion d'erreur des cases
-                        if (isset($_SESSION["erreurcase"]) and $_SESSION["erreurcase"] == "caseprenomvide"){ echo'placeholder="Veuillez rentrer un prenom valide*"';  echo 'class="form-controlred  p-3 w-100 my-2"' ;}
-                        else { echo 'placeholder="" class="form-control  p-3 w-100 my-2 " ';} ?> />
 
-
-                      </div>
-                      <!-- Last Name -->
-                      <div class="form-group">
-                        <label for="last-name">Nom actuel : <?php echo $method = ucfirst($_SESSION["nom"]); ?></label>
-                        <input type="text" name = "nom"
-                        <?php
-                        //gestion d'erreur des cases
-                        if (isset($_SESSION["erreurcase"]) and $_SESSION["erreurcase"] == "caseprenomvide"){ echo'placeholder="Veuillez rentrer un nom valide*"';  echo 'class="form-controlred  p-3 w-100 my-2"' ;}
-                        else { echo 'placeholder="" class="form-control  p-3 w-100 my-2 " ';} ?> />
-
-
-
-                      </div>
-
-                      <!-- Zip Code -->
-                      <!--	<div class="form-group">
-                      <label for="zip-code">Zip Code</label>
-                      <input type="text" class="form-control" id="zip-code">
-                    </div>-->
-                    <!-- Submit button -->
-                    <button name="typemodif" value="changernomprenom" type="submit" class="btn btn-transparent">Sauvegarder les modifications</button>
-                  </form>
-                </div>
-              </div>
               <div class="col-lg-6 col-md-6">
                 <!-- Change Password -->
                 <div class="widget change-password">
@@ -174,7 +219,7 @@
                       <?php
 
                       if (isset($_SESSION["erreurcase"]) and $_SESSION["erreurcase"] == "toutecasemailvide"){ echo'placeholder="Veuillez rentrer un mail valide*"';  echo 'class="form-controlred  p-3 w-100 my-2"' ;}
-                      if (isset($_SESSION["erreurcase"]) and $_SESSION["erreurcase"] == "mailvide") { echo'placeholder="Veuillez rentrer un mail valide*"';  echo 'class="form-controlred  p-3 w-100 my-2"' ;}
+                      if (isset($_SESSION["erreurcase"]) and $_SESSION["erreurcase"] == "mailvide") { echo'placeholder="Veuillez rentrer le bon mail*"';  echo 'class="form-controlred  p-3 w-100 my-2"' ;}
                       else { echo 'placeholder="" class="form-control  p-3 w-100 my-2 " ';} ?> />
 
                     </div>

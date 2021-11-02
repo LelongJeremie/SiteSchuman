@@ -17,7 +17,7 @@
       if (isset($_SESSION['stop']) and  $_SESSION['stop'] ==1) {    $res=$_SESSION["res"];    } // si stop == 1 on prend les valeurs donc les utilisateur de la base de donnée
                                                                             //Sinon on va dans le process pour recupérer ses valeurs
       else {
-        $_SESSION['stop']=1; header("Location: ../../backend/process/admin.php");
+        $_SESSION['stop']=1; header("Location: ../../backend/process/event.php");
       }
       ?>
 
@@ -255,14 +255,13 @@
     	            <tr>
 
 
-                    <th>Nom</th>
-                   <th>Prenom</th>
-                   <th>Pseudo</th>
-                   <th>Date de Naissance</th>
-                   <th>Role</th>
-                   <th>Classe</th>
-                   <th>Mail</th>
-                    <th></>
+                   <th>titre</th>
+                   <th>date</th>
+                   <th>lieu</th>
+                   <th>createur</th>
+                   <th>resume</th>
+                   <th>nb_participant</th>
+                   <th></>
     	            </tr>
 
                 </br>
@@ -271,35 +270,22 @@
     	        <tbody>
     	            <tr>
                     <?php foreach ($res as $value) { ?>
-    	                <td><?php echo $value['nom'];?></td>
-    	                <td><?php echo $value['prenom'];?></td>
-                      <td><?php echo $value['username']; ?></td>
-    	                <td><?php echo $value['date_naissance'];?></td>
-    	                <td><?php if ($value['role'] =="1") {
-                        echo "Admin";
-                      }
-                      if ($value['role'] =="2") {
-                        echo "Professeur";
-                      }
-                      if ($value['role'] =="3") {
-                        echo "parent";
-                      }
+    	                <td><?php echo $value['titre'];?></td>
+    	                <td><?php echo $value['date'];?></td>
+                      <td><?php echo $value['lieu']; ?></td>
+    	                <td><?php echo $value['createur'];?></td>
+    	                <td><?php echo $value['resume'];?></td>
+    	                <td><?php echo $value['nb_participant'];?></td>
 
-                      if ($value['role'] =="4") {
-                        echo "Eleve";
-                      } ?></td>
-    	                <td><?php echo $value['classe'];?></td>
-    	                <td><?php echo $value['mail'];?></td>
+                      <input type="hidden" name="titre" value="<?php $value['titre']; ?>" </>
+                      <input type="hidden" name="date" value="<?php $value['date']; ?>" </>
+                      <input type="hidden" name="lieu" value="<?php $value['lieu']; ?>" </>
+                      <input type="hidden" name="createur" value="<?php $value['createur']; ?>" </>
+                      <input type="hidden" name="resume" value="<?php $value['resume']; ?>" </>
+                      <input type="hidden" name="nb_participant" value="<?php $value['nb_participant']; ?>" </>
 
-                      <input type="hidden" name="nom" value="<?php $value['nom']; ?>" </>
-                      <input type="hidden" name="prenom" value="<?php $value['prenom']; ?>" </>
-                      <input type="hidden" name="username" value="<?php $value['username']; ?>" </>
-                      <input type="hidden" name="date_naissance" value="<?php $value['date_naissance']; ?>" </>
-                      <input type="hidden" name="role" value="<?php $value['role']; ?>" </>
-                      <input type="hidden" name="classe" value="<?php $value['classe']; ?>" </>
-                      <input type="hidden" name="mail" value="<?php $value['mail']; ?>" </>
 
-                    <td>  <button name="idmodif" type="submit" value= <?php echo $value['id']; ?> class="d-block py-4 px-22 bg-primary text-white border-0 rounded font-weight-bold">Modifier l'utilisateur</button></td>
+                    <td>  <button name="idmodif" type="submit" value= <?php echo $value['id']; ?> class="d-block py-4 px-22 bg-primary text-white border-0 rounded font-weight-bold">Rejoindre l'evenement</button></td>
 
     	            </tr>
 
@@ -307,14 +293,13 @@
   <?php  }?>
     	        <thead>
     	            <tr>
-                    <th>Nom</th>
-                   <th>Prenom</th>
-                   <th>Pseudo</th>
-                   <th>Date de Naissance</th>
-                   <th>Role</th>
-                   <th>Classe</th>
-                   <th>Mail</th>
-                   <th></>
+                    <th>titre</th>
+                    <th>date</th>
+                    <th>lieu</th>
+                    <th>createur</th>
+                    <th>resume</th>
+                    <th>nb_participant</th>
+                    <th></>
     	            </tr>
     	        </thead>
     	    </table>

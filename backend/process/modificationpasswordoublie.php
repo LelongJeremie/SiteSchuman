@@ -4,9 +4,11 @@ require_once '../model/UTILISATEUR.php';
 require_once '../model/bdd.php';
 require_once '../manager/manager.php';
 
+
+
 try {
 
-      $pass_hache = crypt($_POST["password"], 'rl');
+      $pass_hache = crypt($_POST["passwordoublie"], 'rl');
 
 
 
@@ -14,12 +16,10 @@ try {
 
 
   $user = new utilisateur([
-
-
+    "mail"=> $_POST["mailoublie"],
+    "prenom" => $_POST["prenomoublie"],
+      "nom" => $_POST["nomoublie"],
     "password" => $pass_hache,
-
-
-
 
     ]);
 
@@ -34,10 +34,10 @@ try {
   $_SESSION["erreurcase"] = $e->getMessage();
 
 
- //header("Location: ../../index.php");
+ header("Location: ../../index.php");
 
 }
-//header("Location: ../../index.php");
+header("Location: ../../index.php");
 
 
 

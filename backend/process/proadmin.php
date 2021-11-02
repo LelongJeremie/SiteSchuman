@@ -14,7 +14,7 @@ try {
 
 $user = new utilisateur([
 
-  "idmodif" => $_POST["modif"],
+  "idmodif" => $_POST["idmodif"],
   ]);
 
 
@@ -24,16 +24,17 @@ $man->selectadmin($user);
 
 
 
+
     } catch (Exception $e) {
 
 
 
-    header("Location: ../../frontend/view/admin.php");
+   header("Location: ../../frontend/view/admin.php");
 
     }
 
 
 
-    header("Location: ../../frontend/view/admin.php");
+   header("Location: ../../frontend/view/admin.php");
 
  ?>

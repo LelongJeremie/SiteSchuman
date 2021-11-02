@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Classimax</title>
+  <title>Robert Schuman</title>
 <!-- include de php redondant -->
   <?php include 'frontend/include_frontends/stylesindex.php';  ?>
 </head>
@@ -44,6 +44,8 @@
 	</div>
 	<!-- Container End -->
 </section>
+
+
 
 <!--===================================
 =            Client Slider            =
@@ -214,6 +216,46 @@ $( document ).ready(function() {
 
 
             <?php $_SESSION["connect"] = "00000"; } ?>
+
+            <?php if ( isset($_SESSION["connect"]) and $_SESSION["connect"] == "6") {
+             ?>
+        <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+            <script type="text/javascript">
+        $( document ).ready(function() {
+            $('#myModal').modal('toggle')
+        });
+        </script>
+
+
+
+
+                  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header border-bottom-0">
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body text-center">
+                          <img src="images/account/Account1.png" class="img-fluid mb-2" alt="">
+                          <h6 class="py-2"> Modification du mot de passe! </h6>
+
+
+                        </div>
+                        <div class="modal-footer border-top-0 mb-2 mx-4 justify-content-center">
+
+                          <button type="button" class="btn btn-primary" data-dismiss="modal">Fermer le pop-up</button>
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+
+
+                <?php $_SESSION["connect"] = "00000"; } ?>
 
 
             <?php if ( isset($_SESSION["connect"]) and $_SESSION["connect"] == "3") {
