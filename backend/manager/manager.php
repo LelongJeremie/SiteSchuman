@@ -310,7 +310,7 @@ var_dump($req);
         'role'=>$a->getRole(),
       ));
 
-      $c = $this->mail($a);
+    
 
       $_SESSION['connect'] ="2";
 
@@ -571,8 +571,10 @@ var_dump($req);
 
 
         ));
-
+$_SESSION['connect'] ="modif";
       }
+
+
       else {
         throw new Exception("mailvide");
       }
@@ -891,7 +893,7 @@ else { header("Location: ../../index.php");
 
 
                 ));
-
+$_SESSION['connect'] ="modifpassword";
 
               }
 
