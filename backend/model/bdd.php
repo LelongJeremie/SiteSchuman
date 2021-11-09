@@ -6,7 +6,7 @@ private $dbh;
 public function __construct()
 {
   try {
-    $this->dbh = new PDO('mysql:host=localhost;dbname=SiteSchuman', "root","root"); // connexion à la base de donnée
+    $this->dbh = new PDO('mysql:host=localhost;dbname=SiteSchuman', "root",""); // connexion à la base de donnée
 
   } catch (PDOException $e) {
     echo "Connection failed : ". $e->getMessage();

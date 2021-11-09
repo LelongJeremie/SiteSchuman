@@ -3,7 +3,7 @@
 require_once 'contact.php';
 class utilisateur extends contact{
 
-  public $id,$date_naissance,$verifmail,$nom,$salleidmodif,$prenom,$password, $passwordmodifconf,$passwordmodif,$passwordconf,$role,$username,$typemodif,$mail,$mailmodif,$idmodif,$idadminmodif,$nomadminmodif,$prenomadminmodif,$passwordadminmodif,$mailadminmodif,$roleadminmodif;
+  public $id,$date_naissance,$verifmail,$nom,$salleidmodif,$prenom,$password, $passwordmodifconf,$passwordmodif,$passwordconf,$role,$username,$typemodif,$mail,$mailmodif,$idmodif,$idadminmodif,$nomadminmodif,$prenomadminmodif,$token,$passwordadminmodif,$mailadminmodif,$roleadminmodif;
 
   // constructeur
 
@@ -66,6 +66,11 @@ class utilisateur extends contact{
   public function getNom()
   {
     return $this-> nom;
+  }
+
+  public function getToken()
+  {
+    return $this-> token;
   }
 
   public function getNomadminmodif()
@@ -276,6 +281,16 @@ class utilisateur extends contact{
       $this-> nom = $nom;
     }
   }
+
+  public function setToken($token)
+  {
+    // On vérifie qu'il s'agit bien d'une chaîne de caractères.
+    if (is_string($token))
+    {
+      $this-> token = $token;
+    }
+  }
+
   public function setDescription($description)
   {
     // On vérifie qu'il s'agit bien d'une chaîne de caractères.
