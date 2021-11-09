@@ -21,9 +21,6 @@ try {
                                    //INSTANCIER
     $man->mkevent($user);
 
-var_dump($user);
-var_dump($_SESSION["id"]);
-
 } catch (Exception $e) {
 
 $_SESSION["connect"] ="7";
