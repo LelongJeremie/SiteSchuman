@@ -248,7 +248,7 @@
            <?php  //$_SESSION["connect"] = "00000";
          } ?>
 
-              <form action= "../../backend/process/proadmin.php" method= "post">
+              <form action= "../../backend/process/joinevent.php" method= "post">
 
       <table id="myTable" class="ui celled table" style="width:100%">
     	        <thead>
@@ -285,7 +285,7 @@
                       <input type="hidden" name="nb_participant" value="<?php $value['nb_participant']; ?>" </>
 
 
-                    <td>  <button name="idmodif" type="submit" value= <?php echo $value['id']; ?> class="d-block py-4 px-22 bg-primary text-white border-0 rounded font-weight-bold">Rejoindre l'evenement</button></td>
+                    <td>  <button name="idmodif" style="margin-left:150px"  type="submit" value= <?php echo $value['id']; ?> class="d-block py-4 px-22 bg-primary text-white border-0 rounded font-weight-bold">Rejoindre l'evenement</button></td>
 
     	            </tr>
 

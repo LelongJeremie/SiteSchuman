@@ -298,7 +298,7 @@
                       <input type="hidden" name="classe" value="<?php $value['classe']; ?>" </>
                       <input type="hidden" name="mail" value="<?php $value['mail']; ?>" </>
 
-                    <td>  <button name="idmodif" type="submit" value= <?php echo $value['id']; ?> class="d-block py-4 px-22 bg-primary text-white border-0 rounded font-weight-bold">Modifier l'utilisateur</button></td>
+                    <td>  <button name="idmodif" style="margin-left:100px" type="submit" value= <?php echo $value['id']; ?> class="d-block py-4 px-22 bg-primary text-white border-0 rounded font-weight-bold">Modifier l'utilisateur</button></td>
 
     	            </tr>
   <?php  } ?>
