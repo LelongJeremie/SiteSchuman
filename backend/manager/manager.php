@@ -711,28 +711,31 @@ var_dump($_SESSION);
 
       $res = $req->fetch();
 
+      var_dump($a);
+      var_dump($res);
 
       if ($res) {
 
-        $_SESSION['ideventmodif'] = $res["id"];
-        $_SESSION['titremodif'] = $res["titre"];
-        $_SESSION['date_eventmodif'] = $res["date_event"];
-        $_SESSION['lieunmodif'] = $res["lieu"];
-        $_SESSION['createurnmodif'] = $res["createur"];
-        $_SESSION['nb_participantmodif'] = $res["nb_participant"];
-        $_SESSION['nb_parti_maxmodif'] = $res["nb_parti_max"];
-
-        $_SESSION["connect"] = "evenementmodal";
+        $this->dbh = new bdd();
+        $req = $this->dbh->getBase()->prepare("INSERT INTO participant (id,id_participant, id_organisateur, id_evenement) VALUES (NULL,:id_participant,:id_organisateur,:id_evenement)");
+        $req->execute(array(
+          'id_participant'=> $a->getId(),
+          'id_organisateur'=> $res["createur"],
+          'id_evenement'=>$res["id"],
 
 
 
+        ));
+
+
+var_dump($req);
       }
 
       else {
 
         throw new Exception("Erreur dans select admin",1);
 
-    var_dump($_SESSION);
+var_dump($_SESSION);
 
 
 
@@ -1108,46 +1111,4 @@ $_SESSION['connect'] ="modifpassword";
             }
 
           }
-          public function mkevent($a){
-            session_start();
-
-
-
-            $this->dbh = new bdd();
-            $req = $this->dbh->getBase()->prepare("SELECT * from evenement where titre=:titre");
-            $req->execute(array(
-              'titre'=> $a->getTitre(),
-            ));
-
-            $res = $req->fetch();
-
-
-            if ($res) {
-              throw new Exception("util");
-
-            }
-
-
-
-            else {
-              $this->dbh = new bdd();
-              $req = $this->dbh->getBase()->prepare("INSERT INTO evenement (titre,date_event,lieu,createur,resume,nb_parti_max) values (:titre,:date_event,:lieu,:createur,:resume,:nb_parti_max))");          // verifier si un utilisateur et l'inscrire si il existe
-              $req->execute(array(
-                'titre'=>$a->getTitre(),
-                'date_event'=>$a->getDate_event(),
-                'lieu'=> $a->getLieu(),
-                'createur'=> $a->getCreateur(),
-                'resume' =>  $a->getResume(),
-                'nb_parti_max' => $a->getNb_parti_max(),
-              ));
-
-
-
-              $_SESSION['connect'] ="2";
-
-            }
-
-          }
-
-
 }
