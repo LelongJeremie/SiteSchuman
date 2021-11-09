@@ -42,14 +42,12 @@
      </script>
 
 
-             <div class="modal fade" id="aqw" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel"
+             <div class="modal" id="aqw" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel"
                aria-hidden="true">
                <div class="modal-dialog modal-dialog modal-lg" role="document">
                  <div class="modal-content">
 
-                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                       <span aria-hidden="true">&times;</span>
-                     </button>
+
 
                    <div class="modal-body text-center">
                      <img src="images/account/Account1.png" class="img-fluid mb-2" alt="">
@@ -235,7 +233,9 @@
 
                    </div>
                    <div class="modal-footer border-top-0 mb-2 mx-4 justify-content-center">
-
+                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                       <span aria-hidden="true">&times;</span>
+                     </button>
 
 
                    </div>
@@ -253,8 +253,6 @@
       <table id="aze" class="ui celled table" style="width:100%">
     	        <thead>
     	            <tr>
-
-
                     <th>Nom</th>
                    <th>Prenom</th>
                    <th>Pseudo</th>
@@ -269,8 +267,9 @@
     	        </thead>
 
     	        <tbody>
-    	            <tr>
+
                     <?php foreach ($res as $value) { ?>
+                    <tr>
     	                <td><?php echo $value['nom'];?></td>
     	                <td><?php echo $value['prenom'];?></td>
                       <td><?php echo $value['username']; ?></td>
@@ -302,9 +301,9 @@
                     <td>  <button name="idmodif" type="submit" value= <?php echo $value['id']; ?> class="d-block py-4 px-22 bg-primary text-white border-0 rounded font-weight-bold">Modifier l'utilisateur</button></td>
 
     	            </tr>
-
+  <?php  } ?>
     	        </tbody>
-  <?php  }?>
+
     	        <thead>
     	            <tr>
                     <th>Nom</th>
