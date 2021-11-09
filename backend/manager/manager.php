@@ -130,12 +130,27 @@ session_start();
     ));                                          //VOIR SI UN UTILISATEUR EXISTE ET LE CONNECTER
 
   $req= $res->fetch();
-var_dump($req);
 
-    if ($req) {
+
+var_dump($req);
+$token=rand(222,5432134564321);
+
+$token_hache = crypt($token, 'rl');
+
+$rem = $this->dbh->getBase()->prepare("UPDATE utilisateur SET token= :token WHERE mail =:mail");
+$rem->execute(array(
+  'mail'=> $a->getMail(),
+  'token' => $token_hache,
+
+));
+var_dump($rem);
+var_dump($token_hache);
+
+
+    if ($rem) {
         $_SESSION["connect"] = "3";
 
-          $mail_hache = crypt($_GET["mail"], 'rl');
+
 
           $mail = new PHPMailer(true);
 
@@ -162,7 +177,7 @@ var_dump($req);
             // Content
             //$mail->isHTML(true);           ""<a href=\"http://localhost/LELONG_PHP/SiteSchuman/SiteSchuman/index.php\" class='button'>Lien du site</a>";                       // Set email format to HTML
             $mail->Subject = 'demandemdp ';
-            $mail->Body   = "<a href=\"http://localhost/TABTI/SiteSchuman/frontend/view/motdepasseoublie.php?mail=".$mail_hache."&nom=".$req["nom"]."&prenom=".$req["prenom"]."\" class='button'>Lien du site</a>";
+            $mail->Body   = "<a href=\"http://localhost/TABTI/SiteSchuman/frontend/view/motdepasseoublie.php?token=".$token_hache."\" class='button'>Lien du site</a>";
             $mail->AltBody = 'demandemdp!';
 
             $mail->send();
@@ -924,15 +939,15 @@ $_SESSION['connect'] ="modifpassword";
             else {
 
               $this->dbh = new bdd();
-              $req = $this->dbh->getBase()->prepare("SELECT * from utilisateur where prenom=:prenom and nom=:nom");
+              $req = $this->dbh->getBase()->prepare("SELECT * from utilisateur where token = :token");
               $req->execute(array(
-                'prenom'=> $a->getPrenom(),
-                'nom'=> $a->getNom(),
+                'token'=> $a->getToken(),
+
               ));
 
               $res = $req->fetch();
-              $mail_hache = crypt($res["mail"], 'rl');
-              if (isset($res) and $mail_hache ==  $a->getMail() ) {
+
+              if ($res ) {
 
 
                 $this->dbh = new bdd();

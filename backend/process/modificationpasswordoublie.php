@@ -16,9 +16,7 @@ try {
 
 
   $user = new utilisateur([
-    "mail"=> $_POST["mailoublie"],
-    "prenom" => $_POST["prenomoublie"],
-      "nom" => $_POST["nomoublie"],
+    "token"=> $_POST["token"],
     "password" => $pass_hache,
 
     ]);
@@ -27,6 +25,7 @@ try {
     $man = new manager();
 
     $man->modificationpasswordoublie($user);
+    
 
 
 

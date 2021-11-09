@@ -31,9 +31,8 @@
 
 
                     <input type="text" name="passwordoublie" placeholder="*********" class="border p-3 w-100 my-2" />
-                    <input type="hidden" name="mailoublie" value="<?php echo $_GET["mail"] ; ?>" />
-                    <input type="hidden" name="nomoublie" value="<?php echo $_GET["nom"] ; ?>" />
-                    <input type="hidden" name="prenomoublie" value="<?php echo $_GET["prenom"] ; ?>" />
+                    <input type="hidden" name="token" value="<?php echo $_GET["token"] ; ?>" />
+                  
 
 
                       <button type="submit" class="d-block py-3 px-4 bg-primary text-white border-0 rounded font-weight-bold">Valider </button>
