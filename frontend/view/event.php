@@ -42,7 +42,7 @@
      </script>
 
 
-             <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel"
+             <div class="modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel"
                aria-hidden="true">
                <div class="modal-dialog modal-dialog modal-lg" role="document">
                  <div class="modal-content">
@@ -353,22 +353,7 @@
 }?>
 <script type="text/javascript">
 $(document).ready(function() {
-    var table = $('#example').DataTable();
-
-    $('#example tbody').on( 'click', 'tr', function () {
-        if ( $(this).hasClass('selected') ) {
-            $(this).removeClass('selected');
-        }
-        else {
-            table.$('tr.selected').removeClass('selected');
-            $(this).addClass('selected');
-        }
-    } );
-
-    $('#button').click( function () {
-        table.row('.selected').remove().draw( false );
-    } );
-
+    $('#myTable').DataTable();
 } );
 
 </script>
