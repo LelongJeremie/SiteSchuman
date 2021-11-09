@@ -24,11 +24,13 @@
                       Titre:
                       <input type="text" name="titre" placeholder="" class="border p-3 w-100 my-2" />
                       Date:
-                      <input type="date" name="date" placeholder="" class="border p-3 w-100 my-2"/>
+                      <input type="date" name="date_event" placeholder="" class="border p-3 w-100 my-2"/>
                       Lieu:
                       <input type="text" name="lieu" class="border p-3 w-100 my-2"/>
                       Nombre participant maximum:
-                      <input type="number" name="nb_participant" placeholder="" class="border p-3 w-100 my-2"/>
+                      <input type="number" name="nb_parti_max" placeholder="" class="border p-3 w-100 my-2"/>
+                      Résumé:
+                      <input type="text" name="resume" placeholder="" class="border p-3 w-100 my-2" />
                     </br></br></br>
                             <button type="submit" class="d-block py-3 px-4 bg-primary text-white border-0 rounded font-weight-bold">S'inscrire</button>
                           </fieldset>

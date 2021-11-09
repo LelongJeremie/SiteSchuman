@@ -7,29 +7,19 @@ require_once '../manager/manager.php';
 try {
 
 
-    $pass_hache = crypt($_POST["password"], 'rl');
-    $passconf_hache = crypt($_POST["passwordconf"], 'rl');
-
-
   $user = new utilisateur([
-    "username" => $_POST["username"],
-    "password" => $pass_hache ,
-    "nom" => $_POST["nom"],       //RENTRER VALEUR DANS LES SETTERS
-    "prenom" => $_POST["prenom"],
-    "passwordconf" => $passconf_hache,
-    "mail" => $_POST["mail"],
-    "date_naissance" => $_POST["date_naissance"],
-    "role"=>$_POST["role"]
+    "titre" => $_POST["titre"],
+    "date_event" => $_POST["date_event"],       //RENTRER VALEUR DANS LES SETTERS
+    "lieu" => $_POST["lieu"],
+    "nb_parti_max"=>$_POST["nb_parti_max"],
+    "createur"=>$_SESSION['id'],
+    "resume"=>$_POST["resume"],
     ]);
-
 
 
     $man = new manager();
                                    //INSTANCIER
-
-    $man->inscription($user);
-    $man->mail($user);
-
+    $man->mkevent($user);
 
 
 } catch (Exception $e) {
@@ -40,7 +30,7 @@ $_SESSION["connect"] ="7";
 
 if (isset($_SESSION["connect"]) and $_SESSION["connect"] =="7") {
 
- header("Location: ../../frontend/view/register.php");
+ header("Location: ../../frontend/view/mkevent.php");
 }
 
 
@@ -48,13 +38,8 @@ if (isset($_SESSION["connect"]) and $_SESSION["connect"] =="7") {
 
 else {
 
-header("Location: ../../index.php");
+header("Location: ../../frontend/view/event.php");
 }
-
-
-
-
-
 
 
 
