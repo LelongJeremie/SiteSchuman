@@ -31,6 +31,7 @@
                       <input type="number" name="nb_parti_max" placeholder="" class="border p-3 w-100 my-2"/>
                       Résumé:
                       <input type="text" name="resume" placeholder="" class="border p-3 w-100 my-2" />
+                      <input type="hidden" name="createur" value="<?php echo $_SESSION["id"]; ?>"/>
                     </br></br></br>
                             <button type="submit" class="d-block py-3 px-4 bg-primary text-white border-0 rounded font-weight-bold">S'inscrire</button>
                           </fieldset>
@@ -42,6 +43,7 @@
               </section>
 		</div>
 	</div>
+</div>
   </br>
 	<!-- Container End -->
 
@@ -50,7 +52,9 @@
 =            Footer            =
 =============================-->
 
-<?php include('../include_frontends/footers.php'); ?>
+<?php
+var_dump($_SESSION["id"]);
+include('../include_frontends/footers.php'); ?>
   <!-- Container End -->
   <!-- To Top -->
 

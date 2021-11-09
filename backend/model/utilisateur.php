@@ -3,7 +3,7 @@
 require_once 'contact.php';
 class utilisateur extends contact{
 
-  public $id,$date_naissance,$verifmail,$nom,$salleidmodif,$prenom,$password, $passwordmodifconf,$passwordmodif,$passwordconf,$role,$username,$typemodif,$mail,$mailmodif,$idmodif,$idadminmodif,$nomadminmodif,$prenomadminmodif,$token,$passwordadminmodif,$mailadminmodif,$roleadminmodif,$titre,$date_event,$lieu,$createur,$resume,$nb_parti_max;
+  public $id,$createur,$date_naissance,$verifmail,$nom,$salleidmodif,$prenom,$password, $passwordmodifconf,$passwordmodif,$passwordconf,$role,$username,$typemodif,$mail,$mailmodif,$idmodif,$idadminmodif,$nomadminmodif,$prenomadminmodif,$token,$passwordadminmodif,$mailadminmodif,$roleadminmodif,$titre,$date_event,$lieu,$resume,$nb_parti_max;
 
   // constructeur
 
@@ -90,7 +90,7 @@ class utilisateur extends contact{
   }
   public function getResume()
   {
-    return $this-> Resume;
+    return $this-> resume;
   }
   public function getNb_parti_max()
   {
@@ -343,9 +343,15 @@ class utilisateur extends contact{
 
   public function setCreateur($createur)
   {
-    // On vérifie qu'il s'agit bien d'une chaîne de caractères.
-    if (is_string($createur))
+    // On convertit l'argument en nombre entier.
+    // Si c'en était déjà un, rien ne changera.
+    // Sinon, la conversion donnera le nombre 0 (à quelques exceptions près, mais rien d'important ici).
+    $createur = (int) $createur;
+
+    // On vérifie ensuite si ce nombre est bien strictement positif.
+    if ($createur > 0)
     {
+      // Si c'est le cas, c'est tout bon, on assigne la valeur à l'attribut correspondant.
       $this-> createur = $createur;
     }
   }
