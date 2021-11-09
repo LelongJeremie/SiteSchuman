@@ -697,6 +697,50 @@ var_dump($_SESSION);
     }
 
 
+    public function selectevent($a){ //POUR AFFICHER LES UTILISATEURS POUR LES MODIFIER EN TANT QU'ADMIN
+      session_start();
+      $_SESSION['ok'] = 1;
+      $this->dbh = new bdd();
+
+
+      $req = $this->dbh->getBase()->prepare("SELECT * from evenement where id = :id");
+      $req->execute(array(
+        'id' => $a->getIdmodif(),
+
+      ));
+
+      $res = $req->fetch();
+
+
+      if ($res) {
+
+        $_SESSION['ideventmodif'] = $res["id"];
+        $_SESSION['titremodif'] = $res["titre"];
+        $_SESSION['date_eventmodif'] = $res["date_event"];
+        $_SESSION['lieunmodif'] = $res["lieu"];
+        $_SESSION['createurnmodif'] = $res["createur"];
+        $_SESSION['nb_participantmodif'] = $res["nb_participant"];
+        $_SESSION['nb_parti_maxmodif'] = $res["nb_parti_max"];
+
+        $_SESSION["connect"] = "evenementmodal";
+
+
+
+      }
+
+      else {
+
+        throw new Exception("Erreur dans select admin",1);
+
+    var_dump($_SESSION);
+
+
+
+      }
+
+    }
+
+
 
 
           public function modificationnomprenomadmin($a) //MODIFIER NOM PRENOM EN TANT QU'ADMIN

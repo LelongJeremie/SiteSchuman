@@ -27,7 +27,7 @@
 
 
 
-       <?php if ( isset($_SESSION["connect"]) and $_SESSION["connect"] == "adminmodal") {
+       <?php if ( isset($_SESSION["connect"]) and $_SESSION["connect"] == "eventmodal") {
         ?>
 
      <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
@@ -248,6 +248,9 @@
            <?php  //$_SESSION["connect"] = "00000";
          } ?>
 
+<?php var_dump($_SESSION)?>
+
+
               <form action= "../../backend/process/joinevent.php" method= "post">
 
       <table id="myTable" class="ui celled table" style="width:100%">
@@ -271,14 +274,14 @@
     	            <tr>
                     <?php foreach ($res as $value) { ?>
     	                <td><?php echo $value['titre'];?></td>
-    	                <td><?php echo $value['date'];?></td>
+    	                <td><?php echo $value['date_event'];?></td>
                       <td><?php echo $value['lieu']; ?></td>
     	                <td><?php echo $value['createur'];?></td>
     	                <td><?php echo $value['resume'];?></td>
     	                <td><?php echo $value['nb_participant'];?></td>
 
                       <input type="hidden" name="titre" value="<?php $value['titre']; ?>" </>
-                      <input type="hidden" name="date" value="<?php $value['date']; ?>" </>
+                      <input type="hidden" name="date" value="<?php $value['date_event']; ?>" </>
                       <input type="hidden" name="lieu" value="<?php $value['lieu']; ?>" </>
                       <input type="hidden" name="createur" value="<?php $value['createur']; ?>" </>
                       <input type="hidden" name="resume" value="<?php $value['resume']; ?>" </>
