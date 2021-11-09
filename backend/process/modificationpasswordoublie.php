@@ -25,7 +25,7 @@ try {
     $man = new manager();
 
     $man->modificationpasswordoublie($user);
-    
+
 
 
 
@@ -33,7 +33,7 @@ try {
   $_SESSION["erreurcase"] = $e->getMessage();
 
 
- header("Location: ../../index.php");
+  header("Location: ../../index.php");
 
 }
 header("Location: ../../index.php");

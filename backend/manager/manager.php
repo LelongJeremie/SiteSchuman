@@ -946,18 +946,22 @@ $_SESSION['connect'] ="modifpassword";
               ));
 
               $res = $req->fetch();
-
+              $supprimer="";
               if ($res ) {
 
 
                 $this->dbh = new bdd();
-                $req = $this->dbh->getBase()->prepare("UPDATE utilisateur set password = :password where id = :id ");
+                $req = $this->dbh->getBase()->prepare("UPDATE utilisateur set token=NULL, password = :password where id = :id ");
                 $req->execute(array(
                   'id'=> $res['id'],
                   'password' => $a->getPassword(),
 
 
+
                 ));
+              
+
+
 
                 $_SESSION["connect"]="6";
 
