@@ -1131,7 +1131,7 @@ $_SESSION['connect'] ="modifpassword";
 
             else {
               $this->dbh = new bdd();
-              $req = $this->dbh->getBase()->prepare("INSERT INTO evenement (titre,date_event,lieu,createur,resume,nb_parti_max) values (:titre,:date_event,:lieu,:createur,:resume,:nb_parti_max))");          // verifier si un utilisateur et l'inscrire si il existe
+              $req = $this->dbh->getBase()->prepare("INSERT INTO evenement (titre,date_event,lieu,createur,resume,nb_participant,nb_parti_max) values (:titre,:date_event,:lieu,:createur,:resume,1,:nb_parti_max)");          // verifier si un utilisateur et l'inscrire si il existe
               $req->execute(array(
                 'titre'=>$a->getTitre(),
                 'date_event'=>$a->getDate_event(),
@@ -1142,9 +1142,7 @@ $_SESSION['connect'] ="modifpassword";
               ));
 
 
-
-              $_SESSION['connect'] ="2";
-
+              var_dump($req);
             }
 
           }
