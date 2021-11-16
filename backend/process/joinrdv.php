@@ -37,7 +37,7 @@ $man->selectrdv($user);
 
 
     }
-if (isset($_SESSION["connect"]) and $_SESSION["connect"] ='joinrdv') {
+if (isset($_SESSION["connect"]) and $_SESSION["connect"] =='joinrdv') {
 
 
  header("Location: ../../frontend/view/rdv.php");
