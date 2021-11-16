@@ -1125,9 +1125,13 @@ $_SESSION['connect'] ="modifpassword";
             $this->dbh = new bdd();
 
 
-            $req = $this->dbh->getBase()->prepare("SELECT * from rdv");
-            $req->execute(array());
-            var_dump($a);
+            $req = $this->dbh->getBase()->prepare("SELECT * FROM rdv INNER JOIN utilisateur ON rdv.id_participant = utilisateur.id WHERE RDV.id_participant = :id_participant or RDV.id_organisateur = :id_organisateur ");
+            $req->execute(array(
+                'id_organisateur'=>$_SESSION["id"],
+                'id_participant'=>$_SESSION["id"],
+
+            ));
+
             $res = $req->fetchall();
 
 

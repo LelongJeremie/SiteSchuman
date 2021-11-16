@@ -109,7 +109,7 @@
 
 
 
-              <form action= "../../backend/process/joinevent.php" method= "post">
+
 
       <table id="myTable" class="ui celled table" style="width:100%">
     	        <thead>
@@ -127,7 +127,12 @@
     	        <tbody>
     	            <tr>
                     <?php foreach ($res as $value) { ?>
-    	                <td><?php echo $value['nom'];?></td>
+
+
+
+                      <td><?php echo $value['nom']; ?></td>
+    	                <td><?php echo $value['prenom'];?></td>
+
 
                       <input type="hidden" name="nom" value="<?php $value['nom']; ?>" </>
 
@@ -136,7 +141,6 @@
 
 
 
-                    <td>  <button name="idmodif" style="margin-left:150px"  type="submit" value= <?php echo $value['id']; ?> class="d-block py-4 px-22 bg-primary text-white border-0 rounded font-weight-bold">Rejoindre le rendez-vous</button></td>
 
     	            </tr>
   <?php  }?>
@@ -156,7 +160,7 @@
 
 
 
-              </form>
+
 
 
 
@@ -165,19 +169,7 @@
       </section>
 
 
-      <?php if (isset($_SESSION["idadminmodif"]) and $_SESSION["idadminmodif"] > 0 ){ ?>
 
-
-
-
-
-</div>
-</div>
-</div>
-</div>
-</section>
-
-<?php }?>
 
 
 </br> </br></br>
