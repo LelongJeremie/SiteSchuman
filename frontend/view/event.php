@@ -104,8 +104,6 @@
                       <input type="hidden" name="createur" value="<?php $value['createur']; ?>" </>
                       <input type="hidden" name="resume" value="<?php $value['resume']; ?>" </>
                       <input type="hidden" name="nb_participant" value="<?php $value['nb_participant']; ?>" </>
-                      <input type="hidden" name="id" value=<?php echo $_SESSION['id']; ?> </>
-
 
 
                     <td>  <button name="idmodif" style="margin-left:150px"  type="submit" value= <?php echo $value['id']; ?> class="d-block py-4 px-22 bg-primary text-white border-0 rounded font-weight-bold">Rejoindre l'evenement</button></td>

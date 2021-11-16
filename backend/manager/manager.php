@@ -714,12 +714,13 @@ var_dump($_SESSION);
 
       if ($res) {
 
-        $this->dbh = new bdd();
-        $req = $this->dbh->getBase()->prepare("INSERT INTO participant (id_participant, id_organisateur, id_evenement) VALUES ( (select id from utilisateur where id =:id_participant),(select createur from evenement where id =:id_evenement ),(select id from evenement where id =:id_evenement  ))");
-        $req->execute(array(
-          'id_participant'=> $a->getId(),
-          'id_evenement'=>$a->getIdmodif(),
-
+        $_SESSION['ideventmodif'] = $res["id"];
+        $_SESSION['titremodif'] = $res["titre"];
+        $_SESSION['date_eventmodif'] = $res["date_event"];
+        $_SESSION['lieunmodif'] = $res["lieu"];
+        $_SESSION['createurnmodif'] = $res["createur"];
+        $_SESSION['nb_participantmodif'] = $res["nb_participant"];
+        $_SESSION['nb_parti_maxmodif'] = $res["nb_parti_max"];
 
 
         ));
@@ -1123,7 +1124,7 @@ $_SESSION['connect'] ="modifpassword";
 
               if($res["role"] and $a->getLieu()!="Dugny"){
                 $_SESSION["connect"] = "erreurmkevent";
-                
+
               }
 
             }
