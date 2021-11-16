@@ -27,7 +27,7 @@
 
 
 
-       <?php  var_dump($_SESSION); if ( isset($_SESSION["connect"]) and $_SESSION["connect"] == "joinrdv") {
+       <?php  if ( isset($_SESSION["connect"]) and $_SESSION["connect"] == "joinrdv") {
         ?>
        <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
        <script type="text/javascript">
@@ -116,8 +116,8 @@
              	            <tr>
 
 
-                            <th>Nom</th>
-                            <th>Prenom</th>
+                            <th>Nom du professeur</th>
+                            <th>Prenom du professeur</th>
 
                             <th></>
              	            </tr>
@@ -147,8 +147,8 @@
            <?php  }?>
              	        <thead>
              	            <tr>
-                             <th>nom</th>
-                             <th>prenom</th>
+                             <th>Nom du professeur</th>
+                             <th>Prenom du professeur</th>
                              <th></>
              	            </tr>
              	        </thead>
