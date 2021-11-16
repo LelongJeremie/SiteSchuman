@@ -133,7 +133,53 @@
     	            <tr>
                     <?php foreach ($res as $value) { ?>
     	                <td><?php echo $value['titre'];?></td>
-    	                <td><?php echo $value['date_event'];?></td>
+    	                <td><?php $date = date_parse($value['date_event']);
+    $jour = $date['day'];
+    $mois = $date['month'];
+    $annee = $date['year'];
+echo $date['day'],' ';
+    switch ($date['month']) {
+      case 1:
+          echo "Janvier ";
+          break;
+      case 2:
+          echo "Fevrier ";
+          break;
+      case 3:
+          echo "Mars ";
+          break;
+    case 4:
+        echo "Avril ";
+        break;
+    case 5:
+        echo "Ma i";
+        break;
+
+          case 6:
+              echo "Juin ";
+              break;
+          case 7:
+              echo "Juillet ";
+              break;
+              case 8:
+                  echo "Aout ";
+                  break;
+                  case 9:
+                      echo "Septembre ";
+                      break;
+                      case 10:
+                          echo "Octobre ";
+                          break;
+                          case 11:
+                              echo "Novembre ";
+                              break;
+                              case 12:
+                                  echo "Decembre " ;
+                                  break;
+
+
+      } echo $date['year'] ,' ';
+?></td>
                       <td><?php echo $value['lieu']; ?></td>
     	                <td><?php echo $value['nom'];?></td>
                         <td><?php echo $value['prenom'];?></td>
