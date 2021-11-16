@@ -27,7 +27,6 @@
 
 
 
-<?php var_dump($_SESSION)?>
 
 
               <form action= "../../backend/process/joinevent.php" method= "post">
@@ -65,7 +64,7 @@
                       <input type="hidden" name="createur" value="<?php $value['createur']; ?>" </>
                       <input type="hidden" name="resume" value="<?php $value['resume']; ?>" </>
                       <input type="hidden" name="nb_participant" value="<?php $value['nb_participant']; ?>" </>
-                      <input type="hidden" name="id" value="<?php $_SESSION['id']; ?>" </>
+                      <input type="hidden" name="id" value=<?php echo $_SESSION['id']; ?> </>
 
 
 

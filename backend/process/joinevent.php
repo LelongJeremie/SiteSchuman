@@ -30,12 +30,12 @@ $man->selectevent($user);
 
 
 
-   //header("Location: ../../frontend/view/event.php");
+   header("Location: ../../frontend/view/event.php");
 
     }
 
 
 
-  // header("Location: ../../frontend/view/event.php");
+  header("Location: ../../frontend/view/event.php");
 
  ?>

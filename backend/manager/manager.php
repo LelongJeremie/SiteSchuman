@@ -711,24 +711,21 @@ var_dump($_SESSION);
 
       $res = $req->fetch();
 
-      var_dump($a);
-      var_dump($res);
 
       if ($res) {
 
         $this->dbh = new bdd();
-        $req = $this->dbh->getBase()->prepare("INSERT INTO participant (id,id_participant, id_organisateur, id_evenement) VALUES (NULL,:id_participant,:id_organisateur,:id_evenement)");
+        $req = $this->dbh->getBase()->prepare("INSERT INTO participant (id_participant, id_organisateur, id_evenement) VALUES ( (select id from utilisateur where id =:id_participant),(select createur from evenement where id =:id_evenement ),(select id from evenement where id =:id_evenement  ))");
         $req->execute(array(
           'id_participant'=> $a->getId(),
-          'id_organisateur'=> $res["createur"],
-          'id_evenement'=>$res["id"],
+          'id_evenement'=>$a->getIdmodif(),
 
 
 
         ));
 
 
-var_dump($req);
+
       }
 
       else {
