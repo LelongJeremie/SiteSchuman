@@ -1151,6 +1151,34 @@ $_SESSION['connect'] ="modifpassword";
 
           }
 
+          public function afficherprof(){
+
+            session_start();
+            $this->dbh = new bdd();
+
+
+            $req = $this->dbh->getBase()->prepare("SELECT * from utilisateur where role=2");
+            $req->execute(array());
+
+            $res = $req->fetch();
+            var_dump($res);
+
+            if ($res) {
+
+              $_SESSION["reo"] = $res;
+
+
+            }
+
+            else {
+
+              throw new Exception("Erreur",1);
+
+
+            }
+
+          }
+
 
           public function mkevent($a){
             session_start();

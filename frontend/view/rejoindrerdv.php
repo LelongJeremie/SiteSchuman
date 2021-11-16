@@ -14,10 +14,10 @@
 
 
 
-      if (isset($_SESSION['stop']) and  $_SESSION['stop'] ==2) {    $res=$_SESSION["reZ"];    } // si stop == 1 on prend les valeurs donc les utilisateur de la base de donnée
+      if (isset($_SESSION['stop']) and  $_SESSION['stop'] ==3) {    $res=$_SESSION["reo"];    } // si stop == 1 on prend les valeurs donc les utilisateur de la base de donnée
                                                                             //Sinon on va dans le process pour recupérer ses valeurs
       else {
-        $_SESSION['stop']=2; header("Location: ../../backend/process/rdv.php");
+        $_SESSION['stop']=3; header("Location: ../../backend/process/afficherprof.php");
       }
       ?>
 
@@ -116,12 +116,17 @@
     	            <tr>
 
 
+<<<<<<< HEAD
 
                    <th>date</th>
                    <th>nom du participant</th>
                    <th>nom de l'organisateur</th>
 
 
+=======
+                   <th>Nom des professeurs</th>
+                   <th></>
+>>>>>>> ee02edf9487c441d18441f64cfef95991f634018
     	            </tr>
 
                 </br>
@@ -130,11 +135,16 @@
     	        <tbody>
     	            <tr>
                     <?php foreach ($res as $value) { ?>
+<<<<<<< HEAD
 
     	                <td><?php echo $value['date_rdv'];?></td>
                       <td><?php echo $value['nom']; ?></td>
     	                <td><?php echo $value['prenom'];?></td>
+=======
+    	                <td><?php echo $value['nomprof'];?></td>
+>>>>>>> ee02edf9487c441d18441f64cfef95991f634018
 
+                      <input type="hidden" name="nomprof" value="<?php $value['nomprof']; ?>" </>
 
 
                  </>
@@ -149,11 +159,16 @@
   <?php  }?>
     	        <thead>
     	            <tr>
+<<<<<<< HEAD
 
                     <th>date</th>
                     <th>nom du participant</th>
                     <th>nom de l'organisateur</th>
 
+=======
+                    <th>Nom des professeurs</th>
+                    <th></>
+>>>>>>> ee02edf9487c441d18441f64cfef95991f634018
     	            </tr>
     	        </thead>
     	    </table>
