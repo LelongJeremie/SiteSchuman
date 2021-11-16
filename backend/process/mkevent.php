@@ -29,9 +29,8 @@ try {
 
 }
 
-var_dump($_SESSION["connect"]);
 
-if (isset($_SESSION["connect"]) and $_SESSION["connect"] =="erreurmkevent") {
+if (isset($_SESSION["connect"]) and $_SESSION["connect"] =="erreurmkevent" or $_SESSION["connect"] =="erreurevenementexistant" ){
 
  header("Location: ../../frontend/view/mkevent.php");
 }
@@ -39,7 +38,7 @@ if (isset($_SESSION["connect"]) and $_SESSION["connect"] =="erreurmkevent") {
 
 else {
 
-  //header("Location: ../../frontend/view/event.php");
+  header("Location: ../../frontend/view/event.php");
 }
 
 
