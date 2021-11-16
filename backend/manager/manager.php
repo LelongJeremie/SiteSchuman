@@ -723,14 +723,16 @@ var_dump($_SESSION);
 
 
         ));
-        $_SESSION["connect"] ="joinevent";
+
+
+
       }
 
       else {
 
         throw new Exception("Erreur dans select admin",1);
 
-
+var_dump($_SESSION);
 
 
 
