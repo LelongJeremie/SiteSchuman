@@ -18,28 +18,28 @@ try {
 
     $man = new manager();
                                    //INSTANCIER
-    $man->verifrole($user);
 
-    if($_SESSION["verifrole"]==4 and $_POST["lieu"]=="Dugny")
-    //$man->mkevent($user);
+    $man->mkevent($user);
+
+
 
 } catch (Exception $e) {
 
-$_SESSION["connect"] ="7";
+
 
 }
 
-if (isset($_SESSION["connect"]) and $_SESSION["connect"] =="7") {
+var_dump($_SESSION["connect"]);
 
- //header("Location: ../../frontend/view/mkevent.php");
+if (isset($_SESSION["connect"]) and $_SESSION["connect"] =="erreurmkevent") {
+
+ header("Location: ../../frontend/view/mkevent.php");
 }
-
-
 
 
 else {
 
-//header("Location: ../../frontend/view/event.php");
+  //header("Location: ../../frontend/view/event.php");
 }
 
 

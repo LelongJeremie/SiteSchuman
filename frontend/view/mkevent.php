@@ -5,6 +5,41 @@
 
   <?php include '../../frontend/include_frontends/nav.php';  ?>
 <!-- contact us end -->
+<?php if ( isset($_SESSION["connect"]) and $_SESSION["connect"] == "erreurmkevent") {
+ ?>
+<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script type="text/javascript">
+$( document ).ready(function() {
+$('#myModal').modal('toggle')
+
+});
+</script>
+
+
+        <div class="modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+          aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header border-bottom-0">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body text-center">
+                <img src="images/account/Account1.png" class="img-fluid mb-2" alt="">
+                <h6 class="py-2">Erreur, un élève ne peut pas créer d'evenement exterieur ! </h6>
+
+
+              </div>
+              <div class="modal-footer border-top-0 mb-2 mx-4 justify-content-center">
+
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Fermer le pop-up</button>
+
+              </div>
+            </div>
+        </div>
+      </div>
+      <?php } ?>
 
 	<!-- Container Start -->
 	<div class="container">
@@ -53,7 +88,7 @@
 =============================-->
 
 <?php
-var_dump($_SESSION["id"]);
+var_dump($_SESSION["verifrole"]);
 include('../include_frontends/footers.php'); ?>
   <!-- Container End -->
   <!-- To Top -->
