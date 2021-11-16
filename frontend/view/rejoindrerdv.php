@@ -27,7 +27,7 @@
 
 
 
-       <?php  if ( isset($_SESSION["connect"]) and $_SESSION["connect"] == "joinrdv") {
+       <?php  var_dump($_SESSION); if ( isset($_SESSION["connect"]) and $_SESSION["connect"] == "joinrdv") {
         ?>
        <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
        <script type="text/javascript">
@@ -111,49 +111,48 @@
 
 
 
-      <table id="myTable" class="ui celled table" style="width:100%">
-    	        <thead>
-    	            <tr>
+               <table id="myTable" class="ui celled table" style="width:100%">
+             	        <thead>
+             	            <tr>
 
 
-                   <th>Nom des professeurs</th>
-                   <th>Prenom</th>
-                   <th></>
-    	            </tr>
+                            <th>Nom</th>
+                            <th>Prenom</th>
 
-                </br>
-    	        </thead>
+                            <th></>
+             	            </tr>
 
-    	        <tbody>
-    	            <tr>
-                    <?php foreach ($res as $value) { ?>
+                         </br>
+             	        </thead>
 
-
-
-                      <td><?php echo $value['nom']; ?></td>
-    	                <td><?php echo $value['prenom'];?></td>
+             	        <tbody>
+             	            <tr>
+                             <?php foreach ($res as $value) { ?>
+             	                <td><?php echo $value['nom'];?></td>
+             	                <td><?php echo $value['prenom'];?></td>
 
 
-                      <input type="hidden" name="nom" value="<?php $value['nom']; ?>" </>
+                               <input type="hidden" name="nom" value="<?php $value['nom']; ?>" </>
+                               <input type="hidden" name="prenom" value="<?php $value['prenom']; ?>" </>
 
-
-                      <input type="hidden" name="prenom" value=<?php echo $_value['prenom']; ?> </>
-
+                               <input type="hidden" name="id" value=<?php echo $_SESSION['id']; ?> </>
 
 
 
-    	            </tr>
-  <?php  }?>
-    	        </tbody>
+                             <td>  <button name="idmodif" style="margin-left:150px"  type="submit" value= <?php echo $value['id']; ?> class="d-block py-4 px-22 bg-primary text-white border-0 rounded font-weight-bold">Rejoindre l'evenement</button></td>
 
-    	        <thead>
-    	            <tr>
-                    <th>Nom des professeurs</th>
-                    <th>Prenom</th>
-                    <th></>
-    	            </tr>
-    	        </thead>
-    	    </table>
+             	            </tr>
+
+             	        </tbody>
+           <?php  }?>
+             	        <thead>
+             	            <tr>
+                             <th>nom</th>
+                             <th>prenom</th>
+                             <th></>
+             	            </tr>
+             	        </thead>
+             	    </table>
       <section class="login py-5 border-top-1">
         <div class="container">
           <div class="row justify-content-center">
