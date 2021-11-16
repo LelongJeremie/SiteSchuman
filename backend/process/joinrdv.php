@@ -33,12 +33,15 @@ $man->selectrdv($user);
 
 
 
-   header("Location: ../../frontend/view/rejoindrerdv.php");
+
+
 
     }
+if (isset($_SESSION["connect"]) and $_SESSION["connect"] ='joinrdv') {
 
 
+ header("Location: ../../frontend/view/rdv.php");
+}
 
- header("Location: ../../frontend/view/rejoindrerdv.php");
-
+else{    header("Location: ../../frontend/view/rejoindrerdv.php");         }
  ?>
