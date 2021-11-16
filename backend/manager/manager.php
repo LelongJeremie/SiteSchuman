@@ -1153,7 +1153,7 @@ $_SESSION['connect'] ="modifpassword";
             $this->dbh = new bdd();
 
 
-            $req = $this->dbh->getBase()->prepare("SELECT * from utilisateur where role=2");
+            $req = $this->dbh->getBase()->prepare("SELECT nom, prenom from utilisateur where role=2");
             $req->execute(array());
 
             $res = $req->fetch();
@@ -1162,6 +1162,7 @@ $_SESSION['connect'] ="modifpassword";
             if ($res) {
 
               $_SESSION["reo"] = $res;
+
 
 
             }

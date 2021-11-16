@@ -117,6 +117,7 @@
 
 
                    <th>Nom des professeurs</th>
+                   <th>Prenom</th>
                    <th></>
     	            </tr>
 
@@ -126,24 +127,25 @@
     	        <tbody>
     	            <tr>
                     <?php foreach ($res as $value) { ?>
-    	                <td><?php echo $value['nomprof'];?></td>
+    	                <td><?php echo $value['nom'];?></td>
 
-                      <input type="hidden" name="nomprof" value="<?php $value['nomprof']; ?>" </>
+                      <input type="hidden" name="nom" value="<?php $value['nom']; ?>" </>
 
 
-                      <input type="hidden" name="id" value=<?php echo $_SESSION['id']; ?> </>
+                      <input type="hidden" name="prenom" value=<?php echo $_value['prenom']; ?> </>
 
 
 
                     <td>  <button name="idmodif" style="margin-left:150px"  type="submit" value= <?php echo $value['id']; ?> class="d-block py-4 px-22 bg-primary text-white border-0 rounded font-weight-bold">Rejoindre le rendez-vous</button></td>
 
     	            </tr>
-
-    	        </tbody>
   <?php  }?>
+    	        </tbody>
+
     	        <thead>
     	            <tr>
                     <th>Nom des professeurs</th>
+                    <th>Prenom</th>
                     <th></>
     	            </tr>
     	        </thead>
