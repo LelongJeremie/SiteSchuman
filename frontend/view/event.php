@@ -328,14 +328,6 @@
 </div>
 </div>
 </div>
-<<<<<<< Updated upstream
-=======
-			</div>
-		</div>
-	</div>
-  </br>
-	<!-- Container End -->
->>>>>>> Stashed changes
 </section>
 
 <?php }?>

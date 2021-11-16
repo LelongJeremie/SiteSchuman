@@ -34,7 +34,7 @@
                             </br> </br>
 
 
-
+  <button type="submit" class="d-block py-3 px-4 bg-primary text-white border-0 rounded font-weight-bold">Prendre un rendez-vous</button>
                                 </div>
                             </fieldset>
                         </form>
