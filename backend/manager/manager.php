@@ -712,7 +712,19 @@ var_dump($_SESSION);
       $res = $req->fetch();
 
 
-      if ($res) {
+  if ($res) {   $rel = $this->dbh->getBase()->prepare("SELECT * from participant where id_participant = :id_participant and
+    id_organisateur = :id_organisateur and id_evenement = :id_evenement");
+    $rel->execute(array(
+      'id_participant' => $a->getId(),
+      'id_evenement' => $a->getIdmodif(),
+      'id_organisateur' => $res["createur"]
+
+    ));
+
+    $rem = $rel->fetch();
+ }
+
+      if (!$rem) {
 
         $this->dbh = new bdd();
         $req = $this->dbh->getBase()->prepare("INSERT INTO participant (id_participant, id_organisateur, id_evenement) VALUES ( (select id from utilisateur where id =:id_participant),(select createur from evenement where id =:id_evenement ),(select id from evenement where id =:id_evenement  ))");
@@ -727,7 +739,7 @@ var_dump($_SESSION);
       }
 
       else {
-
+$_SESSION["connect"] ="erreurjoinevent";
         throw new Exception("Erreur dans select admin",1);
 
 
