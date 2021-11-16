@@ -16,10 +16,12 @@ try {
     "resume"=>$_POST["resume"],
     ]);
 
-
     $man = new manager();
                                    //INSTANCIER
-    $man->mkevent($user);
+    $man->verifrole($user);
+
+    if($_SESSION["verifrole"]==4 and $_POST["lieu"]=="Dugny")
+    //$man->mkevent($user);
 
 } catch (Exception $e) {
 
@@ -29,7 +31,7 @@ $_SESSION["connect"] ="7";
 
 if (isset($_SESSION["connect"]) and $_SESSION["connect"] =="7") {
 
- header("Location: ../../frontend/view/mkevent.php");
+ //header("Location: ../../frontend/view/mkevent.php");
 }
 
 
@@ -37,7 +39,7 @@ if (isset($_SESSION["connect"]) and $_SESSION["connect"] =="7") {
 
 else {
 
-header("Location: ../../frontend/view/event.php");
+//header("Location: ../../frontend/view/event.php");
 }
 
 

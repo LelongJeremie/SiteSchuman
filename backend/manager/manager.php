@@ -1147,5 +1147,25 @@ $_SESSION['connect'] ="modifpassword";
 
           }
 
+          public function verifrole($a)
+          {
+            session_start();
+
+            $this->dbh = new bdd();
+            $req = $this->dbh->getBase()->prepare("SELECT role from utilisateur where id=:createur ");
+            $req->execute(array(
+              'createur'=> $a->getCreateur(),
+            ));
+
+            $res = $req->fetch();
+
+            if ($res) {
+
+              $_SESSION["verifrole"] = $res;
+
+
+            }
+          }
+
 
 }
