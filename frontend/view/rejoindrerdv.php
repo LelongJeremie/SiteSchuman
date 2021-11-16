@@ -116,12 +116,11 @@
     	            <tr>
 
 
-                   <th>titre</th>
+                   <th>id</th>
                    <th>date</th>
-                   <th>lieu</th>
-                   <th>createur</th>
-                   <th>resume</th>
-                   <th>nb_participant</th>
+                   <th>id_participant</th>
+                   <th>id_organisateur</th>
+
                    <th></>
     	            </tr>
 
@@ -131,24 +130,22 @@
     	        <tbody>
     	            <tr>
                     <?php foreach ($res as $value) { ?>
-    	                <td><?php echo $value['titre'];?></td>
-    	                <td><?php echo $value['date_event'];?></td>
-                      <td><?php echo $value['lieu']; ?></td>
-    	                <td><?php echo $value['createur'];?></td>
-    	                <td><?php echo $value['resume'];?></td>
-    	                <td><?php echo $value['nb_participant'];?></td>
+    	                <td><?php echo $value['id'];?></td>
+    	                <td><?php echo $value['date_rdv'];?></td>
+                      <td><?php echo $value['id_participant']; ?></td>
+    	                <td><?php echo $value['id_organisateur'];?></td>
 
-                      <input type="hidden" name="titre" value="<?php $value['titre']; ?>" </>
-                      <input type="hidden" name="date" value="<?php $value['date_event']; ?>" </>
-                      <input type="hidden" name="lieu" value="<?php $value['lieu']; ?>" </>
-                      <input type="hidden" name="createur" value="<?php $value['createur']; ?>" </>
-                      <input type="hidden" name="resume" value="<?php $value['resume']; ?>" </>
-                      <input type="hidden" name="nb_participant" value="<?php $value['nb_participant']; ?>" </>
+
+                      <input type="hidden" name="titre" value="<?php $value['id']; ?>" </>
+                      <input type="hidden" name="date" value="<?php $value['date_rdv']; ?>" </>
+                      <input type="hidden" name="lieu" value="<?php $value['id_participant']; ?>" </>
+                      <input type="hidden" name="createur" value="<?php $value['id_organisateur']; ?>" </>
+
                       <input type="hidden" name="id" value=<?php echo $_SESSION['id']; ?> </>
 
 
 
-                    <td>  <button name="idmodif" style="margin-left:150px"  type="submit" value= <?php echo $value['id']; ?> class="d-block py-4 px-22 bg-primary text-white border-0 rounded font-weight-bold">Rejoindre l'evenement</button></td>
+                    <td>  <button name="idmodif" style="margin-left:150px"  type="submit" value= <?php echo $value['id']; ?> class="d-block py-4 px-22 bg-primary text-white border-0 rounded font-weight-bold">Rejoindre le rendez-vous</button></td>
 
     	            </tr>
 
@@ -156,12 +153,10 @@
   <?php  }?>
     	        <thead>
     	            <tr>
-                    <th>titre</th>
+                    <th>id</th>
                     <th>date</th>
-                    <th>lieu</th>
-                    <th>createur</th>
-                    <th>resume</th>
-                    <th>nb_participant</th>
+                    <th>id_participant</th>
+                    <th>id_organisateur</th>
                     <th></>
     	            </tr>
     	        </thead>
