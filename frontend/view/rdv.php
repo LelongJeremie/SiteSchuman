@@ -20,7 +20,13 @@
                     <?php }?>
                         <form action="../../backend/process/adminajout.php" method= "post">
                             <fieldset class="p-4">
-                              Nom du professeur:
+                              Nom professeur:
+                              <ul class="dropdown-menu">
+                                <li><span class="dropdown-item-text">Dropdown item text</span></li>
+                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                              </ul>
                               <input type="text" name="nom_prof" placeholder="" class="border p-3 w-100 my-2" />
                               Nom du parent:
                               <input type="text" name="nom_parent" placeholder="" class="border p-3 w-100 my-2"/>
