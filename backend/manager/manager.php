@@ -1133,12 +1133,15 @@ $_SESSION['connect'] ="modifpassword";
 
             if ($res) {
 
-              if($res["role"] and $a->getLieu()!="Dugny"){
+              if($res["role"]=="4" and $a->getLieu()!="Dugny"){
                 $_SESSION["connect"] = "erreurmkevent";
-                
-              }
 
-            }
+              }
+              else {
+
+
+
+
 
             $this->dbh = new bdd();
             $req = $this->dbh->getBase()->prepare("SELECT * from evenement where titre=:titre");
@@ -1150,7 +1153,7 @@ $_SESSION['connect'] ="modifpassword";
 
 
             if ($res) {
-              throw new Exception("util");
+              $_SESSION["connect"] = "erreurevenementexistant";
 
             }
 
@@ -1169,10 +1172,13 @@ $_SESSION['connect'] ="modifpassword";
               ));
 
 
-              var_dump($req);
             }
 
-          }
+
+
+      }
+    }
+  }
 
 
 
