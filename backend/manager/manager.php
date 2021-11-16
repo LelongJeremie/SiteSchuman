@@ -751,6 +751,68 @@ $_SESSION["connect"] ="erreurjoinevent";
     }
 
 
+    public function selectrdv($a){ //POUR AFFICHER LES UTILISATEURS POUR LES MODIFIER EN TANT QU'ADMIN
+      session_start();
+      $_SESSION['ok'] = 1;
+      $this->dbh = new bdd();
+
+
+      $req = $this->dbh->getBase()->prepare("SELECT * from utilisateur where role = 2 and id = :id");
+      $req->execute(array(
+        'id' => $a->getIdmodif(),
+
+      ));
+
+      $res = $req->fetch();
+
+
+
+    if ($res) {   $rel = $this->dbh->getBase()->prepare("SELECT * from rdv where id_participant = :id_participant and
+    id_organisateur = :id_organisateur and date_rdv = :date_rdv  ");
+    $rel->execute(array(
+     'id_participant' => $a->getId(),
+      'id_organisateur' => $a->getIdmodif(),
+     'date_rdv' => $a->getDate_event(),
+
+  ));
+
+   $rem = $rel->fetch();
+
+    }
+
+
+      if (!$rem) {
+
+        $this->dbh = new bdd();
+        $req = $this->dbh->getBase()->prepare("INSERT INTO rdv (id_participant, id_organisateur, date_rdv) VALUES ( (select id from utilisateur where id =:id_participant),(select id from utilisateur where id =:id_modif ), :date_rdv)");
+        $req->execute(array(
+          'id_participant'=> $a->getId(),
+          'id_modif'=>$a->getIdmodif(),
+          'date_rdv'=>$a->getDate_event(),
+
+
+
+        ));
+        $_SESSION["connect"] ="joinrdv";
+      }
+
+      if ($rem) {
+
+
+        $_SESSION["connect"] ="erreurjoinrdv";
+      }
+
+      if ($a->getDate_event() == '') {
+
+
+        $_SESSION["connect"] ="erreurdatejoinrdv";
+      }
+
+
+
+
+
+    }
 
 
           public function modificationnomprenomadmin($a) //MODIFIER NOM PRENOM EN TANT QU'ADMIN
@@ -1097,7 +1159,7 @@ $_SESSION['connect'] ="modifpassword";
             $this->dbh = new bdd();
 
 
-            $req = $this->dbh->getBase()->prepare("SELECT * from evenement");
+            $req = $this->dbh->getBase()->prepare("SELECT * FROM evenement INNER JOIN utilisateur ON evenement.createur = utilisateur.id");
             $req->execute(array());
             var_dump($a);
             $res = $req->fetchall();

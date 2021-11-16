@@ -50,7 +50,7 @@
                    </div>
                    <div class="modal-body text-center">
                      <img src="images/account/Account1.png" class="img-fluid mb-2" alt="">
-                     <h6 class="py-2"> Evenement rejoint ! </h6>
+                     <h6 class="py-2"> Rendez-vous rejoint ! </h6>
 
 
                    </div>
@@ -67,7 +67,7 @@
 
            <?php  } ?>
 
-           <?php  if ( isset($_SESSION["connect"]) and $_SESSION["connect"] == "erreurjoinevent") {
+           <?php  if ( isset($_SESSION["connect"]) and $_SESSION["connect"] == "erreurjoinrdv") {
             ?>
            <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
            <script type="text/javascript">
@@ -90,7 +90,7 @@
                        </div>
                        <div class="modal-body text-center">
                          <img src="images/account/Account1.png" class="img-fluid mb-2" alt="">
-                         <h6 class="py-2"> Erreur pour rejoindre l'evenement : Vous l'avez surement déja rejoint ! </h6>
+                         <h6 class="py-2"> Erreur pour rejoindre le rendez-vous : Vous l'avez surement déja rejoint ! </h6>
 
 
                        </div>
@@ -107,9 +107,48 @@
 
                <?php  } ?>
 
+               <?php  if ( isset($_SESSION["connect"]) and $_SESSION["connect"] == "erreurdatejoinrdv") {
+                ?>
+               <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+               <script type="text/javascript">
+               $( document ).ready(function() {
+               $('#myModal').modal('toggle')
+               });
+               </script>
 
 
 
+
+                     <div class="modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+                       aria-hidden="true">
+                       <div class="modal-dialog modal-dialog-centered" role="document">
+                         <div class="modal-content">
+                           <div class="modal-header border-bottom-0">
+                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                               <span aria-hidden="true">&times;</span>
+                             </button>
+                           </div>
+                           <div class="modal-body text-center">
+                             <img src="images/account/Account1.png" class="img-fluid mb-2" alt="">
+                             <h6 class="py-2"> Erreur pour rejoindre le rendez-vous : Vous n'avez pas entrer de date ! </h6>
+
+
+                           </div>
+                           <div class="modal-footer border-top-0 mb-2 mx-4 justify-content-center">
+
+                             <button type="button" class="btn btn-primary" data-dismiss="modal">Fermer le pop-up</button>
+
+                           </div>
+                         </div>
+                       </div>
+                     </div>
+
+
+
+                   <?php  } ?>
+
+
+  <form action= "../../backend/process/joinrdv.php" method= "post">
 
                <table id="myTable" class="ui celled table" style="width:100%">
              	        <thead>
@@ -118,7 +157,7 @@
 
                             <th>Nom du professeur</th>
                             <th>Prenom du professeur</th>
-
+                            <th>date</th>
                             <th></>
              	            </tr>
 
@@ -130,7 +169,7 @@
                              <?php foreach ($res as $value) { ?>
              	                <td><?php echo $value['nom'];?></td>
              	                <td><?php echo $value['prenom'];?></td>
-
+                              <td> <input type="date" name="date"> </td>
 
                                <input type="hidden" name="nom" value="<?php $value['nom']; ?>" </>
                                <input type="hidden" name="prenom" value="<?php $value['prenom']; ?>" </>
@@ -149,6 +188,7 @@
              	            <tr>
                              <th>Nom du professeur</th>
                              <th>Prenom du professeur</th>
+                             <th>date</th>
                              <th></>
              	            </tr>
              	        </thead>
@@ -158,6 +198,7 @@
           <div class="row justify-content-center">
 
 
+          </form>
 
 
 
@@ -171,7 +212,8 @@
 
 
 
-</br> </br></br>
+</br> </br></br> </br> </br></br> </br></br>
+
 
 
 

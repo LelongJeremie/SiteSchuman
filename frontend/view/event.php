@@ -119,7 +119,8 @@
                    <th>titre</th>
                    <th>date</th>
                    <th>lieu</th>
-                   <th>createur</th>
+                   <th>nom du createur</th>
+                    <th>prenom du createur </th>
                    <th>resume</th>
                    <th>nb_participant</th>
                    <th></>
@@ -134,7 +135,8 @@
     	                <td><?php echo $value['titre'];?></td>
     	                <td><?php echo $value['date_event'];?></td>
                       <td><?php echo $value['lieu']; ?></td>
-    	                <td><?php echo $value['createur'];?></td>
+    	                <td><?php echo $value['nom'];?></td>
+                        <td><?php echo $value['prenom'];?></td>
     	                <td><?php echo $value['resume'];?></td>
     	                <td><?php echo $value['nb_participant'];?></td>
 
@@ -159,7 +161,8 @@
                     <th>titre</th>
                     <th>date</th>
                     <th>lieu</th>
-                    <th>createur</th>
+                    <th>nom du createur</th>
+                     <th>prenom du createur </th>
                     <th>resume</th>
                     <th>nb_participant</th>
                     <th></>
@@ -196,7 +199,7 @@
 <?php }?>
 
 
-</br> </br></br>
+</br> </br></br></br> </br></br></br> </br></br>
 
 
 
