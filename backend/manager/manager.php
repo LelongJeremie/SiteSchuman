@@ -1106,4 +1106,64 @@ $_SESSION['connect'] ="modifpassword";
             }
 
           }
+          public function mkevent($a){
+            session_start();
+
+
+
+            $this->dbh = new bdd();
+            $req = $this->dbh->getBase()->prepare("SELECT * from evenement where titre=:titre");
+            $req->execute(array(
+              'titre'=> $a->getTitre(),
+            ));
+
+            $res = $req->fetch();
+
+
+            if ($res) {
+              throw new Exception("util");
+
+            }
+
+
+
+            else {
+              $this->dbh = new bdd();
+              $req = $this->dbh->getBase()->prepare("INSERT INTO evenement (titre,date_event,lieu,createur,resume,nb_participant,nb_parti_max) values (:titre,:date_event,:lieu,:createur,:resume,1,:nb_parti_max)");          // verifier si un utilisateur et l'inscrire si il existe
+              $req->execute(array(
+                'titre'=>$a->getTitre(),
+                'date_event'=>$a->getDate_event(),
+                'lieu'=> $a->getLieu(),
+                'createur'=> $a->getCreateur(),
+                'resume' =>  $a->getResume(),
+                'nb_parti_max' => $a->getNb_parti_max(),
+              ));
+
+
+              var_dump($req);
+            }
+
+          }
+
+          public function verifrole($a)
+          {
+            session_start();
+
+            $this->dbh = new bdd();
+            $req = $this->dbh->getBase()->prepare("SELECT role from utilisateur where id=:createur ");
+            $req->execute(array(
+              'createur'=> $a->getCreateur(),
+            ));
+
+            $res = $req->fetch();
+
+            if ($res) {
+
+              $_SESSION["verifrole"] = $res;
+
+
+            }
+          }
+
+
 }
