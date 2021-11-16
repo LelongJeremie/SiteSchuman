@@ -109,19 +109,19 @@
 
 
 
-              <form action= "../../backend/process/joinevent.php" method= "post">
+
 
       <table id="myTable" class="ui celled table" style="width:100%">
     	        <thead>
     	            <tr>
 
 
-                   <th>id</th>
-                   <th>date</th>
-                   <th>id_participant</th>
-                   <th>id_organisateur</th>
 
-                   <th></>
+                   <th>date</th>
+                   <th>nom du participant</th>
+                   <th>nom de l'organisateur</th>
+
+
     	            </tr>
 
                 </br>
@@ -130,22 +130,18 @@
     	        <tbody>
     	            <tr>
                     <?php foreach ($res as $value) { ?>
-    	                <td><?php echo $value['id'];?></td>
+
     	                <td><?php echo $value['date_rdv'];?></td>
-                      <td><?php echo $value['id_participant']; ?></td>
-    	                <td><?php echo $value['id_organisateur'];?></td>
-
-
-                      <input type="hidden" name="titre" value="<?php $value['id']; ?>" </>
-                      <input type="hidden" name="date" value="<?php $value['date_rdv']; ?>" </>
-                      <input type="hidden" name="lieu" value="<?php $value['id_participant']; ?>" </>
-                      <input type="hidden" name="createur" value="<?php $value['id_organisateur']; ?>" </>
-
-                      <input type="hidden" name="id" value=<?php echo $_SESSION['id']; ?> </>
+                      <td><?php echo $value['nom']; ?></td>
+    	                <td><?php echo $value['prenom'];?></td>
 
 
 
-                    <td>  <button name="idmodif" style="margin-left:150px"  type="submit" value= <?php echo $value['id']; ?> class="d-block py-4 px-22 bg-primary text-white border-0 rounded font-weight-bold">Rejoindre le rendez-vous</button></td>
+                 </>
+
+
+
+
 
     	            </tr>
 
@@ -153,11 +149,11 @@
   <?php  }?>
     	        <thead>
     	            <tr>
-                    <th>id</th>
+
                     <th>date</th>
-                    <th>id_participant</th>
-                    <th>id_organisateur</th>
-                    <th></>
+                    <th>nom du participant</th>
+                    <th>nom de l'organisateur</th>
+
     	            </tr>
     	        </thead>
     	    </table>
@@ -167,7 +163,7 @@
 
 
 
-              </form>
+
 
 
 
@@ -176,19 +172,7 @@
       </section>
 
 
-      <?php if (isset($_SESSION["idadminmodif"]) and $_SESSION["idadminmodif"] > 0 ){ ?>
 
-
-
-
-
-</div>
-</div>
-</div>
-</div>
-</section>
-
-<?php }?>
 
 
 </br> </br></br>
