@@ -1112,6 +1112,23 @@ $_SESSION['connect'] ="modifpassword";
             session_start();
 
 
+            $this->dbh = new bdd();
+            $req = $this->dbh->getBase()->prepare("SELECT role from utilisateur where id=:createur");
+            $req->execute(array(
+              'createur'=> $a->getCreateur(),
+            ));
+
+            $res = $req->fetch();
+
+
+            if ($res) {
+
+              if($res["role"] and $a->getLieu()!="Dugny"){
+                $_SESSION["connect"] = "erreurmkevent";
+                
+              }
+
+            }
 
             $this->dbh = new bdd();
             $req = $this->dbh->getBase()->prepare("SELECT * from evenement where titre=:titre");
@@ -1147,25 +1164,8 @@ $_SESSION['connect'] ="modifpassword";
 
           }
 
-          public function verifrole($a)
-          {
-            session_start();
-
-            $this->dbh = new bdd();
-            $req = $this->dbh->getBase()->prepare("SELECT role from utilisateur where id=:createur ");
-            $req->execute(array(
-              'createur'=> $a->getCreateur(),
-            ));
-
-            $res = $req->fetch();
-
-            if ($res) {
-
-              $_SESSION["verifrole"] = $res;
 
 
-            }
-          }
 
 
 }
