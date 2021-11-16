@@ -15,7 +15,6 @@ try {
 $user = new utilisateur([
 
   "idmodif" => $_POST["idmodif"],
-  'id'=>$_POST["id"],
   ]);
 
 
@@ -36,6 +35,6 @@ $man->selectevent($user);
 
 
 
-  header("Location: ../../frontend/view/event.php");
+   header("Location: ../../frontend/view/event.php");
 
  ?>
