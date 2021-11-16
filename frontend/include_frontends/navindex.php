@@ -27,6 +27,7 @@
 								<div class="dropdown-menu">
 									<a class="dropdown-item" href="frontend/view/user-profile.php">Ton profile</a>
 									<a class="dropdown-item" href="frontend/view/rdv.php">Tes rendez-vous</a>
+									<a class="dropdown-item" href="rejoindrerdv.php">Rejoindre un rendez-vous</a>
 								</div>
 							</li>
               <?php } ?>

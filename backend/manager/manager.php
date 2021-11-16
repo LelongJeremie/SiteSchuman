@@ -1118,6 +1118,36 @@ $_SESSION['connect'] ="modifpassword";
             }
 
           }
+
+          public function afficherrdv(){
+
+            session_start();
+            $this->dbh = new bdd();
+
+
+            $req = $this->dbh->getBase()->prepare("SELECT * from rdv");
+            $req->execute(array());
+            var_dump($a);
+            $res = $req->fetchall();
+
+
+            if ($res) {
+
+              $_SESSION["reZ"] = $res;
+
+
+            }
+
+            else {
+
+              throw new Exception("Erreur",1);
+
+
+            }
+
+          }
+
+
           public function mkevent($a){
             session_start();
 
@@ -1135,7 +1165,7 @@ $_SESSION['connect'] ="modifpassword";
 
               if($res["role"] and $a->getLieu()!="Dugny"){
                 $_SESSION["connect"] = "erreurmkevent";
-                
+
               }
 
             }

@@ -14,10 +14,10 @@
 
 
 
-      if (isset($_SESSION['stop']) and  $_SESSION['stop'] ==1) {    $res=$_SESSION["res"];    } // si stop == 1 on prend les valeurs donc les utilisateur de la base de donnée
+      if (isset($_SESSION['stop']) and  $_SESSION['stop'] ==2) {    $res=$_SESSION["reZ"];    } // si stop == 1 on prend les valeurs donc les utilisateur de la base de donnée
                                                                             //Sinon on va dans le process pour recupérer ses valeurs
       else {
-        $_SESSION['stop']=1; header("Location: ../../backend/process/rdv.php");
+        $_SESSION['stop']=2; header("Location: ../../backend/process/rdv.php");
       }
       ?>
 
