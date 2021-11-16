@@ -14,10 +14,10 @@
 
 
 
-      if (isset($_SESSION['stop']) and  $_SESSION['stop'] ==2) {    $res=$_SESSION["reZ"];    } // si stop == 1 on prend les valeurs donc les utilisateur de la base de donnée
+      if (isset($_SESSION['stop']) and  $_SESSION['stop'] ==3) {    $res=$_SESSION["reo"];    } // si stop == 1 on prend les valeurs donc les utilisateur de la base de donnée
                                                                             //Sinon on va dans le process pour recupérer ses valeurs
       else {
-        $_SESSION['stop']=2; header("Location: ../../backend/process/rdv.php");
+        $_SESSION['stop']=3; header("Location: ../../backend/process/afficherprof.php");
       }
       ?>
 
@@ -116,11 +116,7 @@
     	            <tr>
 
 
-                   <th>id</th>
-                   <th>date</th>
-                   <th>id_participant</th>
-                   <th>id_organisateur</th>
-
+                   <th>Nom des professeurs</th>
                    <th></>
     	            </tr>
 
@@ -130,16 +126,10 @@
     	        <tbody>
     	            <tr>
                     <?php foreach ($res as $value) { ?>
-    	                <td><?php echo $value['id'];?></td>
-    	                <td><?php echo $value['date_rdv'];?></td>
-                      <td><?php echo $value['id_participant']; ?></td>
-    	                <td><?php echo $value['id_organisateur'];?></td>
+    	                <td><?php echo $value['nomprof'];?></td>
 
+                      <input type="hidden" name="nomprof" value="<?php $value['nomprof']; ?>" </>
 
-                      <input type="hidden" name="titre" value="<?php $value['id']; ?>" </>
-                      <input type="hidden" name="date" value="<?php $value['date_rdv']; ?>" </>
-                      <input type="hidden" name="lieu" value="<?php $value['id_participant']; ?>" </>
-                      <input type="hidden" name="createur" value="<?php $value['id_organisateur']; ?>" </>
 
                       <input type="hidden" name="id" value=<?php echo $_SESSION['id']; ?> </>
 
@@ -153,10 +143,7 @@
   <?php  }?>
     	        <thead>
     	            <tr>
-                    <th>id</th>
-                    <th>date</th>
-                    <th>id_participant</th>
-                    <th>id_organisateur</th>
+                    <th>Nom des professeurs</th>
                     <th></>
     	            </tr>
     	        </thead>
