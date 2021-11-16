@@ -28,13 +28,13 @@ $_SESSION["erreurcase"] = $e->getMessage();
 
 if (isset($_SESSION["erreurcase"]) and $_SESSION["erreurcase"] ='') {
    $_SESSION['stop']=2;
-    header("Location: ../../frontend/view/rejoindrerdv.php");
+    header("Location: ../../frontend/view/rdv.php");
 }
 
 else {
 
  $_SESSION['stop']=2;
-  header("Location: ../../frontend/view/rejoindrerdv.php");}
+  header("Location: ../../frontend/view/rdv.php");}
 
 
 
