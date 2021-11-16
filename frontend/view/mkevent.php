@@ -88,7 +88,7 @@ $('#myModal').modal('toggle')
 =============================-->
 
 <?php
-var_dump($_SESSION["verifrole"]);
+
 include('../include_frontends/footers.php'); ?>
   <!-- Container End -->
   <!-- To Top -->
