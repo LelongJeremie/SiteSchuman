@@ -10,7 +10,7 @@
 
 
 
-    if (isset($_SESSION['role'])  ){
+    if (isset($_SESSION['role']) OR !isset($_SESSION['role'])  ){
 
 
 
@@ -123,7 +123,8 @@
                     <th>prenom du createur </th>
                    <th>resume</th>
                    <th>nb_participant</th>
-                   <th></>
+                     <?php if (isset($_SESSION["id"])) { ?>
+                   <th></> <?php } ?>
     	            </tr>
 
                 </br>
@@ -192,12 +193,12 @@ echo $date['day'],' ';
                       <input type="hidden" name="createur" value="<?php $value['createur']; ?>" </>
                       <input type="hidden" name="resume" value="<?php $value['resume']; ?>" </>
                       <input type="hidden" name="nb_participant" value="<?php $value['nb_participant']; ?>" </>
+                  <?php if (isset($_SESSION["id"])) { ?>
                       <input type="hidden" name="id" value=<?php echo $_SESSION['id']; ?> </>
 
 
-
                     <td>  <button name="idmodif" style="margin-left:150px"  type="submit" value= <?php echo $value['id']; ?> class="d-block py-4 px-22 bg-primary text-white border-0 rounded font-weight-bold">Rejoindre l'evenement</button></td>
-
+<?php }?>
     	            </tr>
 
     	        </tbody>
@@ -211,7 +212,8 @@ echo $date['day'],' ';
                      <th>prenom du createur </th>
                     <th>resume</th>
                     <th>nb_participant</th>
-                    <th></>
+                    <?php if (isset($_SESSION["id"])) { ?>
+                  <th></> <?php } ?>
     	            </tr>
     	        </thead>
     	    </table>
