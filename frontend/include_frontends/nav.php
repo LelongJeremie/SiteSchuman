@@ -42,22 +42,24 @@
 								<a class="dropdown-item" href="rejoindrerdv.php">Rejoindre un rendez-vous</a>
 							</div>
 						</li>
+
+
+
+
+						<?php } ?>
 						<li class="nav-item dropdown dropdown-slide">
 							<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="">
 								Events<span><i class="fa fa-angle-down"></i></span>
 							</a>
 
-							<!-- Dropdown list -->
-							<div class="dropdown-menu">
-								<a class="dropdown-item" href="event.php">Events</a>
-								<a class="dropdown-item" href="mkevent.php">Faire un event</a>
-							</div>
-						</li>
-
+						<!-- Dropdown list -->
+						<div class="dropdown-menu">
+							<a class="dropdown-item" href="event.php">Events</a>
+							<?php if (isset($_SESSION["id"])){    ?>
+							<a class="dropdown-item" href="mkevent.php">Faire un event</a>
 						<?php } ?>
-
-
-
+						</div>
+					</li>
 							<!-- Dropdown list -->
 
 						</li>
