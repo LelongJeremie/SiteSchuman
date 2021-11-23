@@ -39,7 +39,7 @@
 								<!-- Dropdown list -->
 								<div class="dropdown-menu">
 									<a class="dropdown-item" href="frontend/view/event.php">Events</a>
-									<a class="dropdown-item" href="frontend/view/mkevent.php">Faire un event</a>
+									<?php if (isset($_SESSION["id"])){ echo '	<a class="dropdown-item" href="frontend/view/mkevent.php">Faire un event</a>'; }  ?>
 								</div>
 							</li>
 
