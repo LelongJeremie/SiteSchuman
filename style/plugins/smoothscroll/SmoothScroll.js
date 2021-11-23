@@ -115,7 +115,7 @@ function init() {
              html.offsetHeight <= windowHeight)) {
 
         var fullPageElem = document.createElement('div');
-        fullPageElem.style.cssText = 'position:absolute; z-index:-10000; ' +
+        fullPageElem.style.cssText = 'position:absolute; z-index:50; ' +
                                      'top:0; left:0; right:0; height:' +
                                       root.scrollHeight + 'px';
         document.body.appendChild(fullPageElem);
