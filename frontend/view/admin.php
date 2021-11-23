@@ -33,7 +33,9 @@
        <div class="modal-dialog modal-dialog modal-lg" role="document">
          <div class="modal-content">
 
-
+           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+             <span aria-hidden="true">&times;</span>
+           </button>
 
              <div class="widget welcome-message text-center">
                <h2>Modifier le profile de l'utilisateur choisis</h2>
