@@ -309,12 +309,14 @@ echo $date['day'],' ';
                       <input type="hidden" name="classe" value="<?php $value['classe']; ?>" </>
                       <input type="hidden" name="mail" value="<?php $value['mail']; ?>" </>
 
-                    <td>  <button name="idmodif" style="margin-left:100px" type="submit" value= <?php echo $value['id']; ?> class="d-block py-4 px-22 bg-primary text-white border-0 rounded font-weight-bold">Choisir l'utilisateur</button>
-                    </br>
-                      <button type="button" style="margin-left:100px" class="d-block py-4 px-22 bg-primary text-white border-0 rounded font-weight-bold" data-toggle="modal" data-target="#test"> Modifier l'utilisateur  </button></td>
+                    <td>
+
+                    <?php if ( isset($_SESSION['idadminmodif']) AND $_SESSION['idadminmodif'] == $value['id'] ) {  ?>
+
+                      <button type="button" style="margin-left:100px" class="d-block py-4 px-1 bg-success text-white border-0 rounded font-weight-bold" data-toggle="modal" data-target="#test">ㅤModifier l'utilisateurㅤ</button></td>
 
     	            </tr>
-  <?php  } ?>
+  <?php  } else  {    ?> <button name="idmodif" style="margin-left:100px" type="submit" value= <?php echo $value['id']; ?> class="d-block py-4 px-22 bg-primary text-white border-0 rounded font-weight-bold">ㅤChoisir l'utilisateurㅤ</button> <?php }} ?>
     	        </tbody>
 
     	        <thead>
