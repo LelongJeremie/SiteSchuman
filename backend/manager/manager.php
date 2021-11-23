@@ -1242,6 +1242,78 @@ $_SESSION['connect'] ="modifpassword";
 
           }
 
+          public function liaison($a)
+          {
+            session_start();
+
+
+
+            $this->dbh = new bdd();
+            $req = $this->dbh->getBase()->prepare("SELECT * from utilisateur where nom=:nom and prenom = :prenom and date_naissance = :date_naissance ");
+            $req->execute(array(
+              'nom'=> $a->getNom(),
+              'prenom'=>$a->getPrenom(),
+              'date_naissance'=>$a->getDate_naissance(),
+
+            ));
+
+            $res = $req->fetch();
+
+
+            if ($res) {
+
+              $this->dbh = new bdd();
+              $rem = $this->dbh->getBase()->prepare("SELECT * from utilisateur where id = :id ");
+              $rem->execute(array(
+                'id'=> $a->getId(),));
+  $rel = $rem->fetch();
+
+
+  if ($rel['id_famille'] == null) {
+
+    $famille_hache= crypt($a->getNom(), 'rl');
+    $famille = $a->getId()."$famille_hache";
+
+    $this->dbh = new bdd;
+    $rek = $this->dbh->getBase()->prepare("UPDATE utilisateur SET id_famille = :id_famille where id = :id ");
+    $rek->execute(array(
+      'id'=> $a->getId(),
+      'id_famille'=> $famille,
+    ));
+
+    $this->dbh = new bdd;
+    $rej = $this->dbh->getBase()->prepare("UPDATE utilisateur SET id_famille = :id_famille where id = :id ");
+    $rej->execute(array(
+      'id'=> $res["id"],
+      'id_famille'=> $famille,
+    ));
+
+
+
+  }
+
+  else {
+    var_dump(($rel['id_famille']));
+    $this->dbh = new bdd;
+    $rek = $this->dbh->getBase()->prepare("UPDATE utilisateur SET id_famille = :id_famille where id = :id ");
+    $rek->execute(array(
+      'id'=> $a->getId(),
+      'id_famille'=> $rel['id_famille'],
+    ));
+
+
+
+
+  }
+
+} }
+
+
+
+
+
+
+
 
           public function mkevent($a){
             session_start();
