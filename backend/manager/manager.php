@@ -688,16 +688,44 @@ $_SESSION['connect'] ="modif";
 
         throw new Exception("Erreur dans select admin",1);
 
-var_dump($_SESSION);
-
 
 
       }
 
     }
 
+        public function selectevent($a){ //POUR AFFICHER LES UTILISATEURS POUR LES MODIFIER EN TANT QU'ADMIN
+          session_start();
+          $_SESSION['ok'] = 1;
+          $this->dbh = new bdd();
 
-    public function selectevent($a){ //POUR AFFICHER LES UTILISATEURS POUR LES MODIFIER EN TANT QU'ADMIN
+
+          $req = $this->dbh->getBase()->prepare("SELECT * from evenement where id = :id");
+          $req->execute(array(
+              'id' => $a->getIdmodif(),
+            ));
+
+          $res = $req->fetch();
+          var_dump($res);
+          if ($res) {
+
+            $_SESSION["connect"] = "eventmodal";
+
+
+
+          }
+
+          else {
+
+            throw new Exception("Erreur dans select admin",1);
+
+
+
+          }
+
+        }
+
+    public function joinevent($a){ //POUR AFFICHER LES UTILISATEURS POUR LES MODIFIER EN TANT QU'ADMIN
       session_start();
       $_SESSION['ok'] = 1;
       $this->dbh = new bdd();
