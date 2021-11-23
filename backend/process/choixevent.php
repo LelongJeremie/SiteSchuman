@@ -12,30 +12,28 @@ try {
 //Affichage de tous les utilisateurs pour l'admin
 
 
+
 $user = new utilisateur([
 
   "idmodif" => $_POST["idmodif"],
-  'id'=>$_POST["id"],
   ]);
 
 
   $man = new manager();
 
-$man->joinevent($user);
-
-
+$man->selectevent($user);
 
 
     } catch (Exception $e) {
 
 
 
-   header("Location: ../../frontend/view/event.php");
+  // header("Location: ../../frontend/view/event.php");
 
     }
 
 
 
-  header("Location: ../../frontend/view/event.php");
+//   header("Location: ../../frontend/view/event.php");
 
  ?>
