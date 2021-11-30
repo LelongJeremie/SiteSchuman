@@ -694,36 +694,85 @@ $_SESSION['connect'] ="modif";
 
     }
 
-        public function selectevent($a){ //POUR AFFICHER LES UTILISATEURS POUR LES MODIFIER EN TANT QU'ADMIN
-          session_start();
-          $_SESSION['ok'] = 1;
-          $this->dbh = new bdd();
+    public function selectevent($a){ //POUR AFFICHER LES UTILISATEURS POUR LES MODIFIER EN TANT QU'ADMIN
+      session_start();
+      $_SESSION['ok'] = 1;
+      $this->dbh = new bdd();
 
 
-          $req = $this->dbh->getBase()->prepare("SELECT * from evenement where id = :id");
-          $req->execute(array(
-              'id' => $a->getIdmodif(),
-            ));
+      $req = $this->dbh->getBase()->prepare("SELECT * from evenement where id = :id");
+      $req->execute(array(
+          'id' => $a->getIdmodif(),
+        ));
 
-          $res = $req->fetch();
-          var_dump($res);
-          if ($res) {
-
-            $_SESSION["connect"] = "eventmodal";
-
+      $res = $req->fetch();
+      var_dump($res);
+      var_dump($a->getIdmodif());
+      if ($res) {
 
 
-          }
+                $_SESSION['idevent'] = $res["id"];
+                $_SESSION["date_event"] = $res["date_event"];
+                $_SESSION["lieu"] = $res["lieu"];
+                $_SESSION["createur"] = $res["createur"];
+                $_SESSION["resume"] = $res["resume"];
+                  $_SESSION["validationevent"] = $res["validationevent"];
+                $_SESSION["nb_participant"] = $res["nb_participant"];
+                $_SESSION["nb_parti_max"] = $res["nb_parti_max"];
 
-          else {
 
-            throw new Exception("Erreur dans select admin",1);
-
+        $_SESSION["connect"] = "eventmodal";
 
 
-          }
 
-        }
+      }
+
+      else {
+
+        throw new Exception("Erreur dans select admin",1);
+
+
+
+      }
+
+    }
+
+    public function deletevent($a){ //POUR AFFICHER LES UTILISATEURS POUR LES MODIFIER EN TANT QU'ADMIN
+      session_start();
+      $_SESSION['ok'] = 1;
+      $this->dbh = new bdd();
+
+
+      $req = $this->dbh->getBase()->prepare("SELECT * from evenement where id = :id");
+      $req->execute(array(
+          'id' => $a->getIdmodif(),
+        ));
+
+      $res = $req->fetch();
+
+      if ($res) {
+
+        $rem = $this->dbh->getBase()->prepare("DELETE FROM participant WHERE id = :id");
+        $rem->execute(array(
+            'id' => $a->getIdmodif(),
+          ));
+
+
+        $_SESSION["connect"] = "deleteevent";
+
+
+
+      }
+
+      else {
+
+        throw new Exception("Erreur dans select admin",1);
+
+
+
+      }
+
+    }
 
     public function joinevent($a){ //POUR AFFICHER LES UTILISATEURS POUR LES MODIFIER EN TANT QU'ADMIN
       session_start();
@@ -750,9 +799,12 @@ $_SESSION['connect'] ="modif";
     ));
 
     $rem = $rel->fetch();
+
  }
 
-      if (!$rem) {
+
+
+      if (isset($rem) AND !$rem) {
 
         $this->dbh = new bdd();
         $req = $this->dbh->getBase()->prepare("INSERT INTO participant (id_participant, id_organisateur, id_evenement) VALUES ( (select id from utilisateur where id =:id_participant),(select createur from evenement where id =:id_evenement ),(select id from evenement where id =:id_evenement  ))");
@@ -763,7 +815,7 @@ $_SESSION['connect'] ="modif";
 
 
         ));
-        $_SESSION["connect"] ="joinevent";
+        $_SESSION["connect"] ="event";
       }
 
       else {
@@ -1195,7 +1247,7 @@ $_SESSION['connect'] ="modifpassword";
 
             if ($res) {
 
-              $_SESSION["res"] = $res;
+              $_SESSION["rev"] = $res;
 
 
             }

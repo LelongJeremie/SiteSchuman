@@ -11,10 +11,9 @@ try {
 
 //Affichage de tous les utilisateurs pour l'admin
 
-
 $user = new utilisateur([
 
-  "idmodif" => $_POST["idmodif"],
+  "idmodif" => $_POST["idevent"],
   'id'=>$_POST["id"],
   ]);
 
@@ -24,7 +23,7 @@ $user = new utilisateur([
 $man->joinevent($user);
 
 
-
+$_SESSION["connect"] = "event";
 
     } catch (Exception $e) {
 
@@ -36,6 +35,6 @@ $man->joinevent($user);
 
 
 
-  header("Location: ../../frontend/view/event.php");
+ header("Location: ../../frontend/view/event.php");
 
  ?>

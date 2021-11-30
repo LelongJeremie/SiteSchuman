@@ -14,7 +14,7 @@
 
 
 
-      if (isset($_SESSION['stop']) and  $_SESSION['stop'] ==1) {    $res=$_SESSION["res"];    } // si stop == 1 on prend les valeurs donc les utilisateur de la base de donnée
+      if (isset($_SESSION['stop']) and  $_SESSION['stop'] ==1) {    $res=$_SESSION["rev"];    } // si stop == 1 on prend les valeurs donc les utilisateur de la base de donnée
                                                                             //Sinon on va dans le process pour recupérer ses valeurs
       else {
         $_SESSION['stop']=1; header("Location: ../../backend/process/event.php");
@@ -27,7 +27,65 @@
 
  <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
 
-       <?php  if ( isset($_SESSION["connect"]) and $_SESSION["connect"] == "joinevent") {
+
+
+<?php  if ( isset($_SESSION["connect"]) and $_SESSION["connect"] == "erreurjoinevent") {
+ ?>
+<div class="modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header border-bottom-0">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body text-center">
+        <img src="images/account/Account1.png" class="img-fluid mb-2" alt="">
+        <h6 class="py-2">Erreur pour rejoindre l'evenement : Vous l'avez surement déja rejoint ! </h6>
+
+
+      </div>
+      <div class="modal-footer border-top-0 mb-2 mx-4 justify-content-center">
+
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Fermer le pop-up</button>
+
+      </div>
+    </div>
+  </div>
+
+</div>
+<?php } ?>
+
+<?php  if ( isset($_SESSION["connect"]) and $_SESSION["connect"] == "event") {
+ ?>
+<div class="modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header border-bottom-0">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body text-center">
+        <img src="images/account/Account1.png" class="img-fluid mb-2" alt="">
+        <h6 class="py-2"> Evenement pas rejoint ! </h6>
+
+
+      </div>
+      <div class="modal-footer border-top-0 mb-2 mx-4 justify-content-center">
+
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Fermer le pop-up</button>
+
+      </div>
+    </div>
+  </div>
+
+</div>
+<?php } ?>
+
+       <?php  if ( isset($_SESSION["connect"]) and $_SESSION["connect"] == "eventmodal") {
         ?>
 
        <script type="text/javascript">
@@ -45,206 +103,103 @@
 
 
                     <div class="widget welcome-message text-center">
-                      <h2>Modifier le profile de l'utilisateur choisis</h2>
-                      <p>Vous pouvez modifier les informations personnels de l'utilisateur choisis</p>
+                      <h2>Détails de l'evenement</h2>
+                      <p>Voici tout les détails de cet evenement</p>
                     </div>
 
 
-                  <div class="modal-body text-center">
-                    <div class="widget personal-info">
-                      <h3 class="widget-header user">Modifier les informations personnels d'un utilisateur en tant qu'admin</h3>
-                      <form method="post" action="../../backend/process/modificationnomprenomadmin.php">
-                        <!-- First Name -->
-                        <div class="form-group">
-                          <label for="first-name">Prénom actuel de l'utilisateur : <?php  if (isset( $_SESSION["prenomadminmodif"]) ){ ?></label>
-                          <input type="text" name = "prenom"
-                          <?php
 
-                          if (isset($_SESSION["erreurcase"]) and $_SESSION["erreurcase"] == "caseprenomvide"){ echo'placeholder="Veuillez rentrer un prenom valide*"';  echo 'class="form-controlred  p-3 w-100 my-2"' ;}
-                          else { echo 'value='.$_SESSION["prenomadminmodif"].' class="form-control  p-3 w-100 my-2 " ';}} ?> />
-
-
-                        </div>
-                        <!-- Last Name -->
-                        <div class="form-group">
-                          <label for="last-name">Nom actuel de l'utilisateur : <?php  if (isset( $_SESSION["nomadminmodif"])) { ?></label>
-                          <input type="text" name = "nom"
-                          <?php
-                          if (isset($_SESSION["erreurcase"]) and $_SESSION["erreurcase"] == "caseprenomvide"){ echo'placeholder="Veuillez rentrer un nom valide*"';  echo 'class="form-controlred  p-3 w-100 my-2"' ;}
-                          else { echo 'value='.$_SESSION["nomadminmodif"].' class="form-control  p-3 w-100 my-2 " ';}} ?> />
-
-
-
-                        </div>
-
-                        <!-- Submit button -->
-                        <button name="typemodif" value="changernomprenom" type="submit" class="btn btn-transparent">Sauvegarder les modifications</button>
-                      </form>
-                    </div>
-                  </div>
-
-                                             <!-- Change Email Address -->
+                <!-->    $_SESSION['idevent']
+                    $_SESSION["date_event"]
+                    $_SESSION["lieu"]
+                    $_SESSION["createur"]
+                    $_SESSION["resume"]
+                    $_SESSION["nb_participant"]
+                    $_SESSION["nb_parti_max"]
+                    <-->
                                              <div class="modal-body text-center">
-                                             <div class="widget change-email mb-0">
-                                               <h3 class="widget-header user">Changer l'adresse mail</h3>
-                                               <form action="../../backend/process/modificationmailadmin.php" method="post">
-                                                 <!-- Current Password -->
-                                                 <div class="form-group">
-                                                   <label for="current-email">Mail actuel de l'utilisateur : <?php  if (isset( $_SESSION["mailadminmodif"]) ){  ?></label>
-                                                   <input type="email" name="mail"
-                                                   <?php
 
-                                                   if (isset($_SESSION["erreurcase"]) and $_SESSION["erreurcase"] == "toutecasemailvide"){ echo'placeholder="Veuillez rentrer un mail valide*"';  echo 'class="form-controlred  p-3 w-100 my-2"' ;}
-                                                   if (isset($_SESSION["erreurcase"]) and $_SESSION["erreurcase"] == "mailvide") { echo'placeholder="Veuillez rentrer un mail valide*"';  echo 'class="form-controlred  p-3 w-100 my-2"' ;}
-                                                   else { echo 'value='.$_SESSION["mailadminmodif"].' class="form-control  p-3 w-100 my-2 " ';} }?> />
+                                               <?php if ($_SESSION['role']=="2" OR $_SESSION['role'] =="1" ) {
+                                                  if($_SESSION['validationevent']==0){ echo ' <h3 class="widget-header user" > Evenement pas validé :  </h3> ❌';}
+                                                 else {
+                         echo '<h3 class="widget-header user" > Evenement pas validé :  </h3>✔️';
+                       }}?> </h3>
 
-                                                 </div>
+                                               <h3 class="widget-header user">Prénom du créateur : <?php echo $_SESSION["createur"]; ?> </h3>
+                                                <h3 class="widget-header user">Date de l'evenement : <?php $date = date_parse($_SESSION['date_event']);
+                              $jour = $date['day'];
+                              $mois = $date['month'];
+                              $annee = $date['year'];
+                          echo $date['day'],' ';
+                              switch ($date['month']) {
+                                case 1:
+                                    echo "Janvier ";
+                                    break;
+                                case 2:
+                                    echo "Fevrier ";
+                                    break;
+                                case 3:
+                                    echo "Mars ";
+                                    break;
+                              case 4:
+                                  echo "Avril ";
+                                  break;
+                              case 5:
+                                  echo "Ma i";
+                                  break;
 
-                                                 <!-- Submit Button -->
-                                                 <button name="typemodif" value="changermail" type="submit" class="btn btn-transparent">Changer le mail</button>
-
-                                               </form>
-                                             </div>
-
-                                               <!-- Change Email Address -->
-                                               <div class="widget change-email mb-0">
-                                                 <h3 class="widget-header user">Changer le Username de l'utilisateur</h3>
-
-                                                 <form action="../../backend/process/modificationusernameadmin.php" method="post">
-                                                   <!-- Current Password -->
-                                                   <div class="form-group">
-                                                     <label for="current-email">Username de l'utilisateur : <?php  if (isset( $_SESSION["usernameadminmodif"]) ){  ?></label>
-                                                     <input type="username" name="username"
-                                                     <?php
-
-                                                     if (isset($_SESSION["erreurcase"]) and $_SESSION["erreurcase"] == "toutecaseusernamevide"){ echo'placeholder="Veuillez rentrer un username valide*"';  echo 'class="form-controlred  p-3 w-100 my-2"' ;}
-                                                     if (isset($_SESSION["erreurcase"]) and $_SESSION["erreurcase"] == "mailvide") { echo'placeholder="Veuillez rentrer un username valide*"';  echo 'class="form-controlred  p-3 w-100 my-2"' ;}
-                                                     else { echo 'value='.$_SESSION["usernameadminmodif"].' class="form-control  p-3 w-100 my-2 " ';} }?> />
-
-                                                   </div>
-
-                                                   <!-- Submit Button -->
-                                                   <button name="typemodif" value="changermail" type="submit" class="btn btn-transparent">Changer le Username</button></form>
-                                                 </div></div>
-                                                 <!-- Change Password -->
-
-                                                 <div class="widget change-password">
-                                                   <div class="modal-body text-center">
-                                                   <h3 class="widget-header user">Modifier le mot de passe </h3>
-                                                   <form method="post" action="../../backend/process/modificationpasswordadmin.php">
-                                                     <!-- Current Password -->
-                                                     <div class="form-group">
-                                   <label for="Mot de passe"> Mot de passe : <?php  if (isset( $_SESSION["nomadminmodif"])) { ?></label>
-                                                       <input type="password" name="password"  <?php
-
-                                                       if (isset($_SESSION["erreurcase"]) and $_SESSION["erreurcase"] == "toutecasepasswordvide"){ echo'placeholder="Veuillez rentrer un mot de passe valide *"';  echo 'class="form-controlred  p-3 w-100 my-2"' ;}
-                                                       if (isset($_SESSION["erreurcase"]) and $_SESSION["erreurcase"] == "passwpordvide") { echo'placeholder="Veuillez rentrer un mail valide*"';  echo 'class="form-controlred  p-3 w-100 my-2"' ;}
-                                                       if (isset($_SESSION["erreurcase"]) and $_SESSION["erreurcase"] == "correspondpas") { echo'placeholder="Les mots de passe rentrés ne sont pas identiques*"'; echo 'class="form-controlred p-3 w-100 my-2/>"';}
-                                                       else { echo 'placeholder="Mot de passe " class="form-control  p-3 w-100 my-2"';} }?> />
-                                                     </div>
-
-                                                     <!-- Submit Button -->
-                                                     <button name="typemodif" value="changermotdepasse" type="submit" class="btn btn-transparent">Modifier le mot de passe</button>
-                                                   </form>
-                                                 </div>
-                                                 </br>
-                                               </br>
-                                               <!-- Change Password -->
-                                               <div class="modal-body text-center">
-                                               <h3 class="widget-header user">Modifier le role </h3>
+                                    case 6:
+                                        echo "Juin ";
+                                        break;
+                                    case 7:
+                                        echo "Juillet ";
+                                        break;
+                                        case 8:
+                                            echo "Aout ";
+                                            break;
+                                            case 9:
+                                                echo "Septembre ";
+                                                break;
+                                                case 10:
+                                                    echo "Octobre ";
+                                                    break;
+                                                    case 11:
+                                                        echo "Novembre ";
+                                                        break;
+                                                        case 12:
+                                                            echo "Decembre " ;
+                                                            break;
 
 
-                                               <form method="post" action="../../backend/process/modificationroleadmin.php">
-                                                 <!-- Current Password -->
-                                                 <div class="form-group">
-                                                   <label for="current-password">ROLE actuel de l'utilisateur : <?php  if (isset( $_SESSION["roleadminmodif"])  and $_SESSION["roleadminmodif"] ==1 ) {echo "ADMINISTRATEUR ";} else {
-                                                     echo " NON-ADMINISTRATEUR ";
-                                                   } ?> </br></br>CHOISIR ADMINISTRATEUR : </>
-                                                 </br>     </br>     </br>
-                                                 <input  type="radio" name="roleadminmodif" class="form-controlred p-1 w-50 my-1" value="1"
-                                                 checked></BR></BR></BR>
-
-                                                 CHOISIR NON-ADMINISTRATEUR</> :
-                                                 <input type="radio" name="roleadminmodif" class="form-controlred p-1 w-50 my-1" value="2"
-                                                 ></BR>
+                                } echo $date['year'] ,' ';
+                          ?></h3>
+                                                    <h3 class="widget-header user">Prénom actuel de l'utilisateur : <?php echo $_SESSION["createur"]; ?> </h3>
+                                                        <h3 class="widget-header user">Prénom actuel de l'utilisateur : <?php echo $_SESSION["createur"]; ?> </h3>
+                                                            <h3 class="widget-header user">Prénom actuel de l'utilisateur : <?php echo $_SESSION["createur"]; ?> </h3>
+                                                            <form action= "../../backend/process/joinevent.php" method= "post">
+                                                              <input type="hidden" name="id" value="<?php echo  $_SESSION['id']; ?>" </>
 
 
-                                               </div>
-
-                                               <!-- Submit Button -->
-                                               <button name="typemodif" value="changermotdepasse" type="submit" class="btn btn-transparent">Modifier le role</button>
-                                             </form>
-                                           </DIV>
-                                         </div>
+  <button name="idevent" style="margin-left:100px" type="submit" value= " <?php echo $_SESSION['idevent']; ?> " class="d-block py-4 px-22 bg-primary text-white border-0 rounded font-weight-bold">Rejoindre l'evenement</button> </form>
                                          </br>
-                                         <div class="modal-body text-center">
-
-
-                                     <a href="" data-toggle="modal" data-target="#deleteaccount" style="margin-bottom: 50px"  class="btn btn-danger">Supprimer le compte</a>
-
-                                   </ul>
 
                                </div>
+
                                <div class="modal-body text-center"style="margin-bottom: 5px">
 
-                                 <button type="button" class="btn btn-transparent" data-dismiss="modal">Fermer</button>
+
                                </div>
                                  <!-- delete-account modal -->
                                  <!-- delete account popup modal start-->
                                  <!-- Modal -->
-                                 <div class="modal" id="deleteaccount" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                                 <div class="modal-dialog modal-dialog-centered" role="document">
-                                   <div class="modal-content">
-                                     <div class="modal-header border-bottom-0">
-                                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                         <span aria-hidden="true">&times;</span>
-                                       </button>
-                                     </div>
-                                     <div class="modal-body text-center">
-                                       <img src="../../style/images/account/Account1.png" class="img-fluid mb-2" alt="">
-                                       <h6 class="py-2">Voulez vous vraiment supprimer ce compte?</h6>
-                                       <p>Ce procédé est irreversible.</p>
 
-                                     </div>
-                                     <div class="modal-footer border-top-0 mb-3 mx-5 justify-content-lg-between justify-content-center">
-
-                                       <button type="button" class="btn btn-primary" data-dismiss="modal">Annuler</button>
-                                       <form   action="../../backend/process/supprimeradmin.php" method="post" >
-                                         <button type="submit" type="button" class="btn btn-danger">Supprimer</button></form>
-                                       </div>
-
-                                     </div>
-                                   </div>
-                                 </div>
 
                 </div>
               </div>
             </div>
 
 
-             <div class="modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-               aria-hidden="true">
-               <div class="modal-dialog modal-dialog-centered" role="document">
-                 <div class="modal-content">
-                   <div class="modal-header border-bottom-0">
-                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                       <span aria-hidden="true">&times;</span>
-                     </button>
-                   </div>
-                   <div class="modal-body text-center">
-                     <img src="images/account/Account1.png" class="img-fluid mb-2" alt="">
-                     <h6 class="py-2"> Evenement rejoint ! </h6>
 
-
-                   </div>
-                   <div class="modal-footer border-top-0 mb-2 mx-4 justify-content-center">
-
-                     <button type="button" class="btn btn-primary" data-dismiss="modal">Fermer le pop-up</button>
-
-                   </div>
-                 </div>
-               </div>
-             </div>
 
 
 
@@ -288,7 +243,36 @@
 
 
 
-               <?php  } ?>
+               <?php  }  ?>
+
+               <?php  if ( isset($_SESSION["connect"]) and $_SESSION["connect"] == "event") {
+                ?>
+               <div class="modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+                 aria-hidden="true">
+                 <div class="modal-dialog modal-dialog-centered" role="document">
+                   <div class="modal-content">
+                     <div class="modal-header border-bottom-0">
+                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                         <span aria-hidden="true">&times;</span>
+                       </button>
+                     </div>
+                     <div class="modal-body text-center">
+                       <img src="images/account/Account1.png" class="img-fluid mb-2" alt="">
+                       <h6 class="py-2"> Evenement pas rejoint ! </h6>
+
+
+                     </div>
+                     <div class="modal-footer border-top-0 mb-2 mx-4 justify-content-center">
+
+                       <button type="button" class="btn btn-primary" data-dismiss="modal">Fermer le pop-up</button>
+
+                     </div>
+                   </div>
+                 </div>
+
+               </div>
+               <?php } ?>
+
 
 
 
@@ -302,10 +286,10 @@
                    <th>titre</th>
                    <th>date</th>
                    <th>lieu</th>
-                   <th>nom du createur</th>
-                    <th>prenom du createur </th>
                    <th>resume</th>
-                   <th>nb_participant</th>
+                   <?php  if (isset($_SESSION['role']) AND $_SESSION['role']=="2" OR isset($_SESSION['role']) AND $_SESSION['role'] =="1" ) { ?>
+                   <th>validation</th>
+                   <?php } ?>
                      <?php if (isset($_SESSION["id"])) { ?>
                    <th></> <?php } ?>
     	            </tr>
@@ -316,6 +300,7 @@
     	        <tbody>
     	            <tr>
                     <?php foreach ($res as $value) { ?>
+
     	                <td><?php echo $value['titre'];?></td>
     	                <td><?php $date = date_parse($value['date_event']);
     $jour = $date['day'];
@@ -364,25 +349,40 @@ echo $date['day'],' ';
 
       } echo $date['year'] ,' ';
 ?></td>
-                      <td><?php echo $value['lieu']; ?></td>
-    	                <td><?php echo $value['nom'];?></td>
-                        <td><?php echo $value['prenom'];?></td>
+
+                      <td><?php if ($value['lieu'] != "Dugny" or $value['lieu'] != "dugny" ) {
+                      echo "Externe : ".$value['lieu'];
+                    } else {
+                      echo "Interne : ".$value['lieu'];
+                    }?></td>
+
     	                <td><?php echo $value['resume'];?></td>
-    	                <td><?php echo $value['nb_participant'];?></td>
+
+                      <?php  if (isset($_SESSION['role']) AND $_SESSION['role']=="2" OR isset($_SESSION['role']) AND $_SESSION['role'] =="1" ) { ?>
+                        <td><?php if($value['validationevent']==0){ echo "Evenement pas validé : ❌";}
+                          else {
+  echo "Evenement validé : ✔️";
+                          }?></td>
+                      <?php } ?>
+
+
+
                       <input type="hidden" name="idevent" value="<?php $value['id']; ?>" </>
+
                       <input type="hidden" name="titre" value="<?php $value['titre']; ?>" </>
                       <input type="hidden" name="date" value="<?php $value['date_event']; ?>" </>
-                      <input type="hidden" name="lieu" value="<?php $value['lieu']; ?>" </>
+                      <input type="hiden" name="lieu" value="<?php $value['lieu']; ?>" </>
                       <input type="hidden" name="createur" value="<?php $value['createur']; ?>" </>
                       <input type="hidden" name="resume" value="<?php $value['resume']; ?>" </>
                       <input type="hidden" name="nb_participant" value="<?php $value['nb_participant']; ?>" </>
-                  <?php if (isset($_SESSION["id"])) { ?>
+                  <?php if (isset($_SESSION["id"])) {  ?><td><?php  if(isset($_SESSION["idevent"]) AND $_SESSION["connect"]=="eventmodal" AND $_SESSION["idevent"] == $value['0'] ) { ?>
                       <input type="hidden" name="id" value=<?php echo $_SESSION['id']; ?> </>
-
-
-                      <td>  <button name="idevent" style="margin-left:100px" type="submit" value= <?php echo $value['id']; ?> class="d-block py-4 px-22 bg-primary text-white border-0 rounded font-weight-bold">Choisir l'evenement</button>
+  <button type="button" style="margin-left:100px" class="d-block py-4 px-22 bg-success text-white border-0 rounded font-weight-bold" data-toggle="modal" data-target="#test"> Detail de l'evenement</button>
+<?php } else {
+  ?>
+                        <button name="idevent" style="margin-left:100px" type="submit" value= <?php echo $value['0']; ?> class="d-block py-4 px-22 bg-primary text-white border-0 rounded font-weight-bold">Choisir l'evenement</button>
                       </br>
-                        <button type="button" style="margin-left:100px" class="d-block py-4 px-22 bg-primary text-white border-0 rounded font-weight-bold" data-toggle="modal" data-target="#test"> Detail de l'evenement</button></td>
+<?php } ?> </td>
 <?php }?>
     	            </tr>
 
@@ -393,10 +393,10 @@ echo $date['day'],' ';
                     <th>titre</th>
                     <th>date</th>
                     <th>lieu</th>
-                    <th>nom du createur</th>
-                     <th>prenom du createur </th>
                     <th>resume</th>
-                    <th>nb_participant</th>
+                    <?php  if (isset($_SESSION['role']) AND $_SESSION['role']=="2" OR isset($_SESSION['role']) AND $_SESSION['role'] =="1" ) { ?>
+                    <th>validation</th>
+                    <?php } ?>
                     <?php if (isset($_SESSION["id"])) { ?>
                   <th></> <?php } ?>
     	            </tr>
@@ -417,19 +417,7 @@ echo $date['day'],' ';
       </section>
 
 
-      <?php if (isset($_SESSION["idadminmodif"]) and $_SESSION["idadminmodif"] > 0 ){ ?>
 
-
-
-
-
-</div>
-</div>
-</div>
-</div>
-</section>
-
-<?php }?>
 
 
 </br> </br></br></br> </br></br></br> </br></br>
