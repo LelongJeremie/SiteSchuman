@@ -107,26 +107,15 @@
                       <p>Voici tout les détails de cet evenement</p>
                     </div>
 
-
-
-                <!-->    $_SESSION['idevent']
-                    $_SESSION["date_event"]
-                    $_SESSION["lieu"]
-                    $_SESSION["createur"]
-                    $_SESSION["resume"]
-                    $_SESSION["nb_participant"]
-                    $_SESSION["nb_parti_max"]
-                    <-->
                                              <div class="modal-body text-center">
-
                                                <?php if ($_SESSION['role']=="2" OR $_SESSION['role'] =="1" ) {
                                                   if($_SESSION['validationevent']==0){ echo ' <h3 class="widget-header user" > Evenement pas validé :  </h3> ❌';}
                                                  else {
                          echo '<h3 class="widget-header user" > Evenement pas validé :  </h3>✔️';
                        }}?> </h3>
 
-                                               <h3 class="widget-header user">Prénom du créateur : <?php echo $_SESSION["createur"]; ?> </h3>
-                                                <h3 class="widget-header user">Date de l'evenement : <?php $date = date_parse($_SESSION['date_event']);
+                                               <h3 class="widget-header user">Prénom du créateur :</h3> <?php echo $_SESSION["createur"]; ?>
+                                                <h3 class="widget-header user">Date de l'evenement :</h3> <?php $date = date_parse($_SESSION['date_event']);
                               $jour = $date['day'];
                               $mois = $date['month'];
                               $annee = $date['year'];
@@ -172,10 +161,17 @@
 
 
                                 } echo $date['year'] ,' ';
-                          ?></h3>
-                                                    <h3 class="widget-header user">Prénom actuel de l'utilisateur : <?php echo $_SESSION["createur"]; ?> </h3>
-                                                        <h3 class="widget-header user">Prénom actuel de l'utilisateur : <?php echo $_SESSION["createur"]; ?> </h3>
-                                                            <h3 class="widget-header user">Prénom actuel de l'utilisateur : <?php echo $_SESSION["createur"]; ?> </h3>
+                          ?>
+                        <h3 class="widget-header user">Lieu de l'evenement : </h3> <?php if ($_SESSION['lieu'] != "Dugny" or $_SESSION['lieu'] != "dugny" ) {
+                          echo "Externe : ".$_SESSION['lieu'];
+                          } else {
+                          echo "Interne : ".$_SESSION['lieu'];
+                          }?></h3>
+
+                          <h3 class="widget-header user">Description de l'evenement:</h3> <?php echo $_SESSION["resume"]; ?>
+                          <h3 class="widget-header user">Nombre de participant à l'evenement :</h3> <?php echo $_SESSION["nb_participant"]; ?>
+                                                        <h3 class="widget-header user">Nombre de participant maximum à l'evenement : </h3><?php echo $_SESSION["nb_parti_max"]; ?>
+
                                                             <form action= "../../backend/process/joinevent.php" method= "post">
                                                               <input type="hidden" name="id" value="<?php echo  $_SESSION['id']; ?>" </>
 

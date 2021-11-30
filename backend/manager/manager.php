@@ -811,10 +811,17 @@ $_SESSION['connect'] ="modif";
         $req->execute(array(
           'id_participant'=> $a->getId(),
           'id_evenement'=>$a->getIdmodif(),
-
-
-
         ));
+
+                $this->dbh = new bdd();
+                $rea = $this->dbh->getBase()->prepare("UPDATE evenement SET nb_participant = (SELECT nb_participant WHERE id=:id_evenement)-1 WHERE id=:id_evenement");
+                $rea->execute(array(
+                  'id_evenement'=>$a->getIdmodif(),
+                ));
+
+
+
+
         $_SESSION["connect"] ="event";
       }
 
