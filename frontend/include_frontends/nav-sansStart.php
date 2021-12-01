@@ -103,7 +103,7 @@
 								 <a class="nav-link login-button" href="../../backend/process/deconnexion.php">Deconnexion</a>
 							 </li>
 							 <li class="nav-item">
-								<a class="nav-link text-white add-button" href="chat.php"> Tchat maintenant  </a>
+								<a class="nav-link text-white add-button" href="../../chat/index.php"> Tchat maintenant  </a>
 							</li>
 						 <?php }  else {  ?>
 

@@ -21,7 +21,7 @@ include('functions.php');
         $query_2->execute(array('pseudo' => $pseudo));
         $query_3 = $bdd-prepare('DELETE FROM mail_verif WHERE pseudo = :pseudo');
         $query_3->execute(array('pseudo' => $pseudo));
-        echo '<span id="mail_ok">Votre e-mail à bien été vérifié, Votre compte à été crée ! <a href="index.php">Accueil</a></span>';
+        echo '<span id="mail_ok">Votre e-mail ï¿½ bien ï¿½tï¿½ vï¿½rifiï¿½, Votre compte ï¿½ ï¿½tï¿½ crï¿½e ! <a href="../../frontend/view/chat.php">Accueil</a></span>';
         }
        else {
         echo 'Erreur';

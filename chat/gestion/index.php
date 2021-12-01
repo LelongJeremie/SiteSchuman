@@ -4,7 +4,7 @@ require ('./../script/functions.php');
 $bdd = bdd_connect();
 delete_msg();
 if ($_SESSION['pseudo'] == NULL) {
-    header('Location: ./../index.php');
+    header('Location: ../../frontend/view/chat.phpp');
     }
       else {}
 ?>
@@ -23,4 +23,3 @@ if ($_SESSION['pseudo'] == NULL) {
      <h3><a href="change.php?action=2">Effacer mes messages</a></h3>
      <h3><a href="change.php?action=3">Supprimer mon compte</a></h3>
     </center>
-    

@@ -1,6 +1,6 @@
 <?php
 function bdd_connect() {
-$dsn = 'mysql:dbname=chat;host=localhost';
+$dsn = 'mysql:dbname=siteschuman;host=localhost';
 $user = 'root';
 $password = '';
 try {
@@ -25,7 +25,7 @@ function psw_verif() {
 
 function crypt_mdp ($mdp_a_crypte) {
 $mdp = $mdp_a_crypte;
-for ($i=0;$i<65535;$i++) { 
+for ($i=0;$i<65535;$i++) {
 $mdp = sha1($mdp);
 $mdp = md5($mdp);
 }
@@ -37,8 +37,8 @@ function inscription() {
  $psw_verif = psw_verif();
   if ($psw_verif == true) {
       $bdd = bdd_connect();
-   
- 
+
+
     $query = $bdd->prepare("SELECT * FROM chat_accounts WHERE account_login = :login");
     $query->execute(array(
         'login' => htmlspecialchars($_POST['pseudo'])
@@ -57,25 +57,25 @@ function inscription() {
                     'prenom' => htmlspecialchars($_POST['prenom']),
                     'nom' => htmlspecialchars($_POST['nom']),
                     ));
-                    echo "Inscription terminée ! <a href='./../index.php'>Accueil</a>";
+                    echo "Inscription terminée ! <a href='../../frontend/view/chat.php'>Accueil</a>";
                     }
                       else {
                         echo 'Ce pseudo existe déjà !';
                         }
-      
+
         }
         else {
         echo 'Mot de passe et mot de passe de confirmation différents !';
         }
-   
+
   }
                else {
                   echo 'Adresse mail déjà utilisée !';
                   }
-                  
+
                   }
-                  
-                  
+
+
 function delete_msg() {
   $bdd = bdd_connect();
   $time_out = time()-900;
@@ -94,7 +94,7 @@ function delete_msg() {
   $query->execute(array(
       'time' => $time_out
       ));
-   
+
       }
 function user_connect() {
   $pseudo = htmlspecialchars($_POST['pseudo']);
@@ -112,14 +112,14 @@ function user_connect() {
         }
   function is_user_connect($pseudo) {
       $bdd = bdd_connect();
-      
+
       $ip = $_SERVER["REMOTE_ADDR"];
       $query = $bdd->prepare('
-      SELECT * FROM chat_online WHERE online_user = :pseudo 
+      SELECT * FROM chat_online WHERE online_user = :pseudo
       ');
       $query->execute(array(
       'pseudo' => $pseudo,
-    
+
       ));
       $count = $query->rowCount();
           if ($count == 0) {
@@ -134,8 +134,8 @@ function user_connect() {
     $bdd = bdd_connect();
     $time_out = time()-60;
       $query = $bdd->prepare('
-      DELETE FROM chat_online WHERE online_ip = :ip 
-      '); 
+      DELETE FROM chat_online WHERE online_ip = :ip
+      ');
       $query->execute(array(
       'ip' => $ip_suppr,
       ));
@@ -209,7 +209,7 @@ $count = $query->rowCount();
   }
 function deconnexion() {
   session_destroy();
-  
+
   }
 function smiley($texte) {
   $texte = str_replace(' :) ', '<img src="./image/sourire.png" />', $texte);
@@ -249,9 +249,9 @@ function user_connecte() {
   $bdd = bdd_connect();
   $reponse = $bdd->query('SELECT * FROM chat_online');
   while ($donnees = $reponse->fetch()) {
-      
+
       $user_status = $donnees['online_status'];
-      
+
       if ($user_status == 0) {
           echo '<a class="lien_info" style="text-decoration:none;color:black;" href="user_info.php?user='.$donnees['online_user'].'" />'.$donnees['online_user'].'</a>'.'    <img src="/image/vert.png" alt="En ligne"/><br />';
           }
@@ -264,12 +264,12 @@ function user_connecte() {
                      else {
                       echo '<a class="lien_info" style="text-decoration:none;color:black;" href="user_info.php?user='.$donnees['online_user'].' />"'.$donnees['online_user'].'</a>'.'    <img src="/image/vert.png" /><br />';
                       }
-      
-      
-      
+
+
+
       }
       }
-      
+
 
     function get_message() {
       $bdd = bdd_connect();

@@ -3,7 +3,7 @@ session_start();
 require ('functions.php');
 $bdd = bdd_connect();
 if ($_SESSION['pseudo'] == NULL) {
-    header('Location: index.php');
+    header('Location: ../../frontend/view/chat.php.php');
     }
 else {
   $new_status = $_GET['status'];
@@ -14,5 +14,5 @@ else {
       ));
       header('Location: chat.php');
       }
-      
+
     ?>

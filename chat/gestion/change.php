@@ -4,7 +4,7 @@ require ('./../script/functions.php');
 $bdd = bdd_connect();
 delete_msg();
 if ($_SESSION['pseudo'] == NULL) {
-    header('Location: ./../index.php');
+    header('Location: ../../frontend/view/chat.php');
     }
   if(isset($_GET['action']) && $_GET['action'] == 1) {
     echo '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -26,7 +26,7 @@ if ($_SESSION['pseudo'] == NULL) {
               </html>';
         }
       elseif (isset($_GET['action']) && $_GET['action'] == 2) {
-      
+
            echo '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
               <head>
@@ -160,6 +160,3 @@ if ($_SESSION['pseudo'] == NULL) {
             echo '<br /><a href="./../chat.php">Retour</a>';
             }
             }
-           
-          
-        

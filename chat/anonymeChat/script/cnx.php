@@ -2,7 +2,7 @@
 session_start();
 require ('functions.php');
 if($_SESSION['pseudo'] == NULL) {
-header('Location: index.php');
+header('Location: ../../frontend/view/chat.php');
   }
     else
   {
@@ -15,9 +15,9 @@ header('Location: index.php');
 <body>
 <p><h2><center>Connexion en cours ...<br /><img src="./../image/ajax-loader(2).gif" /><br /><span id="ajax">
 
-  
 
-         
+
+
 </span></center></h2></p>
 </body>
 </html>

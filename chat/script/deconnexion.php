@@ -4,7 +4,7 @@ session_start();
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="refresh" content="3;URL=./../index.php">
+<meta http-equiv="refresh" content="3;URL=../../frontend/view/chat.php">
 <meta charset="utf-8" />
 </head>
 <body>

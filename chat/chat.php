@@ -6,7 +6,7 @@ $bdd = bdd_connect();
 delete_msg();
 
 if ($_SESSION['pseudo'] == NULL) {
-    header('Location: index.php');
+    header('Location: ../../frontend/view/chat.php');
     }
       else {
 ?>
@@ -22,8 +22,8 @@ if ($_SESSION['pseudo'] == NULL) {
         <script type="text/javascript" src="script.js"></script>
         <script src="script_ancMsg.js" type="text/javascript" ></script>
     </head>
-    
-  
+
+
     <style type="text/css">
     form
     {
@@ -37,12 +37,12 @@ if ($_SESSION['pseudo'] == NULL) {
     <script>alert('Pensez à bien vous déconnecter en quittant le chat \n sinon vous ne pourrez plus vous \n connectez !');</script>
     <span id="hello">
     <?php
-    hello(); 
+    hello();
     ?>
     </span>
     <form action="#" method="post">
         <p>
-        
+
         <label for="message"></label><textarea onKeyPress="if(event.keyCode==13){post(); clear();}" name="message" id="message"  rows="5" cols="25" placeholder="Message ..."></textarea><br />
 
         <input type="button" onClick="post(), clear()" value="Envoyer !" />
@@ -76,7 +76,6 @@ if ($_SESSION['pseudo'] == NULL) {
     <span id="ad"><h3>Membres Connectés :</h3></span>
     <div id="membres_connectes">
     </div>
-    <span id="download"><a href="http://www.phpcs.com/codes/CHAT-PHP-AJAX-MYSQL_54910.aspx">Télécharger ce chat</a></span>
 <span id="deconnexion">
 <a href="./script/deconnexion.php">Déconnexion</a>
      </span>

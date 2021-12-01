@@ -7,7 +7,7 @@ session_start(); // dfs
     <link rel="stylesheet" type="text/css" href="./css/style_login.css" />
     <meta charset="UTF-8" />
     </head>
-    
+
     <body>
     <noscript>
 <meta http-equiv="refresh" content="0;URL=./script/no-js.htm">
@@ -29,4 +29,3 @@ session_start(); // dfs
     </div>
     <span>Pas de compte ? <a href="inscription.html">Inscris-toi !</a></span>
 	<span id="an"><a href="./anonymeChat/script/login.php">Version anonyme</A></span>
-  

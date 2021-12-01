@@ -6,7 +6,7 @@ $bdd = bdd_connect();
 delete_msg();
 
 if ($_SESSION['pseudo'] == NULL) {
-    header('Location: index.php');
+    header('Location: ../frontend/view/chat.php');
     }
       else {
 ?>
@@ -22,8 +22,8 @@ if ($_SESSION['pseudo'] == NULL) {
         <script type="text/javascript" src="script.js"></script>
         <script src="script_ancMsg.js" type="text/javascript" ></script>
     </head>
-    
-  
+
+
     <style type="text/css">
     form
     {
@@ -35,10 +35,10 @@ if ($_SESSION['pseudo'] == NULL) {
     <meta http-equiv="refresh" content="0;URL=./script/no-js.htm">
     </noscript>
     <script>alert('Pensez à bien vous déconnecter en quittant le chat \n sinon vous ne pourrez plus vous \n connectez !');</script>
-    
+
     <form action="#" method="post">
         <p>
-        
+
         <label for="message"></label><textarea onKeyPress="if(event.keyCode==13){post(); clear();}" name="message" id="message"  rows="5" cols="25" placeholder="Message ..."></textarea><br />
 
         <input type="button" onClick="post(), clear()" value="Envoyer !" />
