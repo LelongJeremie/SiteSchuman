@@ -769,9 +769,23 @@ $_SESSION["connect"] = "valideevent";
         ));
 
       $res = $req->fetch();
-      var_dump($res);
-      var_dump($a->getIdmodif());
-      if ($res) {
+
+      $rem = $this->dbh->getBase()->prepare("SELECT DISTINCT nom,prenom FROM utilisateur INNER JOIN participant ON participant.id_participant = utilisateur.id WHERE id_evenement = :id");
+      $rem->execute(array(
+          'id' => $a->getIdmodif(),
+        ));
+
+      $rel = $rem->fetchall();
+      $rej = $this->dbh->getBase()->prepare("SELECT DISTINCT nom,prenom FROM utilisateur INNER JOIN participant ON participant.id_organisateur = utilisateur.id WHERE id_evenement = :id");
+      $rej->execute(array(
+          'id' => $a->getIdmodif(),
+        ));
+
+      $ren = $rej->fetchall();
+
+
+
+      if ($res AND $ren AND $rel) {
 
 
                 $_SESSION['idevent'] = $res["id"];
@@ -779,9 +793,16 @@ $_SESSION["connect"] = "valideevent";
                 $_SESSION["lieu"] = $res["lieu"];
                 $_SESSION["createur"] = $res["createur"];
                 $_SESSION["resume"] = $res["resume"];
-                  $_SESSION["validationevent"] = $res["validationevent"];
+                $_SESSION["validationevent"] = $res["validationevent"];
                 $_SESSION["nb_participant"] = $res["nb_participant"];
                 $_SESSION["nb_parti_max"] = $res["nb_parti_max"];
+                $_SESSION["participantevent"] =$rel;
+                $_SESSION["organisateurevent"] = $ren;
+                var_dump(  $_SESSION["participantevent"]);
+                var_dump(  $_SESSION["organisateurevent"]);
+
+
+
 
 
         $_SESSION["connecte"] = "eventmodal";
@@ -1499,8 +1520,6 @@ $_SESSION['connect'] ="modifpassword";
 
 
 
-
-
             $this->dbh = new bdd();
             $req = $this->dbh->getBase()->prepare("SELECT * from evenement where titre=:titre");
             $req->execute(array(
@@ -1519,13 +1538,14 @@ $_SESSION['connect'] ="modifpassword";
 
             else {
               $this->dbh = new bdd();
-              $req = $this->dbh->getBase()->prepare("INSERT INTO evenement (titre,date_event,lieu,createur,resume,nb_participant,nb_parti_max) values (:titre,:date_event,:lieu,:createur,:resume,1,:nb_parti_max)");          // verifier si un utilisateur et l'inscrire si il existe
+              $req = $this->dbh->getBase()->prepare("INSERT INTO evenement (titre,date_event,lieu,createur,resume,nb_participant,nb_parti_max,validationevent) values (:titre,:date_event,:lieu,:createur,:resume,1,:nb_participant,:nb_parti_max,0)");          // verifier si un utilisateur et l'inscrire si il existe
               $req->execute(array(
                 'titre'=>$a->getTitre(),
                 'date_event'=>$a->getDate_event(),
                 'lieu'=> $a->getLieu(),
                 'createur'=> $a->getCreateur(),
                 'resume' =>  $a->getResume(),
+                'nb_participant' => $a->getNb_parti_max(),
                 'nb_parti_max' => $a->getNb_parti_max(),
               ));
 

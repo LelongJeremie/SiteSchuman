@@ -42,7 +42,7 @@
                    <th>titre</th>
                    <th>date</th>
                    <th>lieu</th>
-                   <th>participant</th>
+                   <th>place disponible</th>
                    <th>resume</th>
 
                    <th>validation</th>
@@ -113,7 +113,7 @@ echo $date['day'],' ';
                       echo "Interne : ".$value['lieu'];
                     }?></td>
 
-    	                <td><?php echo "Nombre de participant : ".$value['nb_participant'];?></td>
+    	                <td><?php echo "Nombre de place restante : ".$value['nb_participant'];?></td>
                       <td><?php echo $value['resume'];?></td>
 
 
@@ -151,11 +151,11 @@ echo $date['day'],' ';
                     <th>titre</th>
                     <th>date</th>
                     <th>lieu</th>
-                    <th>participant</th>
+                     <th>place disponible</th>
                     <th>resume</th>
 
                     <th>validation</th>
-                  
+
                     <?php if (isset($_SESSION["id"])) { ?>
                   <th></> <?php } ?>
     	            </tr>
@@ -380,7 +380,7 @@ echo $date['day'],' ';
 <?php } ?>
 
 
-       <?php var_dump($_SESSION["connect"]); if ( isset($_SESSION["connecte"]) and $_SESSION["connecte"] == "eventmodal") {
+       <?php if ( isset($_SESSION["connecte"]) and $_SESSION["connecte"] == "eventmodal") {
         ?>
 
        <script type="text/javascript">
@@ -409,7 +409,83 @@ echo $date['day'],' ';
                          echo '<h3 class="widget-header user" > Evenement validé :  </h3>✔️';
                        }   if($_SESSION['validationevent']==3) { echo ' <h3 class="widget-header user" > Evenement annulé :  </h3> ❌';}?> </h3>
 
-                                               <h3 class="widget-header user">Prénom du créateur :</h3> <?php echo $_SESSION["createur"]; ?>
+                                              
+
+                                               <table id="myTable2" class="ui celled table" style="width:100%">
+                                                       <thead>
+                                                           <tr>
+
+
+                                                             <th>nom</th>
+                                                             <th>prenom</th>
+
+
+
+                                                           </tr>
+
+                                                         </br>
+                                                       </thead>
+
+                                                       <tbody>
+                                                           <tr>
+                                                             <?php $rem = $_SESSION["participantevent"] ; foreach ($rem as $value) { ?>
+
+                                                               <td><h3 class="widget-header user">Nom d'un participant :</h3> <?php echo $value["nom"]; ?></td>
+
+                                                               <td>
+                                                               <h3 class="widget-header user">Prénom d'un participant :</h3> <?php echo $value["prenom"]; ?></td>
+
+                                                           </tr>
+
+                                                       </tbody>
+                                             <?php  }?>
+                                                       <thead>
+                                                           <tr>
+                                                             <th>nom</th>
+                                                             <th>prenom</th>
+
+                                                           </tr>
+                                                       </thead>
+                                                   </table>
+
+                                                   <table id="myTable2" class="ui celled table" style="width:100%">
+                                                           <thead>
+                                                               <tr>
+
+
+                                                                 <th>nom</th>
+                                                                 <th>prenom</th>
+
+
+
+                                                               </tr>
+
+                                                             </br>
+                                                           </thead>
+
+                                                           <tbody>
+                                                               <tr>
+                                                                 <?php $rem = $_SESSION["organisateurevent"] ; foreach ($rem as $value) { ?>
+
+                                                                   <td><h3 class="widget-header user">Nom d'un organisateur :</h3> <?php echo $value["nom"]; ?></td>
+
+                                                                   <td>
+                                                                   <h3 class="widget-header user">Prénom d'un organisateur  :</h3> <?php echo $value["prenom"]; ?></td>
+
+                                                               </tr>
+
+                                                           </tbody>
+                                                   <?php  }?>
+                                                           <thead>
+                                                               <tr>
+                                                                 <th>nom</th>
+                                                                 <th>prenom</th>
+
+                                                               </tr>
+                                                           </thead>
+                                                       </table>
+
+
                                                 <h3 class="widget-header user">Date de l'evenement :</h3> <?php $date = date_parse($_SESSION['date_event']);
                               $jour = $date['day'];
                               $mois = $date['month'];
@@ -464,7 +540,7 @@ echo $date['day'],' ';
                           }?></h3>
 
                           <h3 class="widget-header user">Description de l'evenement:</h3> <?php echo $_SESSION["resume"]; ?>
-                          <h3 class="widget-header user">Nombre de participant à l'evenement :</h3> <?php echo $_SESSION["nb_participant"]; ?>
+                          <h3 class="widget-header user">Nombre de place(s) restante(s) :</h3> <?php echo $_SESSION["nb_participant"]; ?>
                                                         <h3 class="widget-header user">Nombre de participant maximum à l'evenement : </h3><?php echo $_SESSION["nb_parti_max"]; ?>
 </br></br></br></br></br></br>
 
@@ -605,7 +681,7 @@ echo $date['day'],' ';
                      </div>
                      <div class="modal-body text-center">
                        <img src="images/account/Account1.png" class="img-fluid mb-2" alt="">
-                       <h6 class="py-2"> Evenement pas rejoint ! </h6>
+                       <h6 class="py-2"> Evenement rejoint ! </h6>
 
 
                      </div>
@@ -712,6 +788,50 @@ $(document).ready(function() {
 
 </script>
 
+<script type="text/javascript">
+$(document).ready(function() {
+    var table = $('#myTable2').DataTable();
 
+    $('#myTable tbody').on( 'click', 'tr', function () {
+        if ( $(this).hasClass('selected') ) {
+            $(this).removeClass('selected');
+        }
+        else {
+            table.$('tr.selected').removeClass('selected');
+            $(this).addClass('selected');
+        }
+    } );
+
+    $('#button').click( function () {
+        table.row('.selected').remove().draw( false );
+    } );
+
+} );
+
+</script>
+
+</script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+    var table = $('#myTable3').DataTable();
+
+    $('#myTable tbody').on( 'click', 'tr', function () {
+        if ( $(this).hasClass('selected') ) {
+            $(this).removeClass('selected');
+        }
+        else {
+            table.$('tr.selected').removeClass('selected');
+            $(this).addClass('selected');
+        }
+    } );
+
+    $('#button').click( function () {
+        table.row('.selected').remove().draw( false );
+    } );
+
+} );
+
+</script>
 
 </PHP>
