@@ -14,23 +14,21 @@ try {
 $user = new utilisateur([
 
   "idmodif" => $_POST["idevent"],
-  'id'=>$_POST["id"],
+
   ]);
 
 
   $man = new manager();
 
-$man->joinevent($user);
-
+$man->annulerevent($user);
 
 
     } catch (Exception $e) {
 
 
-
 header("Location: ../../backend/process/event.php");
-
     }
+
 
 header("Location: ../../backend/process/event.php");
 

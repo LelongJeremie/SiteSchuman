@@ -42,7 +42,7 @@ Etablissement habilité à percevoir la taxe d'apprentissage <br>
           </div>
           <div class="download-btn d-flex my-3">
 
-<?php $_SESSION["connect"]="myFunction";    ?>
+<?php $_SESSION["connect"]="myFunction";  $_SESSION["connecte"]="myFunction";   ?>
           </div>
         </div>
       </div>

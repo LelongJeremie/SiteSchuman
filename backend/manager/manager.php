@@ -694,6 +694,69 @@ $_SESSION['connect'] ="modif";
 
     }
 
+      public function annulerevent($a){ //POUR AFFICHER LES UTILISATEURS POUR LES MODIFIER EN TANT QU'ADMIN
+      session_start();
+      $this->dbh = new bdd();
+$today = date("Y-m-d");
+      $req = $this->dbh->getBase()->prepare("SELECT * from evenement where id = :id");
+      $req->execute(array(
+          'id' => $a->getIdmodif(),
+        ));
+
+      $res = $req->fetch();
+
+      if ($res["validationevent"] == "3" ) {
+        $_SESSION["connect"] = "annulerevent2";
+
+      }
+
+    elseif ($today != $res["date_event"] ) {
+
+      $rea = $this->dbh->getBase()->prepare("UPDATE evenement SET validationevent = 3 WHERE id=:id_evenement");
+      $rea->execute(array(
+        'id_evenement'=>$a->getIdmodif(),
+
+      ));
+
+$_SESSION["connect"] = "annulerevent";
+      }
+
+      else {
+        $_SESSION["connect"] = "erreurannulerevent";
+      }
+
+    }
+
+    public function valideevent($a){ //POUR AFFICHER LES UTILISATEURS POUR LES MODIFIER EN TANT QU'ADMIN
+    session_start();
+    $this->dbh = new bdd();
+
+    $req = $this->dbh->getBase()->prepare("SELECT * from evenement where id = :id");
+    $req->execute(array(
+        'id' => $a->getIdmodif(),
+      ));
+
+    $res = $req->fetch();
+
+    if ($res["validationevent"] == "1" ) {
+      $_SESSION["connect"] = "valideevent1";
+
+    }
+
+  else {
+
+    $rea = $this->dbh->getBase()->prepare("UPDATE evenement SET validationevent = 1 WHERE id=:id_evenement");
+    $rea->execute(array(
+      'id_evenement'=>$a->getIdmodif(),
+
+    ));
+
+$_SESSION["connect"] = "valideevent";
+    }
+
+
+  }
+
     public function selectevent($a){ //POUR AFFICHER LES UTILISATEURS POUR LES MODIFIER EN TANT QU'ADMIN
       session_start();
       $_SESSION['ok'] = 1;
@@ -721,7 +784,7 @@ $_SESSION['connect'] ="modif";
                 $_SESSION["nb_parti_max"] = $res["nb_parti_max"];
 
 
-        $_SESSION["connect"] = "eventmodal";
+        $_SESSION["connecte"] = "eventmodal";
 
 
 
@@ -789,7 +852,7 @@ $_SESSION['connect'] ="modif";
       $res = $req->fetch();
 
 
-  if ($res) {   $rel = $this->dbh->getBase()->prepare("SELECT * from participant where id_participant = :id_participant and
+ if ($res) {   $rel = $this->dbh->getBase()->prepare("SELECT * from participant where id_participant = :id_participant and
     id_organisateur = :id_organisateur and id_evenement = :id_evenement");
     $rel->execute(array(
       'id_participant' => $a->getId(),
@@ -797,14 +860,16 @@ $_SESSION['connect'] ="modif";
       'id_organisateur' => $res["createur"]
 
     ));
-
+  echo "string";
     $rem = $rel->fetch();
 
  }
 
 
 
-      if (isset($rem) AND !$rem) {
+      if (isset($rem) AND !$rem AND $res["nb_participant"] !="0" AND $res["validationevent"] !="3" ) {
+
+        $_SESSION["connect"] ="event";
 
         $this->dbh = new bdd();
         $req = $this->dbh->getBase()->prepare("INSERT INTO participant (id_participant, id_organisateur, id_evenement) VALUES ( (select id from utilisateur where id =:id_participant),(select createur from evenement where id =:id_evenement ),(select id from evenement where id =:id_evenement  ))");
@@ -812,28 +877,37 @@ $_SESSION['connect'] ="modif";
           'id_participant'=> $a->getId(),
           'id_evenement'=>$a->getIdmodif(),
         ));
-
+  $reo = $req->fetch();
                 $this->dbh = new bdd();
                 $rea = $this->dbh->getBase()->prepare("UPDATE evenement SET nb_participant = (SELECT nb_participant WHERE id=:id_evenement)-1 WHERE id=:id_evenement");
                 $rea->execute(array(
                   'id_evenement'=>$a->getIdmodif(),
                 ));
 
+  echo "string";
 
 
 
-        $_SESSION["connect"] ="event";
       }
 
-      else {
+
+      if ($res["nb_participant"] == "0") {
+        $_SESSION["connect"] ="erreurjoineventplace";
+
+      }
+
+        if (isset($rem) AND $rem) {
 $_SESSION["connect"] ="erreurjoinevent";
         throw new Exception("Erreur dans select admin",1);
-
-
-
-
-
       }
+
+      if ($res["validationevent"] =="3") {
+$_SESSION["connect"] ="evenementannuler";
+      throw new Exception("Erreur dans select admin",1);
+    }
+
+
+
 
     }
 

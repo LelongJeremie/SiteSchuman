@@ -20,7 +20,7 @@ $user = new utilisateur([
 
   $man = new manager();
 
-$man->joinevent($user);
+$man->valideevent($user);
 
 
 
@@ -31,6 +31,7 @@ $man->joinevent($user);
 header("Location: ../../backend/process/event.php");
 
     }
+
 
 header("Location: ../../backend/process/event.php");
 
