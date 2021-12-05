@@ -776,14 +776,17 @@ $_SESSION["connect"] = "valideevent";
         ));
 
       $rel = $rem->fetchall();
-      $rej = $this->dbh->getBase()->prepare("SELECT DISTINCT nom,prenom FROM utilisateur INNER JOIN participant ON participant.id_organisateur = utilisateur.id WHERE id_evenement = :id");
+
+      $rej = $this->dbh->getBase()->prepare("SELECT DISTINCT nom,prenom FROM utilisateur INNER JOIN organisateur ON organisateur.id_utilisateur = utilisateur.id AND  WHERE id_event = :id");
       $rej->execute(array(
           'id' => $a->getIdmodif(),
         ));
 
       $ren = $rej->fetchall();
 
-
+if ($rel == NULL) {
+ $rel = 1;
+}
 
       if ($res AND $ren AND $rel) {
 
@@ -881,14 +884,27 @@ $_SESSION["connect"] = "valideevent";
       'id_organisateur' => $res["createur"]
 
     ));
-  echo "string";
+
     $rem = $rel->fetch();
+
+
+   $ret = $this->dbh->getBase()->prepare("SELECT * from organisateur where id_utilisateur = :id_participant and id_event = :id_evenement");
+      $ret->execute(array(
+        'id_participant' => $a->getId(),
+        'id_evenement' => $a->getIdmodif(),
+
+      ));
+
+      $rey = $ret->fetch();
+
+
+
 
  }
 
 
 
-      if (isset($rem) AND !$rem AND $res["nb_participant"] !="0" AND $res["validationevent"] !="3" ) {
+      if (isset($rem) AND !$rem AND $res["nb_participant"] !="0" AND $res["validationevent"] !="3" AND (isset($rey) AND !$rey)) {
 
         $_SESSION["connect"] ="event";
 
@@ -932,6 +948,93 @@ $_SESSION["connect"] ="evenementannuler";
 
     }
 
+
+    public function joineventorg($a){ //POUR AFFICHER LES UTILISATEURS POUR LES MODIFIER EN TANT QU'ADMIN
+      session_start();
+      $_SESSION['ok'] = 1;
+      $this->dbh = new bdd();
+
+
+      $req = $this->dbh->getBase()->prepare("SELECT * from evenement where id = :id");
+      $req->execute(array(
+        'id' => $a->getIdmodif(),
+
+      ));
+
+      $res = $req->fetch();
+
+
+      if ($res) {   $rel = $this->dbh->getBase()->prepare("SELECT * from participant where id_participant = :id_participant and
+         id_organisateur = :id_organisateur and id_evenement = :id_evenement");
+         $rel->execute(array(
+           'id_participant' => $a->getId(),
+           'id_evenement' => $a->getIdmodif(),
+           'id_organisateur' => $res["createur"]
+
+         ));
+
+         $rem = $rel->fetch();
+
+
+        $ret = $this->dbh->getBase()->prepare("SELECT * from organisateur where id_utilisateur = :id_participant and id_event = :id_evenement");
+           $ret->execute(array(
+             'id_participant' => $a->getId(),
+             'id_evenement' => $a->getIdmodif(),
+
+           ));
+
+           $rey = $ret->fetch();
+
+
+
+
+      }
+
+
+
+           if (isset($rem) AND !$rem AND $res["nb_participant"] !="0" AND $res["validationevent"] !="3"  AND (isset($rey) AND !$rey) ){
+        $_SESSION["connect"] ="eventorg";
+
+        $this->dbh = new bdd();
+        $req = $this->dbh->getBase()->prepare("INSERT INTO organisateur (id_utilisateur, id_event) VALUES ( (select id from utilisateur where id =:id_participant),(select id from evenement where id =:id_evenement  ))");
+        $req->execute(array(
+          'id_participant'=> $a->getId(),
+          'id_evenement'=>$a->getIdmodif(),
+        ));
+  $reo = $req->fetch();
+
+
+
+                $this->dbh = new bdd();
+                $rea = $this->dbh->getBase()->prepare("UPDATE evenement SET nb_participant = (SELECT nb_participant WHERE id=:id_evenement)-1 WHERE id=:id_evenement");
+                $rea->execute(array(
+                  'id_evenement'=>$a->getIdmodif(),
+                ));
+
+
+
+      }
+
+
+      if ($res["nb_participant"] == "0") {
+        $_SESSION["connect"] ="erreurjoineventplace";
+
+      }
+
+        if (isset($rem) AND $rem) {
+  $_SESSION["connect"] ="erreurjoinevent";
+        throw new Exception("Erreur dans select admin",1);
+      }
+
+      if ($res["validationevent"] =="3") {
+  $_SESSION["connect"] ="evenementannuler";
+      throw new Exception("Erreur dans select admin",1);
+    }
+
+
+
+
+    }
 
     public function selectrdv($a){ //POUR AFFICHER LES UTILISATEURS POUR LES MODIFIER EN TANT QU'ADMIN
       session_start();
@@ -1548,6 +1651,14 @@ $_SESSION['connect'] ="modifpassword";
                 'nb_participant' => $a->getNb_parti_max(),
                 'nb_parti_max' => $a->getNb_parti_max(),
               ));
+
+              $this->dbh = new bdd();
+              $req = $this->dbh->getBase()->prepare("INSERT INTO organisateur (id_utilisateur, id_event) VALUES ( (select id from utilisateur where id =:id_participant),(select id from evenement where id =:id_evenement  ))");
+              $req->execute(array(
+                'id_participant'=> $a->getCreateur(),
+                'id_evenement'=>$a->getIdmodif(),
+              ));
+        $reo = $req->fetch();
 
 
             }

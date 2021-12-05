@@ -267,33 +267,6 @@ echo $date['day'],' ';
 </div>
 <?php } ?>
 
-<?php  if ( isset($_SESSION["connect"]) and $_SESSION["connect"] == "event") {
- ?>
-<div class="modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-  aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header border-bottom-0">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body text-center">
-        <img src="images/account/Account1.png" class="img-fluid mb-2" alt="">
-        <h6 class="py-2"> rejoindre l'evenement : Vous l'avez surement déja rejoint ! </h6>
-
-
-      </div>
-      <div class="modal-footer border-top-0 mb-2 mx-4 justify-content-center">
-
-        <button type="button" class="btn btn-primary" data-dismiss="modal">Fermer le pop-up</button>
-
-      </div>
-    </div>
-  </div>
-
-</div>
-<?php } ?>
 
 <?php  if ( isset($_SESSION["connect"]) and $_SESSION["connect"] == "annulerevent") {
  ?>
@@ -409,8 +382,8 @@ echo $date['day'],' ';
                          echo '<h3 class="widget-header user" > Evenement validé :  </h3>✔️';
                        }   if($_SESSION['validationevent']==3) { echo ' <h3 class="widget-header user" > Evenement annulé :  </h3> ❌';}?> </h3>
 
-                                              
 
+<?php $rem = $_SESSION["participantevent"] ; if ($_SESSION["participantevent"] != 1) { ?>
                                                <table id="myTable2" class="ui celled table" style="width:100%">
                                                        <thead>
                                                            <tr>
@@ -428,7 +401,9 @@ echo $date['day'],' ';
 
                                                        <tbody>
                                                            <tr>
-                                                             <?php $rem = $_SESSION["participantevent"] ; foreach ($rem as $value) { ?>
+                                                             <?php
+
+                                                              foreach ($rem as $value) { ?>
 
                                                                <td><h3 class="widget-header user">Nom d'un participant :</h3> <?php echo $value["nom"]; ?></td>
 
@@ -447,6 +422,7 @@ echo $date['day'],' ';
                                                            </tr>
                                                        </thead>
                                                    </table>
+                                                 <?php } ?>
 
                                                    <table id="myTable2" class="ui celled table" style="width:100%">
                                                            <thead>
@@ -551,7 +527,13 @@ echo $date['day'],' ';
     <input type="hidden" name="id" value="<?php echo  $_SESSION['id']; ?>" </>
 
 
-    <button name="idevent" style="margin-bottom: 50px" type="submit" value= " <?php echo $_SESSION['idevent']; ?> " class="btn btn-primary">Rejoindre l'evenement</button> </form>
+    <button name="idevent" style="margin-bottom: 50px" type="submit" value= " <?php echo $_SESSION['idevent']; ?> " class="btn btn-primary">Rejoindre l'evenement en tant que participant</button> </form>
+
+    <form action= "../../backend/process/joineventorg.php" method= "post">
+      <input type="hidden" name="id" value="<?php echo  $_SESSION['id']; ?>" </>
+
+
+      <button name="idevent" style="margin-bottom: 50px" type="submit" value= " <?php echo $_SESSION['idevent']; ?> " class="btn btn-primary">Rejoindre l'evenement en tant qu'organisateur</button> </form>
 <?php if (isset($_SESSION['role']) AND $_SESSION['role']=="2" OR isset($_SESSION['role']) AND $_SESSION['role'] =="1" ) {
 ?>
 <form action= "../../backend/process/valideevent.php" method= "post">
@@ -682,6 +664,34 @@ echo $date['day'],' ';
                      <div class="modal-body text-center">
                        <img src="images/account/Account1.png" class="img-fluid mb-2" alt="">
                        <h6 class="py-2"> Evenement rejoint ! </h6>
+
+
+                     </div>
+                     <div class="modal-footer border-top-0 mb-2 mx-4 justify-content-center">
+
+                       <button type="button" class="btn btn-primary" data-dismiss="modal">Fermer le pop-up</button>
+
+                     </div>
+                   </div>
+                 </div>
+
+               </div>
+               <?php } ?>
+
+               <?php  if ( isset($_SESSION["connect"]) and $_SESSION["connect"] == "eventorg") {
+                ?>
+               <div class="modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+                 aria-hidden="true">
+                 <div class="modal-dialog modal-dialog-centered" role="document">
+                   <div class="modal-content">
+                     <div class="modal-header border-bottom-0">
+                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                         <span aria-hidden="true">&times;</span>
+                       </button>
+                     </div>
+                     <div class="modal-body text-center">
+                       <img src="images/account/Account1.png" class="img-fluid mb-2" alt="">
+                       <h6 class="py-2"> Evenement rejoint en tant qu'organisateur ! </h6>
 
 
                      </div>
