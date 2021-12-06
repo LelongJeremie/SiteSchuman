@@ -27,7 +27,7 @@
 
 
 
-      
+
 
            <?php  if ( isset($_SESSION["connect"]) and $_SESSION["connect"] == "erreurjoinrdv") {
             ?>
@@ -110,7 +110,7 @@
                    <?php  } ?>
 
 
-  <form action= "../../backend/process/joinrdv.php" method= "post">
+<form action= "../../backend/process/choixrdv.php" method= "post">
 
                <table id="myTable" class="ui celled table" style="width:100%">
              	        <thead>
@@ -126,26 +126,34 @@
                          </br>
              	        </thead>
 
+
              	        <tbody>
-             	            <tr>
-                             <?php foreach ($res as $value) { ?>
+                        <?php foreach ($res as $value) {  ?>
+                         <tr>
+
              	                <td><?php echo $value['nom'];?></td>
              	                <td><?php echo $value['prenom'];?></td>
-                              <td> <input type="date" name="date"> </td>
+                              <td><?php  if(isset($_SESSION["idevent"]) AND $_SESSION["connecte"]=="rdvmodal" AND $_SESSION["idevent"] == $value['0'] ) { ?>
 
-                               <input type="hidden" name="nom" value="<?php $value['nom']; ?>" </>
-                               <input type="hidden" name="prenom" value="<?php $value['prenom']; ?>" </>
-
-                               <input type="hidden" name="id" value=<?php echo $_SESSION['id']; ?> </>
+                                <input type="hidden" name="id" value=<?php echo $_SESSION['id']; ?> </>
 
 
 
-                             <td>  <button name="idmodif" style="margin-left:150px"  type="submit" value= <?php echo $value['id']; ?> class="d-block py-4 px-22 bg-primary text-white border-0 rounded font-weight-bold">Rejoindre l'evenement</button></td>
+                                <button type="button" style="margin-left:100px" class="d-block py-4 px-22 bg-success text-white border-0 rounded font-weight-bold" data-toggle="modal" data-target="#test"> Detail de l'evenement</button>
+          <?php }
 
-             	            </tr>
 
+          else {
+            ?>
+                                  <button name="idevent" style="margin-left:100px" type="submit" value= <?php echo $value['0']; ?> class="d-block py-4 px-22 bg-primary text-white border-0 rounded font-weight-bold">Choisir l'evenement</button>  </form>
+
+
+                                </br>
+          <?php } ?> </td>
+
+         <?php  }?>
              	        </tbody>
-           <?php  }?>
+
              	        <thead>
              	            <tr>
                              <th>Nom du professeur</th>
@@ -176,7 +184,109 @@
 
 </br> </br></br> </br> </br></br> </br></br>
 
+<?php if ( isset($_SESSION["connecte"]) and $_SESSION["connecte"] == "rdvmodal") {
+ ?>
 
+<script type="text/javascript">
+$( document ).ready(function() {
+$('#myModal').modal('toggle')
+});
+</script>
+
+
+
+     <div class="modal" id="test" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel">
+       <div class="modal-dialog modal-dialog modal-lg" role="document">
+         <div class="modal-content">
+
+
+
+             <div class="widget welcome-message text-center">
+               <h2>Détails du RDV</h2>
+               <p>Voici tout les détails du RDV</p>
+             </div>
+
+
+<div class="modal-body text-center">
+
+<form action= "../../backend/process/joinrdv.php" method= "post">
+  
+<input type="hidden" name="id" value="<?php echo  $_SESSION['id']; ?>" </>
+<input required="required" type="date" name="date" value="" </>
+
+<button name="idevent" style="margin-bottom: 50px" type="submit" value= " <?php echo $_SESSION['idevent']; ?> " class="btn btn-primary">Rejoindre rdv</button> </form>
+
+
+
+<form action= "../../backend/process/valideevent.php" method= "post">
+<input type="hidden" name="id" value="<?php echo  $_SESSION['id']; ?>" </>
+
+
+
+
+
+<button name="idevent" style="margin-bottom: 50px" type="submit" value= " <?php echo $_SESSION['idevent']; ?> " class="btn btn-danger">Annuler le RDV </button> </form>
+
+
+
+</div>
+<div class="modal-body text-center"style="margin-bottom: 5px">
+
+<button type="button" class="btn btn-transparent" data-dismiss="modal">Fermer</button>
+</div>
+<!-- delete-account modal -->
+<!-- delete account popup modal start-->
+<!-- Modal -->
+<div class="modal" id="deleteaccount" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered" role="document">
+<div class="modal-content">
+<div class="modal-header border-bottom-0">
+<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+<span aria-hidden="true">&times;</span>
+</button>
+</div>
+<div class="modal-body text-center">
+<img src="../../style/images/account/Account1.png" class="img-fluid mb-2" alt="">
+<h6 class="py-2">Voulez vous vraiment supprimer ce compte?</h6>
+<p>Ce procédé est irreversible.</p>
+
+</div>
+<div class="modal-footer border-top-0 mb-3 mx-5 justify-content-lg-between justify-content-center">
+
+<button type="button" class="btn btn-primary" data-dismiss="modal">Annuler</button>
+<form   action="../../backend/process/supprimeradmin.php" method="post" >
+<button type="submit" type="button" class="btn btn-danger">Supprimer</button></form>
+</div>
+
+</div>
+</div>
+</div>
+
+
+
+
+
+                        </div>
+
+                        <div class="modal-body text-center"style="margin-bottom: 5px">
+
+
+                        </div>
+                          <!-- delete-account modal -->
+                          <!-- delete account popup modal start-->
+                          <!-- Modal -->
+
+
+         </div>
+       </div>
+     </div>
+
+
+
+
+
+
+    <?php  } ?>
 
 
 

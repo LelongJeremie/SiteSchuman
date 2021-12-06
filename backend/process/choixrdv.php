@@ -12,19 +12,16 @@ try {
 //Affichage de tous les utilisateurs pour l'admin
 
 
+
 $user = new utilisateur([
 
   "idmodif" => $_POST["idevent"],
-  'id'=>$_POST["id"],
-      'date_event'=>$_POST["date"],
   ]);
-var_dump($_POST["date"]);
 
+var_dump($_POST["idevent"]);
   $man = new manager();
 
-$man->selectrdv($user);
-
-
+$man->selectrdv2($user);
 
 
     } catch (Exception $e) {
@@ -32,15 +29,10 @@ $man->selectrdv($user);
 
 
 
-
-
     }
-if (isset($_SESSION["connect"]) and $_SESSION["connect"] =='joinrdv') {
 
 
-header("Location: ../../frontend/view/rdv.php");
-}
 
-else{    header("Location: ../../frontend/view/rejoindrerdv.php");
-}
+header("Location: ../../frontend/view/rejoindrerdv.php");
+
  ?>

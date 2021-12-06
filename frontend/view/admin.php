@@ -227,6 +227,7 @@
                    <th>Role</th>
                    <th>Classe</th>
                    <th>Mail</th>
+                   <Th>validation</th>
                     <th></>
     	            </tr>
 
@@ -303,6 +304,13 @@ echo $date['day'],' ';
     	                <td><?php echo $value['classe'];?></td>
     	                <td><?php echo $value['mail'];?></td>
 
+                      <td><?php  if($value['validation']==0){ echo ' Utilisateur non-valider : ❌';}
+                         elseif($value['validation']==1) {
+                      echo ' Utilisateur valider : ✔️';
+                    }   elseif($value['validation']==2) { echo ' Utilisateur desactivé : ❌';  } elseif($_SESSION['connect']=="annuleruser") { echo ' Utilisateur desactivé : ❌';  } ?></td>
+
+
+
                       <input type="hidden" name="nom" value="<?php $value['nom']; ?>" </>
                       <input type="hidden" name="prenom" value="<?php $value['prenom']; ?>" </>
                       <input type="hidden" name="username" value="<?php $value['username']; ?>" </>
@@ -330,6 +338,7 @@ echo $date['day'],' ';
                    <th>Role</th>
                    <th>Classe</th>
                    <th>Mail</th>
+                   <th>validation</th>
                    <th></>
     	            </tr>
     	        </thead>

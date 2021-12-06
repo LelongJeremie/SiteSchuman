@@ -55,8 +55,9 @@
     	        </thead>
 
     	        <tbody>
+                  <?php foreach ($res as $value) { ?>
     	            <tr>
-                    <?php foreach ($res as $value) { ?>
+
 
     	                <td><?php echo $value['titre'];?></td>
     	                <td><?php $date = date_parse($value['date_event']);
@@ -125,27 +126,40 @@ echo $date['day'],' ';
 
 
 
-                      <input type="hidden" name="idevent" value="<?php $value['id']; ?>" </>
 
-                      <input type="hidden" name="titre" value="<?php $value['titre']; ?>" </>
-                      <input type="hidden" name="date" value="<?php $value['date_event']; ?>" </>
-                      <input type="hiden" name="lieu" value="<?php $value['lieu']; ?>" </>
-                      <input type="hidden" name="createur" value="<?php $value['createur']; ?>" </>
-                      <input type="hidden" name="resume" value="<?php $value['resume']; ?>" </>
-                      <input type="hidden" name="nb_participant" value="<?php $value['nb_participant']; ?>" </>
-                  <?php if (isset($_SESSION["id"])) {  ?><td><?php  if(isset($_SESSION["idevent"]) AND $_SESSION["connecte"]=="eventmodal" AND $_SESSION["idevent"] == $value['0'] ) { ?>
+                      <input type="hidden" name="titre" value="<?php echo $value['titre']; ?>" </>
+                      <input type="hidden" name="date" value="<?php echo $value['date_event']; ?>" </>
+                      <input type="hidden" name="lieu" value="<?php echo $value['lieu']; ?>" </>
+                      <input type="hidden" name="createur" value="<?php echo $value['createur']; ?>" </>
+                      <input type="hidden" name="resume" value="<?php echo $value['resume']; ?>" </>
+                      <input type="hidden" name="nb_participant" value="<?php echo $value['nb_participant']; ?>" </>
+
+
+
+                  <?php if (isset($_SESSION["id"])) {  ?>
+
+                    <td><?php  if(isset($_SESSION["idevent"]) AND $_SESSION["connecte"]=="eventmodal" AND $_SESSION["idevent"] == $value['0'] ) { ?>
+
                       <input type="hidden" name="id" value=<?php echo $_SESSION['id']; ?> </>
-  <button type="button" style="margin-left:100px" class="d-block py-4 px-22 bg-success text-white border-0 rounded font-weight-bold" data-toggle="modal" data-target="#test"> Detail de l'evenement</button>
-<?php } else {
+
+
+
+                      <button type="button" style="margin-left:100px" class="d-block py-4 px-22 bg-success text-white border-0 rounded font-weight-bold" data-toggle="modal" data-target="#test"> Detail de l'evenement</button>
+<?php }
+
+
+else {
   ?>
                         <button name="idevent" style="margin-left:100px" type="submit" value= <?php echo $value['0']; ?> class="d-block py-4 px-22 bg-primary text-white border-0 rounded font-weight-bold">Choisir l'evenement</button>
+
+
                       </br>
 <?php } ?> </td>
 <?php }?>
     	            </tr>
-
-    	        </tbody>
   <?php  }?>
+    	        </tbody>
+
     	        <thead>
     	            <tr>
                     <th>titre</th>
@@ -196,6 +210,35 @@ echo $date['day'],' ';
       <div class="modal-body text-center">
         <img src="images/account/Account1.png" class="img-fluid mb-2" alt="">
         <h6 class="py-2">Erreur pour rejoindre l'evenement : Vous l'avez surement déja rejoint ! </h6>
+
+
+      </div>
+      <div class="modal-footer border-top-0 mb-2 mx-4 justify-content-center">
+
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Fermer le pop-up</button>
+
+      </div>
+    </div>
+  </div>
+
+</div>
+<?php } ?>
+
+
+<?php  if ( isset($_SESSION["connect"]) and $_SESSION["connect"] == "erreurjoineventorg") {
+ ?>
+<div class="modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header border-bottom-0">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body text-center">
+        <img src="images/account/Account1.png" class="img-fluid mb-2" alt="">
+        <h6 class="py-2">Erreur pour rejoindre l'evenement : Vous l'avez surement déja rejoint (en tant qu'organisateur) ! </h6>
 
 
       </div>
@@ -650,61 +693,7 @@ echo $date['day'],' ';
 
                <?php  }  ?>
 
-               <?php  if ( isset($_SESSION["connect"]) and $_SESSION["connect"] == "event") {
-                ?>
-               <div class="modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-                 aria-hidden="true">
-                 <div class="modal-dialog modal-dialog-centered" role="document">
-                   <div class="modal-content">
-                     <div class="modal-header border-bottom-0">
-                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                         <span aria-hidden="true">&times;</span>
-                       </button>
-                     </div>
-                     <div class="modal-body text-center">
-                       <img src="images/account/Account1.png" class="img-fluid mb-2" alt="">
-                       <h6 class="py-2"> Evenement rejoint ! </h6>
-
-
-                     </div>
-                     <div class="modal-footer border-top-0 mb-2 mx-4 justify-content-center">
-
-                       <button type="button" class="btn btn-primary" data-dismiss="modal">Fermer le pop-up</button>
-
-                     </div>
-                   </div>
-                 </div>
-
-               </div>
-               <?php } ?>
-
-               <?php  if ( isset($_SESSION["connect"]) and $_SESSION["connect"] == "eventorg") {
-                ?>
-               <div class="modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-                 aria-hidden="true">
-                 <div class="modal-dialog modal-dialog-centered" role="document">
-                   <div class="modal-content">
-                     <div class="modal-header border-bottom-0">
-                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                         <span aria-hidden="true">&times;</span>
-                       </button>
-                     </div>
-                     <div class="modal-body text-center">
-                       <img src="images/account/Account1.png" class="img-fluid mb-2" alt="">
-                       <h6 class="py-2"> Evenement rejoint en tant qu'organisateur ! </h6>
-
-
-                     </div>
-                     <div class="modal-footer border-top-0 mb-2 mx-4 justify-content-center">
-
-                       <button type="button" class="btn btn-primary" data-dismiss="modal">Fermer le pop-up</button>
-
-                     </div>
-                   </div>
-                 </div>
-
-               </div>
-               <?php } ?>
+               
 
                <?php  if ( isset($_SESSION["connect"]) and $_SESSION["connect"] == "valideevent") {
                 ?>

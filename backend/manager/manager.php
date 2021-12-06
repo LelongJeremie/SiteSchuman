@@ -727,6 +727,40 @@ $_SESSION["connect"] = "annulerevent";
 
     }
 
+    public function annulerrdv($a){ //POUR AFFICHER LES UTILISATEURS POUR LES MODIFIER EN TANT QU'ADMIN
+    session_start();
+    $this->dbh = new bdd();
+  $today = date("Y-m-d");
+    $req = $this->dbh->getBase()->prepare("SELECT * from rdv where id = :id");
+    $req->execute(array(
+        'id' => $a->getIdmodif(),
+      ));
+
+    $res = $req->fetch();
+
+    if ($res["validationrdv"] == "0" ) {
+      $_SESSION["connect"] = "annulerrdv2";
+
+    }
+
+  elseif ($today != $res["date_rdv"] ) {
+
+    $rea = $this->dbh->getBase()->prepare("UPDATE rdv SET validationrdv = 0 WHERE id=:id_evenement");
+    $rea->execute(array(
+      'id_evenement'=>$a->getIdmodif(),
+
+    ));
+
+  $_SESSION["connect"] = "annulerrdv";
+    }
+
+    else {
+      $_SESSION["connect"] = "erreurannulerrdv";
+    }
+var_dump(  $_SESSION["connect"]);
+  }
+
+
     public function valideevent($a){ //POUR AFFICHER LES UTILISATEURS POUR LES MODIFIER EN TANT QU'ADMIN
     session_start();
     $this->dbh = new bdd();
@@ -777,12 +811,14 @@ $_SESSION["connect"] = "valideevent";
 
       $rel = $rem->fetchall();
 
-      $rej = $this->dbh->getBase()->prepare("SELECT DISTINCT nom,prenom FROM utilisateur INNER JOIN organisateur ON organisateur.id_utilisateur = utilisateur.id AND  WHERE id_event = :id");
+      $rej = $this->dbh->getBase()->prepare("SELECT DISTINCT nom,prenom FROM utilisateur INNER JOIN organisateur ON organisateur.id_utilisateur = utilisateur.id WHERE id_event = :id");
       $rej->execute(array(
           'id' => $a->getIdmodif(),
         ));
 
       $ren = $rej->fetchall();
+
+
 
 if ($rel == NULL) {
  $rel = 1;
@@ -820,7 +856,47 @@ if ($rel == NULL) {
 
 
 
-      }
+      }}
+
+      public function selectrdv2($a){ //POUR AFFICHER LES UTILISATEURS POUR LES MODIFIER EN TANT QU'ADMIN
+        session_start();
+        $_SESSION['ok'] = 1;
+        $this->dbh = new bdd();
+
+
+        $req = $this->dbh->getBase()->prepare("SELECT * from utilisateur where id = :id");
+        $req->execute(array(
+            'id' => $a->getIdmodif(),
+          ));
+
+        $res = $req->fetch();
+
+var_dump($res,);
+        if ($res ) {
+
+
+                  $_SESSION['idevent'] = $res["id"];
+
+
+
+
+
+
+
+
+          $_SESSION["connecte"] = "rdvmodal";
+
+
+
+        }
+
+        else {
+
+          throw new Exception("Erreur dans select admin",1);
+
+
+
+        }
 
     }
 
@@ -881,7 +957,7 @@ if ($rel == NULL) {
     $rel->execute(array(
       'id_participant' => $a->getId(),
       'id_evenement' => $a->getIdmodif(),
-      'id_organisateur' => $res["createur"]
+      'id_organisateur' => $res["createur"],
 
     ));
 
@@ -902,7 +978,7 @@ if ($rel == NULL) {
 
  }
 
-
+var_dump($res ,$rem,$rey );
 
       if (isset($rem) AND !$rem AND $res["nb_participant"] !="0" AND $res["validationevent"] !="3" AND (isset($rey) AND !$rey)) {
 
@@ -937,6 +1013,11 @@ if ($rel == NULL) {
 $_SESSION["connect"] ="erreurjoinevent";
         throw new Exception("Erreur dans select admin",1);
       }
+
+      if (isset($rey) AND $rey) {
+$_SESSION["connect"] ="erreurjoineventorg";
+      throw new Exception("Erreur dans select admin",1);
+    }
 
       if ($res["validationevent"] =="3") {
 $_SESSION["connect"] ="evenementannuler";
@@ -1026,6 +1107,11 @@ $_SESSION["connect"] ="evenementannuler";
         throw new Exception("Erreur dans select admin",1);
       }
 
+      if (isset($rey) AND $rey) {
+$_SESSION["connect"] ="erreurjoineventorg";
+      throw new Exception("Erreur dans select admin",1);
+    }
+
       if ($res["validationevent"] =="3") {
   $_SESSION["connect"] ="evenementannuler";
       throw new Exception("Erreur dans select admin",1);
@@ -1063,13 +1149,15 @@ $_SESSION["connect"] ="evenementannuler";
 
    $rem = $rel->fetch();
 
+
+
     }
 
 
       if (!$rem) {
 
         $this->dbh = new bdd();
-        $req = $this->dbh->getBase()->prepare("INSERT INTO rdv (id_participant, id_organisateur, date_rdv) VALUES ( (select id from utilisateur where id =:id_participant),(select id from utilisateur where id =:id_modif ), :date_rdv)");
+        $req = $this->dbh->getBase()->prepare("INSERT INTO rdv (id_participant, id_organisateur, date_rdv,validationrdv) VALUES ( (select id from utilisateur where id =:id_participant),(select id from utilisateur where id =:id_modif ), :date_rdv,1)");
         $req->execute(array(
           'id_participant'=> $a->getId(),
           'id_modif'=>$a->getIdmodif(),
@@ -1078,6 +1166,8 @@ $_SESSION["connect"] ="evenementannuler";
 
 
         ));
+
+        var_dump(  $req);
         $_SESSION["connect"] ="joinrdv";
       }
 
@@ -1446,7 +1536,7 @@ $_SESSION['connect'] ="modifpassword";
 
             $req = $this->dbh->getBase()->prepare("SELECT * FROM evenement INNER JOIN utilisateur ON evenement.createur = utilisateur.id");
             $req->execute(array());
-            var_dump($a);
+
             $res = $req->fetchall();
 
 
@@ -1508,7 +1598,7 @@ $_SESSION['connect'] ="modifpassword";
             $req->execute(array());
 
             $res = $req->fetchall();
-            var_dump($res);
+
 
             if ($res) {
 
@@ -1603,6 +1693,7 @@ $_SESSION['connect'] ="modifpassword";
           public function mkevent($a){
             session_start();
 
+var_dump($a);
 
             $this->dbh = new bdd();
             $req = $this->dbh->getBase()->prepare("SELECT role from utilisateur where id=:createur");
@@ -1652,6 +1743,8 @@ $_SESSION['connect'] ="modifpassword";
                 'nb_parti_max' => $a->getNb_parti_max(),
               ));
 
+              var_dump($req);
+
               $this->dbh = new bdd();
               $req = $this->dbh->getBase()->prepare("INSERT INTO organisateur (id_utilisateur, id_event) VALUES ( (select id from utilisateur where id =:id_participant),(select id from evenement where id =:id_evenement  ))");
               $req->execute(array(
@@ -1659,7 +1752,8 @@ $_SESSION['connect'] ="modifpassword";
                 'id_evenement'=>$a->getIdmodif(),
               ));
         $reo = $req->fetch();
-
+  var_dump($req);
+    var_dump($reo);
 
             }
 

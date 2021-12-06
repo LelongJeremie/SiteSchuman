@@ -67,7 +67,9 @@
 
        ?>
 
+       <<?php var_dump($_SESSION["connect"]); ?>
 
+  <form action= "../../backend/process/annulerrdv.php" method= "post">
       <table id="myTable" class="ui celled table" style="width:100%">
     	        <thead>
     	            <tr>
@@ -77,7 +79,8 @@
                    <th>date</th>
                    <th>nom du participant</th>
                    <th>nom de l'organisateur</th>
-
+                    <th>validation</th>
+<th></th>
 
     	            </tr>
 
@@ -138,6 +141,14 @@ echo $date['day'],' ';
                       <td><?php echo $value['nom']; ?></td>
     	                <td><?php echo $value['prenom'];?></td>
 
+                      <td><?php  if($value['validationrdv']==0){ echo ' Rendez-vous annulé : ❌';}
+                         elseif($value['validationrdv']==1) {
+                      echo ' Rendez-vousn validé : ✔️';
+                      }   elseif($value['validationrdv']==2) { echo ' Rendez-vous annulé : ❌';  } elseif($_SESSION['connect']=="annuleredv") { echo ' Rendez-vousannulé : ❌';  } elseif($_SESSION['connect']=="annuleredv2") { echo 'Rendez-vous annulé : ❌';  }?></td>
+
+
+<td>   <button name="idmodif" style="margin-bottom: 50px" type="submit" value= " <?php echo $value['0']; ?> " class="btn btn-danger">Annuler l'event </button> </form> </td>
+
 
 
                  </>
@@ -156,10 +167,12 @@ echo $date['day'],' ';
                     <th>date</th>
                     <th>nom du participant</th>
                     <th>nom de l'organisateur</th>
-
+                     <th>validation</th>
+<th></th>
     	            </tr>
     	        </thead>
     	    </table>
+
       <section class="login py-5 border-top-1">
         <div class="container">
           <div class="row justify-content-center">
@@ -180,8 +193,119 @@ echo $date['day'],' ';
 
 </br> </br></br> </br></br> </br></br> </br></br>
 
+<?php if ( isset($_SESSION["connect"]) and $_SESSION["connect"] == "erreurannulerrdv") {
+ ?>
+<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script type="text/javascript">
+$( document ).ready(function() {
+$('#myModal').modal('toggle')
+
+});
+</script>
 
 
+      <div class="modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header border-bottom-0">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body text-center">
+              <img src="images/account/Account1.png" class="img-fluid mb-2" alt="">
+              <h6 class="py-2">Rendez-vous impossible à annuler ! </h6>
+
+
+            </div>
+            <div class="modal-footer border-top-0 mb-2 mx-4 justify-content-center">
+
+              <button type="button" class="btn btn-primary" data-dismiss="modal">Fermer le pop-up</button>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+<?php } ?>
+
+<?php if ( isset($_SESSION["connect"]) and $_SESSION["connect"] == "annulerrdv") {
+ ?>
+<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script type="text/javascript">
+$( document ).ready(function() {
+$('#myModal').modal('toggle')
+
+});
+</script>
+
+
+      <div class="modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header border-bottom-0">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body text-center">
+              <img src="images/account/Account1.png" class="img-fluid mb-2" alt="">
+              <h6 class="py-2">Rendez-vous annuler ! </h6>
+
+
+            </div>
+            <div class="modal-footer border-top-0 mb-2 mx-4 justify-content-center">
+
+              <button type="button" class="btn btn-primary" data-dismiss="modal">Fermer le pop-up</button>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+<?php } ?>
+
+<?php if ( isset($_SESSION["connect"]) and $_SESSION["connect"] == "annulerrdv2") {
+ ?>
+<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script type="text/javascript">
+$( document ).ready(function() {
+$('#myModal').modal('toggle')
+
+});
+</script>
+
+
+      <div class="modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header border-bottom-0">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body text-center">
+              <img src="images/account/Account1.png" class="img-fluid mb-2" alt="">
+              <h6 class="py-2">Rendez-vous déja annuler ! </h6>
+
+
+            </div>
+            <div class="modal-footer border-top-0 mb-2 mx-4 justify-content-center">
+
+              <button type="button" class="btn btn-primary" data-dismiss="modal">Fermer le pop-up</button>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+<?php } ?>
 
 <!--============================
 =            Footer            =

@@ -28,10 +28,15 @@ $man->joinevent($user);
 
 
 
-header("Location: ../../backend/process/event.php");
-
     }
 
-header("Location: ../../backend/process/event.php");
+    if (  $_SESSION["connect"] =="erreurjoineventplace"  OR $_SESSION["connect"] =="erreurjoinevent" OR   $_SESSION["connect"] =="erreurjoineventorg" OR  $_SESSION["connect"] =="evenementannuler") {
 
+
+header("Location: ../../frontend/view/event.php");
+}
+
+else {
+  header("Location: ../../index.php");
+}
  ?>
