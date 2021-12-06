@@ -173,42 +173,26 @@
                                   <div class="modal-body text-center">
 
 
-                              <a href="" data-toggle="modal" data-target="#deleteaccount" style="margin-bottom: 50px"  class="btn btn-danger">Supprimer le compte</a>
+                                    <form action= "../../backend/process/desactivationutilisateur.php" method= "post">
+                                          <input type="hidden" name="id" value="<?php echo  $_SESSION['id']; ?>" </>
 
-                            </ul>
+
+                                          <button name="idevent" style="margin-bottom: 50px" type="submit" value= " <?php echo $_SESSION['idadminmodif']?> " class="btn btn-danger">desactivé l'utilisateur </button> </form>
+
+                                          <form action= "../../backend/process/activationutilisateur.php" method= "post">
+                                                <input type="hidden" name="id" value="<?php echo  $_SESSION['id']; ?>" </>
+
+
+                                                <button name="idevent" style="margin-bottom: 50px" type="submit" value= " <?php echo $_SESSION['idadminmodif']?> " class="btn btn-success">activé l'utilisateur </button> </form>
+
 
                         </div>
                         <div class="modal-body text-center"style="margin-bottom: 5px">
 
                           <button type="button" class="btn btn-transparent" data-dismiss="modal">Fermer</button>
                         </div>
-                          <!-- delete-account modal -->
-                          <!-- delete account popup modal start-->
-                          <!-- Modal -->
-                          <div class="modal" id="deleteaccount" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                          <div class="modal-dialog modal-dialog-centered" role="document">
-                            <div class="modal-content">
-                              <div class="modal-header border-bottom-0">
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                  <span aria-hidden="true">&times;</span>
-                                </button>
-                              </div>
-                              <div class="modal-body text-center">
-                                <img src="../../style/images/account/Account1.png" class="img-fluid mb-2" alt="">
-                                <h6 class="py-2">Voulez vous vraiment supprimer ce compte?</h6>
-                                <p>Ce procédé est irreversible.</p>
 
-                              </div>
-                              <div class="modal-footer border-top-0 mb-3 mx-5 justify-content-lg-between justify-content-center">
 
-                                <button type="button" class="btn btn-primary" data-dismiss="modal">Annuler</button>
-                                <form   action="../../backend/process/supprimeradmin.php" method="post" >
-                                  <button type="submit" type="button" class="btn btn-danger">Supprimer</button></form>
-                                </div>
-
-                              </div>
-                            </div>
-                          </div>
 
          </div>
        </div>
@@ -288,7 +272,7 @@ echo $date['day'],' ';
 
       } echo $date['year'] ,' ';
 ?></td>
-    	                <td><?php if ($value['role'] =="1") {
+    	                <td><?php var_dump($_SESSION["connect"]); if ($value['role'] =="1") {
                         echo "Admin";
                       }
                       if ($value['role'] =="2") {
@@ -364,6 +348,163 @@ echo $date['day'],' ';
 </br> </br></br>
 
 
+<?php if ( isset($_SESSION["connect"]) and $_SESSION["connect"] == "activation") {
+ ?>
+<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script type="text/javascript">
+$( document ).ready(function() {
+$('#myModal').modal('toggle')
+
+});
+</script>
+
+
+      <div class="modal " id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header border-bottom-0">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body text-center">
+              <img src="images/account/Account1.png" class="img-fluid mb-2" alt="">
+              <h6 class="py-2">Compte activé !</h6>
+
+
+            </div>
+            <div class="modal-footer border-top-0 mb-2 mx-4 justify-content-center">
+
+              <button type="button" class="btn btn-primary" data-dismiss="modal">Fermer le pop-up</button>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+    <?php  } ?>
+
+    <?php if ( isset($_SESSION["connect"]) and $_SESSION["connect"] == "activation2") {
+     ?>
+    <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript">
+    $( document ).ready(function() {
+    $('#myModal').modal('toggle')
+
+    });
+    </script>
+
+
+          <div class="modal " id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header border-bottom-0">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body text-center">
+                  <img src="images/account/Account1.png" class="img-fluid mb-2" alt="">
+                  <h6 class="py-2">Compte déjà activé !</h6>
+
+
+                </div>
+                <div class="modal-footer border-top-0 mb-2 mx-4 justify-content-center">
+
+                  <button type="button" class="btn btn-primary" data-dismiss="modal">Fermer le pop-up</button>
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+        <?php  } ?>
+
+<?php if ( isset($_SESSION["connect"]) and $_SESSION["connect"] == "desactivation") {
+ ?>
+<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script type="text/javascript">
+$( document ).ready(function() {
+$('#myModal').modal('toggle')
+
+});
+</script>
+
+
+      <div class="modal " id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header border-bottom-0">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body text-center">
+              <img src="images/account/Account1.png" class="img-fluid mb-2" alt="">
+              <h6 class="py-2">Compte desactivé !</h6>
+
+
+            </div>
+            <div class="modal-footer border-top-0 mb-2 mx-4 justify-content-center">
+
+              <button type="button" class="btn btn-primary" data-dismiss="modal">Fermer le pop-up</button>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+    <?php  } ?>
+
+
+
+<?php if ( isset($_SESSION["connect"]) and $_SESSION["connect"] == "desactivation2") {
+ ?>
+<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script type="text/javascript">
+$( document ).ready(function() {
+$('#myModal').modal('toggle')
+
+});
+</script>
+
+
+      <div class="modal " id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header border-bottom-0">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body text-center">
+              <img src="images/account/Account1.png" class="img-fluid mb-2" alt="">
+              <h6 class="py-2">Compte déjà desactivé !</h6>
+
+
+            </div>
+            <div class="modal-footer border-top-0 mb-2 mx-4 justify-content-center">
+
+              <button type="button" class="btn btn-primary" data-dismiss="modal">Fermer le pop-up</button>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+    <?php  } ?>
 
 
 <!--============================

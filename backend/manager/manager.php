@@ -38,7 +38,7 @@ class manager{
 
 
 
-    $req = $this->dbh->getBase()->prepare("SELECT * from utilisateur where username =:username AND password=:password");
+    $req = $this->dbh->getBase()->prepare("SELECT * from utilisateur where username =:username AND password=:password AND validation =1");
     $req->execute(array(
       'username'=> $a->getUsername(),
       'password'=> $a->getPassword()
@@ -57,18 +57,42 @@ class manager{
 
 
       $_SESSION['connect'] ="1";
-
+var_dump($res,$_SESSION["connect"]);
     }
 
-    else {
 
-      throw new Exception("toutecasevide",1);
+if (!$res) {
+  $req = $this->dbh->getBase()->prepare("SELECT * from utilisateur where username =:username AND password=:password AND validation =0");
+  $req->execute(array(
+    'username'=> $a->getUsername(),
+    'password'=> $a->getPassword()
+  ));                                          //VOIR SI UN UTILISATEUR EXISTE ET LE CONNECTER
+
+  $rev = $req->fetch();
+
+
+  $_SESSION["connect"]="comptepasactive";
+
+
+  if (!$rev) {
+    $req = $this->dbh->getBase()->prepare("SELECT * from utilisateur where username =:username AND password=:password AND validation =2");
+    $req->execute(array(
+      'username'=> $a->getUsername(),
+      'password'=> $a->getPassword()
+    ));                                          //VOIR SI UN UTILISATEUR EXISTE ET LE CONNECTER
+
+    $reb = $req->fetch();
+
+    $_SESSION["connect"]="comptedesactive";
 
 
 
 
+  }
+}
 
-    }
+
+
 
 
 
@@ -726,6 +750,67 @@ $_SESSION["connect"] = "annulerevent";
       }
 
     }
+
+    public function desactivationutilisateur($a){ //POUR AFFICHER LES UTILISATEURS POUR LES MODIFIER EN TANT QU'ADMIN
+    session_start();
+    $this->dbh = new bdd();
+
+    $req = $this->dbh->getBase()->prepare("SELECT * from utilisateur where id = :id");
+    $req->execute(array(
+        'id' => $a->getIdmodif(),
+      ));
+
+    $res = $req->fetch();
+
+    if ($res["validation"] == "2" ) {
+      $_SESSION["connect"] = "desactivation2";
+
+    }
+
+  else  {
+
+    $rea = $this->dbh->getBase()->prepare("UPDATE utilisateur SET validation = 2 WHERE id=:id_modif");
+    $rea->execute(array(
+      'id_modif'=>$a->getIdmodif(),
+
+    ));
+
+$_SESSION["connect"] = "desactivation";
+    }
+
+
+  }
+
+
+  public function activationutilisateur($a){ //POUR AFFICHER LES UTILISATEURS POUR LES MODIFIER EN TANT QU'ADMIN
+  session_start();
+  $this->dbh = new bdd();
+
+  $req = $this->dbh->getBase()->prepare("SELECT * from utilisateur where id = :id");
+  $req->execute(array(
+      'id' => $a->getIdmodif(),
+    ));
+
+  $res = $req->fetch();
+
+  if ($res["validation"] == "1" ) {
+    $_SESSION["connect"] = "activation2";
+
+  }
+
+else  {
+
+  $rea = $this->dbh->getBase()->prepare("UPDATE utilisateur SET validation = 1 WHERE id=:id_modif");
+  $rea->execute(array(
+    'id_modif'=>$a->getIdmodif(),
+
+  ));
+
+$_SESSION["connect"] = "activation";
+  }
+
+
+}
 
     public function annulerrdv($a){ //POUR AFFICHER LES UTILISATEURS POUR LES MODIFIER EN TANT QU'ADMIN
     session_start();

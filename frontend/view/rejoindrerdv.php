@@ -210,7 +210,7 @@ $('#myModal').modal('toggle')
 <div class="modal-body text-center">
 
 <form action= "../../backend/process/joinrdv.php" method= "post">
-  
+
 <input type="hidden" name="id" value="<?php echo  $_SESSION['id']; ?>" </>
 <input required="required" type="date" name="date" value="" </>
 
@@ -218,14 +218,6 @@ $('#myModal').modal('toggle')
 
 
 
-<form action= "../../backend/process/valideevent.php" method= "post">
-<input type="hidden" name="id" value="<?php echo  $_SESSION['id']; ?>" </>
-
-
-
-
-
-<button name="idevent" style="margin-bottom: 50px" type="submit" value= " <?php echo $_SESSION['idevent']; ?> " class="btn btn-danger">Annuler le RDV </button> </form>
 
 
 
