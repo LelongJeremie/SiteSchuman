@@ -57,7 +57,7 @@ class manager{
 
 
       $_SESSION['connect'] ="1";
-var_dump($res,$_SESSION["connect"]);
+
     }
 
 
@@ -86,9 +86,19 @@ if (!$res) {
     $_SESSION["connect"]="comptedesactive";
 
 
+    if (!$reb) {
 
+echo "string";
+     throw new Exception("toutecasevide",1);
+
+
+
+
+    }
 
   }
+
+
 }
 
 
