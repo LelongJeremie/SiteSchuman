@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  mar. 16 nov. 2021 à 09:40
--- Version du serveur :  5.7.26
--- Version de PHP :  7.2.18
+-- Généré le : lun. 06 déc. 2021 à 20:50
+-- Version du serveur :  5.7.31
+-- Version de PHP : 7.3.21
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -19,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données :  `siteschuman`
+-- Base de données : `siteschuman`
 --
 
 -- --------------------------------------------------------
@@ -55,16 +54,46 @@ CREATE TABLE IF NOT EXISTS `evenement` (
   `resume` text NOT NULL,
   `nb_participant` int(11) NOT NULL,
   `nb_parti_max` int(11) DEFAULT NULL,
+  `validationevent` int(1) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `FK_idutilisateureve` (`createur`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `evenement`
 --
 
-INSERT INTO `evenement` (`id`, `titre`, `date_event`, `lieu`, `createur`, `resume`, `nb_participant`, `nb_parti_max`) VALUES
-(1, 'test', '2021-11-03', 'test', 7, 'test', 11, 11);
+INSERT INTO `evenement` (`id`, `titre`, `date_event`, `lieu`, `createur`, `resume`, `nb_participant`, `nb_parti_max`, `validationevent`) VALUES
+(1, 'test', '2021-11-03', 'test', 7, 'test', 6, 11, 1),
+(4, 'a', '2021-12-15', 'a', 8, 'a', 5, 12, 1),
+(5, 'b', '2021-12-09', 'b', 11, 'b', 5, 11, 3);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `organisateur`
+--
+
+DROP TABLE IF EXISTS `organisateur`;
+CREATE TABLE IF NOT EXISTS `organisateur` (
+  `id` smallint(6) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `id_utilisateur` smallint(6) NOT NULL,
+  `id_event` smallint(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `id_utilisateur` (`id_utilisateur`),
+  KEY `id_event` (`id_event`)
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `organisateur`
+--
+
+INSERT INTO `organisateur` (`id`, `id_utilisateur`, `id_event`) VALUES
+(6, 7, 1),
+(7, 8, 1),
+(8, 4, 1),
+(9, 7, 4),
+(10, 7, 5);
 
 -- --------------------------------------------------------
 
@@ -82,23 +111,14 @@ CREATE TABLE IF NOT EXISTS `participant` (
   KEY `fk_participanteve` (`id_participant`),
   KEY `fk_organisateureve` (`id_organisateur`),
   KEY `fk_evenement` (`id_evenement`)
-) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=58 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `participant`
 --
 
 INSERT INTO `participant` (`id`, `id_participant`, `id_organisateur`, `id_evenement`) VALUES
-(36, 7, 7, 1),
-(37, 7, 7, 1),
-(38, 7, 7, 1),
-(39, 7, 7, 1),
-(40, 7, 7, 1),
-(41, 7, 7, 1),
-(42, 7, 7, 1),
-(43, 7, 7, 1),
-(44, 7, 7, 1),
-(45, 7, 7, 1);
+(57, 11, 7, 1);
 
 -- --------------------------------------------------------
 
@@ -112,10 +132,20 @@ CREATE TABLE IF NOT EXISTS `rdv` (
   `date_rdv` date NOT NULL,
   `id_participant` smallint(6) NOT NULL,
   `id_organisateur` smallint(6) NOT NULL,
+  `validationrdv` int(1) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_participantrdv` (`id_participant`),
   KEY `fk_organisateurrdv` (`id_organisateur`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `rdv`
+--
+
+INSERT INTO `rdv` (`id`, `date_rdv`, `id_participant`, `id_organisateur`, `validationrdv`) VALUES
+(8, '2021-12-06', 7, 9, 1),
+(9, '2021-12-07', 7, 11, 0),
+(10, '2021-12-15', 7, 11, 0);
 
 -- --------------------------------------------------------
 
@@ -138,7 +168,7 @@ CREATE TABLE IF NOT EXISTS `utilisateur` (
   `validation` varchar(1) NOT NULL,
   `token` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `utilisateur`
@@ -148,23 +178,27 @@ INSERT INTO `utilisateur` (`id`, `nom`, `prenom`, `date_naissance`, `role`, `cla
 (4, 'Yacine', 'Yacinee', '2021-10-20', '1', NULL, NULL, 'yacine_tabti@hotmail.com', 'Yacine', 'daz', '1', 'rza'),
 (7, 'AZ', 'azz', '2021-10-24', '1', NULL, NULL, 'y.tabti@lprs.frd', 'AZ', 'rlNafhEmBQY.I', '1', 'rza'),
 (8, 'yacine', 'tabti', '2021-11-17', '3', NULL, NULL, 'jejesuisjeje@gmail.com', 'ZZZ', 'daz', '0', 'rza'),
-(9, 'yacine', 'AZ', '2021-11-03', '2', NULL, NULL, 'y.tabti@lprs.fr', 'usernamee', 'rlNafhEmBQY.I', '0', 'rlkaGm7H9J.82');
+(9, 'yacine', 'AZ', '2021-11-03', '2', NULL, NULL, 'y.tabti@lprs.fr', 'usernamee', 'rlNafhEmBQY.I', '0', 'rlkaGm7H9J.82'),
+(10, 'admin', 'admin', '2021-12-06', '1', NULL, NULL, 'admin@admin.com', 'admin', 'rlNafhEmBQY.I', '1', NULL),
+(11, 'prof', 'prof', '2021-12-06', '2', NULL, NULL, 'prof@prof.com', 'prof', 'rlNafhEmBQY.I', '1', NULL),
+(12, 'a', 'a', '2021-12-03', '1', NULL, NULL, 'AzZa@GMAIL.COM', 'a', 'rlNafhEmBQY.I', '2', NULL);
 
 --
 -- Contraintes pour les tables déchargées
 --
 
 --
--- Contraintes pour la table `chat`
---
-ALTER TABLE `chat`
-  ADD CONSTRAINT `fk_envoyeurchat` FOREIGN KEY (`id_envoyeur`) REFERENCES `utilisateur` (`id`);
-
---
 -- Contraintes pour la table `evenement`
 --
 ALTER TABLE `evenement`
   ADD CONSTRAINT `FK_idutilisateureve` FOREIGN KEY (`createur`) REFERENCES `utilisateur` (`id`);
+
+--
+-- Contraintes pour la table `organisateur`
+--
+ALTER TABLE `organisateur`
+  ADD CONSTRAINT `organisateur_ibfk_1` FOREIGN KEY (`id_utilisateur`) REFERENCES `utilisateur` (`id`),
+  ADD CONSTRAINT `organisateur_ibfk_2` FOREIGN KEY (`id_event`) REFERENCES `evenement` (`id`);
 
 --
 -- Contraintes pour la table `participant`
