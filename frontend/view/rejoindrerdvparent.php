@@ -14,10 +14,10 @@
 
 
 
-      if (isset($_SESSION['stop']) and  $_SESSION['stop'] ==3) {    $res=$_SESSION["reo"];    } // si stop == 1 on prend les valeurs donc les utilisateur de la base de donnée
+      if (isset($_SESSION['stop']) and  $_SESSION['stop'] ==9) {    $res=$_SESSION["reoo"];    } // si stop == 1 on prend les valeurs donc les utilisateur de la base de donnée
                                                                             //Sinon on va dans le process pour recupérer ses valeurs
       else {
-        $_SESSION['stop']=3; header("Location: ../../backend/process/afficherprof.php");
+        $_SESSION['stop']=3; header("Location: ../../backend/process/afficherparent.php");
       }
       ?>
 
@@ -110,15 +110,15 @@
                    <?php  } ?>
 
 
-<form action= "../../backend/process/choixrdv.php" method= "post">
+<form action= "../../backend/process/choixrdvparent.php" method= "post">
 
                <table id="myTable" class="ui celled table" style="width:100%">
              	        <thead>
              	            <tr>
 
 
-                            <th>Nom du professeur</th>
-                            <th>Prenom du professeur</th>
+                            <th>Nom du parent</th>
+                            <th>Prenom du parent</th>
                             <th>date</th>
                             <th></>
              	            </tr>
@@ -156,8 +156,8 @@
 
              	        <thead>
              	            <tr>
-                             <th>Nom du professeur</th>
-                             <th>Prenom du professeur</th>
+                             <th>Nom du parent</th>
+                             <th>Prenom du parentr</th>
                              <th>date</th>
                              <th></>
              	            </tr>
@@ -209,7 +209,7 @@ $('#myModal').modal('toggle')
 
 <div class="modal-body text-center">
 
-<form action= "../../backend/process/joinrdv.php" method= "post">
+<form action= "../../backend/process/joinrdvparent.php" method= "post">
 
 <input type="hidden" name="id" value="<?php echo  $_SESSION['id']; ?>" </>
 Date :</br> </br> <input required="required" type="date" name="date" value="" </></br></br>
@@ -229,31 +229,6 @@ Date :</br> </br> <input required="required" type="date" name="date" value="" </
 <!-- delete-account modal -->
 <!-- delete account popup modal start-->
 <!-- Modal -->
-<div class="modal" id="deleteaccount" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-<div class="modal-dialog modal-dialog-centered" role="document">
-<div class="modal-content">
-<div class="modal-header border-bottom-0">
-<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-<span aria-hidden="true">&times;</span>
-</button>
-</div>
-<div class="modal-body text-center">
-<img src="../../style/images/account/Account1.png" class="img-fluid mb-2" alt="">
-<h6 class="py-2">Voulez vous vraiment supprimer ce compte?</h6>
-<p>Ce procédé est irreversible.</p>
-
-</div>
-<div class="modal-footer border-top-0 mb-3 mx-5 justify-content-lg-between justify-content-center">
-
-<button type="button" class="btn btn-primary" data-dismiss="modal">Annuler</button>
-<form   action="../../backend/process/supprimeradmin.php" method="post" >
-<button type="submit" type="button" class="btn btn-danger">Supprimer</button></form>
-</div>
-
-</div>
-</div>
-</div>
-
 
 
 

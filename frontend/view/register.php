@@ -53,19 +53,19 @@
               <form action="../../backend/process/inscription.php" method= "post">
                 <fieldset class="p-4">
                   Nom:
-                  <input type="text" name="nom" placeholder="" class="border p-3 w-100 my-2" />
+                  <input type="text" name="nom" required ="required" placeholder="" class="border p-3 w-100 my-2" />
                   Prénom:
-                  <input type="text" name="prenom" placeholder="" class="border p-3 w-100 my-2"/>
+                  <input type="text" name="prenom" required ="required" placeholder="" class="border p-3 w-100 my-2"/>
                   Date de naissance:
-                  <input type="date" name="date_naissance" class="border p-3 w-100 my-2"/>
+                  <input type="date" name="date_naissance" required ="required" class="border p-3 w-100 my-2"/>
                   Nom d'utilisateur:
-                  <input type="text" name="username" placeholder="" class="border p-3 w-100 my-2"/>
+                  <input type="text" name="username" required ="required" placeholder="" class="border p-3 w-100 my-2"/>
                   Mail:
-                  <input type="email" name="mail" placeholder="" class="border p-3 w-100 my-2"/>
+                  <input type="email" name="mail" required ="required"placeholder="" class="border p-3 w-100 my-2"/>
                   Mot de passe:
-                  <input type="password" name="password" placeholder="" class="border p-3 w-100 my-2"/>
+                  <input type="password" required ="required" name="password" placeholder="" class="border p-3 w-100 my-2"/>
                   Confirmer le mot de passe:
-                  <input type="password" name="passwordconf" placeholder="" class="border p-3 w-100 my-2"/>
+                  <input type="password" required ="required" name="passwordconf" placeholder="" class="border p-3 w-100 my-2"/>
 
                 </br> </br>
                 <div class="form-group">

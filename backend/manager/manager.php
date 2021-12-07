@@ -994,6 +994,48 @@ if ($rel == NULL) {
 
     }
 
+    public function selectrdv2parent($a){ //POUR AFFICHER LES UTILISATEURS POUR LES MODIFIER EN TANT QU'ADMIN
+      session_start();
+      $_SESSION['ok'] = 1;
+      $this->dbh = new bdd();
+
+
+      $req = $this->dbh->getBase()->prepare("SELECT * from utilisateur where id = :id");
+      $req->execute(array(
+          'id' => $a->getIdmodif(),
+        ));
+
+      $res = $req->fetch();
+
+      if ($res ) {
+
+
+                $_SESSION['idevent'] = $res["id"];
+
+
+
+
+
+
+
+
+        $_SESSION["connecte"] = "rdvmodal";
+
+
+
+      }
+
+      else {
+
+        throw new Exception("Erreur dans select admin",1);
+
+
+
+      }
+
+  }
+
+
     public function deletevent($a){ //POUR AFFICHER LES UTILISATEURS POUR LES MODIFIER EN TANT QU'ADMIN
       session_start();
       $_SESSION['ok'] = 1;
@@ -1282,6 +1324,74 @@ $_SESSION["connect"] ="erreurjoineventorg";
 
 
     }
+
+    public function selectrdvparent($a){ //POUR AFFICHER LES UTILISATEURS POUR LES MODIFIER EN TANT QU'ADMIN
+      session_start();
+      $_SESSION['ok'] = 1;
+      $this->dbh = new bdd();
+
+
+      $req = $this->dbh->getBase()->prepare("SELECT * from utilisateur where role = 3 and id = :id");
+      $req->execute(array(
+        'id' => $a->getIdmodif(),
+
+      ));
+
+      $res = $req->fetch();
+
+
+
+    if ($res) {   $rel = $this->dbh->getBase()->prepare("SELECT * from rdv where id_participant = :id_participant and
+    id_organisateur = :id_organisateur and date_rdv = :date_rdv  ");
+    $rel->execute(array(
+     'id_participant' => $a->getId(),
+      'id_organisateur' => $a->getIdmodif(),
+     'date_rdv' => $a->getDate_event(),
+
+    ));
+
+    $rem = $rel->fetch();
+
+
+
+    }
+
+
+      if (!$rem) {
+
+        $this->dbh = new bdd();
+        $req = $this->dbh->getBase()->prepare("INSERT INTO rdv (id_participant, id_organisateur, date_rdv,validationrdv) VALUES ( (select id from utilisateur where id =:id_participant),(select id from utilisateur where id =:id_modif ), :date_rdv,1)");
+        $req->execute(array(
+          'id_participant'=> $a->getId(),
+          'id_modif'=>$a->getIdmodif(),
+          'date_rdv'=>$a->getDate_event(),
+
+
+
+        ));
+
+        var_dump(  $req);
+        $_SESSION["connect"] ="joinrdv";
+      }
+
+      if ($rem) {
+
+
+        $_SESSION["connect"] ="erreurjoinrdv";
+      }
+
+      if ($a->getDate_event() == '') {
+
+
+        $_SESSION["connect"] ="erreurdatejoinrdv";
+      }
+
+
+
+
+
+    }
+
 
 
           public function modificationnomprenomadmin($a) //MODIFIER NOM PRENOM EN TANT QU'ADMIN
@@ -1643,9 +1753,14 @@ $_SESSION['connect'] ="modifpassword";
 
             else {
 
+                          $req = $this->dbh->getBase()->prepare("SELECT * FROM evenement INNER JOIN utilisateur ON evenement.createur = 1");
+                          $req->execute(array());
+
+                          $res = $req->fetchall();
+    $_SESSION["rev"] = $res;
               throw new Exception("Erreur",1);
 
-
+$_SESSION["vide"] = "videevent";
             }
 
           }
@@ -1675,6 +1790,19 @@ $_SESSION['connect'] ="modifpassword";
 
             else {
 
+
+                          $req = $this->dbh->getBase()->prepare("SELECT * FROM rdv INNER JOIN utilisateur ON rdv.id_participant = utilisateur.id WHERE RDV.id_participant = 1 or RDV.id_organisateur = 1 ");
+                          $req->execute(array(
+
+
+                          ));
+
+                          $reh = $req->fetchall();
+
+
+
+  $_SESSION["reZ"]=$reh;
+    $_SESSION["vide"]="viderdv";
               throw new Exception("Erreur",1);
 
 
@@ -1697,12 +1825,19 @@ $_SESSION['connect'] ="modifpassword";
             if ($res) {
 
               $_SESSION["reo"] = $res;
-
+$_SESSION["vide"] = "";
 
 
             }
 
             else {
+
+              $req = $this->dbh->getBase()->prepare("SELECT * from utilisateur where id=4");
+              $req->execute(array());
+
+              $res = $req->fetchall();
+  $_SESSION["reo"] = $res;
+  $_SESSION["vide"] = "videprof";
 
               throw new Exception("Erreur",1);
 
@@ -1711,6 +1846,41 @@ $_SESSION['connect'] ="modifpassword";
 
           }
 
+          public function afficherparent(){
+
+            session_start();
+            $this->dbh = new bdd();
+
+
+            $req = $this->dbh->getBase()->prepare("SELECT * from utilisateur where role=3");
+            $req->execute(array());
+
+            $res = $req->fetchall();
+
+
+            if ($res) {
+
+              $_SESSION["reoo"] = $res;
+
+$_SESSION["vide"] = "";
+
+            }
+
+            else {
+              $req = $this->dbh->getBase()->prepare("SELECT * from utilisateur where id=4");
+              $req->execute(array());
+
+              $res = $req->fetchall();
+              $_SESSION["reoo"] = $res;
+              $_SESSION["vide"] = "videparent";
+              throw new Exception("Erreur",1);
+
+
+            }
+
+          }
+
+
           public function liaison($a)
           {
             session_start();
@@ -1718,7 +1888,7 @@ $_SESSION['connect'] ="modifpassword";
 
 
             $this->dbh = new bdd();
-            $req = $this->dbh->getBase()->prepare("SELECT * from utilisateur where nom=:nom and prenom = :prenom and date_naissance = :date_naissance ");
+            $req = $this->dbh->getBase()->prepare("SELECT * FROM `utilisateur` WHERE nom = :nom AND prenom = :prenom AND date_naissance = :date_naissance AND role = 4");
             $req->execute(array(
               'nom'=> $a->getNom(),
               'prenom'=>$a->getPrenom(),
@@ -1727,6 +1897,13 @@ $_SESSION['connect'] ="modifpassword";
             ));
 
             $res = $req->fetch();
+
+if(!$res){
+
+
+$_SESSION["connect"]="erreurfamille";
+
+}
 
 
             if ($res) {
@@ -1738,7 +1915,8 @@ $_SESSION['connect'] ="modifpassword";
   $rel = $rem->fetch();
 
 
-  if ($rel['id_famille'] == null) {
+
+  if ($rel['id_famille'] == null and $res["id_famille"]== null) {
 
     $famille_hache= crypt($a->getNom(), 'rl');
     $famille = $a->getId()."$famille_hache";
@@ -1750,6 +1928,8 @@ $_SESSION['connect'] ="modifpassword";
       'id_famille'=> $famille,
     ));
 
+
+
     $this->dbh = new bdd;
     $rej = $this->dbh->getBase()->prepare("UPDATE utilisateur SET id_famille = :id_famille where id = :id ");
     $rej->execute(array(
@@ -1758,21 +1938,40 @@ $_SESSION['connect'] ="modifpassword";
     ));
 
 
-
+$_SESSION["connect"]="famille";
   }
 
+if ($rel['id_famille'] == null AND  $res["id_famille"] != null ) {
+
+
+      $this->dbh = new bdd;
+      $rej = $this->dbh->getBase()->prepare("UPDATE utilisateur SET id_famille = :id_famille where id = :id ");
+      $rej->execute(array(
+        'id'=> $a->getId(),
+        'id_famille'=> $res["id_famille"],
+      ));
+
+
+  $_SESSION["connect"]="famille";
+
+
+}
   else {
+
     var_dump(($rel['id_famille']));
     $this->dbh = new bdd;
     $rek = $this->dbh->getBase()->prepare("UPDATE utilisateur SET id_famille = :id_famille where id = :id ");
     $rek->execute(array(
       'id'=> $a->getId(),
-      'id_famille'=> $rel['id_famille'],
+      'id_famille'=> $res['id_famille'],
     ));
 
+    var_dump($res['id_famille']);
 
 
 
+
+$_SESSION["connect"]="famille";
   }
 
 } }

@@ -37,11 +37,11 @@
                                   <label for="current-password">ROLE : </br>
                                      </br>Admin: </br>
                               <input  type="radio" name="role" class="form-controlred p-1 w-50 my-1" value="1" checked/></BR>
-                                    Parent: </br>
+                                  professeur: </br>
                                 <input  type="radio" name="role" class="form-controlred p-1 w-50 my-1" value="2"/></BR>
-                                      Eleve : </br>
+                                      parent : </br>
                                 <input type="radio" name="role" class="form-controlred p-1 w-50 my-1" value="3"></BR>
-                                      Professeur : </br>
+                                      eleve : </br>
                                 <input type="radio" name="role" class="form-controlred p-1 w-50 my-1" value="4"></BR>
 
 
@@ -65,7 +65,7 @@
 <?php include('../include_frontends/footers.php'); ?>
       <!-- Container End -->
       <!-- To Top -->
-    
+
     </footer>
 
 <?php include('../include_frontends/plugins.php'); ?>

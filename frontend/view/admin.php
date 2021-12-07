@@ -150,17 +150,22 @@
                                         <form method="post" action="../../backend/process/modificationroleadmin.php">
                                           <!-- Current Password -->
                                           <div class="form-group">
-                                            <label for="current-password">ROLE actuel de l'utilisateur : <?php  if (isset( $_SESSION["roleadminmodif"])  and $_SESSION["roleadminmodif"] ==1 ) {echo "ADMINISTRATEUR ";} else {
-                                              echo " NON-ADMINISTRATEUR ";
-                                            } ?> </br></br>CHOISIR ADMINISTRATEUR : </>
+                                            <label for="current-password">ROLE actuel de l'utilisateur : <?php  if (isset( $_SESSION["roleadminmodif"])  and $_SESSION["roleadminmodif"] ==1 ) {echo "ADMINISTRATEUR ";} if (isset( $_SESSION["roleadminmodif"])  and $_SESSION["roleadminmodif"] ==2 ) {echo "PROFESSEUR  " ;}
+                                            if (isset( $_SESSION["roleadminmodif"])  and $_SESSION["roleadminmodif"] ==3 ) {echo "PARENT ";} if (isset( $_SESSION["roleadminmodif"])  and $_SESSION["roleadminmodif"] ==4 ) {echo "ELEVE";}?>
+                                          </br></br>CHOISIR ADMINISTRATEUR : </>
                                           </br>     </br>     </br>
                                           <input  type="radio" name="roleadminmodif" class="form-controlred p-1 w-50 my-1" value="1"
-                                          checked></BR></BR></BR>
+                                          checked></BR>
 
-                                          CHOISIR NON-ADMINISTRATEUR</> :
+                                          CHOISIR Professeur :  </br>
                                           <input type="radio" name="roleadminmodif" class="form-controlred p-1 w-50 my-1" value="2"
-                                          ></BR>
-
+                                          checked></BR>
+                                        CHOISIR Parent  :  </br>
+                                          <input type="radio" name="roleadminmodif" class="form-controlred p-1 w-50 my-1" value="3">
+</BR>
+CHOISIR eleve  :  </br>
+  <input type="radio" name="roleadminmodif" class="form-controlred p-1 w-50 my-1" value="4">
+</BR>
 
                                         </div>
 
@@ -209,6 +214,7 @@
                    <th>Pseudo</th>
                    <th>Date de Naissance</th>
                    <th>Role</th>
+                   <th>Id famille</th>
                    <th>Classe</th>
                    <th>Mail</th>
                    <Th>validation</th>
@@ -285,6 +291,7 @@ echo $date['day'],' ';
                       if ($value['role'] =="4") {
                         echo "Eleve";
                       } ?></td>
+                      <td><?php echo $value['id_famille'];?></td>
     	                <td><?php echo $value['classe'];?></td>
     	                <td><?php echo $value['mail'];?></td>
 
@@ -320,6 +327,7 @@ echo $date['day'],' ';
                    <th>Pseudo</th>
                    <th>Date de Naissance</th>
                    <th>Role</th>
+                   <th>Id famille</th>
                    <th>Classe</th>
                    <th>Mail</th>
                    <th>validation</th>
