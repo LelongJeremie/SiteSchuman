@@ -35,13 +35,16 @@
 				<!-- Header Contetnt -->
 				<div class="content-block">
 					<h1>Robert Schuman </h1>
-					<p>Site en construction </p>
+					<p>Projet d'un site pour l'école ! </p>
 				</div>
-
 
 			</div>
 		</div>
+
 	</div>
+
+
+
 	<!-- Container End -->
 </section>
 
