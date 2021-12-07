@@ -3,7 +3,7 @@
 <head>
     <!-- Demarrage session avec un test pour savoir si on est connecté -->
 
-  <?php include '../include_frontends/nav.php';  ?>
+  <?php include '../frontend/include_frontends/nav.php';  ?>
 <!-- contact us end -->
 
 <section class="hero-area bg-1 text-center overly">
@@ -24,7 +24,7 @@
       </noscript>
           <script type="text/javascript">
           </script>
-          <form class="" action="chatindex.php" method="post">
+          <form class="" action="../../chat/index.php" method="post">
             <button name="chat" style="margin-left:42%" type="submit" value="chat" class="d-block py-4 px-22 bg-primary text-white border-0 rounded font-weight-bold">ㅤChoisir l'utilisateurㅤ</button>
           </form>
 
@@ -44,15 +44,15 @@
 =            Footer            =
 =============================-->
 
-<?php include('../include_frontends/footers.php'); ?>
+<?php include('../frontend/include_frontends/footers.php'); ?>
   <!-- Container End -->
   <!-- To Top -->
   <div class="top-to">
     <a id="top" class="" href="#"><i class="fa fa-angle-up"></i></a>
   </div>
+</footer>
 
-
-<?php include('../include_frontends/plugins.php'); ?>
+<?php include('../frontend/include_frontends/plugins.php'); ?>
 </body>
 
 </html>

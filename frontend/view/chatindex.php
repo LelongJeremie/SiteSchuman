@@ -3,7 +3,7 @@
 <head>
     <!-- Demarrage session avec un test pour savoir si on est connecté -->
 
-  <?php include '../frontend/include_frontends/navchat.php';  ?>
+  <?php include '../include_frontends/navchat.php';  ?>
   <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <script>
 (adsbygoogle = window.adsbygoogle || []).push({
@@ -31,19 +31,15 @@ enable_page_level_ads: true
 <br />
 <div class="row">
   <div class="col-md-8 col-sm-6">
-    <h4>Ensemble des utilisateurs:</h4>
+    <h4>Ensemble des utilisateurs:</h4> </br>
   </div>
-  <div class="col-md-2 col-sm-3">
-    <p align="right">Bonjour - <?php echo $_SESSION['username']; ?></p>
-  </div>
+
 </div>
 <div class="table-responsive">
 
   <div id="user_details"></div>
   <div id="user_model_details"></div>
 </div>
-<br />
-<br />
 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <!-- responsivenoida -->
 <ins class="adsbygoogle"
@@ -55,8 +51,6 @@ data-full-width-responsive="true"></ins>
 <script>
 (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
-<br />
-<br />
 </div>
 <script>
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -74,13 +68,11 @@ ga('send', 'pageview');
 =            Footer            =
 =============================-->
 
-<?php include('../frontend/include_frontends/footerschat.php'); ?>
+<?php include('../include_frontends/footerschat.php'); ?>
   <!-- Container End -->
   <!-- To Top -->
 
 </footer>
-
-<?php include('../frontend/include_frontends/pluginschat.php'); ?>
 
 <style>
 
@@ -137,7 +129,7 @@ $(document).ready(function(){
 	function fetch_user()
 	{
 		$.ajax({
-			url:"fetch_user.php",
+			url:"../../chat/fetch_user.php",
 			method:"POST",
 			success:function(data){
 				$('#user_details').html(data);
@@ -148,7 +140,7 @@ $(document).ready(function(){
 	function update_last_activity()
 	{
 		$.ajax({
-			url:"update_last_activity.php",
+			url:"../../chat/update_last_activity.php",
 			success:function()
 			{
 
@@ -158,14 +150,14 @@ $(document).ready(function(){
 
 	function make_chat_dialog_box(to_user_id, to_user_name)
 	{
-		var modal_content = '<div id="user_dialog_'+to_user_id+'" class="user_dialog" title="You have chat with '+to_user_name+'">';
+		var modal_content = '<div id="user_dialog_'+to_user_id+'" class="user_dialog" title="Vous discuter avec '+to_user_name+'">';
 		modal_content += '<div style="height:400px; border:1px solid #ccc; overflow-y: scroll; margin-bottom:24px; padding:16px;" class="chat_history" data-touserid="'+to_user_id+'" id="chat_history_'+to_user_id+'">';
 		modal_content += fetch_user_chat_history(to_user_id);
 		modal_content += '</div>';
 		modal_content += '<div class="form-group">';
 		modal_content += '<textarea name="chat_message_'+to_user_id+'" id="chat_message_'+to_user_id+'" class="form-control chat_message"></textarea>';
 		modal_content += '</div><div class="form-group" align="right">';
-		modal_content+= '<button type="button" name="send_chat" id="'+to_user_id+'" class="btn btn-info send_chat">Send</button></div></div>';
+		modal_content+= '<button type="button" name="send_chat" id="'+to_user_id+'" class="btn btn-info send_chat">Envoyer</button></div></div>';
 		$('#user_model_details').html(modal_content);
 	}
 
@@ -178,24 +170,20 @@ $(document).ready(function(){
 			width:400
 		});
 		$('#user_dialog_'+to_user_id).dialog('open');
-		$('#chat_message_'+to_user_id).emojioneArea({
-			pickerPosition:"top",
-			toneStyle: "bullet"
-		});
+
 	});
 
 	$(document).on('click', '.send_chat', function(){
 		var to_user_id = $(this).attr('id');
 		var chat_message = $('#chat_message_'+to_user_id).val();
 		$.ajax({
-			url:"insert_chat.php",
+			url:"../../chat/insert_chat.php",
 			method:"POST",
 			data:{to_user_id:to_user_id, chat_message:chat_message},
 			success:function(data)
 			{
 				//$('#chat_message_'+to_user_id).val('');
-				var element = $('#chat_message_'+to_user_id).emojioneArea();
-				element[0].emojioneArea.setText('');
+
 				$('#chat_history_'+to_user_id).html(data);
 			}
 		})
@@ -204,7 +192,7 @@ $(document).ready(function(){
 	function fetch_user_chat_history(to_user_id)
 	{
 		$.ajax({
-			url:"fetch_user_chat_history.php",
+			url:"../../chat/fetch_user_chat_history.php",
 			method:"POST",
 			data:{to_user_id:to_user_id},
 			success:function(data){
@@ -229,7 +217,7 @@ $(document).ready(function(){
 	$(document).on('focus', '.chat_message', function(){
 		var is_type = 'yes';
 		$.ajax({
-			url:"update_is_type_status.php",
+			url:"../../chat/update_is_type_status.php",
 			method:"POST",
 			data:{is_type:is_type},
 			success:function()
@@ -242,7 +230,7 @@ $(document).ready(function(){
 	$(document).on('blur', '.chat_message', function(){
 		var is_type = 'no';
 		$.ajax({
-			url:"update_is_type_status.php",
+			url:"../../chat/update_is_type_status.php",
 			method:"POST",
 			data:{is_type:is_type},
 			success:function()
@@ -269,7 +257,7 @@ $(document).ready(function(){
 		if(chat_message != '')
 		{
 			$.ajax({
-				url:"group_chat.php",
+				url:"../../chat/group_chat.php",
 				method:"POST",
 				data:{chat_message:chat_message, action:action},
 				success:function(data){
@@ -287,7 +275,7 @@ $(document).ready(function(){
 		if(group_chat_dialog_active == 'yes')
 		{
 			$.ajax({
-				url:"group_chat.php",
+				url:"../../chat/group_chat.php",
 				method:"POST",
 				data:{action:action},
 				success:function(data)
