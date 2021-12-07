@@ -26,8 +26,20 @@
 								<!-- Dropdown list -->
 								<div class="dropdown-menu">
 									<a class="dropdown-item" href="frontend/view/user-profile.php">Ton profile</a>
-									<a class="dropdown-item" href="frontend/view/rdv.php">Tes rendez-vous</a>
-									<a class="dropdown-item" href="frontend/view/rejoindrerdv.php">Rejoindre un rendez-vous</a>
+									<a class="dropdown-item" href="frontend/view/rdv.php">Mes rendez-vous </a>
+									<?php if (isset($_SESSION['role']) and $_SESSION['role']==2 OR (isset($_SESSION['role']) and $_SESSION['role']==1)) {
+
+									 ?>
+
+									<a class="dropdown-item" href="frontend/view/rejoindrerdvparent.php">Prendre rendez-vous avec un Parent</a>
+
+								<?php } ?>
+								<?php if (isset($_SESSION['role']) and $_SESSION['role']==3 OR (isset($_SESSION['role']) and $_SESSION['role']==1)) {
+
+								 ?>
+
+									<a class="dropdown-item" href="frontend/view/rejoindrerdv.php">Rejoindre un rendez-vous avec un Professeur</a>
+								<?php } ?>
 								</div>
 							</li>
               <?php } ?>

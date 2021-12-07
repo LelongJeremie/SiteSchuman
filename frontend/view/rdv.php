@@ -67,7 +67,7 @@
 
        ?>
 
-       <<?php var_dump($_SESSION["connect"]); ?>
+       <?php  ?>
 
   <form action= "../../backend/process/annulerrdv.php" method= "post">
       <table id="myTable" class="ui celled table" style="width:100%">
@@ -143,7 +143,7 @@ echo $date['day'],' ';
 
                       <td><?php  if($value['validationrdv']==0){ echo ' Rendez-vous annulé : ❌';}
                          elseif($value['validationrdv']==1) {
-                      echo ' Rendez-vousn validé : ✔️';
+                      echo ' Rendez-vous validé : ✔️';
                       }   elseif($value['validationrdv']==2) { echo ' Rendez-vous annulé : ❌';  } elseif($_SESSION['connect']=="annuleredv") { echo ' Rendez-vousannulé : ❌';  } elseif($_SESSION['connect']=="annuleredv2") { echo 'Rendez-vous annulé : ❌';  }?></td>
 
 

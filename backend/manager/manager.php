@@ -994,6 +994,48 @@ if ($rel == NULL) {
 
     }
 
+    public function selectrdv2parent($a){ //POUR AFFICHER LES UTILISATEURS POUR LES MODIFIER EN TANT QU'ADMIN
+      session_start();
+      $_SESSION['ok'] = 1;
+      $this->dbh = new bdd();
+
+
+      $req = $this->dbh->getBase()->prepare("SELECT * from utilisateur where id = :id");
+      $req->execute(array(
+          'id' => $a->getIdmodif(),
+        ));
+
+      $res = $req->fetch();
+
+      if ($res ) {
+
+
+                $_SESSION['idevent'] = $res["id"];
+
+
+
+
+
+
+
+
+        $_SESSION["connecte"] = "rdvmodal";
+
+
+
+      }
+
+      else {
+
+        throw new Exception("Erreur dans select admin",1);
+
+
+
+      }
+
+  }
+
+
     public function deletevent($a){ //POUR AFFICHER LES UTILISATEURS POUR LES MODIFIER EN TANT QU'ADMIN
       session_start();
       $_SESSION['ok'] = 1;
@@ -1282,6 +1324,74 @@ $_SESSION["connect"] ="erreurjoineventorg";
 
 
     }
+
+    public function selectrdvparent($a){ //POUR AFFICHER LES UTILISATEURS POUR LES MODIFIER EN TANT QU'ADMIN
+      session_start();
+      $_SESSION['ok'] = 1;
+      $this->dbh = new bdd();
+
+
+      $req = $this->dbh->getBase()->prepare("SELECT * from utilisateur where role = 3 and id = :id");
+      $req->execute(array(
+        'id' => $a->getIdmodif(),
+
+      ));
+
+      $res = $req->fetch();
+
+
+
+    if ($res) {   $rel = $this->dbh->getBase()->prepare("SELECT * from rdv where id_participant = :id_participant and
+    id_organisateur = :id_organisateur and date_rdv = :date_rdv  ");
+    $rel->execute(array(
+     'id_participant' => $a->getId(),
+      'id_organisateur' => $a->getIdmodif(),
+     'date_rdv' => $a->getDate_event(),
+
+    ));
+
+    $rem = $rel->fetch();
+
+
+
+    }
+
+
+      if (!$rem) {
+
+        $this->dbh = new bdd();
+        $req = $this->dbh->getBase()->prepare("INSERT INTO rdv (id_participant, id_organisateur, date_rdv,validationrdv) VALUES ( (select id from utilisateur where id =:id_participant),(select id from utilisateur where id =:id_modif ), :date_rdv,1)");
+        $req->execute(array(
+          'id_participant'=> $a->getId(),
+          'id_modif'=>$a->getIdmodif(),
+          'date_rdv'=>$a->getDate_event(),
+
+
+
+        ));
+
+        var_dump(  $req);
+        $_SESSION["connect"] ="joinrdv";
+      }
+
+      if ($rem) {
+
+
+        $_SESSION["connect"] ="erreurjoinrdv";
+      }
+
+      if ($a->getDate_event() == '') {
+
+
+        $_SESSION["connect"] ="erreurdatejoinrdv";
+      }
+
+
+
+
+
+    }
+
 
 
           public function modificationnomprenomadmin($a) //MODIFIER NOM PRENOM EN TANT QU'ADMIN
@@ -1710,6 +1820,36 @@ $_SESSION['connect'] ="modifpassword";
             }
 
           }
+
+          public function afficherparent(){
+
+            session_start();
+            $this->dbh = new bdd();
+
+
+            $req = $this->dbh->getBase()->prepare("SELECT * from utilisateur where role=3");
+            $req->execute(array());
+
+            $res = $req->fetchall();
+
+
+            if ($res) {
+
+              $_SESSION["reoo"] = $res;
+
+
+
+            }
+
+            else {
+
+              throw new Exception("Erreur",1);
+
+
+            }
+
+          }
+
 
           public function liaison($a)
           {
