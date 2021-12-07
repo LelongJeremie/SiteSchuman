@@ -32,13 +32,13 @@ try {
 
 if (isset($_SESSION["connect"]) and $_SESSION["connect"] =="erreurmkevent" or $_SESSION["connect"] =="erreurevenementexistant" ){
 
- //header("Location: ../../frontend/view/mkevent.php");
+ header("Location: ../../frontend/view/mkevent.php");
 }
 
 
 else {
 
-//  header("Location: ../../frontend/view/event.php");
+  header("Location: ../../frontend/view/event.php");
 }
 
 

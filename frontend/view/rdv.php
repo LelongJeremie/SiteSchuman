@@ -69,7 +69,7 @@
 
        <?php    ?>
 
-  <form action= "../../backend/process/annulerrdv.php" method= "post">
+
       <table id="myTable" class="ui celled table" style="width:100%">
     	        <thead>
     	            <tr>
@@ -80,6 +80,7 @@
                    <th>nom du participant</th>
                    <th>nom de l'organisateur</th>
                     <th>validation</th>
+                      <th>compte rendu / description</th>
 <th></th>
 
     	            </tr>
@@ -89,7 +90,7 @@
 
     	        <tbody>
     	            <tr>
-                    <?php foreach ($res as $value) { ?>
+                    <?php foreach ($res as $value) {  ?>
 
     	                <td><?php $date = date_parse($value['date_rdv']);
     $jour = $date['day'];
@@ -147,16 +148,19 @@ echo $date['day'],' ';
                     }   elseif($value['validationrdv']==2) { echo ' Rendez-vous annulé : ❌';  }  elseif($value['validationrdv']==4) { echo ' Rendez-vous passé: ❌';  }  elseif($_SESSION['connect']=="annuleredv") { echo ' Rendez-vousannulé : ❌';  } elseif($_SESSION['connect']=="annuleredv2")
                     { echo 'Rendez-vous annulé : ❌';  } ?></td>
 
+ <td><?php echo $value['compterendu'];?></td>
+<td>
+   <?php  if(isset($_SESSION["idmesrdv"]) AND $_SESSION["connecte"]=="mesrdvmodal" AND $_SESSION["idmesrdv"] == $value['0'] ) { ?>
 
-<td> <?php  if($value['validationrdv']!=4){ ?>
+     <input type="hidden" name="id" value=<?php echo $_SESSION['id']; ?> </>
 
-   <button name="idmodif" style="margin-bottom: 50px" type="submit" value= " <?php echo $value['0']; ?> " class="btn btn-danger">Annuler le rendez vous </button> </form><?php  }
-  else{ ?>
-<form class="" action="../../backend/process/cmptrendu.php" method="post">
-<button name="idmodif" style="margin-bottom: 50px" type="submit" value= " <?php echo $value['0']; ?> " class="btn btn-danger">Compte rendu du rendez vous </button>
-</form>
 
-<?php } ?>  </td>
+
+     <button type="button" style="margin-bottom: 50px" class="btn btn-success" data-toggle="modal" data-target="#test"> Detail de l'evenement</button>
+   <?php } else { ?>
+   <form action= "../../backend/process/selectmesrdv.php" method= "post">
+    <button name="idmodif" style="margin-bottom: 50px" type="submit" value= " <?php echo $value['0']; ?> " class="btn btn-primary">choisir le RDV </button> </form> <?php } ?>
+ </td>
 
 
 
@@ -177,6 +181,7 @@ echo $date['day'],' ';
                     <th>nom du participant</th>
                     <th>nom de l'organisateur</th>
                      <th>validation</th>
+                  <th>compte rendu / description</th>
 
 <th></th>
     	            </tr>
@@ -252,7 +257,7 @@ $('#myModal').modal('toggle')
 </script>
 
 
-      <div class="modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+      <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
         aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">
@@ -290,7 +295,7 @@ $('#myModal').modal('toggle')
 </script>
 
 
-      <div class="modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+      <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
         aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">
@@ -316,6 +321,166 @@ $('#myModal').modal('toggle')
 
 
 <?php } ?>
+
+
+        <?php if ( isset($_SESSION["connect"]) and $_SESSION["connect"] == "compterendu") {
+         ?>
+    <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+        <script type="text/javascript">
+    $( document ).ready(function() {
+        $('#myModal').modal('toggle')
+
+    });
+    </script>
+
+
+              <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+                aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header border-bottom-0">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body text-center">
+                      <img src="images/account/Account1.png" class="img-fluid mb-2" alt="">
+                      <h6 class="py-2">Compte rendu enregistrer !. </h6>
+
+
+                    </div>
+                    <div class="modal-footer border-top-0 mb-2 mx-4 justify-content-center">
+
+                      <button type="button" class="btn btn-primary" data-dismiss="modal">Fermer le pop-up</button>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+
+            <?php  } ?>
+
+            <?php if ( isset($_SESSION["connect"]) and $_SESSION["connect"] == "erreurcompterendu") {
+             ?>
+        <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+            <script type="text/javascript">
+        $( document ).ready(function() {
+            $('#myModal').modal('toggle')
+
+        });
+        </script>
+
+
+                  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header border-bottom-0">
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body text-center">
+                          <img src="images/account/Account1.png" class="img-fluid mb-2" alt="">
+                          <h6 class="py-2">Compte rendu non enregistrer !. </h6>
+
+
+                        </div>
+                        <div class="modal-footer border-top-0 mb-2 mx-4 justify-content-center">
+
+                          <button type="button" class="btn btn-primary" data-dismiss="modal">Fermer le pop-up</button>
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+
+
+                <?php  } ?>
+
+
+
+       <?php if ( isset($_SESSION["connecte"]) and $_SESSION["connecte"] == "mesrdvmodal") {
+        ?>
+
+       <script type="text/javascript">
+       $( document ).ready(function() {
+       $('#myModal').modal('toggle')
+       });
+       </script>
+
+
+
+            <div class="modal" id="test" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel">
+              <div class="modal-dialog modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+
+
+
+                    <div class="widget welcome-message text-center">
+                      <h2>Détails de l'evenement</h2>
+                      <p>Voici tout les détails de cet evenement</p>
+                    </div>
+
+                                             <div class="modal-body text-center">
+
+<form action= "../../backend/process/compterendu.php" method= "post">
+
+  <input type="text"  required="required" name="compterendu" value="" placeholder="rentrer un compte rendu">
+    <button name="idevent" style="margin-bottom: 50px" type="submit" value= " <?php echo $_SESSION['idmesrdv'] ?> " class="btn btn-danger">Rentrer votre compte rendu</button> </form>
+
+</form>
+
+
+<form action= "../../backend/process/annulerrdv.php" method= "post">
+      <input type="hidden" name="id" value="<?php echo  $_SESSION['id']; ?>" </>
+
+
+      <button name="idevent" style="margin-bottom: 50px" type="submit" value= " <?php echo $_SESSION['idmesrdv'] ?> " class="btn btn-danger">Annuler le rdv </button> </form>
+<?php }  ?>
+
+
+
+</div>
+<div class="modal-body text-center"style="margin-bottom: 5px">
+
+<button type="button" class="btn btn-transparent" data-dismiss="modal">Fermer</button>
+</div>
+<!-- delete-account modal -->
+<!-- delete account popup modal start-->
+<!-- Modal -->
+
+
+
+
+                               </div>
+
+                               <div class="modal-body text-center"style="margin-bottom: 5px">
+
+
+                               </div>
+                                 <!-- delete-account modal -->
+                                 <!-- delete account popup modal start-->
+                                 <!-- Modal -->
+
+
+                </div>
+              </div>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
 
 <!--============================
 =            Footer            =

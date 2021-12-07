@@ -60,7 +60,11 @@
 
 
     	                <td><?php echo $value['titre'];?></td>
-    	                <td><?php $date = date_parse($value['date_event']);
+    	                <td><?php if ($_SESSION["reZdate"]=="aucun") { echo "aucun"; }
+                      else {
+
+
+                     $date = date_parse($value['date_event']);
     $jour = $date['day'];
     $mois = $date['month'];
     $annee = $date['year'];
@@ -106,9 +110,9 @@ echo $date['day'],' ';
 
 
       } echo $date['year'] ,' ';
-?></td>
+}?></td>
 
-                      <td><?php if ($value['lieu'] != "Dugny" or $value['lieu'] != "dugny" ) {
+                      <td><?php if ($_SESSION["reZdate"]=="aucun") {echo "aucun";} elseif ($value['lieu'] != "Dugny" or $value['lieu'] != "dugny" ) {
                       echo "Externe : ".$value['lieu'];
                     } else {
                       echo "Interne : ".$value['lieu'];
@@ -118,7 +122,7 @@ echo $date['day'],' ';
                       <td><?php echo $value['resume'];?></td>
 
 
-                        <td><?php  if($value['validationevent']==0){ echo '  Evenement pas validé : ❌';}
+                        <td><?php   if ($_SESSION["reZdate"]=="aucun") {echo "aucun";} elseif($value['validationevent']==0){ echo '  Evenement pas validé : ❌';}
                            elseif($value['validationevent']==1) {
  echo ' Evenement validé : ✔️';
 }   elseif($value['validationevent']==3) { echo ' Evenement annulé : ❌';  } elseif($_SESSION['connect']=="annulerevent") { echo ' Evenement annulé : ❌';  }?></td>
@@ -138,7 +142,7 @@ echo $date['day'],' ';
 
                   <?php if (isset($_SESSION["id"])) {  ?>
 
-                    <td><?php  if(isset($_SESSION["idevent"]) AND $_SESSION["connecte"]=="eventmodal" AND $_SESSION["idevent"] == $value['0'] ) { ?>
+                    <td><?php  if(isset($_SESSION["idevent"]) AND $_SESSION["connecte"]=="eventmodal" AND $_SESSION["idevent"] == $value['0'] and $_SESSION["reZdate"]!="aucun"  ) { ?>
 
                       <input type="hidden" name="id" value=<?php echo $_SESSION['id']; ?> </>
 
@@ -693,7 +697,7 @@ else {
 
                <?php  }  ?>
 
-               
+
 
                <?php  if ( isset($_SESSION["connect"]) and $_SESSION["connect"] == "valideevent") {
                 ?>
@@ -752,6 +756,44 @@ else {
                <?php } ?>
 
 
+                       <?php if ( isset($_SESSION["connect"]) and $_SESSION["connect"] == "eventcree") {
+                        ?>
+                   <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+                       <script type="text/javascript">
+                   $( document ).ready(function() {
+                       $('#myModal').modal('toggle')
+
+                   });
+                   </script>
+
+
+                             <div class="modal " id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+                               aria-hidden="true">
+                               <div class="modal-dialog modal-dialog-centered" role="document">
+                                 <div class="modal-content">
+                                   <div class="modal-header border-bottom-0">
+                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                       <span aria-hidden="true">&times;</span>
+                                     </button>
+                                   </div>
+                                   <div class="modal-body text-center">
+                                     <img src="images/account/Account1.png" class="img-fluid mb-2" alt="">
+                                     <h6 class="py-2">Event créée : il sera validé par un professeur ou un admin </h6>
+
+
+                                   </div>
+                                   <div class="modal-footer border-top-0 mb-2 mx-4 justify-content-center">
+
+                                     <button type="button" class="btn btn-primary" data-dismiss="modal">Fermer le pop-up</button>
+
+                                   </div>
+                                 </div>
+                               </div>
+                             </div>
+
+
+
+                           <?php } ?>
 <!--============================
 =            Footer            =
 =============================-->

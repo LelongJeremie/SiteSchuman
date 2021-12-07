@@ -3,7 +3,7 @@
 require_once 'contact.php';
 class utilisateur extends contact{
 
-  public $id,$createur,$date_naissance,$verifmail,$nom,$salleidmodif,$prenom,$password, $passwordmodifconf,$passwordmodif,$passwordconf,$role,$username,$typemodif,$mail,$mailmodif,$idmodif,$idadminmodif,$nomadminmodif,$prenomadminmodif,$token,$passwordadminmodif,$mailadminmodif,$roleadminmodif,$titre,$date_event,$lieu,$resume,$nb_parti_max;
+  public $id,$createur,$texte,$date_naissance,$verifmail,$nom,$salleidmodif,$prenom,$password, $passwordmodifconf,$passwordmodif,$passwordconf,$role,$username,$typemodif,$mail,$mailmodif,$idmodif,$idadminmodif,$nomadminmodif,$prenomadminmodif,$token,$passwordadminmodif,$mailadminmodif,$roleadminmodif,$titre,$date_event,$lieu,$resume,$nb_parti_max;
 
   // constructeur
 
@@ -37,6 +37,10 @@ class utilisateur extends contact{
   public function getId()
   {
     return $this-> id;
+  }
+  public function getTexte()
+  {
+    return $this-> texte;
   }
   public function getIdmodif()
   {
@@ -362,6 +366,15 @@ class utilisateur extends contact{
     if (is_string($resume))
     {
       $this-> resume = $resume;
+    }
+  }
+
+  public function setTexte($texte)
+  {
+    // On vérifie qu'il s'agit bien d'une chaîne de caractères.
+    if (is_string($texte))
+    {
+      $this-> texte = $texte;
     }
   }
 

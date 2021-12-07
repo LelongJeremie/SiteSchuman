@@ -1000,6 +1000,92 @@ if ($rel == NULL) {
 
     }
 
+    public function compterendu($a){ //POUR AFFICHER LES UTILISATEURS POUR LES MODIFIER EN TANT QU'ADMIN
+      session_start();
+      $_SESSION['ok'] = 1;
+      $this->dbh = new bdd();
+
+
+      $req = $this->dbh->getBase()->prepare("SELECT * from rdv where id = :id");
+      $req->execute(array(
+          'id' => $a->getIdmodif(),
+        ));
+
+      $res = $req->fetch();
+
+      if ($res ) {
+
+        $req = $this->dbh->getBase()->prepare("UPDATE rdv SET compterendu = :texte WHERE rdv.id = :id");
+        $req->execute(array(
+            'id' => $a->getIdmodif(),
+            'texte' => $a->getTexte(),
+          ));
+
+
+
+                $_SESSION['idmesrdv'] = $res["id"];
+
+
+
+
+if ($req) {
+  $_SESSION["connect"] = "compterendu";
+}
+
+else {
+    $_SESSION["connect"] = "erreurcompterendu";
+}
+
+      }
+
+      else {
+
+        throw new Exception("Erreur dans select admin",1);
+
+
+
+      }
+
+  }
+
+
+
+    public function selectmesrdv($a){ //POUR AFFICHER LES UTILISATEURS POUR LES MODIFIER EN TANT QU'ADMIN
+      session_start();
+      $_SESSION['ok'] = 1;
+      $this->dbh = new bdd();
+
+
+      $req = $this->dbh->getBase()->prepare("SELECT * from rdv where id = :id");
+      $req->execute(array(
+          'id' => $a->getIdmodif(),
+        ));
+
+      $res = $req->fetch();
+
+      if ($res ) {
+
+
+                $_SESSION['idmesrdv'] = $res["id"];
+
+
+
+        $_SESSION["connecte"] = "mesrdvmodal";
+
+
+
+      }
+
+      else {
+
+        throw new Exception("Erreur dans select admin",1);
+
+
+
+      }
+
+  }
+
     public function selectrdv2parent($a){ //POUR AFFICHER LES UTILISATEURS POUR LES MODIFIER EN TANT QU'ADMIN
       session_start();
       $_SESSION['ok'] = 1;
@@ -1604,7 +1690,13 @@ else { header("Location: ../../index.php");
 
               $res = $req->fetch();
               var_dump($res);
-              if ($res) {
+
+
+
+              if ($a->getPasswordmodif() != $a->getPasswordmodifconf()) {
+                  throw new Exception("correspondpas");
+              }
+              elseif ($res) {
 
 
                 $this->dbh = new bdd();
@@ -1751,7 +1843,7 @@ $_SESSION['connect'] ="modifpassword";
             $this->dbh = new bdd();
 
 
-            $req = $this->dbh->getBase()->prepare("SELECT * FROM evenement INNER JOIN utilisateur ON evenement.createur = utilisateur.id");
+            $req = $this->dbh->getBase()->prepare("SELECT * FROM evenement INNER JOIN utilisateur ON evenement.createur = utilisateur.id and evenement.createur != 4 ");
             $req->execute(array());
 
             $res = $req->fetchall();
@@ -1760,23 +1852,28 @@ $_SESSION['connect'] ="modifpassword";
             if ($res) {
 
               $_SESSION["rev"] = $res;
+              $_SESSION["reZdate"]="";
 
 
             }
 
             else {
 
-                          $req = $this->dbh->getBase()->prepare("SELECT * FROM evenement INNER JOIN utilisateur ON evenement.createur = 1");
+                          $req = $this->dbh->getBase()->prepare("SELECT * FROM evenement WHERE createur = 4");
                           $req->execute(array());
 
                           $res = $req->fetchall();
     $_SESSION["rev"] = $res;
+    $_SESSION["reZdate"]="aucun";
               throw new Exception("Erreur",1);
 
 $_SESSION["vide"] = "videevent";
             }
 
           }
+
+
+
 
           public function afficherrdv(){
 
@@ -2037,7 +2134,7 @@ $_SESSION["connect"]="famille";
 
             else {
               $this->dbh = new bdd();
-              $req = $this->dbh->getBase()->prepare("INSERT INTO evenement (titre,date_event,lieu,createur,resume,nb_participant,nb_parti_max,validationevent) values (:titre,:date_event,:lieu,:createur,:resume,1,:nb_participant,:nb_parti_max,0)");          // verifier si un utilisateur et l'inscrire si il existe
+              $req = $this->dbh->getBase()->prepare("INSERT INTO evenement (titre,date_event,lieu,createur,resume,nb_participant,nb_parti_max,validationevent) values (:titre,:date_event,:lieu,:createur,:resume,:nb_participant,:nb_parti_max,0)");          // verifier si un utilisateur et l'inscrire si il existe
               $req->execute(array(
                 'titre'=>$a->getTitre(),
                 'date_event'=>$a->getDate_event(),
@@ -2048,17 +2145,18 @@ $_SESSION["connect"]="famille";
                 'nb_parti_max' => $a->getNb_parti_max(),
               ));
 
-              var_dump($req);
 
               $this->dbh = new bdd();
-              $req = $this->dbh->getBase()->prepare("INSERT INTO organisateur (id_utilisateur, id_event) VALUES ( (select id from utilisateur where id =:id_participant),(select id from evenement where id =:id_evenement  ))");
+              $req = $this->dbh->getBase()->prepare("INSERT INTO organisateur (id_utilisateur, id_event) VALUES ( (select id from utilisateur where id =:id_participant),(select id from evenement where titre=:titre  ))");
               $req->execute(array(
                 'id_participant'=> $a->getCreateur(),
-                'id_evenement'=>$a->getIdmodif(),
+
+                'titre'=>$a->getTitre(),
+
+
               ));
         $reo = $req->fetch();
-  var_dump($req);
-    var_dump($reo);
+$_SESSION["connect"] = "eventcree";
 
             }
 

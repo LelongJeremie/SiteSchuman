@@ -115,7 +115,7 @@
                       <a href="../../backend/process/deconnexion.php"><i class="fa fa-cog"></i> Deconnexion</a>
                     </li>
                     <li>
-                    
+
                     </li>
                   </ul>
                 </div>
@@ -168,32 +168,32 @@
                     <!-- Current Password -->
                     <div class="form-group">
                       <label for="current-password">Mot de passe actuel</label>
-                      <input type="password" name="password"  <?php
+                      <input type="password" name="password" required="required"  <?php
                       //gestion d'erreur des cases
                       if (isset($_SESSION["erreurcase"]) and $_SESSION["erreurcase"] == "toutecasepasswordvide"){ echo'placeholder="Veuillez rentrer un mot de passe valide *"';  echo 'class="form-controlred  p-3 w-100 my-2"' ;}
                       if (isset($_SESSION["erreurcase"]) and $_SESSION["erreurcase"] == "passwordvide") { echo'placeholder="Veuillez rentrer un mot de passe valide*"';  echo 'class="form-controlred  p-3 w-100 my-2"' ;}
-                      if (isset($_SESSION["erreurcase"]) and $_SESSION["erreurcase"] == "mauvaispassword") { echo'placeholder="Veuillez rentrer le bon mot de passe"';  echo 'class="form-controlred  p-3 w-100 my-2"' ;}
+                      if (isset($_SESSION["erreurcase"]) and $_SESSION["erreurcase"] == "mauvaispassword") { $_SESSION["erreurcase"]=""; echo'placeholder="Veuillez rentrer le bon mot de passe"';  echo 'class="form-controlred  p-3 w-100 my-2"' ;}
 
                       else { echo 'placeholder="" class="form-control  p-3 w-100 my-2"';} ?> />
                     </div>
                     <!-- New Password -->
                     <div class="form-group">
                       <label for="new-password">Nouveau mot de passe</label>
-                      <input type="password" name="passwordmodif"
+                      <input type="password" name="passwordmodif" required="required"
                       <?php
                       //gestion d'erreur des cases
                       if (isset($_SESSION["erreurcase"]) and $_SESSION["erreurcase"] == "toutecasepasswordvide"){ echo'placeholder="Veuillez rentrer un mot de passe valide *"';  echo 'class="form-controlred  p-3 w-100 my-2"' ;}
                       if (isset($_SESSION["erreurcase"]) and $_SESSION["erreurcase"] == "passwpordmodifvide") { echo'placeholder="Veuillez rentrer un mot de passe valide*"';  echo 'class="form-controlred  p-3 w-100 my-2"' ;}
                       if (isset($_SESSION["erreurcase"]) and $_SESSION["erreurcase"] == "passwpordmodifvide") { echo'placeholder="Veuillez rentrer un mot de passe valide*"';  echo 'class="form-controlred  p-3 w-100 my-2"' ;}
                       if (isset($_SESSION["erreurcase"]) and $_SESSION["erreurcase"] == "passwmordmodifconfmodifvide") { echo'placeholder="placeholder="Veuillez rentrer un mot de passe valide*"'; echo 'class="form-controlred p-3 w-100 my-2/>"';}
-                      if (isset($_SESSION["erreurcase"]) and $_SESSION["erreurcase"] == "correspondpas") { echo'placeholder="Les mots de passe rentrés ne sont pas identiques*"'; echo 'class="form-controlred p-3 w-100 my-2/>"';}
+                      if (isset($_SESSION["erreurcase"]) and $_SESSION["erreurcase"] == "correspondpas") {     echo'placeholder="Les mots de passe rentrés ne sont pas identiques*"'; echo 'class="form-controlred p-3 w-100 my-2/>"';}
                       else { echo 'placeholder="" class="form-control  p-3 w-100 my-2"';} ?> />
                     </div>
 
                     <!-- Confirm New Password -->
                     <div class="form-group">
                       <label for="confirm-password">Confirmer le nouveau mot de passe</label>
-                      <input type="password" name="passwordmodifconf"
+                      <input type="password" name="passwordmodifconf" required="required"
                       <?php
 
                       if (isset($_SESSION["erreurcase"]) and $_SESSION["erreurcase"] == "toutecasepasswordvide"){ echo'placeholder="Veuillez rentrer un mot de passe valide *"';  echo 'class="form-controlred  p-3 w-100 my-2"' ;}
@@ -215,7 +215,7 @@
                     <!-- Current Password -->
                     <div class="form-group">
                       <label for="current-email">Mail actuel</label>
-                      <input type="email" name="mail"
+                      <input type="email" name="mail" required="required"
                       <?php
 
                       if (isset($_SESSION["erreurcase"]) and $_SESSION["erreurcase"] == "toutecasemailvide"){ echo'placeholder="Veuillez rentrer un mail valide*"';  echo 'class="form-controlred  p-3 w-100 my-2"' ;}
@@ -226,7 +226,7 @@
                     <!-- New email -->
                     <div class="form-group">
                       <label for="new-email">Nouveau Mail</label>
-                      <input type="email" name="mailmodif"
+                      <input type="email" name="mailmodif" required="required"
                       <?php
 
                       if (isset($_SESSION["erreurcase"]) and $_SESSION["erreurcase"] == "toutecasemailvide"){ echo'placeholder="Veuillez rentrer un mail valide*"';  echo 'class="form-controlred  p-3 w-100 my-2"' ;}
@@ -248,7 +248,13 @@
     =            Footer            =
     =============================-->
     <!-- include de php redondant -->
-    <?php include('../include_frontends/footers.php'); ?>
+    <?php   if (isset($_SESSION["erreurcase"]) and $_SESSION["erreurcase"] !=""){
+       $_SESSION["erreurcase"] ="";
+    }
+
+
+
+     include('../include_frontends/footers.php'); ?>
     <!-- Container End -->
     <!-- To Top -->
     <div class="top-to">

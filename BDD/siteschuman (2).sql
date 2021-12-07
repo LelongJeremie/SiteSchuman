@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  mar. 07 déc. 2021 à 10:38
--- Version du serveur :  5.7.26
--- Version de PHP :  7.2.18
+-- Généré le : mar. 07 déc. 2021 à 20:41
+-- Version du serveur :  5.7.31
+-- Version de PHP : 7.3.21
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -19,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données :  `siteschuman`
+-- Base de données : `siteschuman`
 --
 
 -- --------------------------------------------------------
@@ -37,14 +36,7 @@ CREATE TABLE IF NOT EXISTS `chat_message` (
   `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `status` int(1) NOT NULL,
   PRIMARY KEY (`chat_message_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
-
---
--- Déchargement des données de la table `chat_message`
---
-
-INSERT INTO `chat_message` (`chat_message_id`, `to_user_id`, `from_user_id`, `chat_message`, `timestamp`, `status`) VALUES
-(1, 3, 1, 'eleve\n', '2021-12-07 10:38:08', 1);
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -65,7 +57,7 @@ CREATE TABLE IF NOT EXISTS `evenement` (
   `validationevent` int(1) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `FK_idutilisateureve` (`createur`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `evenement`
@@ -103,7 +95,7 @@ CREATE TABLE IF NOT EXISTS `organisateur` (
   PRIMARY KEY (`id`),
   KEY `id_utilisateur` (`id_utilisateur`),
   KEY `id_event` (`id_event`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `organisateur`
@@ -150,18 +142,18 @@ CREATE TABLE IF NOT EXISTS `rdv` (
   `id_participant` smallint(6) NOT NULL,
   `id_organisateur` smallint(6) NOT NULL,
   `validationrdv` int(1) NOT NULL,
+  `compterendu` text,
   PRIMARY KEY (`id`),
   KEY `fk_participantrdv` (`id_participant`),
   KEY `fk_organisateurrdv` (`id_organisateur`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `rdv`
 --
 
-INSERT INTO `rdv` (`id`, `date_rdv`, `id_participant`, `id_organisateur`, `validationrdv`) VALUES
-(1, '2021-11-02', 4, 4, 0),
-(13, '2021-12-07', 1, 4, 1);
+INSERT INTO `rdv` (`id`, `date_rdv`, `id_participant`, `id_organisateur`, `validationrdv`, `compterendu`) VALUES
+(1, '2021-11-02', 4, 4, 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -191,11 +183,10 @@ CREATE TABLE IF NOT EXISTS `utilisateur` (
 --
 
 INSERT INTO `utilisateur` (`id`, `nom`, `prenom`, `date_naissance`, `role`, `classe`, `id_famille`, `mail`, `username`, `password`, `validation`, `token`) VALUES
-(1, 'admin', 'admin', '2021-12-07', '3', NULL, NULL, 'admin@lprs.fr', 'admin', 'rloYdHi6P0DDs', '1', NULL),
+(1, 'admin', 'admin', '2021-12-07', '1', NULL, NULL, 'admin@lprs.fr', 'admin', 'rloYdHi6P0DDs', '1', NULL),
 (2, 'prof', 'prof', '2021-12-07', '2', NULL, NULL, 'prof@lprs.fr', 'prof', 'rl2AywpC6kXeg', '1', NULL),
 (3, 'eleve', 'eleve', '2021-12-07', '4', NULL, NULL, 'eleve@lprs.com', 'eleve', 'rl82WIilKGnoo', '1', NULL),
-(4, 'Vide', 'Vide', '', '4', NULL, NULL, 'vide@vide.com', 'vide', 'vide', '0', NULL),
-(18, 'yacine', 'yacine', '2021-12-02', '1', NULL, NULL, 'y.tabti@lprs.fr', 'CRYPTO', 'rl7HypOhTM4Uo', '1', NULL);
+(4, 'Vide', 'Vide', '', '4', NULL, NULL, 'vide@vide.com', 'vide', 'vide', '0', NULL);
 
 --
 -- Contraintes pour les tables déchargées
