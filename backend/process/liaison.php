@@ -29,13 +29,13 @@ try {
 
 } catch (Exception $e) {
 
-$_SESSION["connect"] ="7";
+
 
 }
 
-if (isset($_SESSION["connect"]) and $_SESSION["connect"] =="liaisonerreur") {
+if (isset($_SESSION["connect"]) and $_SESSION["connect"] =="erreurfamille") {
 
- //header("Location: ../../frontend/view/liaison.php");
+ header("Location: ../../frontend/view/liaison.php");
 }
 
 
@@ -43,7 +43,7 @@ if (isset($_SESSION["connect"]) and $_SESSION["connect"] =="liaisonerreur") {
 
 else {
 
-//header("Location: ../../frontend/view/liaison.php");
+header("Location: ../../index.php");
 }
 
 

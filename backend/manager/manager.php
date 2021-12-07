@@ -1718,7 +1718,7 @@ $_SESSION['connect'] ="modifpassword";
 
 
             $this->dbh = new bdd();
-            $req = $this->dbh->getBase()->prepare("SELECT * from utilisateur where nom=:nom and prenom = :prenom and date_naissance = :date_naissance ");
+            $req = $this->dbh->getBase()->prepare("SELECT * FROM `utilisateur` WHERE nom = :nom AND prenom = :prenom AND date_naissance = :date_naissance AND role = 4");
             $req->execute(array(
               'nom'=> $a->getNom(),
               'prenom'=>$a->getPrenom(),
@@ -1728,6 +1728,13 @@ $_SESSION['connect'] ="modifpassword";
 
             $res = $req->fetch();
 
+if(!$res){
+
+
+$_SESSION["connect"]="erreurfamille";
+
+}
+
 
             if ($res) {
 
@@ -1736,6 +1743,7 @@ $_SESSION['connect'] ="modifpassword";
               $rem->execute(array(
                 'id'=> $a->getId(),));
   $rel = $rem->fetch();
+
 
 
   if ($rel['id_famille'] == null) {
@@ -1750,6 +1758,8 @@ $_SESSION['connect'] ="modifpassword";
       'id_famille'=> $famille,
     ));
 
+
+
     $this->dbh = new bdd;
     $rej = $this->dbh->getBase()->prepare("UPDATE utilisateur SET id_famille = :id_famille where id = :id ");
     $rej->execute(array(
@@ -1758,7 +1768,7 @@ $_SESSION['connect'] ="modifpassword";
     ));
 
 
-
+$_SESSION["connect"]="famille";
   }
 
   else {
@@ -1767,12 +1777,12 @@ $_SESSION['connect'] ="modifpassword";
     $rek = $this->dbh->getBase()->prepare("UPDATE utilisateur SET id_famille = :id_famille where id = :id ");
     $rek->execute(array(
       'id'=> $a->getId(),
-      'id_famille'=> $rel['id_famille'],
+      'id_famille'=> $res['id_famille'],
     ));
 
 
 
-
+$_SESSION["connect"]="famille";
   }
 
 } }

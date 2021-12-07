@@ -96,6 +96,29 @@
 												</li>
 
 							<?php }  ?>
+
+							<?php if (isset($_SESSION['role']) and $_SESSION['role']==3 OR isset($_SESSION['role']) and $_SESSION['role']==1) {
+
+							 ?>
+
+													<li class="nav-item dropdown dropdown-slide">
+														<a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+															Liaison <span><i class="fa fa-angle-down"></i></span>
+														</a>
+
+
+														<!-- Dropdown list -->
+														<div class="dropdown-menu">
+															<a class="dropdown-item" href="liaison.php">liaison  </a>
+
+
+
+
+														</div>
+													</li>
+
+								<?php }  ?>
+
 						</ul>
 					<ul class="navbar-nav ml-auto mt-10">
 						 <?php if (isset($_SESSION["id"])){   ?>
