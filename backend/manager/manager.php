@@ -1829,7 +1829,7 @@ $_SESSION["vide"] = "videevent";
             $this->dbh = new bdd();
 
 
-            $req = $this->dbh->getBase()->prepare("SELECT * from utilisateur where role=2");
+            $req = $this->dbh->getBase()->prepare("SELECT * from utilisateur where role=2 and validation =1");
             $req->execute(array());
 
             $res = $req->fetchall();
@@ -1865,7 +1865,7 @@ $_SESSION["vide"] = "";
             $this->dbh = new bdd();
 
 
-            $req = $this->dbh->getBase()->prepare("SELECT * from utilisateur where role=3");
+            $req = $this->dbh->getBase()->prepare("SELECT * from utilisateur where role=3 and validation =1");
             $req->execute(array());
 
             $res = $req->fetchall();

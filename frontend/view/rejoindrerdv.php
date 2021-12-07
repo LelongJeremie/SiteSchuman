@@ -145,7 +145,9 @@
 
           else {
             ?>
-                                  <button name="idevent" style="margin-left:100px" type="submit" value= <?php echo $value['0']; ?> class="d-block py-4 px-22 bg-primary text-white border-0 rounded font-weight-bold">Choisir l'evenement</button>  </form>
+                                  <button name="idevent" style="margin-left:100px" <?php if ($value['nom']=="Vide") {
+                                    echo "disabled";
+                                  } ?>  type="submit" value= <?php echo $value['0']; ?> class="d-block py-4 px-22 bg-primary text-white border-0 rounded font-weight-bold">Choisir l'evenement</button>  </form>
 
 
                                 </br>
