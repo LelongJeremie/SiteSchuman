@@ -24,7 +24,7 @@
 
 
 
-                      <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+                      <div class="modal " id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
                         aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered" role="document">
                           <div class="modal-content">
@@ -65,7 +65,7 @@
 
 
 
-                                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+                                    <div class="modal " id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
                                       aria-hidden="true">
                                       <div class="modal-dialog modal-dialog-centered" role="document">
                                         <div class="modal-content">
@@ -115,14 +115,14 @@
                       <a href="../../backend/process/deconnexion.php"><i class="fa fa-cog"></i> Deconnexion</a>
                     </li>
                     <li>
-                      <a href="" data-toggle="modal" data-target="#deleteaccount"><i class="fa fa-power-off"></i>Supprimer le compte</a>
+                    
                     </li>
                   </ul>
                 </div>
                 <!-- delete-account modal -->
                 <!-- delete account popup modal start-->
                 <!-- Modal -->
-                <div class="modal fade" id="deleteaccount" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+                <div class="modal " id="deleteaccount" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
                 aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
                   <div class="modal-content">

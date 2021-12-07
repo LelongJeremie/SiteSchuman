@@ -41,7 +41,7 @@
 								<?php if (isset($_SESSION['role']) and $_SESSION['role']!=4) {
 
 								 ?>
-								<a class="dropdown-item" href="frontend/view/rdv.php">Mes rendez-vous </a>
+								<a class="dropdown-item" href="rdv.php">Mes rendez-vous </a>
 							<?php } ?>
 								<?php if (isset($_SESSION['role']) and $_SESSION['role']==2 OR (isset($_SESSION['role']) and $_SESSION['role']==1)) {
 
