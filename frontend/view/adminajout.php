@@ -21,17 +21,17 @@
                         <form action="../../backend/process/adminajout.php" method= "post">
                             <fieldset class="p-4">
                               Nom:
-                              <input type="text" name="nom" placeholder="" class="border p-3 w-100 my-2" />
+                              <input type="text" name="nom" required ="required" placeholder="" class="border p-3 w-100 my-2" />
                               Prénom:
-                              <input type="text" name="prenom" placeholder="" class="border p-3 w-100 my-2"/>
+                              <input type="text" name="prenom" required ="required" placeholder="" class="border p-3 w-100 my-2"/>
                               Date de naissance:
-                              <input type="date" name="date_naissance" class="border p-3 w-100 my-2"/>
+                              <input type="date" name="date_naissance" required ="required" class="border p-3 w-100 my-2"/>
                               Nom d'utilisateur:
-                              <input type="text" name="username" placeholder="" class="border p-3 w-100 my-2"/>
+                              <input type="text" name="username" required ="required" placeholder="" class="border p-3 w-100 my-2"/>
                               Mail:
-                              <input type="email" name="mail" placeholder="" class="border p-3 w-100 my-2"/>
+                              <input type="email" name="mail" required ="required" placeholder="" class="border p-3 w-100 my-2"/>
                               Mot de passe:
-                              <input type="password" name="password" placeholder="" class="border p-3 w-100 my-2"/>
+                              <input type="password" name="password" required ="required" placeholder="" class="border p-3 w-100 my-2"/>
                             </br> </br>
                                 <div class="form-group">
                                   <label for="current-password">ROLE : </br>
@@ -49,7 +49,7 @@
 
 
                                 <div class="loggedin-forgot d-inline-flex my-3">
-                                        <label for="registering" class="px-2">En vous inscrivant vous acceptez nos <a class="text-primary font-weight-bold" href="terms-condition.PHP">termes et conditions et politique de confidentialité</a></label>
+                                        
                                 </div>
                                 <button type="submit" class="d-block py-3 px-4 bg-primary text-white border-0 rounded font-weight-bold">S'inscrire</button>
                             </fieldset>
@@ -59,6 +59,47 @@
             </div>
         </div>
     </section>
+
+
+    <?php if ( isset($_SESSION["connect"]) and $_SESSION["connect"] == "erreuradminajout") {
+     ?>
+<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript">
+$( document ).ready(function() {
+    $('#myModal').modal('toggle')
+});
+</script>
+
+
+
+
+          <div class="modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header border-bottom-0">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body text-center">
+                  <img src="images/account/Account1.png" class="img-fluid mb-2" alt="">
+                  <h6 class="py-2">Compte déjà existant !</h6>
+
+
+                </div>
+                <div class="modal-footer border-top-0 mb-2 mx-4 justify-content-center">
+
+                  <button type="button" class="btn btn-primary" data-dismiss="modal">Fermer le pop-up</button>
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+        <?php $_SESSION["connect"] = "00000"; } ?>
     <!--============================
     =            Footer            =
     =============================-->

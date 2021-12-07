@@ -1415,7 +1415,7 @@ $_SESSION["connect"] ="erreurjoineventorg";
               ));
 
               $_SESSION['prenomadminmodif'] = $a->getPrenom();
-
+  $_SESSION['connect'] ="modificationadminreussis";
             }
 
             elseif ($a->getPrenom()=='' ) {
@@ -1429,6 +1429,7 @@ $_SESSION["connect"] ="erreurjoineventorg";
 
               ));
               $_SESSION['nomadminmodif'] = $a->getNom();
+              $_SESSION['connect'] ="modificationadminreussis";
             }
 
 
@@ -1447,6 +1448,7 @@ $_SESSION["connect"] ="erreurjoineventorg";
               ));
               $_SESSION['prenomadminmodif'] = $a->getPrenom();
               $_SESSION['nomadminmodif'] = $a->getNom();
+              $_SESSION['connect'] ="modificationadminreussis";
             }
 
           }
@@ -1475,6 +1477,7 @@ $_SESSION["connect"] ="erreurjoineventorg";
 
 
               ));
+                $_SESSION['connect'] ="modificationadminreussis";
               $_SESSION['mailadminmodif'] = $a->getMail();
 
             }
@@ -1502,6 +1505,7 @@ $_SESSION["connect"] ="erreurjoineventorg";
 
 
               ));
+                $_SESSION['connect'] ="modificationadminreussis";
               $_SESSION['usernameadminmodif'] = $a->getUsername();
 
             }
@@ -1523,6 +1527,7 @@ $_SESSION["connect"] ="erreurjoineventorg";
 
 
             ));
+              $_SESSION['connect'] ="modificationadminreussis";
             $_SESSION['roleadminmodif'] = $a->getRoleadminmodif();
 
           }
@@ -1547,6 +1552,7 @@ $_SESSION["connect"] ="erreurjoineventorg";
 
 
               ));
+                $_SESSION['connect'] ="modificationadminreussis";
               $_SESSION['passwordadminmodif'] = $a->getPassword();
 
             }
@@ -1687,6 +1693,7 @@ $_SESSION['connect'] ="modifpassword";
 
             if ($res) {
               throw new Exception("util");
+                $_SESSION['connect'] ="erreuradminajout";
 
             }
 
@@ -1707,7 +1714,7 @@ $_SESSION['connect'] ="modifpassword";
 
 
 
-              $_SESSION['connect'] ="10";
+              $_SESSION['connect'] ="adminajout";
 
             }
 
