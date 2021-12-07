@@ -1746,7 +1746,7 @@ $_SESSION["connect"]="erreurfamille";
 
 
 
-  if ($rel['id_famille'] == null) {
+  if ($rel['id_famille'] == null and $res["id_famille"]== null) {
 
     $famille_hache= crypt($a->getNom(), 'rl');
     $famille = $a->getId()."$famille_hache";
@@ -1771,7 +1771,23 @@ $_SESSION["connect"]="erreurfamille";
 $_SESSION["connect"]="famille";
   }
 
+if ($rel['id_famille'] == null AND  $res["id_famille"] != null ) {
+
+
+      $this->dbh = new bdd;
+      $rej = $this->dbh->getBase()->prepare("UPDATE utilisateur SET id_famille = :id_famille where id = :id ");
+      $rej->execute(array(
+        'id'=> $a->getId(),
+        'id_famille'=> $res["id_famille"],
+      ));
+
+
+  $_SESSION["connect"]="famille";
+
+
+}
   else {
+
     var_dump(($rel['id_famille']));
     $this->dbh = new bdd;
     $rek = $this->dbh->getBase()->prepare("UPDATE utilisateur SET id_famille = :id_famille where id = :id ");
@@ -1779,6 +1795,9 @@ $_SESSION["connect"]="famille";
       'id'=> $a->getId(),
       'id_famille'=> $res['id_famille'],
     ));
+
+    var_dump($res['id_famille']);
+
 
 
 

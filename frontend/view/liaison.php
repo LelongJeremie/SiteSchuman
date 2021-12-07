@@ -19,9 +19,9 @@
               <form action="../../backend/process/liaison.php" method= "post">
                 <fieldset class="p-4">
                   Nom de votre enfant:
-                  <input type="text" name="nom" placeholder="" class="border p-3 w-100 my-2" />
+                  <input type="text" required ="required" name="nom" placeholder="" class="border p-3 w-100 my-2" />
                   Prénom de votre enfant:
-                  <input type="text" name="prenom" placeholder="" class="border p-3 w-100 my-2"/>
+                  <input type="text" name="prenom" required ="required" placeholder="" class="border p-3 w-100 my-2"/>
                   Date de naissance de votre enfant :
                   <input type="date" name="date_naissance" class="border p-3 w-100 my-2"/>
   <input type="hidden" name="id" value=<?php echo $_SESSION['id']; ?> />
