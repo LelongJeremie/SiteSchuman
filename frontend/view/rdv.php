@@ -144,10 +144,19 @@ echo $date['day'],' ';
                       <td><?php  if($value['validationrdv']==0){ echo ' Rendez-vous annulé : ❌';}
                          elseif($value['validationrdv']==1) {
                       echo ' Rendez-vous validé : ✔️';
-                      }   elseif($value['validationrdv']==2) { echo ' Rendez-vous annulé : ❌';  } elseif($_SESSION['connect']=="annuleredv") { echo ' Rendez-vousannulé : ❌';  } elseif($_SESSION['connect']=="annuleredv2") { echo 'Rendez-vous annulé : ❌';  }?></td>
+                    }   elseif($value['validationrdv']==2) { echo ' Rendez-vous annulé : ❌';  }  elseif($value['validationrdv']==4) { echo ' Rendez-vous passé: ❌';  }  elseif($_SESSION['connect']=="annuleredv") { echo ' Rendez-vousannulé : ❌';  } elseif($_SESSION['connect']=="annuleredv2")
+                    { echo 'Rendez-vous annulé : ❌';  } ?></td>
 
 
-<td>   <button name="idmodif" style="margin-bottom: 50px" type="submit" value= " <?php echo $value['0']; ?> " class="btn btn-danger">Annuler l'event </button> </form> </td>
+<td> <?php  if($value['validationrdv']!=4){ ?>
+
+   <button name="idmodif" style="margin-bottom: 50px" type="submit" value= " <?php echo $value['0']; ?> " class="btn btn-danger">Annuler le rendez vous </button> </form><?php  }
+  else{ ?>
+<form class="" action="../../backend/process/cmptrendu.php" method="post">
+<button name="idmodif" style="margin-bottom: 50px" type="submit" value= " <?php echo $value['0']; ?> " class="btn btn-danger">Compte rendu du rendez vous </button>
+</form>
+
+<?php } ?>  </td>
 
 
 
@@ -168,7 +177,7 @@ echo $date['day'],' ';
                     <th>nom du participant</th>
                     <th>nom de l'organisateur</th>
                      <th>validation</th>
-                     
+
 <th></th>
     	            </tr>
     	        </thead>

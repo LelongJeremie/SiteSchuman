@@ -826,6 +826,9 @@ $_SESSION["connect"] = "activation";
     session_start();
     $this->dbh = new bdd();
   $today = date("Y-m-d");
+  $ntoday = strtotime($today);
+  var_dump($ntoday);
+
     $req = $this->dbh->getBase()->prepare("SELECT * from rdv where id = :id");
     $req->execute(array(
         'id' => $a->getIdmodif(),
@@ -833,14 +836,17 @@ $_SESSION["connect"] = "activation";
 
     $res = $req->fetch();
 
+    $vdate = strtotime($res["date_rdv"]);
+
+
     if ($res["validationrdv"] == "0" ) {
       $_SESSION["connect"] = "annulerrdv2";
 
     }
 
-  elseif ($today != $res["date_rdv"] ) {
+  elseif ($ntoday > $vbase ) {
 
-    $rea = $this->dbh->getBase()->prepare("UPDATE rdv SET validationrdv = 0 WHERE id=:id_evenement");
+    $rea = $this->dbh->getBase()->prepare("UPDATE rdv SET validationrdv = 4 WHERE id=:id_evenement");
     $rea->execute(array(
       'id_evenement'=>$a->getIdmodif(),
 
@@ -852,7 +858,7 @@ $_SESSION["connect"] = "activation";
     else {
       $_SESSION["connect"] = "erreurannulerrdv";
     }
-var_dump(  $_SESSION["connect"]);
+
   }
 
 
