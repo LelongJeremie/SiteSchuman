@@ -1753,9 +1753,14 @@ $_SESSION['connect'] ="modifpassword";
 
             else {
 
+                          $req = $this->dbh->getBase()->prepare("SELECT * FROM evenement INNER JOIN utilisateur ON evenement.createur = 1");
+                          $req->execute(array());
+
+                          $res = $req->fetchall();
+    $_SESSION["rev"] = $res;
               throw new Exception("Erreur",1);
 
-
+$_SESSION["vide"] = "videevent";
             }
 
           }
@@ -1785,6 +1790,19 @@ $_SESSION['connect'] ="modifpassword";
 
             else {
 
+
+                          $req = $this->dbh->getBase()->prepare("SELECT * FROM rdv INNER JOIN utilisateur ON rdv.id_participant = utilisateur.id WHERE RDV.id_participant = 1 or RDV.id_organisateur = 1 ");
+                          $req->execute(array(
+
+
+                          ));
+
+                          $reh = $req->fetchall();
+
+
+
+  $_SESSION["reZ"]=$reh;
+    $_SESSION["vide"]="viderdv";
               throw new Exception("Erreur",1);
 
 
@@ -1807,12 +1825,19 @@ $_SESSION['connect'] ="modifpassword";
             if ($res) {
 
               $_SESSION["reo"] = $res;
-
+$_SESSION["vide"] = "";
 
 
             }
 
             else {
+
+              $req = $this->dbh->getBase()->prepare("SELECT * from utilisateur where id=4");
+              $req->execute(array());
+
+              $res = $req->fetchall();
+  $_SESSION["reo"] = $res;
+  $_SESSION["vide"] = "videprof";
 
               throw new Exception("Erreur",1);
 
@@ -1837,12 +1862,17 @@ $_SESSION['connect'] ="modifpassword";
 
               $_SESSION["reoo"] = $res;
 
-
+$_SESSION["vide"] = "";
 
             }
 
             else {
+              $req = $this->dbh->getBase()->prepare("SELECT * from utilisateur where id=4");
+              $req->execute(array());
 
+              $res = $req->fetchall();
+              $_SESSION["reoo"] = $res;
+              $_SESSION["vide"] = "videparent";
               throw new Exception("Erreur",1);
 
 

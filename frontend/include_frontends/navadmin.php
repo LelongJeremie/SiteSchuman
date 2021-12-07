@@ -38,7 +38,11 @@
 							<!-- Dropdown list -->
 							<div class="dropdown-menu">
 								<a class="dropdown-item" href="user-profile.php">Ton profile</a>
+								<?php if (isset($_SESSION['role']) and $_SESSION['role']!=4) {
+
+								 ?>
 								<a class="dropdown-item" href="rdv.php">Mes rendez-vous </a>
+							<?php } ?>
 								<?php if (isset($_SESSION['role']) and $_SESSION['role']==2 OR (isset($_SESSION['role']) and $_SESSION['role']==1)) {
 
 								 ?>

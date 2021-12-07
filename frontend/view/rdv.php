@@ -67,7 +67,7 @@
 
        ?>
 
-       <?php  ?>
+       <?php    ?>
 
   <form action= "../../backend/process/annulerrdv.php" method= "post">
       <table id="myTable" class="ui celled table" style="width:100%">
@@ -168,6 +168,7 @@ echo $date['day'],' ';
                     <th>nom du participant</th>
                     <th>nom de l'organisateur</th>
                      <th>validation</th>
+                     
 <th></th>
     	            </tr>
     	        </thead>
