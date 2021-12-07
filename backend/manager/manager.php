@@ -966,7 +966,6 @@ if ($rel == NULL) {
 
         $res = $req->fetch();
 
-var_dump($res,);
         if ($res ) {
 
 

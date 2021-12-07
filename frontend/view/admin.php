@@ -272,7 +272,7 @@ echo $date['day'],' ';
 
       } echo $date['year'] ,' ';
 ?></td>
-    	                <td><?php var_dump($_SESSION["connect"]); if ($value['role'] =="1") {
+    	                <td><?php if ($value['role'] =="1") {
                         echo "Admin";
                       }
                       if ($value['role'] =="2") {
