@@ -1993,7 +1993,6 @@ $_SESSION["connect"]="famille";
           public function mkevent($a){
             session_start();
 
-var_dump($a);
 
             $this->dbh = new bdd();
             $req = $this->dbh->getBase()->prepare("SELECT role from utilisateur where id=:createur");
