@@ -37,11 +37,11 @@
                                   <label for="current-password">ROLE : </br>
                                      </br>Admin: </br>
                               <input  type="radio" name="role" class="form-controlred p-1 w-50 my-1" value="1" checked/></BR>
-                                  professeur: </br>
+                                  Professeur: </br>
                                 <input  type="radio" name="role" class="form-controlred p-1 w-50 my-1" value="2"/></BR>
-                                      parent : </br>
+                                      Parent : </br>
                                 <input type="radio" name="role" class="form-controlred p-1 w-50 my-1" value="3"></BR>
-                                      eleve : </br>
+                                      Eleve : </br>
                                 <input type="radio" name="role" class="form-controlred p-1 w-50 my-1" value="4"></BR>
 
 
@@ -49,7 +49,7 @@
 
 
                                 <div class="loggedin-forgot d-inline-flex my-3">
-                                        
+
                                 </div>
                                 <button type="submit" class="d-block py-3 px-4 bg-primary text-white border-0 rounded font-weight-bold">S'inscrire</button>
                             </fieldset>

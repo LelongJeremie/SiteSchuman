@@ -91,7 +91,7 @@ $('#myModal').modal('toggle')
             <div class="row justify-content-center">
               <div class="col-lg-5 col-md-8 align-item-center">
                 <div class="border border">
-                  <h3 class="bg-gray p-4">Inscription</h3>
+                  <h3 class="bg-gray p-4">Créer un évenement</h3>
                   <form action="../../backend/process/mkevent.php" method= "post">
                     <fieldset class="p-4">
                       Titre:
@@ -106,7 +106,7 @@ $('#myModal').modal('toggle')
                       <input type="text" name="resume" placeholder="" class="border p-3 w-100 my-2" />
                       <input type="hidden" name="createur" value="<?php echo $_SESSION["id"]; ?>"/>
                     </br></br></br>
-                            <button type="submit" class="d-block py-3 px-4 bg-primary text-white border-0 rounded font-weight-bold">S'inscrire</button>
+                            <button type="submit" class="d-block py-3 px-4 bg-primary text-white border-0 rounded font-weight-bold">Créer</button>
                           </fieldset>
                         </form>
                       </div>

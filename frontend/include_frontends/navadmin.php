@@ -125,7 +125,7 @@
 
 														<!-- Dropdown list -->
 														<div class="dropdown-menu">
-															<a class="dropdown-item" href="liaison.php">liaison  </a>
+															<a class="dropdown-item" href="liaison.php">Liaison  </a>
 
 
 

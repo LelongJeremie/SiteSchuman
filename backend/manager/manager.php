@@ -211,7 +211,7 @@ var_dump($token_hache);
             // Content
             //$mail->isHTML(true);           ""<a href=\"http://localhost/LELONG_PHP/SiteSchuman/SiteSchuman/index.php\" class='button'>Lien du site</a>";                       // Set email format to HTML
             $mail->Subject = 'demandemdp ';
-            $mail->Body   = "<a href=\"http://localhost/TABTI/SiteSchuman/frontend/view/motdepasseoublie.php?token=".$token_hache."\" class='button'>Lien du site</a>";
+            $mail->Body   = "<a href=\"http://localhost/TABTI/SiteSchuman/frontend/view/motdepasseoublie.php?token=".$token_hache."\" class='button'>Changer votre mot de passe</a>";
             $mail->AltBody = 'demandemdp!';
 
             $mail->send();
@@ -231,86 +231,6 @@ var_dump($token_hache);
 
 
 
-  }
-
-  public function paiement($a) //Ajouter la reservation a la base de donnée
-  {
-    session_start();
-
-
-
-
-
-
-    $this->dbh = new bdd();
-    $req = $this->dbh->getBase()->prepare("SELECT * from salle where salleid=:salleid ");
-    $req->execute(array(
-      'salleid'=> $_SESSION["salleid"],
-    ));
-
-    $res = $req->fetch();
-
-
-
-    if ( $a->getTarif() =="etudiant") {
-
-      $prixfin = $a->getPrix()*0.90;
-
-
-    }
-
-    else {
-      $prixfin = $a->getPrix();
-
-    }
-
-    if ($res["salleplace"] < $a->getPlace() or $a->getPlace() <= 0  or $a->getCb() =="") {
-      throw new Exception("Error place");
-      $_SESSION["connect"] ="erreur";
-      header("Location: ../../frontend/view/choixpaiement.php");
-
-    }
-
-
-
-    else {
-
-
-  $_SESSION["connect"] ="4";
-
-      $this->dbh = new bdd();
-      $req = $this->dbh->getBase()->prepare("INSERT INTO reservation (RESnombre,idsalle, REStarif, utilisateurid) VALUES (:place, :salleid,:tarif,:id)");
-      $req->execute(array(
-        'place' => $a->getPlace(),
-        'salleid' => $_SESSION["salleid"],
-        'tarif' => $prixfin,
-        'id' => $_SESSION["id"],
-
-
-
-      ));
-
-
-      $salleplacee =  $_SESSION["salleplace"] - $a->getPlace()  ;
-
-
-
-      $reez = $this->dbh->getBase()->prepare("UPDATE salle set salleplace = :salleplace where salleid = :salleid ");
-      $reez->execute(array(
-        'salleid' => $_SESSION["salleid"],
-        'salleplace' => $salleplacee,
-
-      ));
-
-
-
-
-      $_SESSION["connect"] ="4";
-      $_SESSION["prixpayer"] = $prixfin;
-
-      header("Location: ../../index.php");
-    }
-    $_SESSION["connect"] ="4";
   }
 
 

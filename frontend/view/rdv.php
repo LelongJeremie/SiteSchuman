@@ -67,8 +67,6 @@
 
        ?>
 
-       <?php    ?>
-
 
       <table id="myTable" class="ui celled table" style="width:100%">
     	        <thead>
@@ -76,11 +74,11 @@
 
 
 
-                   <th>date</th>
-                   <th>nom du participant</th>
-                   <th>nom de l'organisateur</th>
-                    <th>validation</th>
-                      <th>compte rendu / description</th>
+                   <th>Date</th>
+                   <th>Nom du participant</th>
+                   <th>Nom de l'organisateur</th>
+                    <th>Validation</th>
+                      <th>Compte rendu / Description</th>
 <th></th>
 
     	            </tr>
@@ -156,34 +154,26 @@ echo $date['day'],' ';
 
 
 
-     <button type="button" style="margin-bottom: 50px" class="btn btn-success" data-toggle="modal" data-target="#test"> Detail de l'evenement</button>
+     <button type="button" style="margin-bottom: 50px" class="btn btn-success" data-toggle="modal" data-target="#test"> Detail du Rendez-vous</button>
    <?php } else { ?>
    <form action= "../../backend/process/selectmesrdv.php" method= "post">
-    <button name="idmodif" style="margin-bottom: 50px" type="submit" value= " <?php echo $value['0']; ?> " class="btn btn-primary">choisir le RDV </button> </form> <?php } ?>
+    <button name="idmodif" style="margin-bottom: 50px" type="submit" value= " <?php echo $value['0']; ?> " class="btn btn-primary">Choisir le RDV </button> </form> <?php } ?>
  </td>
 
 
-
-                 </>
-
-
-
-
-
-    	            </tr>
 
     	        </tbody>
   <?php  }?>
     	        <thead>
     	            <tr>
 
-                    <th>date</th>
-                    <th>nom du participant</th>
-                    <th>nom de l'organisateur</th>
-                     <th>validation</th>
-                  <th>compte rendu / description</th>
+                    <th>Date</th>
+                    <th>Nom du participant</th>
+                    <th>Nom de l'organisateur</th>
+                     <th>Validation</th>
+                  <th>Compte rendu / Description</th>
 
-<th></th>
+                    <th></th>
     	            </tr>
     	        </thead>
     	    </table>
@@ -345,7 +335,7 @@ $('#myModal').modal('toggle')
                     </div>
                     <div class="modal-body text-center">
                       <img src="images/account/Account1.png" class="img-fluid mb-2" alt="">
-                      <h6 class="py-2">Compte rendu enregistrer !. </h6>
+                      <h6 class="py-2">Compte rendu enregistrer ! </h6>
 
 
                     </div>
@@ -384,7 +374,7 @@ $('#myModal').modal('toggle')
                         </div>
                         <div class="modal-body text-center">
                           <img src="images/account/Account1.png" class="img-fluid mb-2" alt="">
-                          <h6 class="py-2">Compte rendu non enregistrer !. </h6>
+                          <h6 class="py-2">Compte rendu non enregistrer ! </h6>
 
 
                         </div>
@@ -421,16 +411,16 @@ $('#myModal').modal('toggle')
 
 
                     <div class="widget welcome-message text-center">
-                      <h2>Détails de l'evenement</h2>
-                      <p>Voici tout les détails de cet evenement</p>
+                      <h2>Détails du rendez-vous</h2>
+                      <p>Voici tous les détails de ce rendez-vous</p>
                     </div>
 
                                              <div class="modal-body text-center">
 
 <form action= "../../backend/process/compterendu.php" method= "post">
 
-  <input type="text"  required="required" name="compterendu" value="" placeholder="rentrer un compte rendu">
-    <button name="idevent" style="margin-bottom: 50px" type="submit" value= " <?php echo $_SESSION['idmesrdv'] ?> " class="btn btn-danger">Rentrer votre compte rendu</button> </form>
+  <input type="text"  required="required" name="compterendu" value="" class="border p-3 w-50 my-2" placeholder="Rentrer un compte rendu"> <br> <br>
+    <button name="idevent" style="margin-bottom: 50px" type="submit" value= " <?php echo $_SESSION['idmesrdv'] ?> " class="btn btn-success">Rentrer votre compte rendu</button> </form>
 
 </form>
 

@@ -39,13 +39,13 @@
     	            <tr>
 
 
-                   <th>titre</th>
-                   <th>date</th>
-                   <th>lieu</th>
-                   <th>place disponible</th>
-                   <th>resume</th>
+                   <th>Titre</th>
+                   <th>Date</th>
+                   <th>Lieu</th>
+                   <th>Place disponible</th>
+                   <th>Resume</th>
 
-                   <th>validation</th>
+                   <th>Validation</th>
 
                      <?php if (isset($_SESSION["id"])) { ?>
                    <th></> <?php } ?>
@@ -166,13 +166,13 @@ else {
 
     	        <thead>
     	            <tr>
-                    <th>titre</th>
-                    <th>date</th>
-                    <th>lieu</th>
-                     <th>place disponible</th>
-                    <th>resume</th>
+                    <th>Titre</th>
+                    <th>Date</th>
+                    <th>Lieu</th>
+                     <th>Place disponible</th>
+                    <th>Resume</th>
 
-                    <th>validation</th>
+                    <th>Validation</th>
 
                     <?php if (isset($_SESSION["id"])) { ?>
                   <th></> <?php } ?>
@@ -436,8 +436,8 @@ else {
                                                            <tr>
 
 
-                                                             <th>nom</th>
-                                                             <th>prenom</th>
+                                                             <th>Nom</th>
+                                                             <th>Prenom</th>
 
 
 
@@ -463,8 +463,8 @@ else {
                                              <?php  }?>
                                                        <thead>
                                                            <tr>
-                                                             <th>nom</th>
-                                                             <th>prenom</th>
+                                                             <th>Nom</th>
+                                                             <th>Prenom</th>
 
                                                            </tr>
                                                        </thead>
@@ -476,8 +476,8 @@ else {
                                                                <tr>
 
 
-                                                                 <th>nom</th>
-                                                                 <th>prenom</th>
+                                                                 <th>Nom</th>
+                                                                 <th>Prenom</th>
 
 
 

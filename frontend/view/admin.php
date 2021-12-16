@@ -217,7 +217,7 @@ CHOISIR eleve  :  </br>
                    <th>Id famille</th>
                    <th>Classe</th>
                    <th>Mail</th>
-                   <Th>validation</th>
+                   <Th>Validation</th>
                     <th></>
     	            </tr>
 
@@ -330,7 +330,7 @@ echo $date['day'],' ';
                    <th>Id famille</th>
                    <th>Classe</th>
                    <th>Mail</th>
-                   <th>validation</th>
+                   <th>Validation</th>
                    <th></>
     	            </tr>
     	        </thead>

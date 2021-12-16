@@ -119,7 +119,7 @@
 
                             <th>Nom du professeur</th>
                             <th>Prenom du professeur</th>
-                            <th>date</th>
+                        
                             <th></>
              	            </tr>
 
@@ -139,7 +139,7 @@
 
 
 
-                                <button type="button" style="margin-left:100px" class="d-block py-4 px-22 bg-success text-white border-0 rounded font-weight-bold" data-toggle="modal" data-target="#test"> Detail de l'evenement</button>
+                                <button type="button" style="margin-left:100px" class="d-block py-4 px-22 bg-success text-white border-0 rounded font-weight-bold" data-toggle="modal" data-target="#test"> Detail du Rendez-vous</button>
           <?php }
 
 
@@ -147,20 +147,19 @@
             ?>
                                   <button name="idevent" style="margin-left:100px" <?php if ($value['nom']=="Vide") {
                                     echo "disabled";
-                                  } ?>  type="submit" value= <?php echo $value['0']; ?> class="d-block py-4 px-22 bg-primary text-white border-0 rounded font-weight-bold">Choisir l'evenement</button>  </form>
+                                  } ?>  type="submit" value= <?php echo $value['0']; ?> class="d-block py-4 px-22 bg-primary text-white border-0 rounded font-weight-bold">Choisir le Rendez-vous</button>  </form>
 
 
                                 </br>
           <?php } ?> </td>
-
+</tbody>
          <?php  }?>
-             	        </tbody>
+
 
              	        <thead>
              	            <tr>
                              <th>Nom du professeur</th>
                              <th>Prenom du professeur</th>
-                             <th>date</th>
                              <th></>
              	            </tr>
              	        </thead>
@@ -170,7 +169,7 @@
           <div class="row justify-content-center">
 
 
-          </form>
+
 
 
 
@@ -205,7 +204,7 @@ $('#myModal').modal('toggle')
 
              <div class="widget welcome-message text-center">
                <h2>Détails du RDV</h2>
-               <p>Voici tout les détails du RDV</p>
+               <p>Voici tous les détails du RDV</p>
              </div>
 
 
@@ -214,9 +213,9 @@ $('#myModal').modal('toggle')
 <form action= "../../backend/process/joinrdv.php" method= "post">
 
 <input type="hidden" name="id" value="<?php echo  $_SESSION['id']; ?>" </>
-Date :</br> </br> <input required="required" type="date" name="date" value="" </></br></br>
+Date :</br> </br> <input required="required" type="date" name="date" value="" class="border p-3 w-5 my-2" </></br></br>
 
-<button name="idevent" style="margin-bottom: 50px" type="submit" value= " <?php echo $_SESSION['idevent']; ?> " class="btn btn-primary">Rejoindre rdv</button> </form>
+<button name="idevent" style="margin-bottom: 50px" type="submit" value= " <?php echo $_SESSION['idevent']; ?> " class="btn btn-primary">Rejoindre RDV</button> </form>
 
 
 
@@ -262,10 +261,7 @@ Date :</br> </br> <input required="required" type="date" name="date" value="" </
 
                         </div>
 
-                        <div class="modal-body text-center"style="margin-bottom: 5px">
 
-
-                        </div>
                           <!-- delete-account modal -->
                           <!-- delete account popup modal start-->
                           <!-- Modal -->
@@ -273,7 +269,7 @@ Date :</br> </br> <input required="required" type="date" name="date" value="" </
 
          </div>
        </div>
-     </div>
+
 
 
 

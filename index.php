@@ -35,7 +35,7 @@
 				<!-- Header Contetnt -->
 				<div class="content-block">
 					<h1>Robert Schuman </h1>
-					<p>Projet d'un site pour l'école ! </p>
+					<p>Site evenementiel du Lycée Robert Schuman dans lequel vous pouvez prendre rendez-vous, ou bien encore utiliser notre chat pour communiquer avec l'ensemble des membres du site ! </p>
 				</div>
 
 			</div>
@@ -582,7 +582,7 @@ $( document ).ready(function() {
 <?php include('frontend/include_frontends/footersindex.php'); ?>
   <!-- Container End -->
   <!-- To Top -->
-  
+
 </footer>
 <!-- include de php redondant -->
 <?php include('frontend/include_frontends/pluginsindex.php'); ?>
