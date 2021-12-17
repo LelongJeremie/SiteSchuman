@@ -119,7 +119,7 @@
 
                             <th>Nom du professeur</th>
                             <th>Prenom du professeur</th>
-                        
+
                             <th></>
              	            </tr>
 
@@ -147,13 +147,13 @@
             ?>
                                   <button name="idevent" style="margin-left:100px" <?php if ($value['nom']=="Vide") {
                                     echo "disabled";
-                                  } ?>  type="submit" value= <?php echo $value['0']; ?> class="d-block py-4 px-22 bg-primary text-white border-0 rounded font-weight-bold">Choisir le Rendez-vous</button>  </form>
-
+                                  } ?>  type="submit" value= <?php echo $value['0']; ?> class="d-block py-4 px-22 bg-primary text-white border-0 rounded font-weight-bold">Choisir le Rendez-vous</button>
 
                                 </br>
           <?php } ?> </td>
 </tbody>
          <?php  }?>
+       </form>
 
 
              	        <thead>
@@ -215,7 +215,8 @@ $('#myModal').modal('toggle')
 <input type="hidden" name="id" value="<?php echo  $_SESSION['id']; ?>" </>
 Date :</br> </br> <input required="required" type="date" name="date" value="" class="border p-3 w-5 my-2" </></br></br>
 
-<button name="idevent" style="margin-bottom: 50px" type="submit" value= " <?php echo $_SESSION['idevent']; ?> " class="btn btn-primary">Rejoindre RDV</button> </form>
+<button name="idevent" style="margin-bottom: 50px" type="submit" value= " <?php echo $_SESSION['idevent']; ?> " class="btn btn-primary">Rejoindre RDV</button>
+</form>
 
 
 

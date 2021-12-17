@@ -34,7 +34,7 @@ $man->joineventorg($user);
     if (  $_SESSION["connect"] =="erreurjoineventplace"  OR $_SESSION["connect"] =="erreurjoinevent" OR   $_SESSION["connect"] =="erreurjoineventorg" OR  $_SESSION["connect"] =="evenementannuler") {
 
 
-header("Location: ../../frontend/view/choixevent.php");
+header("Location: ../../frontend/view/event.php");
 }
 
 else {
