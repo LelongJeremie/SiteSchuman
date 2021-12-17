@@ -18,7 +18,6 @@ $user = new utilisateur([
   "idmodif" => $_POST["idevent"],
   ]);
 
-var_dump($_POST["idevent"]);
   $man = new manager();
 
 $man->selectevent($user);

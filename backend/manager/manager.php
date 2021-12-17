@@ -166,7 +166,6 @@ session_start();
   $req= $res->fetch();
 
 
-var_dump($req);
 $token=rand(222,5432134564321);
 
 $token_hache = crypt($token, 'rl');
@@ -177,8 +176,6 @@ $rem->execute(array(
   'token' => $token_hache,
 
 ));
-var_dump($rem);
-var_dump($token_hache);
 
 
     if ($rem) {
@@ -415,7 +412,7 @@ var_dump($token_hache);
     $req->execute(array(
       'username'=> $a->getUsername(),
     ));
-    var_dump($a);
+
     $res = $req->fetch();
 
     if ($res) {
@@ -527,7 +524,7 @@ var_dump($token_hache);
         'mail'=> $a->getMail(),
       ));
 
-      var_dump($a);
+
       $res = $req->fetch();
 
       if ($res) {
@@ -584,7 +581,7 @@ $_SESSION['connect'] ="modif";
 
     $req = $this->dbh->getBase()->prepare("SELECT * from utilisateur");
     $req->execute(array());
-    var_dump($a);
+
     $res = $req->fetchall();
 
 
@@ -747,7 +744,7 @@ $_SESSION["connect"] = "activation";
     $this->dbh = new bdd();
   $today = date("Y-m-d");
   $ntoday = strtotime($today);
-  var_dump($ntoday);
+
 
     $req = $this->dbh->getBase()->prepare("SELECT * from rdv where id = :id");
     $req->execute(array(
@@ -858,8 +855,7 @@ if ($rel == NULL) {
                 $_SESSION["nb_parti_max"] = $res["nb_parti_max"];
                 $_SESSION["participantevent"] =$rel;
                 $_SESSION["organisateurevent"] = $ren;
-                var_dump(  $_SESSION["participantevent"]);
-                var_dump(  $_SESSION["organisateurevent"]);
+
 
 
 
@@ -1126,8 +1122,6 @@ else {
 
  }
 
-var_dump($res ,$rem,$rey );
-
       if (isset($rem) AND !$rem AND $res["nb_participant"] !="0" AND $res["validationevent"] !="3" AND (isset($rey) AND !$rey)) {
 
         $_SESSION["connect"] ="event";
@@ -1315,7 +1309,6 @@ $_SESSION["connect"] ="erreurjoineventorg";
 
         ));
 
-        var_dump(  $req);
         $_SESSION["connect"] ="joinrdv";
       }
 
@@ -1382,7 +1375,6 @@ $_SESSION["connect"] ="erreurjoineventorg";
 
         ));
 
-        var_dump(  $req);
         $_SESSION["connect"] ="joinrdv";
       }
 
@@ -1609,7 +1601,6 @@ else { header("Location: ../../index.php");
               ));
 
               $res = $req->fetch();
-              var_dump($res);
 
 
 
@@ -1992,7 +1983,6 @@ if ($rel['id_famille'] == null AND  $res["id_famille"] != null ) {
 }
   else {
 
-    var_dump(($rel['id_famille']));
     $this->dbh = new bdd;
     $rek = $this->dbh->getBase()->prepare("UPDATE utilisateur SET id_famille = :id_famille where id = :id ");
     $rek->execute(array(
@@ -2000,7 +1990,6 @@ if ($rel['id_famille'] == null AND  $res["id_famille"] != null ) {
       'id_famille'=> $res['id_famille'],
     ));
 
-    var_dump($res['id_famille']);
 
 
 

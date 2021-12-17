@@ -18,7 +18,7 @@ $user = new utilisateur([
   'id'=>$_POST["id"],
       'date_event'=>$_POST["date"],
   ]);
-var_dump($_POST["date"]);
+
 
   $man = new manager();
 
