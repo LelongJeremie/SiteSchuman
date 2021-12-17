@@ -82,7 +82,7 @@
             <img class="card-img-top" src="../../style/images/user/596-5961334_kono-dio-da-meme-template-hd-png-download.png" class="img-fluid w-100" alt="Card image cap">
             <div class="card-body bg-gray text-center">
               <h5 class="card-title">Yacine TABTI</h5>
-              <p class="card-text">chef de projet</p>
+              <p class="card-text">Chef de projet</p>
             </div>
           </div>
         </div>
@@ -91,8 +91,8 @@
           <div class="card my-3 my-lg-0">
             <img class="card-img-top" src="../../style/images/user/596-5961334_kono-dio-da-meme-template-hd-png-download.png" class="img-fluid w-100" alt="Card image cap">
             <div class="card-body bg-gray text-center">
-              <h5 class="card-title">Jeremy Lelong</h5>
-              <p class="card-text">développeur</p>
+              <h5 class="card-title">Jeremie Lelong</h5>
+              <p class="card-text">Développeur</p>
             </div>
           </div>
         </div>
@@ -102,7 +102,7 @@
             <img class="card-img-top" src="../../style/images/user/596-5961334_kono-dio-da-meme-template-hd-png-download.png" class="img-fluid w-100" alt="Card image cap">
             <div class="card-body bg-gray text-center">
               <h5 class="card-title">Domingues Alexandre</h5>
-              <p class="card-text">developpeur</p>
+              <p class="card-text">Developpeur</p>
             </div>
           </div>
         </div>

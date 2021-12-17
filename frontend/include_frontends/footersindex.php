@@ -47,7 +47,7 @@
   </div></div>
     </div>
   </div>
-<?php  $_SESSION["connect"]="myFunction";  ?>
+<?php  $_SESSION["connect"]="myFunction"; $_SESSION["connecte"]="myFunction";  ?>
   <!-- Container End -->
 </footer>
 <!-- Footer Bottom -->

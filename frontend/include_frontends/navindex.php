@@ -26,7 +26,24 @@
 								<!-- Dropdown list -->
 								<div class="dropdown-menu">
 									<a class="dropdown-item" href="frontend/view/user-profile.php">Ton profile</a>
-									<a class="dropdown-item" href="frontend/view/rdv.php">Tes rendez-vous</a>
+									<?php if (isset($_SESSION['role']) and $_SESSION['role']!=4) {
+
+									 ?>
+									<a class="dropdown-item" href="frontend/view/rdv.php">Mes rendez-vous </a>
+								<?php } ?>
+									<?php if (isset($_SESSION['role']) and $_SESSION['role']==2 OR (isset($_SESSION['role']) and $_SESSION['role']==1)) {
+
+									 ?>
+
+									<a class="dropdown-item" href="frontend/view/rejoindrerdvparent.php">Prendre rendez-vous avec un Parent</a>
+
+								<?php } ?>
+								<?php if (isset($_SESSION['role']) and $_SESSION['role']==3 OR (isset($_SESSION['role']) and $_SESSION['role']==1)) {
+
+								 ?>
+
+									<a class="dropdown-item" href="frontend/view/rejoindrerdv.php">Rejoindre un rendez-vous avec un Professeur</a>
+								<?php } ?>
 								</div>
 							</li>
               <?php } ?>
@@ -38,7 +55,7 @@
 								<!-- Dropdown list -->
 								<div class="dropdown-menu">
 									<a class="dropdown-item" href="frontend/view/event.php">Events</a>
-									<a class="dropdown-item" href="frontend/view/mkevent.php">Faire un event</a>
+									<?php if (isset($_SESSION["id"])){ echo '	<a class="dropdown-item" href="frontend/view/mkevent.php">Faire un event</a>'; }  ?>
 								</div>
 							</li>
 
@@ -81,6 +98,28 @@
             </li>
 
   <?php }  ?>
+
+	<?php if (isset($_SESSION['role']) and $_SESSION['role']==3 OR isset($_SESSION['role']) and $_SESSION['role']==1) {
+
+	 ?>
+
+							<li class="nav-item dropdown dropdown-slide">
+								<a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+									Liaison <span><i class="fa fa-angle-down"></i></span>
+								</a>
+
+
+								<!-- Dropdown list -->
+								<div class="dropdown-menu">
+									<a class="dropdown-item" href="frontend/view/liaison.php">Liaison  </a>
+
+
+
+
+								</div>
+							</li>
+
+		<?php }  ?>
 </ul>
 <ul class="navbar-nav ml-auto mt-10">
   <!-- test pour savoir si on est connecté  -->

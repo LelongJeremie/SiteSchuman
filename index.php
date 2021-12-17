@@ -35,13 +35,16 @@
 				<!-- Header Contetnt -->
 				<div class="content-block">
 					<h1>Robert Schuman </h1>
-					<p>Site en construction </p>
+					<p>Site evenementiel du Lycée Robert Schuman dans lequel vous pouvez prendre rendez-vous, ou bien encore utiliser notre chat pour communiquer avec l'ensemble des membres du site ! </p>
 				</div>
-
 
 			</div>
 		</div>
+
 	</div>
+
+
+
 	<!-- Container End -->
 </section>
 
@@ -51,12 +54,179 @@
 =            Client Slider            =
 ====================================-->
 
-
 <!--===========================================
 =            Popular deals section            =
 ============================================-->
 
 <section class="popular-deals section bg-gray">
+
+
+
+
+        <?php if ( isset($_SESSION["connect"]) and $_SESSION["connect"] == "comptepasactive") {
+         ?>
+    <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+        <script type="text/javascript">
+    $( document ).ready(function() {
+        $('#myModal').modal('toggle')
+
+    });
+    </script>
+
+
+              <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+                aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header border-bottom-0">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body text-center">
+                      <img src="images/account/Account1.png" class="img-fluid mb-2" alt="">
+                      <h6 class="py-2">Compte en attente de validation. </h6>
+
+
+                    </div>
+                    <div class="modal-footer border-top-0 mb-2 mx-4 justify-content-center">
+
+                      <button type="button" class="btn btn-primary" data-dismiss="modal">Fermer le pop-up</button>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+
+            <?php $_SESSION["connect"] = "00000"; } ?>
+
+
+                  <?php if ( isset($_SESSION["connect"]) and $_SESSION["connect"] == "comptedesactive") {
+                   ?>
+              <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+                  <script type="text/javascript">
+              $( document ).ready(function() {
+                  $('#myModal').modal('toggle')
+
+              });
+              </script>
+
+
+                        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+                          aria-hidden="true">
+                          <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header border-bottom-0">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <div class="modal-body text-center">
+                                <img src="images/account/Account1.png" class="img-fluid mb-2" alt="">
+                                <h6 class="py-2">Compte desactivé </h6>
+
+
+                              </div>
+                              <div class="modal-footer border-top-0 mb-2 mx-4 justify-content-center">
+
+                                <button type="button" class="btn btn-primary" data-dismiss="modal">Fermer le pop-up</button>
+
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+
+
+                      <?php $_SESSION["connect"] = "00000"; } ?>
+
+
+
+      <?php if ( isset($_SESSION["connect"]) and $_SESSION["connect"] == "event") {
+       ?>
+  <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+      <script type="text/javascript">
+  $( document ).ready(function() {
+      $('#myModal').modal('toggle')
+
+  });
+  </script>
+
+
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+              aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="modal-header border-bottom-0">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body text-center">
+                    <img src="images/account/Account1.png" class="img-fluid mb-2" alt="">
+                    <h6 class="py-2">Evenement rejoint en tant que participant! </h6>
+
+
+                  </div>
+                  <div class="modal-footer border-top-0 mb-2 mx-4 justify-content-center">
+
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Fermer le pop-up</button>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+
+          <?php $_SESSION["connect"] = "00000"; } ?>
+
+
+
+
+          <?php if ( isset($_SESSION["connect"]) and $_SESSION["connect"] == "eventorg") {
+           ?>
+      <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+          <script type="text/javascript">
+      $( document ).ready(function() {
+          $('#myModal').modal('toggle')
+
+      });
+      </script>
+
+
+                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+                  aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header border-bottom-0">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body text-center">
+                        <img src="images/account/Account1.png" class="img-fluid mb-2" alt="">
+                        <h6 class="py-2">Evenement rejoint en tant qu'organisateur ! </h6>
+
+
+                      </div>
+                      <div class="modal-footer border-top-0 mb-2 mx-4 justify-content-center">
+
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Fermer le pop-up</button>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+
+
+              <?php $_SESSION["connect"] = "00000"; } ?>
+
+
+
 
     <?php if ( isset($_SESSION["connect"]) and $_SESSION["connect"] == "1") {
      ?>
@@ -297,10 +467,90 @@ $( document ).ready(function() {
 
 
                 <?php $_SESSION["connect"] = "00000"; } ?>
-          <!-- delete account popup modal end-->
-    <!-- delete-account modal -
-		<div class="row">
-			<!-- offer 01 -->
+
+                <?php if ( isset($_SESSION["connect"]) and $_SESSION["connect"] == "famille") {
+                 ?>
+            <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+                <script type="text/javascript">
+            $( document ).ready(function() {
+                $('#myModal').modal('toggle')
+            });
+            </script>
+
+
+
+
+                      <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+                        aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header border-bottom-0">
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <div class="modal-body text-center">
+                              <img src="images/account/Account1.png" class="img-fluid mb-2" alt="">
+                              <h6 class="py-2">Liaison effectué avec votre enfant ! </h6>
+
+
+                            </div>
+                            <div class="modal-footer border-top-0 mb-2 mx-4 justify-content-center">
+
+                              <button type="button" class="btn btn-primary" data-dismiss="modal">Fermer le pop-up</button>
+
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+
+
+                    <?php $_SESSION["connect"] = "00000"; } ?>
+
+                    <?php if ( isset($_SESSION["connect"]) and $_SESSION["connect"] == "adminajout") {
+                     ?>
+                <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+                    <script type="text/javascript">
+                $( document ).ready(function() {
+                    $('#myModal').modal('toggle')
+                });
+                </script>
+
+
+
+
+                          <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+                            aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                              <div class="modal-content">
+                                <div class="modal-header border-bottom-0">
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                  </button>
+                                </div>
+                                <div class="modal-body text-center">
+                                  <img src="images/account/Account1.png" class="img-fluid mb-2" alt="">
+                                  <h6 class="py-2">Compte crée !</h6>
+
+
+                                </div>
+                                <div class="modal-footer border-top-0 mb-2 mx-4 justify-content-center">
+
+                                  <button type="button" class="btn btn-primary" data-dismiss="modal">Fermer le pop-up</button>
+
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+
+
+                        <?php $_SESSION["connect"] = "00000"; } ?>
+
+
+
+
 			<div class="col-lg-12">
 				<div class="trending-ads-slide">
 
@@ -332,9 +582,7 @@ $( document ).ready(function() {
 <?php include('frontend/include_frontends/footersindex.php'); ?>
   <!-- Container End -->
   <!-- To Top -->
-  <div class="top-to">
-    <a id="top" class="" href="#"><i class="fa fa-angle-up"></i></a>
-  </div>
+
 </footer>
 <!-- include de php redondant -->
 <?php include('frontend/include_frontends/pluginsindex.php'); ?>

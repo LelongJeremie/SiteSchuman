@@ -38,23 +38,42 @@
 							<!-- Dropdown list -->
 							<div class="dropdown-menu">
 								<a class="dropdown-item" href="user-profile.php">Ton profile</a>
-								<a class="dropdown-item" href="rdv.php">Tes rendez-vous</a>
+								<?php if (isset($_SESSION['role']) and $_SESSION['role']!=4) {
+
+								 ?>
+								<a class="dropdown-item" href="rdv.php">Mes rendez-vous </a>
+							<?php } ?>
+								<?php if (isset($_SESSION['role']) and $_SESSION['role']==2 OR (isset($_SESSION['role']) and $_SESSION['role']==1)) {
+
+								 ?>
+
+								<a class="dropdown-item" href="rejoindrerdvparent.php">Prendre rendez-vous avec un Parent</a>
+
+							<?php } ?>
+							<?php if (isset($_SESSION['role']) and $_SESSION['role']==3 OR (isset($_SESSION['role']) and $_SESSION['role']==1)) {
+
+							 ?>
+
+								<a class="dropdown-item" href="rejoindrerdv.php">Rejoindre un rendez-vous avec un Professeur</a>
+							<?php } ?>
 							</div>
 						</li>
+
+
+
+						<?php } ?>
 						<li class="nav-item dropdown dropdown-slide">
 							<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="">
 								Events<span><i class="fa fa-angle-down"></i></span>
 							</a>
-
-							<!-- Dropdown list -->
-							<div class="dropdown-menu">
-								<a class="dropdown-item" href="event.php">Events</a>
-								<a class="dropdown-item" href="mkevent.php">Faire un event</a>
-							</div>
-						</li>
-
+						<!-- Dropdown list -->
+						<div class="dropdown-menu">
+							<a class="dropdown-item" href="event.php">Events</a>
+							<?php if (isset($_SESSION["id"])){    ?>
+							<a class="dropdown-item" href="mkevent.php">Faire un event</a>
 						<?php } ?>
-
+						</div>
+					</li>
 
 
 							<!-- Dropdown list -->
@@ -93,6 +112,29 @@
 												</li>
 
 							<?php }  ?>
+
+							<?php if (isset($_SESSION['role']) and $_SESSION['role']==3 OR isset($_SESSION['role']) and $_SESSION['role']==1) {
+
+							 ?>
+
+													<li class="nav-item dropdown dropdown-slide">
+														<a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+															Liaison <span><i class="fa fa-angle-down"></i></span>
+														</a>
+
+
+														<!-- Dropdown list -->
+														<div class="dropdown-menu">
+															<a class="dropdown-item" href="liaison.php">Liaison  </a>
+
+
+
+
+														</div>
+													</li>
+
+								<?php }  ?>
+
 						</ul>
 					<ul class="navbar-nav ml-auto mt-10">
 						 <?php if (isset($_SESSION["id"])){   ?>

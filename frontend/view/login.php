@@ -28,12 +28,12 @@
 
                   <form action= "../../backend/process/connexion.php" method= "post">
 
-                    <input type="text" name="username"
+                    <input type="text" name="username" required = "required"
                     <?php
                     if (isset($_SESSION["erreurcase"]) and $_SESSION["erreurcase"] == "toutecasevide" ){ echo'placeholder="Veuillez rentrer un nom d\'utilisateur valide*"';  echo 'class="form-controlred p-3 w-100 my-2"' ;}
                     if (isset($_SESSION["erreurcase"]) and $_SESSION["erreurcase"] == "uservide") { echo'placeholder="Veuillez rentrer un nom d\'utilisateur valide*"';  echo 'class="form-controlred p-3 w-100 my-2"' ;}
                     else { echo 'placeholder="Utilisateur" class="border p-3 w-100 my-2" ';} ?> />
-                    <input type="password" name="password"
+                    <input type="password" name="password" required = "required"
                     <?php
                     if (isset($_SESSION["erreurcase"]) and $_SESSION["erreurcase"] == "toutecasevide"  ){ echo'placeholder="Veuillez rentrer un mot de passe valide*"'  ; echo 'class="form-controlred p-3 w-100 my-2"';}
                     if (isset($_SESSION["erreurcase"]) and $_SESSION["erreurcase"] == "passwordvide") { echo'placeholder="Veuillez rentrer un mot de passe valide*"'; echo 'class="form-controlred p-3 w-100 my-2"';}

@@ -32,11 +32,11 @@ try {
 
 } catch (Exception $e) {
 
-$_SESSION["connect"] ="7";
+$_SESSION["connect"] ="erreuradminajout";
 
 }
 
-if (isset($_SESSION["connect"]) and $_SESSION["connect"] =="7") {
+if (isset($_SESSION["connect"]) and $_SESSION["connect"] =="erreuradminajout") {
 
  header("Location: ../../frontend/view/adminajout.php");
 }

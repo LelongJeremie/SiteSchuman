@@ -3,7 +3,7 @@
 require_once 'contact.php';
 class utilisateur extends contact{
 
-  public $id,$date_naissance,$verifmail,$nom,$salleidmodif,$prenom,$password, $passwordmodifconf,$passwordmodif,$passwordconf,$role,$username,$typemodif,$mail,$mailmodif,$idmodif,$idadminmodif,$nomadminmodif,$prenomadminmodif,$token,$passwordadminmodif,$mailadminmodif,$roleadminmodif;
+  public $id,$createur,$texte,$date_naissance,$verifmail,$nom,$salleidmodif,$prenom,$password, $passwordmodifconf,$passwordmodif,$passwordconf,$role,$username,$typemodif,$mail,$mailmodif,$idmodif,$idadminmodif,$nomadminmodif,$prenomadminmodif,$token,$passwordadminmodif,$mailadminmodif,$roleadminmodif,$titre,$date_event,$lieu,$resume,$nb_parti_max;
 
   // constructeur
 
@@ -38,6 +38,10 @@ class utilisateur extends contact{
   {
     return $this-> id;
   }
+  public function getTexte()
+  {
+    return $this-> texte;
+  }
   public function getIdmodif()
   {
     return $this-> idmodif;
@@ -71,6 +75,30 @@ class utilisateur extends contact{
   public function getToken()
   {
     return $this-> token;
+  }
+  public function getTitre()
+  {
+    return $this-> titre;
+  }
+  public function getDate_event()
+  {
+    return $this-> date_event;
+  }
+  public function getLieu()
+  {
+    return $this-> lieu;
+  }
+  public function getCreateur()
+  {
+    return $this-> createur;
+  }
+  public function getResume()
+  {
+    return $this-> resume;
+  }
+  public function getNb_parti_max()
+  {
+    return $this-> nb_parti_max;
   }
 
   public function getNomadminmodif()
@@ -290,6 +318,75 @@ class utilisateur extends contact{
       $this-> token = $token;
     }
   }
+  public function setTitre($titre)
+  {
+    // On vérifie qu'il s'agit bien d'une chaîne de caractères.
+    if (is_string($titre))
+    {
+      $this-> titre = $titre;
+    }
+  }
+
+  public function setDate_event($date_event)
+  {
+    // On vérifie qu'il s'agit bien d'une chaîne de caractères.
+    if (is_string($date_event))
+    {
+      $this-> date_event = $date_event;
+    }
+  }
+
+  public function setLieu($lieu)
+  {
+    // On vérifie qu'il s'agit bien d'une chaîne de caractères.
+    if (is_string($lieu))
+    {
+      $this-> lieu = $lieu;
+    }
+  }
+
+  public function setCreateur($createur)
+  {
+    // On convertit l'argument en nombre entier.
+    // Si c'en était déjà un, rien ne changera.
+    // Sinon, la conversion donnera le nombre 0 (à quelques exceptions près, mais rien d'important ici).
+    $createur = (int) $createur;
+
+    // On vérifie ensuite si ce nombre est bien strictement positif.
+    if ($createur > 0)
+    {
+      // Si c'est le cas, c'est tout bon, on assigne la valeur à l'attribut correspondant.
+      $this-> createur = $createur;
+    }
+  }
+
+  public function setResume($resume)
+  {
+    // On vérifie qu'il s'agit bien d'une chaîne de caractères.
+    if (is_string($resume))
+    {
+      $this-> resume = $resume;
+    }
+  }
+
+  public function setTexte($texte)
+  {
+    // On vérifie qu'il s'agit bien d'une chaîne de caractères.
+    if (is_string($texte))
+    {
+      $this-> texte = $texte;
+    }
+  }
+
+  public function setNb_parti_max($nb_parti_max)
+  {
+    // On vérifie qu'il s'agit bien d'une chaîne de caractères.
+    if (is_string($nb_parti_max))
+    {
+      $this-> nb_parti_max = $nb_parti_max;
+    }
+  }
+
 
   public function setDescription($description)
   {

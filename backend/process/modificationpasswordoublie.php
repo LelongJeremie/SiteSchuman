@@ -25,6 +25,7 @@ try {
     $man = new manager();
 
     $man->modificationpasswordoublie($user);
+    
 
 
 
