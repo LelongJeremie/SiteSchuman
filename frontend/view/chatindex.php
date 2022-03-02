@@ -3,7 +3,7 @@
 <head>
     <!-- Demarrage session avec un test pour savoir si on est connecté -->
 
-  <?php include '../include_frontends/navchat.php';  ?>
+
 
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -56,7 +56,7 @@ ga('create', 'UA-87739877-1', 'auto');
 ga('send', 'pageview');
 
 </script>
-
+<?php print("aa"); ?>
 </body>
 <!--============================
 =            Footer            =
