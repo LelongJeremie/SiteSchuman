@@ -3,7 +3,7 @@
 <head>
     <!-- Demarrage session avec un test pour savoir si on est connecté -->
 
-  <?php include '../include_frontends/navchat.php';  ?>
+
   <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <script>
 (adsbygoogle = window.adsbygoogle || []).push({
