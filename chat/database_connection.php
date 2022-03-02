@@ -1,5 +1,5 @@
 <?php
-$connect = new PDO("mysql:host=localhost;dbname=siteschumanp;charset=utf8mb4", "root", "root");
+$connect = new PDO('mysql:host=localhost;dbname=SiteSchumanp', "root","root");
 
 function fetch_user_last_activity($id, $connect)
 {
