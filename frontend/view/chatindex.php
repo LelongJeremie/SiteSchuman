@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <!-- Demarrage session avec un test pour savoir si on est connecté -->
 
