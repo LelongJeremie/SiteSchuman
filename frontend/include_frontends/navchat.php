@@ -4,7 +4,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Robert Schuman</title>
 <?php session_start();
-include('../../chat/database_connection.php');?>
+;?>
 <!-- include de php redondant -->
 <?php include 'stylechat.php';  ?>
 
