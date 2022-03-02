@@ -3,7 +3,8 @@
 <head>
     <!-- Demarrage session avec un test pour savoir si on est connecté -->
 
-
+    <?php session_start();
+    include('../../chat/database_connection.php');?>
   <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <script>
 (adsbygoogle = window.adsbygoogle || []).push({
