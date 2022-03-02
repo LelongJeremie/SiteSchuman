@@ -1,10 +1,16 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <!-- Demarrage session avec un test pour savoir si on est connecté -->
 
 
-
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({
+google_ad_client: "ca-pub-5139634720777851",
+enable_page_level_ads: true
+});
+</script>
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -56,7 +62,7 @@ ga('create', 'UA-87739877-1', 'auto');
 ga('send', 'pageview');
 
 </script>
-<?php print("aa"); ?>
+
 </body>
 <!--============================
 =            Footer            =
